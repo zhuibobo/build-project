@@ -1,0 +1,392 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.build4d.project.dbaccess.dao.ArolEngPBSpecMapper">
+  <resultMap id="BaseResultMap" type="com.build4d.project.dbaccess.dbentities.ArolEngPBSpecEntity">
+    <constructor>
+      <idArg column="ENG_SID" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="CONS_AREA" javaType="java.math.BigDecimal" jdbcType="DECIMAL" />
+      <arg column="BUIDLING_NUMS" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="LENGTH_VALUE" javaType="java.math.BigDecimal" jdbcType="DECIMAL" />
+      <arg column="HEIGHT_VALUE" javaType="java.math.BigDecimal" jdbcType="DECIMAL" />
+      <arg column="FLOORS" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="WIDTH_VALUE" javaType="java.math.BigDecimal" jdbcType="DECIMAL" />
+      <arg column="SPEC_CODE" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="LOAD_CODE" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="HEADROOM" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="HOLENUMS" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="MATERIAL_CODE" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="SUB_ENG_NAME" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="OVER_NUMS" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="UNDER_NUMS" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="USE_AMOUNT" javaType="java.math.BigDecimal" jdbcType="DECIMAL" />
+      <arg column="RESOURCE_NUMS" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="PARCEL_NO" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="BASIS_TYPE_CODE" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="START_X" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="END_X" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="APPROVAL_DATE" javaType="java.util.Date" jdbcType="TIMESTAMP" />
+      <arg column="APPLAY_DATE" javaType="java.util.Date" jdbcType="TIMESTAMP" />
+      <arg column="USE_AREA" javaType="java.math.BigDecimal" jdbcType="DECIMAL" />
+      <arg column="USE_TYPE_CODE" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="CREATED_BY" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="CREATED_DT" javaType="java.util.Date" jdbcType="TIMESTAMP" />
+      <arg column="VERSION" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="UPDATED_BY" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="UPDATED_DT" javaType="java.util.Date" jdbcType="TIMESTAMP" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List">
+    ENG_SID, CONS_AREA, BUIDLING_NUMS, LENGTH_VALUE, HEIGHT_VALUE, FLOORS, WIDTH_VALUE, 
+    SPEC_CODE, LOAD_CODE, HEADROOM, HOLENUMS, MATERIAL_CODE, SUB_ENG_NAME, OVER_NUMS, 
+    UNDER_NUMS, USE_AMOUNT, RESOURCE_NUMS, PARCEL_NO, BASIS_TYPE_CODE, START_X, END_X, 
+    APPROVAL_DATE, APPLAY_DATE, USE_AREA, USE_TYPE_CODE, CREATED_BY, CREATED_DT, VERSION, 
+    UPDATED_BY, UPDATED_DT
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from iams_arol_eng_pb_spec
+    where ENG_SID = #{engSid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from iams_arol_eng_pb_spec
+    where ENG_SID = #{engSid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.build4d.project.dbaccess.dbentities.ArolEngPBSpecEntity">
+    insert into iams_arol_eng_pb_spec (ENG_SID, CONS_AREA, BUIDLING_NUMS, 
+      LENGTH_VALUE, HEIGHT_VALUE, FLOORS, 
+      WIDTH_VALUE, SPEC_CODE, LOAD_CODE, 
+      HEADROOM, HOLENUMS, MATERIAL_CODE, 
+      SUB_ENG_NAME, OVER_NUMS, UNDER_NUMS, 
+      USE_AMOUNT, RESOURCE_NUMS, PARCEL_NO, 
+      BASIS_TYPE_CODE, START_X, END_X, 
+      APPROVAL_DATE, APPLAY_DATE, USE_AREA, 
+      USE_TYPE_CODE, CREATED_BY, CREATED_DT, 
+      VERSION, UPDATED_BY, UPDATED_DT
+      )
+    values (#{engSid,jdbcType=INTEGER}, #{consArea,jdbcType=DECIMAL}, #{buidlingNums,jdbcType=INTEGER}, 
+      #{lengthValue,jdbcType=DECIMAL}, #{heightValue,jdbcType=DECIMAL}, #{floors,jdbcType=INTEGER}, 
+      #{widthValue,jdbcType=DECIMAL}, #{specCode,jdbcType=VARCHAR}, #{loadCode,jdbcType=VARCHAR}, 
+      #{headroom,jdbcType=VARCHAR}, #{holenums,jdbcType=VARCHAR}, #{materialCode,jdbcType=VARCHAR}, 
+      #{subEngName,jdbcType=VARCHAR}, #{overNums,jdbcType=VARCHAR}, #{underNums,jdbcType=VARCHAR}, 
+      #{useAmount,jdbcType=DECIMAL}, #{resourceNums,jdbcType=VARCHAR}, #{parcelNo,jdbcType=VARCHAR}, 
+      #{basisTypeCode,jdbcType=VARCHAR}, #{startX,jdbcType=VARCHAR}, #{endX,jdbcType=VARCHAR}, 
+      #{approvalDate,jdbcType=TIMESTAMP}, #{applayDate,jdbcType=TIMESTAMP}, #{useArea,jdbcType=DECIMAL}, 
+      #{useTypeCode,jdbcType=VARCHAR}, #{createdBy,jdbcType=VARCHAR}, #{createdDt,jdbcType=TIMESTAMP}, 
+      #{version,jdbcType=INTEGER}, #{updatedBy,jdbcType=VARCHAR}, #{updatedDt,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.build4d.project.dbaccess.dbentities.ArolEngPBSpecEntity">
+    insert into iams_arol_eng_pb_spec
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="engSid != null">
+        ENG_SID,
+      </if>
+      <if test="consArea != null">
+        CONS_AREA,
+      </if>
+      <if test="buidlingNums != null">
+        BUIDLING_NUMS,
+      </if>
+      <if test="lengthValue != null">
+        LENGTH_VALUE,
+      </if>
+      <if test="heightValue != null">
+        HEIGHT_VALUE,
+      </if>
+      <if test="floors != null">
+        FLOORS,
+      </if>
+      <if test="widthValue != null">
+        WIDTH_VALUE,
+      </if>
+      <if test="specCode != null">
+        SPEC_CODE,
+      </if>
+      <if test="loadCode != null">
+        LOAD_CODE,
+      </if>
+      <if test="headroom != null">
+        HEADROOM,
+      </if>
+      <if test="holenums != null">
+        HOLENUMS,
+      </if>
+      <if test="materialCode != null">
+        MATERIAL_CODE,
+      </if>
+      <if test="subEngName != null">
+        SUB_ENG_NAME,
+      </if>
+      <if test="overNums != null">
+        OVER_NUMS,
+      </if>
+      <if test="underNums != null">
+        UNDER_NUMS,
+      </if>
+      <if test="useAmount != null">
+        USE_AMOUNT,
+      </if>
+      <if test="resourceNums != null">
+        RESOURCE_NUMS,
+      </if>
+      <if test="parcelNo != null">
+        PARCEL_NO,
+      </if>
+      <if test="basisTypeCode != null">
+        BASIS_TYPE_CODE,
+      </if>
+      <if test="startX != null">
+        START_X,
+      </if>
+      <if test="endX != null">
+        END_X,
+      </if>
+      <if test="approvalDate != null">
+        APPROVAL_DATE,
+      </if>
+      <if test="applayDate != null">
+        APPLAY_DATE,
+      </if>
+      <if test="useArea != null">
+        USE_AREA,
+      </if>
+      <if test="useTypeCode != null">
+        USE_TYPE_CODE,
+      </if>
+      <if test="createdBy != null">
+        CREATED_BY,
+      </if>
+      <if test="createdDt != null">
+        CREATED_DT,
+      </if>
+      <if test="version != null">
+        VERSION,
+      </if>
+      <if test="updatedBy != null">
+        UPDATED_BY,
+      </if>
+      <if test="updatedDt != null">
+        UPDATED_DT,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="engSid != null">
+        #{engSid,jdbcType=INTEGER},
+      </if>
+      <if test="consArea != null">
+        #{consArea,jdbcType=DECIMAL},
+      </if>
+      <if test="buidlingNums != null">
+        #{buidlingNums,jdbcType=INTEGER},
+      </if>
+      <if test="lengthValue != null">
+        #{lengthValue,jdbcType=DECIMAL},
+      </if>
+      <if test="heightValue != null">
+        #{heightValue,jdbcType=DECIMAL},
+      </if>
+      <if test="floors != null">
+        #{floors,jdbcType=INTEGER},
+      </if>
+      <if test="widthValue != null">
+        #{widthValue,jdbcType=DECIMAL},
+      </if>
+      <if test="specCode != null">
+        #{specCode,jdbcType=VARCHAR},
+      </if>
+      <if test="loadCode != null">
+        #{loadCode,jdbcType=VARCHAR},
+      </if>
+      <if test="headroom != null">
+        #{headroom,jdbcType=VARCHAR},
+      </if>
+      <if test="holenums != null">
+        #{holenums,jdbcType=VARCHAR},
+      </if>
+      <if test="materialCode != null">
+        #{materialCode,jdbcType=VARCHAR},
+      </if>
+      <if test="subEngName != null">
+        #{subEngName,jdbcType=VARCHAR},
+      </if>
+      <if test="overNums != null">
+        #{overNums,jdbcType=VARCHAR},
+      </if>
+      <if test="underNums != null">
+        #{underNums,jdbcType=VARCHAR},
+      </if>
+      <if test="useAmount != null">
+        #{useAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="resourceNums != null">
+        #{resourceNums,jdbcType=VARCHAR},
+      </if>
+      <if test="parcelNo != null">
+        #{parcelNo,jdbcType=VARCHAR},
+      </if>
+      <if test="basisTypeCode != null">
+        #{basisTypeCode,jdbcType=VARCHAR},
+      </if>
+      <if test="startX != null">
+        #{startX,jdbcType=VARCHAR},
+      </if>
+      <if test="endX != null">
+        #{endX,jdbcType=VARCHAR},
+      </if>
+      <if test="approvalDate != null">
+        #{approvalDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="applayDate != null">
+        #{applayDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="useArea != null">
+        #{useArea,jdbcType=DECIMAL},
+      </if>
+      <if test="useTypeCode != null">
+        #{useTypeCode,jdbcType=VARCHAR},
+      </if>
+      <if test="createdBy != null">
+        #{createdBy,jdbcType=VARCHAR},
+      </if>
+      <if test="createdDt != null">
+        #{createdDt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="version != null">
+        #{version,jdbcType=INTEGER},
+      </if>
+      <if test="updatedBy != null">
+        #{updatedBy,jdbcType=VARCHAR},
+      </if>
+      <if test="updatedDt != null">
+        #{updatedDt,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.build4d.project.dbaccess.dbentities.ArolEngPBSpecEntity">
+    update iams_arol_eng_pb_spec
+    <set>
+      <if test="consArea != null">
+        CONS_AREA = #{consArea,jdbcType=DECIMAL},
+      </if>
+      <if test="buidlingNums != null">
+        BUIDLING_NUMS = #{buidlingNums,jdbcType=INTEGER},
+      </if>
+      <if test="lengthValue != null">
+        LENGTH_VALUE = #{lengthValue,jdbcType=DECIMAL},
+      </if>
+      <if test="heightValue != null">
+        HEIGHT_VALUE = #{heightValue,jdbcType=DECIMAL},
+      </if>
+      <if test="floors != null">
+        FLOORS = #{floors,jdbcType=INTEGER},
+      </if>
+      <if test="widthValue != null">
+        WIDTH_VALUE = #{widthValue,jdbcType=DECIMAL},
+      </if>
+      <if test="specCode != null">
+        SPEC_CODE = #{specCode,jdbcType=VARCHAR},
+      </if>
+      <if test="loadCode != null">
+        LOAD_CODE = #{loadCode,jdbcType=VARCHAR},
+      </if>
+      <if test="headroom != null">
+        HEADROOM = #{headroom,jdbcType=VARCHAR},
+      </if>
+      <if test="holenums != null">
+        HOLENUMS = #{holenums,jdbcType=VARCHAR},
+      </if>
+      <if test="materialCode != null">
+        MATERIAL_CODE = #{materialCode,jdbcType=VARCHAR},
+      </if>
+      <if test="subEngName != null">
+        SUB_ENG_NAME = #{subEngName,jdbcType=VARCHAR},
+      </if>
+      <if test="overNums != null">
+        OVER_NUMS = #{overNums,jdbcType=VARCHAR},
+      </if>
+      <if test="underNums != null">
+        UNDER_NUMS = #{underNums,jdbcType=VARCHAR},
+      </if>
+      <if test="useAmount != null">
+        USE_AMOUNT = #{useAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="resourceNums != null">
+        RESOURCE_NUMS = #{resourceNums,jdbcType=VARCHAR},
+      </if>
+      <if test="parcelNo != null">
+        PARCEL_NO = #{parcelNo,jdbcType=VARCHAR},
+      </if>
+      <if test="basisTypeCode != null">
+        BASIS_TYPE_CODE = #{basisTypeCode,jdbcType=VARCHAR},
+      </if>
+      <if test="startX != null">
+        START_X = #{startX,jdbcType=VARCHAR},
+      </if>
+      <if test="endX != null">
+        END_X = #{endX,jdbcType=VARCHAR},
+      </if>
+      <if test="approvalDate != null">
+        APPROVAL_DATE = #{approvalDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="applayDate != null">
+        APPLAY_DATE = #{applayDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="useArea != null">
+        USE_AREA = #{useArea,jdbcType=DECIMAL},
+      </if>
+      <if test="useTypeCode != null">
+        USE_TYPE_CODE = #{useTypeCode,jdbcType=VARCHAR},
+      </if>
+      <if test="createdBy != null">
+        CREATED_BY = #{createdBy,jdbcType=VARCHAR},
+      </if>
+      <if test="createdDt != null">
+        CREATED_DT = #{createdDt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="version != null">
+        VERSION = #{version,jdbcType=INTEGER},
+      </if>
+      <if test="updatedBy != null">
+        UPDATED_BY = #{updatedBy,jdbcType=VARCHAR},
+      </if>
+      <if test="updatedDt != null">
+        UPDATED_DT = #{updatedDt,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where ENG_SID = #{engSid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.build4d.project.dbaccess.dbentities.ArolEngPBSpecEntity">
+    update iams_arol_eng_pb_spec
+    set CONS_AREA = #{consArea,jdbcType=DECIMAL},
+      BUIDLING_NUMS = #{buidlingNums,jdbcType=INTEGER},
+      LENGTH_VALUE = #{lengthValue,jdbcType=DECIMAL},
+      HEIGHT_VALUE = #{heightValue,jdbcType=DECIMAL},
+      FLOORS = #{floors,jdbcType=INTEGER},
+      WIDTH_VALUE = #{widthValue,jdbcType=DECIMAL},
+      SPEC_CODE = #{specCode,jdbcType=VARCHAR},
+      LOAD_CODE = #{loadCode,jdbcType=VARCHAR},
+      HEADROOM = #{headroom,jdbcType=VARCHAR},
+      HOLENUMS = #{holenums,jdbcType=VARCHAR},
+      MATERIAL_CODE = #{materialCode,jdbcType=VARCHAR},
+      SUB_ENG_NAME = #{subEngName,jdbcType=VARCHAR},
+      OVER_NUMS = #{overNums,jdbcType=VARCHAR},
+      UNDER_NUMS = #{underNums,jdbcType=VARCHAR},
+      USE_AMOUNT = #{useAmount,jdbcType=DECIMAL},
+      RESOURCE_NUMS = #{resourceNums,jdbcType=VARCHAR},
+      PARCEL_NO = #{parcelNo,jdbcType=VARCHAR},
+      BASIS_TYPE_CODE = #{basisTypeCode,jdbcType=VARCHAR},
+      START_X = #{startX,jdbcType=VARCHAR},
+      END_X = #{endX,jdbcType=VARCHAR},
+      APPROVAL_DATE = #{approvalDate,jdbcType=TIMESTAMP},
+      APPLAY_DATE = #{applayDate,jdbcType=TIMESTAMP},
+      USE_AREA = #{useArea,jdbcType=DECIMAL},
+      USE_TYPE_CODE = #{useTypeCode,jdbcType=VARCHAR},
+      CREATED_BY = #{createdBy,jdbcType=VARCHAR},
+      CREATED_DT = #{createdDt,jdbcType=TIMESTAMP},
+      VERSION = #{version,jdbcType=INTEGER},
+      UPDATED_BY = #{updatedBy,jdbcType=VARCHAR},
+      UPDATED_DT = #{updatedDt,jdbcType=TIMESTAMP}
+    where ENG_SID = #{engSid,jdbcType=INTEGER}
+  </update>
+</mapper>

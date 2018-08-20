@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Config xmlns="http://www.sevenstar.com/Form/ExportToPDF/ExportToPDFConfigSchema.xsd">
+    <Export Id="ExportDeom1" Name="ExportDeom1" ExportFileName="ExportDeom1.pdf" PageSize="A4" >
+        <MainDataSource>
+            <SQLDataSource Enable="True" Key="ID">
+                <SQL From="CategoryTable" OrderBy="order by order_id desc"></SQL>
+            </SQLDataSource>
+        </MainDataSource>
+        <SubDataSource>
+            <SQLDataSource Enable="True" Name="Sub1" FKKey="F_PARENTID" Key="ID">
+                <SQL>
+                    <![CDATA[
+                       select * from TCQS_BASE_DICTIONARY_L2 where F_PARENTID IN ({Main.ID.ToInList})
+                    ]]>
+                </SQL>
+            </SQLDataSource>
+        </SubDataSource>
+        <VTConvertDataSource>
+            <SQLDataSource Key="VTSQLSex">
+                <![CDATA[
+                    select '1' as Value,'数据库-男' as Text
+                        union
+                    select '2' as Value,'数据库-女' as Text
+                ]]>
+            </SQLDataSource>
+            <DictionaryDataSource Key="VTDictSex">
+                <Item>
+                    <Value>
+                        <![CDATA[1]]>
+                    </Value>
+                    <Text>
+                        <![CDATA[男]]>
+                    </Text>
+                </Item>
+                <Item>
+                    <Value>
+                        <![CDATA[2]]>
+                    </Value>
+                    <Text>
+                        <![CDATA[女]]>
+                    </Text>
+                </Item>
+            </DictionaryDataSource>
+            <ApiDataSource Key="VTAPI"><FullClassName><![CDATA[]]></FullClassName></ApiDataSource>
+        </VTConvertDataSource>
+        <Formaters>
+            <Formater Name="DemoFormater" Desc="合并本人身份证开始时间和结束时间">
+                <FullClassName>com.sevenstar.platform.export.pdf.formater.DemoFormater</FullClassName>
+            </Formater>
+        </Formaters>
+        <Styles>
+            <Style Id="Demo1">
+                <Prop Name="FontSize" Value="32" />
+                <!--<Prop Name="MarginTop" Value="32"/>
+                <Prop Name="MarginBottom" Value="32"/>
+                <Prop Name="MarginLeft" Value="32"/>
+                <Prop Name="MarginRight" Value="32"/>-->
+                <!--<Prop Name="HorizontalAlignment" Value="CENTER"/>--><!--LEFT,CENTER,RIGHT-->
+                <Prop Name="TextAlignment" Value="CENTER"/><!--LEFT,CENTER,RIGHT,JUSTIFIED,JUSTIFIED_ALL-->
+                <Prop Name="FontColor" Value="RED"/>
+            </Style>
+            <Style Id="Demo2">
+                <Prop Name="FontColor" Value="RED"/>
+            </Style>
+            <Style Id="Demo3">
+                <Prop Name="WidthPercent" Value="100"/>
+            </Style>
+            <Style Id="CellDemo1">
+                <Prop Name="TextAlignment" Value="CENTER"/>
+                <Prop Name="FontColor" Value="WHITE"/>
+                <Prop Name="BackgroundColor" Value="RED"/>
+            </Style>
+            <Style Id="CellDemo2">
+                <Prop Name="Height" Value="100"/>
+                <Prop Name="FontSize" Value="32"/>
+                <Prop Name="TextAlignment" Value="CENTER"/>
+                <Prop Name="VerticalAlignment" Value="MIDDLE"/>
+            </Style>
+        </Styles>
+        <Template>
+            <Paragraph StyleRef="Demo1">今天又下雨了今天又下雨了今天又下雨了</Paragraph>
+            <Paragraph StyleRef="Demo1" BindField="F_NAME" FormaterRef="DemoFormater">1111111</Paragraph>
+            <Paragraph StyleRef="Demo1"><Text StyleRef="Demo2">xxxxx</Text><Text BindField="F_NAME"></Text><Text StyleRef="Demo2">xxxxx</Text></Paragraph>
+            <Paragraph  BindField="F_VALUE" VTConverterRef="VTDictSex">{?SysTime.xxxxxx?}</Paragraph>
+            <Paragraph DefaultConverter="GetCurrentShortDateTime">{?Session.xxxxxx?}</Paragraph>
+            <Paragraph DefaultConverter="GetCurrentLongDateTime">{?Record.xxxxxx?}</Paragraph>
+            <Paragraph FormaterRef="">{?Record.xxxxxx?}</Paragraph>
+            <Table ColumnWidths="1,2,3,4" StyleRef="Demo3" EachForDataSource="Sub1">
+                <HeaderCell ColSpan="4" RowSpan="1" StyleRef="CellDemo2" BindField="F_NAME">F_NAME</HeaderCell>
+                <HeaderCell ColSpan="2" RowSpan="1" StyleRef="CellDemo1">HeaderCell1</HeaderCell>
+                <HeaderCell ColSpan="2" RowSpan="1" StyleRef="CellDemo1">HeaderCell2</HeaderCell>
+                <Cell ColSpan="1" RowSpan="1" BindField="F_NAME">1</Cell>
+                <Cell ColSpan="1" RowSpan="1" BindField="F_VALUE">1</Cell>
+                <Cell ColSpan="1" RowSpan="1" BindField="F_DESC">1</Cell>
+                <Cell ColSpan="1" RowSpan="1" BindField="CREATE_TIME" DefaultConverter="ToShortDateTime">1</Cell>
+            </Table>
+            <Paragraph StyleRef="Demo1">------------------------------</Paragraph>
+            <NextPage></NextPage>
+        </Template>
+    </Export>
+</Config>

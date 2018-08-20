@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="pf:war">
+    <output-path>$PROJECT_DIR$/out/artifacts/pf</output-path>
+    <root id="archive" name="pf.war">
+      <element id="artifact" artifact-name="platformweb:war exploded" />
+    </root>
+  </artifact>
+</component>

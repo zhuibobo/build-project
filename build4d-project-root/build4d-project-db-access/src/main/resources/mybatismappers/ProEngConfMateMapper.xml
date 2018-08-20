@@ -1,0 +1,266 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.build4d.project.dbaccess.dao.ProEngConfMateMapper">
+    <resultMap id="BaseResultMap" type="com.build4d.project.dbaccess.dbentities.ProEngConfMateEntity">
+        <constructor>
+            <idArg column="MATE_SID" javaType="java.lang.Integer" jdbcType="INTEGER"/>
+            <arg column="ENG_SID" javaType="java.lang.Integer" jdbcType="INTEGER"/>
+            <arg column="ENG_VALUE" javaType="java.lang.String" jdbcType="VARCHAR"/>
+            <arg column="MATE_VALUE" javaType="java.lang.String" jdbcType="VARCHAR"/>
+            <arg column="MATE_NAME" javaType="java.lang.String" jdbcType="VARCHAR"/>
+            <arg column="UNIT_TYPE" javaType="java.lang.String" jdbcType="VARCHAR"/>
+            <arg column="MATE_NEED" javaType="java.lang.Integer" jdbcType="INTEGER"/>
+            <arg column="MATE_CREATE_TIME" javaType="java.util.Date" jdbcType="TIMESTAMP"/>
+            <arg column="MATE_ORDER" javaType="java.lang.Integer" jdbcType="INTEGER"/>
+            <arg column="MATE_STATUS" javaType="java.lang.Integer" jdbcType="INTEGER"/>
+            <arg column="MATE_DESC" javaType="java.lang.String" jdbcType="VARCHAR"/>
+            <arg column="MATE_TYPE" javaType="java.lang.String" jdbcType="VARCHAR"/>
+            <arg column="MATE_P_SID" javaType="java.lang.Integer" jdbcType="INTEGER"/>
+            <arg column="MATERIAL_NO" javaType="java.lang.String" jdbcType="VARCHAR"/>
+            <arg column="ISDIRECTORY" javaType="java.lang.Integer" jdbcType="INTEGER"/>
+        </constructor>
+    </resultMap>
+    <sql id="Base_Column_List">
+        MATE_SID, ENG_SID, ENG_VALUE, MATE_VALUE, MATE_NAME, UNIT_TYPE, MATE_NEED, MATE_CREATE_TIME,
+        MATE_ORDER, MATE_STATUS, MATE_DESC, MATE_TYPE,MATE_P_SID,MATERIAL_NO,ISDIRECTORY
+    </sql>
+    <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from iams_pro_eng_conf_mate
+        where MATE_SID = #{mateSid,jdbcType=INTEGER}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+        DELETE FROM iams_pro_eng_conf_mate
+        WHERE MATE_SID = #{mateSid,jdbcType=INTEGER}
+    </delete>
+    <insert id="insert" parameterType="com.build4d.project.dbaccess.dbentities.ProEngConfMateEntity">
+        INSERT INTO iams_pro_eng_conf_mate (MATE_SID, ENG_SID, ENG_VALUE,
+                                            MATE_VALUE, MATE_NAME, UNIT_TYPE,
+                                            MATE_NEED, MATE_CREATE_TIME, MATE_ORDER,
+                                            MATE_STATUS, MATE_DESC, MATE_TYPE,MATE_P_SID,MATERIAL_NO,ISDIRECTORY
+        )
+        VALUES (#{mateSid,jdbcType=INTEGER}, #{engSid,jdbcType=INTEGER}, #{engValue,jdbcType=VARCHAR},
+                                             #{mateValue,jdbcType=VARCHAR}, #{mateName,jdbcType=VARCHAR},
+                                             #{unitType,jdbcType=VARCHAR},
+                                             #{mateNeed,jdbcType=INTEGER}, #{mateCreateTime,jdbcType=TIMESTAMP},
+                                             #{mateOrder,jdbcType=INTEGER},
+                                             #{mateStatus,jdbcType=INTEGER}, #{mateDesc,jdbcType=VARCHAR},
+                #{mateType,jdbcType=VARCHAR},#{matePSid,jdbcType=INTEGER},
+                #{materialNo,jdbcType=VARCHAR},#{isdirectory,jdbcType=INTEGER}
+        )
+    </insert>
+    <insert id="insertSelective" parameterType="com.build4d.project.dbaccess.dbentities.ProEngConfMateEntity">
+        insert into iams_pro_eng_conf_mate
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="mateSid != null">
+                MATE_SID,
+            </if>
+            <if test="engSid != null">
+                ENG_SID,
+            </if>
+            <if test="engValue != null">
+                ENG_VALUE,
+            </if>
+            <if test="mateValue != null">
+                MATE_VALUE,
+            </if>
+            <if test="mateName != null">
+                MATE_NAME,
+            </if>
+            <if test="unitType != null">
+                UNIT_TYPE,
+            </if>
+            <if test="mateNeed != null">
+                MATE_NEED,
+            </if>
+            <if test="mateCreateTime != null">
+                MATE_CREATE_TIME,
+            </if>
+            <if test="mateOrder != null">
+                MATE_ORDER,
+            </if>
+            <if test="mateStatus != null">
+                MATE_STATUS,
+            </if>
+            <if test="mateDesc != null">
+                MATE_DESC,
+            </if>
+            <if test="mateType != null">
+                MATE_TYPE,
+            </if>
+            <if test="matePSid != null">
+                MATE_P_SID,
+            </if>
+            <if test="materialNo != null">
+                MATERIAL_NO,
+            </if>
+            <if test="isdirectory != null">
+                ISDIRECTORY,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="mateSid != null">
+                #{mateSid,jdbcType=INTEGER},
+            </if>
+            <if test="engSid != null">
+                #{engSid,jdbcType=INTEGER},
+            </if>
+            <if test="engValue != null">
+                #{engValue,jdbcType=VARCHAR},
+            </if>
+            <if test="mateValue != null">
+                #{mateValue,jdbcType=VARCHAR},
+            </if>
+            <if test="mateName != null">
+                #{mateName,jdbcType=VARCHAR},
+            </if>
+            <if test="unitType != null">
+                #{unitType,jdbcType=VARCHAR},
+            </if>
+            <if test="mateNeed != null">
+                #{mateNeed,jdbcType=INTEGER},
+            </if>
+            <if test="mateCreateTime != null">
+                #{mateCreateTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="mateOrder != null">
+                #{mateOrder,jdbcType=INTEGER},
+            </if>
+            <if test="mateStatus != null">
+                #{mateStatus,jdbcType=INTEGER},
+            </if>
+            <if test="mateDesc != null">
+                #{mateDesc,jdbcType=VARCHAR},
+            </if>
+            <if test="mateType != null">
+                #{mateType,jdbcType=VARCHAR},
+            </if>
+            <if test="matePSid != null">
+                #{matePSid,jdbcType=INTEGER},
+            </if>
+            <if test="materialNo != null">
+                #{materialNo,jdbcType=VARCHAR},
+            </if>
+            <if test="isdirectory != null">
+                #{isdirectory,jdbcType=INTEGER},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective"
+            parameterType="com.build4d.project.dbaccess.dbentities.ProEngConfMateEntity">
+        update iams_pro_eng_conf_mate
+        <set>
+            <if test="engSid != null">
+                ENG_SID = #{engSid,jdbcType=INTEGER},
+            </if>
+            <if test="engValue != null">
+                ENG_VALUE = #{engValue,jdbcType=VARCHAR},
+            </if>
+            <if test="mateValue != null">
+                MATE_VALUE = #{mateValue,jdbcType=VARCHAR},
+            </if>
+            <if test="mateName != null">
+                MATE_NAME = #{mateName,jdbcType=VARCHAR},
+            </if>
+            <if test="unitType != null">
+                UNIT_TYPE = #{unitType,jdbcType=VARCHAR},
+            </if>
+            <if test="mateNeed != null">
+                MATE_NEED = #{mateNeed,jdbcType=INTEGER},
+            </if>
+            <if test="mateCreateTime != null">
+                MATE_CREATE_TIME = #{mateCreateTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="mateOrder != null">
+                MATE_ORDER = #{mateOrder,jdbcType=INTEGER},
+            </if>
+            <if test="mateStatus != null">
+                MATE_STATUS = #{mateStatus,jdbcType=INTEGER},
+            </if>
+            <if test="mateDesc != null">
+                MATE_DESC = #{mateDesc,jdbcType=VARCHAR},
+            </if>
+            <if test="mateType != null">
+                MATE_TYPE = #{mateType,jdbcType=VARCHAR},
+            </if>
+            <if test="matePSid != null">
+                MATE_P_SID =#{matePSid,jdbcType=INTEGER},
+            </if>
+            <if test="materialNo != null">
+                MATERIAL_NO =#{materialNo,jdbcType=VARCHAR},
+            </if>
+            <if test="isdirectory != null">
+                ISDIRECTORY =#{isdirectory,jdbcType=INTEGER},
+            </if>
+        </set>
+        where MATE_SID = #{mateSid,jdbcType=INTEGER}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.build4d.project.dbaccess.dbentities.ProEngConfMateEntity">
+        UPDATE iams_pro_eng_conf_mate
+        SET ENG_SID          = #{engSid,jdbcType=INTEGER},
+            ENG_VALUE        = #{engValue,jdbcType=VARCHAR},
+            MATE_VALUE       = #{mateValue,jdbcType=VARCHAR},
+            MATE_NAME        = #{mateName,jdbcType=VARCHAR},
+            UNIT_TYPE        = #{unitType,jdbcType=VARCHAR},
+            MATE_NEED        = #{mateNeed,jdbcType=INTEGER},
+            MATE_CREATE_TIME = #{mateCreateTime,jdbcType=TIMESTAMP},
+            MATE_ORDER       = #{mateOrder,jdbcType=INTEGER},
+            MATE_STATUS      = #{mateStatus,jdbcType=INTEGER},
+            MATE_DESC        = #{mateDesc,jdbcType=VARCHAR},
+            MATE_TYPE        = #{mateType,jdbcType=VARCHAR},
+            MATE_P_SID        =#{matePSid,jdbcType=INTEGER},
+            MATERIAL_NO       =#{materialNo,jdbcType=VARCHAR},
+            ISDIRECTORY       =#{isdirectory,jdbcType=INTEGER}
+        WHERE MATE_SID = #{mateSid,jdbcType=INTEGER}
+    </update>
+
+    <delete id="deleteAll">
+        DELETE FROM iams_pro_eng_conf_mate
+    </delete>
+    <select id="selectAll" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from iams_pro_eng_conf_mate ORDER by MATE_ORDER ASC
+    </select>
+    <select id="nextId" resultType="integer">
+        SELECT CASE WHEN max(MATE_SID) IS NULL
+            THEN 1
+               ELSE max(MATE_SID) + 1 END NEXTID
+        FROM iams_pro_eng_conf_mate
+    </select>
+    <select id="nextOrderNum" resultType="integer">
+        SELECT CASE WHEN max(MATE_ORDER) IS NULL
+            THEN 1
+               ELSE max(MATE_ORDER) + 1 END ORDERNUM
+        FROM iams_pro_eng_conf_mate
+    </select>
+    <select id="selectByEngSid" resultMap="BaseResultMap" parameterType="java.lang.Integer">
+        select
+        <include refid="Base_Column_List"/>
+        from iams_pro_eng_conf_mate where ENG_SID=#{engSid}
+    </select>
+    <select id="searchByMap"  resultMap="BaseResultMap" parameterType="java.util.Map" >
+        select
+        <include refid="Base_Column_List"/>
+        from iams_pro_eng_conf_mate
+        <where>
+            <if test="engType != null and engType != ''">
+                and  ENG_SID=#{engType}
+            </if>
+            <if test="unitType != null and unitType != ''">
+                and UNIT_TYPE like "%"#{unitType}"%"
+            </if>
+            <if test="fileNo != null and fileNo != ''">
+                and MATE_VALUE #{fileNo}"%"
+            </if>
+            <if test="fileTitle != null and fileTitle != ''">
+                and MATE_NAME "%"#{fileTitle}"%"
+            </if>
+            <if test="isdirectory != null and isdirectory != ''">
+                and ISDIRECTORY =#{isdirectory}
+            </if>
+        </where>
+        ORDER by  MATE_ORDER ASC
+    </select>
+</mapper>

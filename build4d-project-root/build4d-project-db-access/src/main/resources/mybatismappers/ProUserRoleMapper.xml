@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.build4d.project.dbaccess.dao.ProUserRoleMapper">
+  <resultMap id="BaseResultMap" type="com.build4d.project.dbaccess.dbentities.ProUserRoleEntity">
+    <constructor>
+      <idArg column="USRO_SID" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="USER_SID" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="ROLE_SID" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="USRO_ORDER" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="USRO_CREATE_TIME" javaType="java.util.Date" jdbcType="TIMESTAMP" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List">
+    USRO_SID, IAMS_PRO_USER_ROLE.USER_SID, ROLE_SID, USRO_ORDER, USRO_CREATE_TIME
+  </sql>
+  <resultMap id="BaseResultMapJoinUser" type="com.build4d.project.dbaccess.dbentities.ProUserRoleEntity"  extends="BaseResultMap">
+    <association property="proUser" javaType="com.build4d.project.dbaccess.dbentities.ProUserEntity">
+      <constructor>
+        <idArg column="USER_SID" javaType="java.lang.Integer" jdbcType="INTEGER"/>
+        <arg column="USER_ORG_ID" javaType="java.lang.String" jdbcType="VARCHAR"/>
+        <arg column="USER_TYPE" javaType="java.lang.String" jdbcType="VARCHAR"/>
+        <arg column="USER_USERNAME" javaType="java.lang.String" jdbcType="VARCHAR"/>
+        <arg column="USER_WXNO" javaType="java.lang.String" jdbcType="VARCHAR"/>
+      </constructor>
+    </association>
+  </resultMap>
+  <sql id="Base_Column_List_JoinUser">
+     USER_ORG_ID,USER_TYPE,USER_USERNAME,USER_WXNO
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from iams_pro_user_role
+    where USRO_SID = #{usroSid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from iams_pro_user_role
+    where USRO_SID = #{usroSid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.build4d.project.dbaccess.dbentities.ProUserRoleEntity">
+    insert into iams_pro_user_role (USRO_SID, USER_SID, ROLE_SID, 
+      USRO_ORDER, USRO_CREATE_TIME)
+    values (#{usroSid,jdbcType=INTEGER}, #{userSid,jdbcType=INTEGER}, #{roleSid,jdbcType=INTEGER}, 
+      #{usroOrder,jdbcType=INTEGER}, #{usroCreateTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.build4d.project.dbaccess.dbentities.ProUserRoleEntity">
+    insert into iams_pro_user_role
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="usroSid != null">
+        USRO_SID,
+      </if>
+      <if test="userSid != null">
+        USER_SID,
+      </if>
+      <if test="roleSid != null">
+        ROLE_SID,
+      </if>
+      <if test="usroOrder != null">
+        USRO_ORDER,
+      </if>
+      <if test="usroCreateTime != null">
+        USRO_CREATE_TIME,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="usroSid != null">
+        #{usroSid,jdbcType=INTEGER},
+      </if>
+      <if test="userSid != null">
+        #{userSid,jdbcType=INTEGER},
+      </if>
+      <if test="roleSid != null">
+        #{roleSid,jdbcType=INTEGER},
+      </if>
+      <if test="usroOrder != null">
+        #{usroOrder,jdbcType=INTEGER},
+      </if>
+      <if test="usroCreateTime != null">
+        #{usroCreateTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.build4d.project.dbaccess.dbentities.ProUserRoleEntity">
+    update iams_pro_user_role
+    <set>
+      <if test="userSid != null">
+        USER_SID = #{userSid,jdbcType=INTEGER},
+      </if>
+      <if test="roleSid != null">
+        ROLE_SID = #{roleSid,jdbcType=INTEGER},
+      </if>
+      <if test="usroOrder != null">
+        USRO_ORDER = #{usroOrder,jdbcType=INTEGER},
+      </if>
+      <if test="usroCreateTime != null">
+        USRO_CREATE_TIME = #{usroCreateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where USRO_SID = #{usroSid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.build4d.project.dbaccess.dbentities.ProUserRoleEntity">
+    update iams_pro_user_role
+    set USER_SID = #{userSid,jdbcType=INTEGER},
+      ROLE_SID = #{roleSid,jdbcType=INTEGER},
+      USRO_ORDER = #{usroOrder,jdbcType=INTEGER},
+      USRO_CREATE_TIME = #{usroCreateTime,jdbcType=TIMESTAMP}
+    where USRO_SID = #{usroSid,jdbcType=INTEGER}
+  </update>
+
+  <delete id="deleteAll">
+    delete from iams_pro_user_role
+  </delete>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from iams_pro_user_role ORDER by USRO_ORDER ASC
+  </select>
+  <select id="nextId" resultType="integer">
+    select case when max(USRO_SID) is null then 1 else max(USRO_SID)+1 end NEXTID from iams_pro_user_role
+  </select>
+  <select id="nextOrderNum" resultType="integer">
+    select case when max(USRO_ORDER) is null then 1 else max(USRO_ORDER)+1 end ORDERNUM from iams_pro_user_role
+  </select>
+
+  <select id="selectByUserIdAndRoleId" parameterType="java.util.Map" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from iams_pro_user_role
+    where USER_SID = #{userSid} and ROLE_SID = #{roleSid}
+  </select>
+  <select id="selectByRoleId" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from iams_pro_user_role
+    where ROLE_SID = #{roleSid}
+  </select>
+  <select id="selectUsersByRoleId" parameterType="java.lang.Integer" resultMap="BaseResultMapJoinUser">
+    select
+    <include refid="Base_Column_List" />,<include refid="Base_Column_List_JoinUser" />
+    from iams_pro_user_role inner join iams_pro_user
+    on iams_pro_user_role.USER_SID=iams_pro_user.USER_SID
+    where ROLE_SID = #{roleSid}
+  </select>
+</mapper>

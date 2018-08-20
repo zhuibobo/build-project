@@ -1,0 +1,928 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.build4d.project.dbaccess.dao.ArolEngBaseInfoMapper">
+  <resultMap id="BaseResultMap" type="com.build4d.project.dbaccess.dbentities.ArolEngBaseInfoEntity">
+    <constructor>
+      <idArg column="SID" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="ORG_NO_CODE" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="REC_ORG_SID" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="PROJ_SID" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="ENG_ID" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="ENG_NO" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="ENG_NAME" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="ENG_ZONE" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="ENG_LOCATION" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="ARCH_CATEGORY_CODE" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="ENG_CATEGORY_CODE" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="OLD_ENG_ID" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="ARCHIVING_DATE" javaType="java.util.Date" jdbcType="TIMESTAMP" />
+      <arg column="HANDOVER_ORG_NAME" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="STATUS" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="SOURCE_CODE" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="MICRO_NO" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="INDEXED_BY" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="INDEXED_DT" javaType="java.util.Date" jdbcType="TIMESTAMP" />
+      <arg column="ARRANGED_BY" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="ARRANGED_DT" javaType="java.util.Date" jdbcType="TIMESTAMP" />
+      <arg column="CHECKED_BY" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="CHECKED_DT" javaType="java.util.Date" jdbcType="TIMESTAMP" />
+      <arg column="ENG_TYPE" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="ENG_TYPE2" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="SPEC_TYPE" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="ENG_FORMER_NAME" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="ARCHIVE_YEAR" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="TRANSFER_DATE" javaType="java.util.Date" jdbcType="TIMESTAMP" />
+      <arg column="RECEIVE_BY" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="RECEIVE_DT" javaType="java.util.Date" jdbcType="TIMESTAMP" />
+      <arg column="DEPOSIT" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="SECURITY_LEVEL_CODE" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="STORAGE_TYPE_CODE" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="ENG_GUIDE_SID" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="ROAD_NAME" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="NOTE" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="VERSION" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="UPDATED_BY" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="UPDATED_DT" javaType="java.util.Date" jdbcType="TIMESTAMP" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List">
+    IAMS_AROL_ENG_BASE_INFO.SID, IAMS_AROL_ENG_BASE_INFO.ORG_NO_CODE, REC_ORG_SID,PROJ_SID, ENG_ID,
+    ENG_NO, ENG_NAME, ENG_ZONE, ENG_LOCATION, ARCH_CATEGORY_CODE,
+    ENG_CATEGORY_CODE, OLD_ENG_ID, ARCHIVING_DATE, HANDOVER_ORG_NAME, STATUS, SOURCE_CODE,
+    MICRO_NO, INDEXED_BY, INDEXED_DT, ARRANGED_BY, ARRANGED_DT, CHECKED_BY, CHECKED_DT,
+    ENG_TYPE, ENG_TYPE2,SPEC_TYPE, ENG_FORMER_NAME, ARCHIVE_YEAR, TRANSFER_DATE, RECEIVE_BY, RECEIVE_DT,
+    DEPOSIT, SECURITY_LEVEL_CODE, STORAGE_TYPE_CODE, ENG_GUIDE_SID, ROAD_NAME, NOTE,
+    IAMS_AROL_ENG_BASE_INFO.VERSION,
+    IAMS_AROL_ENG_BASE_INFO.UPDATED_BY,
+    IAMS_AROL_ENG_BASE_INFO.UPDATED_DT
+  </sql>
+  <!--工程责任者信息-->
+  <resultMap id="BaseResultMapJoinEngOrgAndCode" type="com.build4d.project.dbaccess.dbentities.ArolEngBaseInfoEntity" extends="BaseResultMap">
+    <association property="engOrgAndCode" javaType="com.build4d.project.dbaccess.dbentities.ArolEngOrgAndCodeEntity">
+      <constructor>
+        <idArg column="ENG_SID" javaType="java.lang.Integer" jdbcType="INTEGER" />
+        <arg column="LAND_USE_ORG_SID" javaType="java.lang.Integer" jdbcType="INTEGER" />
+        <arg column="LAND_USE_ORG_NAME" javaType="java.lang.String" jdbcType="VARCHAR" />
+        <arg column="INITIATION_APPROVAL_ORG_SID" javaType="java.lang.Integer" jdbcType="INTEGER" />
+        <arg column="INITIATION_APPROVAL_ORG_NAME" javaType="java.lang.String" jdbcType="VARCHAR" />
+        <arg column="DESIGN_ORG_SID" javaType="java.lang.Integer" jdbcType="INTEGER" />
+        <arg column="DESIGN_ORG_NAME" javaType="java.lang.String" jdbcType="VARCHAR" />
+        <arg column="RECONNAISSANCE_ORG_SID" javaType="java.lang.Integer" jdbcType="INTEGER" />
+        <arg column="RECONNAISSANCE_ORG_NAME" javaType="java.lang.String" jdbcType="VARCHAR" />
+        <arg column="SUPERVISION_ORG_SID" javaType="java.lang.Integer" jdbcType="INTEGER" />
+        <arg column="SUPERVISION_ORG_NAME" javaType="java.lang.String" jdbcType="VARCHAR" />
+        <arg column="CONSTRUCT_ORG_SID" javaType="java.lang.Integer" jdbcType="INTEGER" />
+        <arg column="CONSTRUCT_ORG_NAME" javaType="java.lang.String" jdbcType="VARCHAR" />
+        <arg column="PLANNING_APPROVAL_ORG_SID" javaType="java.lang.Integer" jdbcType="INTEGER" />
+        <arg column="PLANNING_APPROVAL_ORG_NAME" javaType="java.lang.String" jdbcType="VARCHAR" />
+        <arg column="SECURITY_ORG_SID" javaType="java.lang.Integer" jdbcType="INTEGER" />
+        <arg column="SECURITY_ORG_NAME" javaType="java.lang.String" jdbcType="VARCHAR" />
+        <arg column="INITIATION_APPROVAL_NO" javaType="java.lang.Integer" jdbcType="INTEGER" />
+        <arg column="LAND_USE_PLANNING_NO" javaType="java.lang.String" jdbcType="VARCHAR" />
+        <arg column="LAND_USE_NO" javaType="java.lang.String" jdbcType="VARCHAR" />
+        <arg column="CONSTRUCT_NO" javaType="java.lang.String" jdbcType="VARCHAR" />
+        <arg column="DESIGN_NO" javaType="java.lang.String" jdbcType="VARCHAR" />
+        <arg column="LAND_NO" javaType="java.lang.String" jdbcType="VARCHAR" />
+        <arg column="TERRAIN_NO" javaType="java.lang.String" jdbcType="VARCHAR" />
+        <arg column="CREATED_BY" javaType="java.lang.String" jdbcType="VARCHAR" />
+        <arg column="CREATED_DT" javaType="java.util.Date" jdbcType="TIMESTAMP" />
+        <arg column="VERSION" javaType="java.lang.Integer" jdbcType="INTEGER" />
+        <arg column="UPDATED_BY" javaType="java.lang.String" jdbcType="VARCHAR" />
+        <arg column="UPDATED_DT" javaType="java.util.Date" jdbcType="TIMESTAMP" />
+        <arg column="INSTRUCTOR" javaType="java.lang.String" jdbcType="VARCHAR" />
+        <arg column="PM_DIRECTOR" javaType="java.lang.String" jdbcType="VARCHAR" />
+        <arg column="FIELD_MANAGER" javaType="java.lang.String" jdbcType="VARCHAR" />
+        <arg column="SUB_UNIT" javaType="java.lang.String" jdbcType="VARCHAR" />
+        <arg column="PROJECT_MANAGER" javaType="java.lang.String" jdbcType="VARCHAR" />
+        <arg column="SUPERVION_CHECKER" javaType="java.lang.String" jdbcType="VARCHAR" />
+        <arg column="CONS_UNIT_CHECKER" javaType="java.lang.String" jdbcType="VARCHAR" />
+        <arg column="FINISH_BAH" javaType="java.lang.String" jdbcType="VARCHAR" />
+        <arg column="OTHER_CERT" javaType="java.lang.String" jdbcType="VARCHAR" />
+        <arg column="INSTRUCTOR_SID" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      </constructor>
+    </association>
+  </resultMap>
+  <sql id="Base_Column_List_EngOrgAndCode">
+    IAMS_AROL_ENG_ORG_AND_CODE.ENG_SID,
+    LAND_USE_ORG_SID, LAND_USE_ORG_NAME, INITIATION_APPROVAL_ORG_SID, INITIATION_APPROVAL_ORG_NAME,
+    DESIGN_ORG_SID, DESIGN_ORG_NAME, RECONNAISSANCE_ORG_SID, RECONNAISSANCE_ORG_NAME,
+    SUPERVISION_ORG_SID, SUPERVISION_ORG_NAME, CONSTRUCT_ORG_SID, CONSTRUCT_ORG_NAME,
+    PLANNING_APPROVAL_ORG_SID, PLANNING_APPROVAL_ORG_NAME, SECURITY_ORG_SID, SECURITY_ORG_NAME,
+    INITIATION_APPROVAL_NO, LAND_USE_PLANNING_NO, LAND_USE_NO, CONSTRUCT_NO, DESIGN_NO,
+    LAND_NO, IAMS_AROL_ENG_ORG_AND_CODE.TERRAIN_NO,
+    IAMS_AROL_ENG_ORG_AND_CODE.CREATED_BY,
+    IAMS_AROL_ENG_ORG_AND_CODE.CREATED_DT,
+    INSTRUCTOR,PM_DIRECTOR,FIELD_MANAGER,SUB_UNIT,PROJECT_MANAGER,SUPERVION_CHECKER,CONS_UNIT_CHECKER,
+    FINISH_BAH,OTHER_CERT,INSTRUCTOR_SID
+  </sql>
+  <!--項目信息-->
+  <resultMap id="BaseResultMapJoinProjBaseInfo" type="com.build4d.project.dbaccess.dbentities.ArolEngBaseInfoEntity" extends="BaseResultMapJoinEngOrgAndCode">
+    <association property="proBaseInfo" javaType="com.build4d.project.dbaccess.dbentities.ArolProjBaseInfoEntity">
+      <constructor>
+        <arg column="PROJ_ID" javaType="java.lang.String" jdbcType="VARCHAR" />
+        <arg column="PROJ_NAME" javaType="java.lang.String" jdbcType="VARCHAR" />
+        <arg column="CONST_ORG_NO_CODE" javaType="java.lang.String" jdbcType="VARCHAR" />
+        <arg column="CON_ORG_SID" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      </constructor>
+    </association>
+  </resultMap>
+  <sql id="Base_Column_List_ProjBaseInfo">
+    PROJ_ID, PROJ_NAME,IAMS_AROL_PROJ_BASE_INFO.ORG_NO_CODE CONST_ORG_NO_CODE,CON_ORG_SID
+  </sql>
+  <!--建设单位信息-->
+  <resultMap id="BaseResultMapJoinOrgan" type="com.build4d.project.dbaccess.dbentities.ArolEngBaseInfoEntity" extends="BaseResultMapJoinProjBaseInfo">
+    <association property="constructionOrgEntity" javaType="com.build4d.project.dbaccess.dbentities.ProOrganEntity">
+      <constructor>
+        <idArg column="ORG_SID" javaType="java.lang.Integer" jdbcType="INTEGER" />
+        <arg column="ORG_NO" javaType="java.lang.String" jdbcType="VARCHAR" />
+        <arg column="ORG_CODE" javaType="java.lang.String" jdbcType="VARCHAR" />
+        <arg column="ORG_NAME" javaType="java.lang.String" jdbcType="VARCHAR" />
+        <arg column="ORG_DESC" javaType="java.lang.String" jdbcType="VARCHAR" />
+        <arg column="ORG_CREATE_TIME" javaType="java.util.Date" jdbcType="TIMESTAMP" />
+        <arg column="ORG_PHONE" javaType="java.lang.String" jdbcType="VARCHAR" />
+        <arg column="ORG_CONTACTS" javaType="java.lang.String" jdbcType="VARCHAR" />
+        <arg column="ORG_CONT_MOBILE" javaType="java.lang.String" jdbcType="VARCHAR" />
+        <arg column="ORG_ORDER" javaType="java.lang.Integer" jdbcType="INTEGER" />
+        <arg column="ORG_STATUS" javaType="java.lang.Integer" jdbcType="INTEGER" />
+        <arg column="ORG_TYPE" javaType="java.lang.String" jdbcType="VARCHAR" />
+        <arg column="ORG_EMAIL" javaType="java.lang.String" jdbcType="VARCHAR" />
+        <arg column="ORG_ADDR" javaType="java.lang.String" jdbcType="VARCHAR" />
+      </constructor>
+    </association>
+  </resultMap>
+  <sql id="Base_Column_List_Organ">
+    IAMS_PRO_ORGAN.ORG_SID, ORG_NO, IAMS_PRO_ORGAN.ORG_CODE, ORG_NAME, ORG_DESC,
+    ORG_CREATE_TIME, ORG_PHONE, ORG_CONTACTS,
+    ORG_CONT_MOBILE, ORG_ORDER, ORG_STATUS, ORG_TYPE,ORG_EMAIL,ORG_ADDR
+  </sql>
+
+  <!--通用专业记载信息-->
+  <resultMap id="BaseResultMapJoinEngSpecInfo" type="com.build4d.project.dbaccess.dbentities.ArolEngBaseInfoEntity" extends="BaseResultMapJoinProjBaseInfo">
+    <association property="engSpecInfo" javaType="com.build4d.project.dbaccess.dbentities.ArolEngSpecInfoEntity">
+      <constructor>
+        <idArg column="ENG_SID" javaType="java.lang.String" jdbcType="VARCHAR" />
+        <arg column="LAND_USE_AREA" javaType="java.math.BigDecimal" jdbcType="DECIMAL" />
+        <arg column="CONSTRUCTION_AREA" javaType="java.math.BigDecimal" jdbcType="DECIMAL" />
+        <arg column="ENG_BUDGET" javaType="java.math.BigDecimal" jdbcType="DECIMAL" />
+        <arg column="ENG_COST" javaType="java.math.BigDecimal" jdbcType="DECIMAL" />
+        <arg column="START_DATE" javaType="java.util.Date" jdbcType="TIMESTAMP" />
+        <arg column="END_DATE" javaType="java.util.Date" jdbcType="TIMESTAMP" />
+        <arg column="REQUEST_DATE" javaType="java.util.Date" jdbcType="TIMESTAMP" />
+        <arg column="APPROVAL_DATE" javaType="java.util.Date" jdbcType="TIMESTAMP" />
+        <arg column="LAND_USE_TYPE_CODE" javaType="java.lang.String" jdbcType="VARCHAR" />
+        <arg column="LAND_SUPPLY_TYPE_CODE" javaType="java.lang.String" jdbcType="VARCHAR" />
+        <arg column="LAND_PLANNING_TYPE_CODE" javaType="java.lang.String" jdbcType="VARCHAR" />
+        <arg column="BUILDING_NUMS" javaType="java.lang.Integer" jdbcType="INTEGER" />
+        <arg column="TOTAL_LENGTH" javaType="java.math.BigDecimal" jdbcType="DECIMAL" />
+        <arg column="TERRAIN_NO" javaType="java.lang.String" jdbcType="VARCHAR" />
+        <arg column="CREATED_BY" javaType="java.lang.String" jdbcType="VARCHAR" />
+        <arg column="CREATED_DT" javaType="java.util.Date" jdbcType="TIMESTAMP" />
+        <arg column="VERSION" javaType="java.lang.Integer" jdbcType="INTEGER" />
+        <arg column="UPDATED_BY" javaType="java.lang.String" jdbcType="VARCHAR" />
+        <arg column="UPDATED_DT" javaType="java.util.Date" jdbcType="TIMESTAMP" />
+        <arg column="SEISMIC_GRADE" javaType="java.lang.String" jdbcType="VARCHAR" />
+        <arg column="DEFENSE_AREA" javaType="java.lang.String" jdbcType="VARCHAR" />
+        <arg column="FIRE_GRADE" javaType="java.lang.String" jdbcType="VARCHAR" />
+        <arg column="ENG_QUALITY" javaType="java.lang.String" jdbcType="VARCHAR" />
+        <arg column="AWARDS_INFO" javaType="java.lang.String" jdbcType="VARCHAR" />
+        <arg column="PARKING_NUM" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      </constructor>
+    </association>
+  </resultMap>
+  <sql id="Base_Column_List_EngSpecInfo">
+    LAND_USE_AREA, CONSTRUCTION_AREA, ENG_BUDGET, ENG_COST, START_DATE, END_DATE,
+    REQUEST_DATE, APPROVAL_DATE, LAND_USE_TYPE_CODE, LAND_SUPPLY_TYPE_CODE, LAND_PLANNING_TYPE_CODE,
+    IAMS_AROL_ENG_SPEC_INFO.BUILDING_NUMS, TOTAL_LENGTH,
+    SEISMIC_GRADE,DEFENSE_AREA,FIRE_GRADE,ENG_QUALITY,AWARDS_INFO,PARKING_NUM
+  </sql>
+
+  <!--通用专业记载信息2-->
+  <resultMap id="BaseResultMapJoinEngSpecInfo2" type="com.build4d.project.dbaccess.dbentities.ArolEngBaseInfoEntity" extends="BaseResultMapJoinOrgan">
+    <association property="engSpecInfo" javaType="com.build4d.project.dbaccess.dbentities.ArolEngSpecInfoEntity">
+      <constructor>
+        <idArg column="ENG_SID" javaType="java.lang.String" jdbcType="VARCHAR" />
+        <arg column="LAND_USE_AREA" javaType="java.math.BigDecimal" jdbcType="DECIMAL" />
+        <arg column="CONSTRUCTION_AREA" javaType="java.math.BigDecimal" jdbcType="DECIMAL" />
+        <arg column="ENG_BUDGET" javaType="java.math.BigDecimal" jdbcType="DECIMAL" />
+        <arg column="ENG_COST" javaType="java.math.BigDecimal" jdbcType="DECIMAL" />
+        <arg column="START_DATE" javaType="java.util.Date" jdbcType="TIMESTAMP" />
+        <arg column="END_DATE" javaType="java.util.Date" jdbcType="TIMESTAMP" />
+        <arg column="REQUEST_DATE" javaType="java.util.Date" jdbcType="TIMESTAMP" />
+        <arg column="APPROVAL_DATE" javaType="java.util.Date" jdbcType="TIMESTAMP" />
+        <arg column="LAND_USE_TYPE_CODE" javaType="java.lang.String" jdbcType="VARCHAR" />
+        <arg column="LAND_SUPPLY_TYPE_CODE" javaType="java.lang.String" jdbcType="VARCHAR" />
+        <arg column="LAND_PLANNING_TYPE_CODE" javaType="java.lang.String" jdbcType="VARCHAR" />
+        <arg column="BUILDING_NUMS" javaType="java.lang.Integer" jdbcType="INTEGER" />
+        <arg column="TOTAL_LENGTH" javaType="java.math.BigDecimal" jdbcType="DECIMAL" />
+        <arg column="TERRAIN_NO" javaType="java.lang.String" jdbcType="VARCHAR" />
+        <arg column="CREATED_BY" javaType="java.lang.String" jdbcType="VARCHAR" />
+        <arg column="CREATED_DT" javaType="java.util.Date" jdbcType="TIMESTAMP" />
+        <arg column="VERSION" javaType="java.lang.Integer" jdbcType="INTEGER" />
+        <arg column="UPDATED_BY" javaType="java.lang.String" jdbcType="VARCHAR" />
+        <arg column="UPDATED_DT" javaType="java.util.Date" jdbcType="TIMESTAMP" />
+        <arg column="SEISMIC_GRADE" javaType="java.lang.String" jdbcType="VARCHAR" />
+        <arg column="DEFENSE_AREA" javaType="java.lang.String" jdbcType="VARCHAR" />
+        <arg column="FIRE_GRADE" javaType="java.lang.String" jdbcType="VARCHAR" />
+        <arg column="ENG_QUALITY" javaType="java.lang.String" jdbcType="VARCHAR" />
+        <arg column="AWARDS_INFO" javaType="java.lang.String" jdbcType="VARCHAR" />
+        <arg column="PARKING_NUM" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      </constructor>
+    </association>
+  </resultMap>
+
+  <!--房屋建筑专业记载信息-->
+  <resultMap id="BaseResultMapJoinEngHouseSpec" type="com.build4d.project.dbaccess.dbentities.ArolEngBaseInfoEntity" extends="BaseResultMapJoinEngSpecInfo">
+    <association property="engHouseSpec" javaType="com.build4d.project.dbaccess.dbentities.ArolEngHouseSpecEntity">
+      <constructor>
+        <idArg column="ENG_SID" javaType="java.lang.Integer" jdbcType="INTEGER" />
+        <arg column="HEIGHT" javaType="java.math.BigDecimal" jdbcType="DECIMAL" />
+        <arg column="UNDER_NUMS" javaType="java.lang.Integer" jdbcType="INTEGER" />
+        <arg column="OVER_NUMS" javaType="java.lang.Integer" jdbcType="INTEGER" />
+        <arg column="FLOOR_AREA" javaType="java.math.BigDecimal" jdbcType="DECIMAL" />
+        <arg column="UNDER_AREA" javaType="java.math.BigDecimal" jdbcType="DECIMAL" />
+        <arg column="FINISH_AREA" javaType="java.math.BigDecimal" jdbcType="DECIMAL" />
+        <arg column="CONS_TYPE_CODE" javaType="java.lang.String" jdbcType="VARCHAR" />
+        <arg column="BUIDLING_NUMS" javaType="java.lang.Integer" jdbcType="INTEGER" />
+        <arg column="BASIS_TYPE_CODE" javaType="java.lang.String" jdbcType="VARCHAR" />
+        <arg column="CREATED_BY" javaType="java.lang.String" jdbcType="VARCHAR" />
+        <arg column="CREATED_DT" javaType="java.util.Date" jdbcType="TIMESTAMP" />
+        <arg column="VERSION" javaType="java.lang.Integer" jdbcType="INTEGER" />
+        <arg column="UPDATED_BY" javaType="java.lang.String" jdbcType="VARCHAR" />
+        <arg column="UPDATED_DT" javaType="java.util.Date" jdbcType="TIMESTAMP" />
+      </constructor>
+    </association>
+  </resultMap>
+  <sql id="Base_Column_List_EngHouseSpec">
+    HEIGHT, UNDER_NUMS, OVER_NUMS, FLOOR_AREA, UNDER_AREA, FINISH_AREA, CONS_TYPE_CODE,
+    BUIDLING_NUMS, BASIS_TYPE_CODE
+  </sql>
+  <!--市政建筑专业记载信息-->
+  <resultMap id="BaseResultMapJoinEngFacilitySpec" type="com.build4d.project.dbaccess.dbentities.ArolEngBaseInfoEntity" extends="BaseResultMapJoinEngSpecInfo">
+    <association property="engFacilitySpec" javaType="com.build4d.project.dbaccess.dbentities.ArolEngFacilitySpecEntity">
+      <constructor>
+        <idArg column="ENG_SID" javaType="java.lang.Integer" jdbcType="INTEGER" />
+        <arg column="WIDTH" javaType="java.math.BigDecimal" jdbcType="DECIMAL" />
+        <arg column="LENGTH" javaType="java.math.BigDecimal" jdbcType="DECIMAL" />
+        <arg column="HEIGHT" javaType="java.lang.Double" jdbcType="DOUBLE" />
+        <arg column="SPAN" javaType="java.math.BigDecimal" jdbcType="DECIMAL" />
+        <arg column="HOLENUMS" javaType="java.lang.Integer" jdbcType="INTEGER" />
+        <arg column="LEVEL_CODE" javaType="java.lang.String" jdbcType="VARCHAR" />
+        <arg column="LOAD_CODE" javaType="java.lang.String" jdbcType="VARCHAR" />
+        <arg column="HEADROOM" javaType="java.math.BigDecimal" jdbcType="DECIMAL" />
+        <arg column="START_X" javaType="java.lang.String" jdbcType="VARCHAR" />
+        <arg column="END_X" javaType="java.lang.String" jdbcType="VARCHAR" />
+        <arg column="PIPE_DIAMETER" javaType="java.lang.String" jdbcType="VARCHAR" />
+        <arg column="PIPE_MATERIAL" javaType="java.lang.String" jdbcType="VARCHAR" />
+        <arg column="APERTURE" javaType="java.lang.String" jdbcType="VARCHAR" />
+        <arg column="FINISH_AREA" javaType="java.math.BigDecimal" jdbcType="DECIMAL" />
+        <arg column="CONS_TYPE_CODE" javaType="java.lang.String" jdbcType="VARCHAR" />
+        <arg column="BASIS_TYPE_CODE" javaType="java.lang.String" jdbcType="VARCHAR" />
+        <arg column="CREATED_BY" javaType="java.lang.String" jdbcType="VARCHAR" />
+        <arg column="CREATED_DT" javaType="java.util.Date" jdbcType="TIMESTAMP" />
+        <arg column="VERSION" javaType="java.lang.Integer" jdbcType="INTEGER" />
+        <arg column="UPDATED_BY" javaType="java.lang.String" jdbcType="VARCHAR" />
+        <arg column="UPDATED_DT" javaType="java.util.Date" jdbcType="TIMESTAMP" />
+        <arg column="LOAD_STANDARD" javaType="java.lang.String" jdbcType="VARCHAR" />
+        <arg column="BRIDGE_LOAD" javaType="java.lang.String" jdbcType="VARCHAR" />
+        <arg column="CATEGORY" javaType="java.lang.String" jdbcType="VARCHAR" />
+        <arg column="OTHER" javaType="java.lang.String" jdbcType="VARCHAR" />
+      </constructor>
+    </association>
+  </resultMap>
+  <sql id="Base_Column_List_EngFacilitySpec">
+    WIDTH, LENGTH, HEIGHT, SPAN, HOLENUMS, LEVEL_CODE, LOAD_CODE, HEADROOM,
+    START_X, END_X, PIPE_DIAMETER, PIPE_MATERIAL, APERTURE, FINISH_AREA, CONS_TYPE_CODE,
+    BASIS_TYPE_CODE,LOAD_STANDARD,BRIDGE_LOAD,CATEGORY,OTHER
+  </sql>
+  <!--规划建筑专业记载信息-->
+  <resultMap id="BaseResultMapJoinEngPbSpec" type="com.build4d.project.dbaccess.dbentities.ArolEngBaseInfoEntity" extends="BaseResultMapJoinEngSpecInfo">
+    <association property="engPbSpec" javaType="com.build4d.project.dbaccess.dbentities.ArolEngPBSpecEntity">
+      <constructor>
+        <idArg column="ENG_SID" javaType="java.lang.Integer" jdbcType="INTEGER" />
+        <arg column="CONS_AREA" javaType="java.math.BigDecimal" jdbcType="DECIMAL" />
+        <arg column="BUIDLING_NUMS" javaType="java.lang.Integer" jdbcType="INTEGER" />
+        <arg column="LENGTH_VALUE" javaType="java.math.BigDecimal" jdbcType="DECIMAL" />
+        <arg column="HEIGHT_VALUE" javaType="java.math.BigDecimal" jdbcType="DECIMAL" />
+        <arg column="FLOORS" javaType="java.lang.Integer" jdbcType="INTEGER" />
+        <arg column="WIDTH_VALUE" javaType="java.math.BigDecimal" jdbcType="DECIMAL" />
+        <arg column="SPEC_CODE" javaType="java.lang.String" jdbcType="VARCHAR" />
+        <arg column="LOAD_CODE" javaType="java.lang.String" jdbcType="VARCHAR" />
+        <arg column="HEADROOM" javaType="java.lang.String" jdbcType="VARCHAR" />
+        <arg column="HOLENUMS" javaType="java.lang.String" jdbcType="VARCHAR" />
+        <arg column="MATERIAL_CODE" javaType="java.lang.String" jdbcType="VARCHAR" />
+        <arg column="SUB_ENG_NAME" javaType="java.lang.String" jdbcType="VARCHAR" />
+        <arg column="OVER_NUMS" javaType="java.lang.String" jdbcType="VARCHAR" />
+        <arg column="UNDER_NUMS" javaType="java.lang.String" jdbcType="VARCHAR" />
+        <arg column="USE_AMOUNT" javaType="java.math.BigDecimal" jdbcType="DECIMAL" />
+        <arg column="RESOURCE_NUMS" javaType="java.lang.String" jdbcType="VARCHAR" />
+        <arg column="PARCEL_NO" javaType="java.lang.String" jdbcType="VARCHAR" />
+        <arg column="BASIS_TYPE_CODE" javaType="java.lang.String" jdbcType="VARCHAR" />
+        <arg column="START_X" javaType="java.lang.String" jdbcType="VARCHAR" />
+        <arg column="END_X" javaType="java.lang.String" jdbcType="VARCHAR" />
+        <arg column="APPROVAL_DATE" javaType="java.util.Date" jdbcType="TIMESTAMP" />
+        <arg column="APPLAY_DATE" javaType="java.util.Date" jdbcType="TIMESTAMP" />
+        <arg column="USE_AREA" javaType="java.math.BigDecimal" jdbcType="DECIMAL" />
+        <arg column="USE_TYPE_CODE" javaType="java.lang.String" jdbcType="VARCHAR" />
+        <arg column="CREATED_BY" javaType="java.lang.String" jdbcType="VARCHAR" />
+        <arg column="CREATED_DT" javaType="java.util.Date" jdbcType="TIMESTAMP" />
+        <arg column="VERSION" javaType="java.lang.Integer" jdbcType="INTEGER" />
+        <arg column="UPDATED_BY" javaType="java.lang.String" jdbcType="VARCHAR" />
+        <arg column="UPDATED_DT" javaType="java.util.Date" jdbcType="TIMESTAMP" />
+      </constructor>
+    </association>
+  </resultMap>
+  <sql id="Base_Column_List_EngPbSpec">
+    CONS_AREA, BUIDLING_NUMS, LENGTH_VALUE, HEIGHT_VALUE, FLOORS, WIDTH_VALUE,
+    SPEC_CODE, LOAD_CODE, HEADROOM, HOLENUMS, MATERIAL_CODE, SUB_ENG_NAME, OVER_NUMS,
+    UNDER_NUMS, USE_AMOUNT, RESOURCE_NUMS, PARCEL_NO, BASIS_TYPE_CODE, START_X, END_X,
+    APPROVAL_DATE, APPLAY_DATE, USE_AREA, USE_TYPE_CODE
+  </sql>
+  <!--其他专业记载信息-->
+  <resultMap id="BaseResultMapJoinEngOtherSpec" type="com.build4d.project.dbaccess.dbentities.ArolEngBaseInfoEntity" extends="BaseResultMapJoinEngSpecInfo">
+    <association property="engOtherSpec" javaType="com.build4d.project.dbaccess.dbentities.ArolEngOtherSpecEntity">
+      <constructor>
+        <idArg column="ENG_SID" javaType="java.lang.Integer" jdbcType="INTEGER" />
+        <arg column="USE_TYPE_CODE" javaType="java.lang.String" jdbcType="VARCHAR" />
+        <arg column="REQUISITION_TYPE_CODE" javaType="java.lang.String" jdbcType="VARCHAR" />
+        <arg column="OLD_USE_TYPE" javaType="java.lang.String" jdbcType="VARCHAR" />
+        <arg column="APPROVAL_DATE" javaType="java.util.Date" jdbcType="TIMESTAMP" />
+        <arg column="USE_AREA" javaType="java.math.BigDecimal" jdbcType="DECIMAL" />
+        <arg column="SCALE" javaType="java.lang.String" jdbcType="VARCHAR" />
+        <arg column="LOAD_LEVEL" javaType="java.lang.String" jdbcType="VARCHAR" />
+        <arg column="CREATED_BY" javaType="java.lang.String" jdbcType="VARCHAR" />
+        <arg column="CREATED_DT" javaType="java.util.Date" jdbcType="TIMESTAMP" />
+        <arg column="VERSION" javaType="java.lang.Integer" jdbcType="INTEGER" />
+        <arg column="UPDATED_BY" javaType="java.lang.String" jdbcType="VARCHAR" />
+        <arg column="UPDATED_DT" javaType="java.util.Date" jdbcType="TIMESTAMP" />
+      </constructor>
+    </association>
+  </resultMap>
+  <sql id="Base_Column_List_EngOtherSpec">
+    USE_TYPE_CODE, REQUISITION_TYPE_CODE, OLD_USE_TYPE, APPROVAL_DATE, USE_AREA,
+    SCALE, LOAD_LEVEL
+  </sql>
+
+
+  <!--房屋建筑单条查询-->
+  <select id="selectEngHouseSpecByPrimaryKey" resultMap="BaseResultMapJoinEngHouseSpec" parameterType="java.lang.Integer">
+    select 
+    <include refid="Base_Column_List" />,<include refid="Base_Column_List_EngOrgAndCode" />
+    ,<include refid="Base_Column_List_EngSpecInfo" />,<include refid="Base_Column_List_EngHouseSpec" />,
+    <include refid="Base_Column_List_ProjBaseInfo" />
+    from IAMS_AROL_ENG_BASE_INFO
+    inner join IAMS_AROL_PROJ_BASE_INFO on PROJ_SID=IAMS_AROL_PROJ_BASE_INFO.SID
+    left join IAMS_AROL_ENG_ORG_AND_CODE on IAMS_AROL_ENG_BASE_INFO.sid=IAMS_AROL_ENG_ORG_AND_CODE.ENG_SID
+    left join IAMS_AROL_ENG_SPEC_INFO on IAMS_AROL_ENG_BASE_INFO.sid=IAMS_AROL_ENG_SPEC_INFO.ENG_SID
+    left join IAMS_AROL_ENG_HOUSE_SPEC on IAMS_AROL_ENG_BASE_INFO.sid=IAMS_AROL_ENG_HOUSE_SPEC.ENG_SID
+    where IAMS_AROL_ENG_BASE_INFO.SID = #{sid,jdbcType=INTEGER}
+  </select>
+  <!--市政建筑单条查询-->
+  <select id="selectEngFacilitySpecByPrimaryKey" resultMap="BaseResultMapJoinEngFacilitySpec" parameterType="java.lang.Integer" >
+    select
+    <include refid="Base_Column_List" />,<include refid="Base_Column_List_EngOrgAndCode" />
+    ,<include refid="Base_Column_List_EngSpecInfo" />,<include refid="Base_Column_List_EngFacilitySpec" />,
+    <include refid="Base_Column_List_ProjBaseInfo" />
+    from IAMS_AROL_ENG_BASE_INFO
+    inner join IAMS_AROL_PROJ_BASE_INFO on PROJ_SID=IAMS_AROL_PROJ_BASE_INFO.SID
+    left join IAMS_AROL_ENG_ORG_AND_CODE on IAMS_AROL_ENG_BASE_INFO.sid=IAMS_AROL_ENG_ORG_AND_CODE.ENG_SID
+    left join IAMS_AROL_ENG_SPEC_INFO on IAMS_AROL_ENG_BASE_INFO.sid=IAMS_AROL_ENG_SPEC_INFO.ENG_SID
+    left join IAMS_AROL_ENG_FACILITY_SPEC on IAMS_AROL_ENG_BASE_INFO.sid=IAMS_AROL_ENG_FACILITY_SPEC.ENG_SID
+    where IAMS_AROL_ENG_BASE_INFO.SID = #{sid,jdbcType=INTEGER}
+  </select>
+  <!--工程责任者信息关联单条查询-->
+  <select id="selectEngOrgAndCodeByPrimaryKey" resultMap="BaseResultMapJoinEngSpecInfo2" parameterType="java.lang.Integer" >
+    select
+    <include refid="Base_Column_List" />,<include refid="Base_Column_List_EngOrgAndCode" />,
+    <include refid="Base_Column_List_ProjBaseInfo" />,<include refid="Base_Column_List_EngSpecInfo" />,
+    <include refid="Base_Column_List_Organ" />
+    from IAMS_AROL_ENG_BASE_INFO
+    inner join IAMS_AROL_PROJ_BASE_INFO on PROJ_SID=IAMS_AROL_PROJ_BASE_INFO.SID
+    left join IAMS_AROL_ENG_ORG_AND_CODE on IAMS_AROL_ENG_BASE_INFO.sid=IAMS_AROL_ENG_ORG_AND_CODE.ENG_SID
+    left join IAMS_AROL_ENG_SPEC_INFO on IAMS_AROL_ENG_BASE_INFO.sid=IAMS_AROL_ENG_SPEC_INFO.ENG_SID
+    LEFT JOIN iams_pro_organ ON  IAMS_AROL_PROJ_BASE_INFO.CON_ORG_SID=ORG_SID
+    where IAMS_AROL_ENG_BASE_INFO.SID = #{sid,jdbcType=INTEGER}
+  </select>
+
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from iams_arol_eng_base_info
+    where SID = #{sid,jdbcType=INTEGER}
+  </select>
+  <select id="searchByMap"  resultMap="BaseResultMapJoinOrgan" parameterType="java.util.Map" >
+    select
+    <include refid="Base_Column_List" />, <include refid="Base_Column_List_EngOrgAndCode" />,
+    <include refid="Base_Column_List_ProjBaseInfo" />,<include refid="Base_Column_List_Organ" />
+    from iams_arol_eng_base_info INNER JOIN
+    (select SID PROJSID,PROJ_ID, PROJ_NAME,ORG_NO_CODE,CON_ORG_SID
+    from iams_arol_proj_base_info) IAMS_AROL_PROJ_BASE_INFO on PROJ_SID=PROJSID
+    LEFT JOIN iams_arol_eng_org_and_code  on iams_arol_eng_base_info.SID=iams_arol_eng_org_and_code.ENG_SID
+    LEFT JOIN iams_pro_organ ON  IAMS_AROL_PROJ_BASE_INFO.CON_ORG_SID=ORG_SID
+    <where>
+      <if test="status != null and status != ''">
+        and STATUS in (${status})
+      </if>
+      <if test="currOrgId !=null and currOrgId != ''">
+         and (
+              IAMS_AROL_ENG_BASE_INFO.REC_ORG_SID = #{currOrgId}
+              or
+              IAMS_AROL_PROJ_BASE_INFO.CON_ORG_SID= #{currOrgId}
+              or
+              IAMS_AROL_ENG_ORG_AND_CODE.DESIGN_ORG_SID= #{currOrgId}
+              or
+              IAMS_AROL_ENG_ORG_AND_CODE.RECONNAISSANCE_ORG_SID= #{currOrgId}
+              or
+              IAMS_AROL_ENG_ORG_AND_CODE.SUPERVISION_ORG_SID= #{currOrgId}
+              or
+              IAMS_AROL_ENG_ORG_AND_CODE.CONSTRUCT_ORG_SID= #{currOrgId}
+          )
+      </if>
+      <if test="organName != null and organName != ''">
+        and ORGAN_NAME = #{organName}
+      </if>
+      <if test="engType != null and engType != ''">
+        and ENG_TYPE = #{engType}
+      </if>
+      <if test="projName != null and projName != ''">
+       and PROJ_NAME like "%"#{projName}"%"
+      </if>
+      <if test="engNo != null and engNo != ''">
+        and ENG_NO like "%"#{engNo}"%"
+      </if>
+      <if test="engName != null and engName != ''">
+        and ENG_NAME like "%"#{engName}"%"
+      </if>
+    </where>
+    ORDER by iams_arol_eng_base_info.SID ASC
+  </select>
+  <select id="countEngByOrgan"  resultType="java.util.Map">
+    select `STATUS`,count(1) TOTAL from IAMS_AROL_ENG_BASE_INFO
+    where 1=1
+    <if test="currOrgId !=null and currOrgId != ''">
+      and (
+        REC_ORG_SID=#{currOrgId,jdbcType=INTEGER}
+        or
+        exists(SELECT * from IAMS_AROL_PROJ_BASE_INFO
+          where PROJ_SID=IAMS_AROL_PROJ_BASE_INFO.SID
+          and CON_ORG_SID=#{currOrgId,jdbcType=INTEGER}
+        )
+        or
+        exists(SELECT * from IAMS_AROL_ENG_ORG_AND_CODE
+          where IAMS_AROL_ENG_BASE_INFO.SID=IAMS_AROL_ENG_ORG_AND_CODE.ENG_SID
+          and (
+          DESIGN_ORG_SID= #{currOrgId,jdbcType=INTEGER}
+          or
+          RECONNAISSANCE_ORG_SID= #{currOrgId,jdbcType=INTEGER}
+          or
+          SUPERVISION_ORG_SID= #{currOrgId,jdbcType=INTEGER}
+          or
+          CONSTRUCT_ORG_SID= #{currOrgId,jdbcType=INTEGER}
+          )
+        )
+      )
+    </if>
+    group by status
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from iams_arol_eng_base_info
+    where SID = #{sid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.build4d.project.dbaccess.dbentities.ArolEngBaseInfoEntity">
+    insert into iams_arol_eng_base_info (SID, ORG_NO_CODE, REC_ORG_SID,PROJ_SID,
+      ENG_ID, ENG_NO, ENG_NAME, 
+      ENG_ZONE, ENG_LOCATION, ARCH_CATEGORY_CODE, 
+      ENG_CATEGORY_CODE, OLD_ENG_ID, ARCHIVING_DATE, 
+      HANDOVER_ORG_NAME, STATUS, SOURCE_CODE, 
+      MICRO_NO, INDEXED_BY, INDEXED_DT, 
+      ARRANGED_BY, ARRANGED_DT, CHECKED_BY, 
+      CHECKED_DT, ENG_TYPE, SPEC_TYPE, 
+      ENG_FORMER_NAME, ARCHIVE_YEAR, TRANSFER_DATE, 
+      RECEIVE_BY, RECEIVE_DT, DEPOSIT, 
+      SECURITY_LEVEL_CODE, STORAGE_TYPE_CODE, ENG_GUIDE_SID, 
+      ROAD_NAME, NOTE, VERSION, 
+      UPDATED_BY, UPDATED_DT)
+    values (#{sid,jdbcType=INTEGER}, #{orgNoCode,jdbcType=VARCHAR},#{recOrgSid,jdbcType=INTEGER}, #{projSid,jdbcType=INTEGER},
+      #{engId,jdbcType=VARCHAR}, #{engNo,jdbcType=VARCHAR}, #{engName,jdbcType=VARCHAR}, 
+      #{engZone,jdbcType=VARCHAR}, #{engLocation,jdbcType=VARCHAR}, #{archCategoryCode,jdbcType=VARCHAR}, 
+      #{engCategoryCode,jdbcType=VARCHAR}, #{oldEngId,jdbcType=VARCHAR}, #{archivingDate,jdbcType=TIMESTAMP}, 
+      #{handoverOrgName,jdbcType=VARCHAR}, #{status,jdbcType=INTEGER}, #{sourceCode,jdbcType=INTEGER}, 
+      #{microNo,jdbcType=VARCHAR}, #{indexedBy,jdbcType=VARCHAR}, #{indexedDt,jdbcType=TIMESTAMP}, 
+      #{arrangedBy,jdbcType=VARCHAR}, #{arrangedDt,jdbcType=TIMESTAMP}, #{checkedBy,jdbcType=VARCHAR}, 
+      #{checkedDt,jdbcType=TIMESTAMP}, #{engType,jdbcType=INTEGER}, #{specType,jdbcType=INTEGER}, 
+      #{engFormerName,jdbcType=VARCHAR}, #{archiveYear,jdbcType=VARCHAR}, #{transferDate,jdbcType=TIMESTAMP}, 
+      #{receiveBy,jdbcType=VARCHAR}, #{receiveDt,jdbcType=TIMESTAMP}, #{deposit,jdbcType=VARCHAR}, 
+      #{securityLevelCode,jdbcType=VARCHAR}, #{storageTypeCode,jdbcType=VARCHAR}, #{engGuideSid,jdbcType=INTEGER}, 
+      #{roadName,jdbcType=VARCHAR}, #{note,jdbcType=VARCHAR}, #{version,jdbcType=INTEGER}, 
+      #{updatedBy,jdbcType=VARCHAR}, #{updatedDt,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.build4d.project.dbaccess.dbentities.ArolEngBaseInfoEntity">
+    insert into iams_arol_eng_base_info
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="sid != null">
+        SID,
+      </if>
+      <if test="orgNoCode != null">
+        ORG_NO_CODE,
+      </if>
+      <if test="recOrgSid != null">
+        REC_ORG_SID,
+      </if>
+      <if test="projSid != null">
+        PROJ_SID,
+      </if>
+      <if test="engId != null">
+        ENG_ID,
+      </if>
+      <if test="engNo != null">
+        ENG_NO,
+      </if>
+      <if test="engName != null">
+        ENG_NAME,
+      </if>
+      <if test="engZone != null">
+        ENG_ZONE,
+      </if>
+      <if test="engLocation != null">
+        ENG_LOCATION,
+      </if>
+      <if test="archCategoryCode != null">
+        ARCH_CATEGORY_CODE,
+      </if>
+      <if test="engCategoryCode != null">
+        ENG_CATEGORY_CODE,
+      </if>
+      <if test="oldEngId != null">
+        OLD_ENG_ID,
+      </if>
+      <if test="archivingDate != null">
+        ARCHIVING_DATE,
+      </if>
+      <if test="handoverOrgName != null">
+        HANDOVER_ORG_NAME,
+      </if>
+      <if test="status != null">
+        STATUS,
+      </if>
+      <if test="sourceCode != null">
+        SOURCE_CODE,
+      </if>
+      <if test="microNo != null">
+        MICRO_NO,
+      </if>
+      <if test="indexedBy != null">
+        INDEXED_BY,
+      </if>
+      <if test="indexedDt != null">
+        INDEXED_DT,
+      </if>
+      <if test="arrangedBy != null">
+        ARRANGED_BY,
+      </if>
+      <if test="arrangedDt != null">
+        ARRANGED_DT,
+      </if>
+      <if test="checkedBy != null">
+        CHECKED_BY,
+      </if>
+      <if test="checkedDt != null">
+        CHECKED_DT,
+      </if>
+      <if test="engType != null">
+        ENG_TYPE,
+      </if>
+      <if test="specType != null">
+        SPEC_TYPE,
+      </if>
+      <if test="engFormerName != null">
+        ENG_FORMER_NAME,
+      </if>
+      <if test="archiveYear != null">
+        ARCHIVE_YEAR,
+      </if>
+      <if test="transferDate != null">
+        TRANSFER_DATE,
+      </if>
+      <if test="receiveBy != null">
+        RECEIVE_BY,
+      </if>
+      <if test="receiveDt != null">
+        RECEIVE_DT,
+      </if>
+      <if test="deposit != null">
+        DEPOSIT,
+      </if>
+      <if test="securityLevelCode != null">
+        SECURITY_LEVEL_CODE,
+      </if>
+      <if test="storageTypeCode != null">
+        STORAGE_TYPE_CODE,
+      </if>
+      <if test="engGuideSid != null">
+        ENG_GUIDE_SID,
+      </if>
+      <if test="roadName != null">
+        ROAD_NAME,
+      </if>
+      <if test="note != null">
+        NOTE,
+      </if>
+      <if test="version != null">
+        VERSION,
+      </if>
+      <if test="updatedBy != null">
+        UPDATED_BY,
+      </if>
+      <if test="updatedDt != null">
+        UPDATED_DT,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="sid != null">
+        #{sid,jdbcType=INTEGER},
+      </if>
+      <if test="orgNoCode != null">
+        #{orgNoCode,jdbcType=VARCHAR},
+      </if>
+      <if test="recOrgSid != null">
+        #{recOrgSid,jdbcType=INTEGER},
+      </if>
+      <if test="projSid != null">
+        #{projSid,jdbcType=INTEGER},
+      </if>
+      <if test="engId != null">
+        #{engId,jdbcType=VARCHAR},
+      </if>
+      <if test="engNo != null">
+        #{engNo,jdbcType=VARCHAR},
+      </if>
+      <if test="engName != null">
+        #{engName,jdbcType=VARCHAR},
+      </if>
+      <if test="engZone != null">
+        #{engZone,jdbcType=VARCHAR},
+      </if>
+      <if test="engLocation != null">
+        #{engLocation,jdbcType=VARCHAR},
+      </if>
+      <if test="archCategoryCode != null">
+        #{archCategoryCode,jdbcType=VARCHAR},
+      </if>
+      <if test="engCategoryCode != null">
+        #{engCategoryCode,jdbcType=VARCHAR},
+      </if>
+      <if test="oldEngId != null">
+        #{oldEngId,jdbcType=VARCHAR},
+      </if>
+      <if test="archivingDate != null">
+        #{archivingDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="handoverOrgName != null">
+        #{handoverOrgName,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="sourceCode != null">
+        #{sourceCode,jdbcType=INTEGER},
+      </if>
+      <if test="microNo != null">
+        #{microNo,jdbcType=VARCHAR},
+      </if>
+      <if test="indexedBy != null">
+        #{indexedBy,jdbcType=VARCHAR},
+      </if>
+      <if test="indexedDt != null">
+        #{indexedDt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="arrangedBy != null">
+        #{arrangedBy,jdbcType=VARCHAR},
+      </if>
+      <if test="arrangedDt != null">
+        #{arrangedDt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="checkedBy != null">
+        #{checkedBy,jdbcType=VARCHAR},
+      </if>
+      <if test="checkedDt != null">
+        #{checkedDt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="engType != null">
+        #{engType,jdbcType=INTEGER},
+      </if>
+      <if test="specType != null">
+        #{specType,jdbcType=INTEGER},
+      </if>
+      <if test="engFormerName != null">
+        #{engFormerName,jdbcType=VARCHAR},
+      </if>
+      <if test="archiveYear != null">
+        #{archiveYear,jdbcType=VARCHAR},
+      </if>
+      <if test="transferDate != null">
+        #{transferDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="receiveBy != null">
+        #{receiveBy,jdbcType=VARCHAR},
+      </if>
+      <if test="receiveDt != null">
+        #{receiveDt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="deposit != null">
+        #{deposit,jdbcType=VARCHAR},
+      </if>
+      <if test="securityLevelCode != null">
+        #{securityLevelCode,jdbcType=VARCHAR},
+      </if>
+      <if test="storageTypeCode != null">
+        #{storageTypeCode,jdbcType=VARCHAR},
+      </if>
+      <if test="engGuideSid != null">
+        #{engGuideSid,jdbcType=INTEGER},
+      </if>
+      <if test="roadName != null">
+        #{roadName,jdbcType=VARCHAR},
+      </if>
+      <if test="note != null">
+        #{note,jdbcType=VARCHAR},
+      </if>
+      <if test="version != null">
+        #{version,jdbcType=INTEGER},
+      </if>
+      <if test="updatedBy != null">
+        #{updatedBy,jdbcType=VARCHAR},
+      </if>
+      <if test="updatedDt != null">
+        #{updatedDt,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.build4d.project.dbaccess.dbentities.ArolEngBaseInfoEntity">
+    update iams_arol_eng_base_info
+    <set>
+      <if test="orgNoCode != null">
+        ORG_NO_CODE = #{orgNoCode,jdbcType=VARCHAR},
+      </if>
+      <if test="recOrgSid != null">
+        REC_ORG_SID = #{recOrgSid,jdbcType=INTEGER},
+      </if>
+      <if test="projSid != null">
+        PROJ_SID = #{projSid,jdbcType=INTEGER},
+      </if>
+      <if test="engId != null">
+        ENG_ID = #{engId,jdbcType=VARCHAR},
+      </if>
+      <if test="engNo != null">
+        ENG_NO = #{engNo,jdbcType=VARCHAR},
+      </if>
+      <if test="engName != null">
+        ENG_NAME = #{engName,jdbcType=VARCHAR},
+      </if>
+      <if test="engZone != null">
+        ENG_ZONE = #{engZone,jdbcType=VARCHAR},
+      </if>
+      <if test="engLocation != null">
+        ENG_LOCATION = #{engLocation,jdbcType=VARCHAR},
+      </if>
+      <if test="archCategoryCode != null">
+        ARCH_CATEGORY_CODE = #{archCategoryCode,jdbcType=VARCHAR},
+      </if>
+      <if test="engCategoryCode != null">
+        ENG_CATEGORY_CODE = #{engCategoryCode,jdbcType=VARCHAR},
+      </if>
+      <if test="oldEngId != null">
+        OLD_ENG_ID = #{oldEngId,jdbcType=VARCHAR},
+      </if>
+      <if test="archivingDate != null">
+        ARCHIVING_DATE = #{archivingDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="handoverOrgName != null">
+        HANDOVER_ORG_NAME = #{handoverOrgName,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        STATUS = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="sourceCode != null">
+        SOURCE_CODE = #{sourceCode,jdbcType=INTEGER},
+      </if>
+      <if test="microNo != null">
+        MICRO_NO = #{microNo,jdbcType=VARCHAR},
+      </if>
+      <if test="indexedBy != null">
+        INDEXED_BY = #{indexedBy,jdbcType=VARCHAR},
+      </if>
+      <if test="indexedDt != null">
+        INDEXED_DT = #{indexedDt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="arrangedBy != null">
+        ARRANGED_BY = #{arrangedBy,jdbcType=VARCHAR},
+      </if>
+      <if test="arrangedDt != null">
+        ARRANGED_DT = #{arrangedDt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="checkedBy != null">
+        CHECKED_BY = #{checkedBy,jdbcType=VARCHAR},
+      </if>
+      <if test="checkedDt != null">
+        CHECKED_DT = #{checkedDt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="engType != null">
+        ENG_TYPE = #{engType,jdbcType=INTEGER},
+      </if>
+      <if test="specType != null">
+        SPEC_TYPE = #{specType,jdbcType=INTEGER},
+      </if>
+      <if test="engFormerName != null">
+        ENG_FORMER_NAME = #{engFormerName,jdbcType=VARCHAR},
+      </if>
+      <if test="archiveYear != null">
+        ARCHIVE_YEAR = #{archiveYear,jdbcType=VARCHAR},
+      </if>
+      <if test="transferDate != null">
+        TRANSFER_DATE = #{transferDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="receiveBy != null">
+        RECEIVE_BY = #{receiveBy,jdbcType=VARCHAR},
+      </if>
+      <if test="receiveDt != null">
+        RECEIVE_DT = #{receiveDt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="deposit != null">
+        DEPOSIT = #{deposit,jdbcType=VARCHAR},
+      </if>
+      <if test="securityLevelCode != null">
+        SECURITY_LEVEL_CODE = #{securityLevelCode,jdbcType=VARCHAR},
+      </if>
+      <if test="storageTypeCode != null">
+        STORAGE_TYPE_CODE = #{storageTypeCode,jdbcType=VARCHAR},
+      </if>
+      <if test="engGuideSid != null">
+        ENG_GUIDE_SID = #{engGuideSid,jdbcType=INTEGER},
+      </if>
+      <if test="roadName != null">
+        ROAD_NAME = #{roadName,jdbcType=VARCHAR},
+      </if>
+      <if test="note != null">
+        NOTE = #{note,jdbcType=VARCHAR},
+      </if>
+      <if test="version != null">
+        VERSION = #{version,jdbcType=INTEGER},
+      </if>
+      <if test="updatedBy != null">
+        UPDATED_BY = #{updatedBy,jdbcType=VARCHAR},
+      </if>
+      <if test="updatedDt != null">
+        UPDATED_DT = #{updatedDt,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where SID = #{sid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.build4d.project.dbaccess.dbentities.ArolEngBaseInfoEntity">
+    update iams_arol_eng_base_info
+    set ORG_NO_CODE = #{orgNoCode,jdbcType=VARCHAR},
+      REC_ORG_SID = #{recOrgSid,jdbcType=INTEGER},
+      PROJ_SID = #{projSid,jdbcType=INTEGER},
+      ENG_ID = #{engId,jdbcType=VARCHAR},
+      ENG_NO = #{engNo,jdbcType=VARCHAR},
+      ENG_NAME = #{engName,jdbcType=VARCHAR},
+      ENG_ZONE = #{engZone,jdbcType=VARCHAR},
+      ENG_LOCATION = #{engLocation,jdbcType=VARCHAR},
+      ARCH_CATEGORY_CODE = #{archCategoryCode,jdbcType=VARCHAR},
+      ENG_CATEGORY_CODE = #{engCategoryCode,jdbcType=VARCHAR},
+      OLD_ENG_ID = #{oldEngId,jdbcType=VARCHAR},
+      ARCHIVING_DATE = #{archivingDate,jdbcType=TIMESTAMP},
+      HANDOVER_ORG_NAME = #{handoverOrgName,jdbcType=VARCHAR},
+      STATUS = #{status,jdbcType=INTEGER},
+      SOURCE_CODE = #{sourceCode,jdbcType=INTEGER},
+      MICRO_NO = #{microNo,jdbcType=VARCHAR},
+      INDEXED_BY = #{indexedBy,jdbcType=VARCHAR},
+      INDEXED_DT = #{indexedDt,jdbcType=TIMESTAMP},
+      ARRANGED_BY = #{arrangedBy,jdbcType=VARCHAR},
+      ARRANGED_DT = #{arrangedDt,jdbcType=TIMESTAMP},
+      CHECKED_BY = #{checkedBy,jdbcType=VARCHAR},
+      CHECKED_DT = #{checkedDt,jdbcType=TIMESTAMP},
+      ENG_TYPE = #{engType,jdbcType=INTEGER},
+      SPEC_TYPE = #{specType,jdbcType=INTEGER},
+      ENG_FORMER_NAME = #{engFormerName,jdbcType=VARCHAR},
+      ARCHIVE_YEAR = #{archiveYear,jdbcType=VARCHAR},
+      TRANSFER_DATE = #{transferDate,jdbcType=TIMESTAMP},
+      RECEIVE_BY = #{receiveBy,jdbcType=VARCHAR},
+      RECEIVE_DT = #{receiveDt,jdbcType=TIMESTAMP},
+      DEPOSIT = #{deposit,jdbcType=VARCHAR},
+      SECURITY_LEVEL_CODE = #{securityLevelCode,jdbcType=VARCHAR},
+      STORAGE_TYPE_CODE = #{storageTypeCode,jdbcType=VARCHAR},
+      ENG_GUIDE_SID = #{engGuideSid,jdbcType=INTEGER},
+      ROAD_NAME = #{roadName,jdbcType=VARCHAR},
+      NOTE = #{note,jdbcType=VARCHAR},
+      VERSION = #{version,jdbcType=INTEGER},
+      UPDATED_BY = #{updatedBy,jdbcType=VARCHAR},
+      UPDATED_DT = #{updatedDt,jdbcType=TIMESTAMP}
+    where SID = #{sid,jdbcType=INTEGER}
+  </update>
+  <select id="nextId" resultType="integer">
+    select case when max(SID) is null then 1 else max(SID)+1 end NEXTID from iams_arol_eng_base_info
+  </select>
+  <select id="getEngNo" resultType="string">
+    select  concat(year(CURDATE()),'-',right(concat('000000',cast(replace(max(eng_no), concat(year(CURDATE()),'-'),'') as SIGNED INTEGER)+1),6))
+    from iams_arol_eng_base_info
+  </select>
+</mapper>

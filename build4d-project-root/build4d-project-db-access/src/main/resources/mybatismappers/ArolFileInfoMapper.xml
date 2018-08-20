@@ -1,0 +1,772 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.build4d.project.dbaccess.dao.ArolFileInfoMapper">
+  <resultMap id="BaseResultMap" type="com.build4d.project.dbaccess.dbentities.ArolFileInfoEntity">
+    <constructor>
+      <idArg column="SID" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="ENG_SID" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="ARCH_SID" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="FILE_ID" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="OLD_FILE_ID" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="FILE_NO" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="ARCH_FILE_NO" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="REG_NO" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="MICRO_NO" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="FILE_TITLE" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="RESPONSIBILITY" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="FILE_IMAGE_NO" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="MANUSCRIPT_CODE" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="STORAGE_TYPE_CODE" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="SECURITY_LEVEL_CODE" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="CREATED_START" javaType="java.util.Date" jdbcType="TIMESTAMP" />
+      <arg column="CREATED_END" javaType="java.util.Date" jdbcType="TIMESTAMP" />
+      <arg column="MEDIA_TYPE_CODE" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="PAGE_NO" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="SPEC_CODE" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="TEXT_NUMS" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="DRAWING_NUMS" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="PHONE_NUMS" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="BASE_MAP_NUMS" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="NEGATIVE_NUMS" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="CONS_CODE" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="SEGMENT_CODE" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="FILE_SOURCE_CODE" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="SCAN_FLAG" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="LOCK_STATUS" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="UNITS_CODE" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="PDF_CREATE_FLAG" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="PDF_PATH" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="PDF_FILENAME" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="PDF_CREATE_DT" javaType="java.util.Date" jdbcType="TIMESTAMP" />
+      <arg column="CREATED_BY" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="CREATED_DT" javaType="java.util.Date" jdbcType="TIMESTAMP" />
+      <arg column="VERSION" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="UPDATED_BY" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="UPDATED_DT" javaType="java.util.Date" jdbcType="TIMESTAMP" />
+      <arg column="CATALOGID" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="REAL_PAGE_NUMS" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="UPLOAD_PAGE_NUMS" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="CHECK_OPINION" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="INSTRUCTOR_REMARK" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="STATUS" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="FILE_TYPE_CODE" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="FILE_TYPE" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="FILE_SIZE" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="REMARK" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="CHECK_PERSON" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="CHECK_DATE" javaType="java.util.Date" jdbcType="TIMESTAMP" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List">
+    SID, IAMS_AROL_FILE_INFO.ENG_SID, ARCH_SID, FILE_ID, OLD_FILE_ID, FILE_NO, ARCH_FILE_NO, REG_NO, MICRO_NO,
+    FILE_TITLE, RESPONSIBILITY, FILE_IMAGE_NO, MANUSCRIPT_CODE, STORAGE_TYPE_CODE, SECURITY_LEVEL_CODE,
+    CREATED_START, CREATED_END, MEDIA_TYPE_CODE, PAGE_NO, SPEC_CODE, TEXT_NUMS, DRAWING_NUMS,
+    PHONE_NUMS, BASE_MAP_NUMS, NEGATIVE_NUMS, CONS_CODE, SEGMENT_CODE, FILE_SOURCE_CODE,
+    SCAN_FLAG, LOCK_STATUS, UNITS_CODE, PDF_CREATE_FLAG, PDF_PATH, PDF_FILENAME, PDF_CREATE_DT,
+    CREATED_BY, CREATED_DT, VERSION, UPDATED_BY, UPDATED_DT,CATALOGID,REAL_PAGE_NUMS,
+    UPLOAD_PAGE_NUMS,CHECK_OPINION,INSTRUCTOR_REMARK,STATUS,FILE_TYPE_CODE,FILE_TYPE,FILE_SIZE,REMARK,CHECK_PERSON,CHECK_DATE
+  </sql>
+
+  <resultMap id="BaseResultMapJoinEngConfMate" type="com.build4d.project.dbaccess.dbentities.ArolFileInfoEntity" extends="BaseResultMap">
+    <association property="proEngConfMateEntity" javaType="com.build4d.project.dbaccess.dbentities.ProEngConfMateEntity">
+      <constructor>
+      <idArg column="MATE_SID" javaType="java.lang.Integer" jdbcType="INTEGER"/>
+      <arg column="MATE_VALUE" javaType="java.lang.String" jdbcType="VARCHAR"/>
+      <arg column="MATE_NAME" javaType="java.lang.String" jdbcType="VARCHAR"/>
+      <arg column="UNIT_TYPE" javaType="java.lang.String" jdbcType="VARCHAR"/>
+      <arg column="MATE_P_SID" javaType="java.lang.Integer" jdbcType="INTEGER"/>
+      <arg column="ISDIRECTORY" javaType="java.lang.Integer" jdbcType="INTEGER"/>
+    </constructor>
+    </association>
+  </resultMap>
+  <sql id="Base_Column_List_EngConfMate">
+    MATE_SID, MATE_VALUE, MATE_NAME, UNIT_TYPE,MATE_P_SID,ISDIRECTORY
+  </sql>
+
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from iams_arol_file_info
+    where SID = #{sid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from iams_arol_file_info
+    where SID = #{sid,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByEngSid" parameterType="java.lang.Integer">
+    delete from iams_arol_file_info
+    where ENG_SID = #{engSid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.build4d.project.dbaccess.dbentities.ArolFileInfoEntity">
+    insert into iams_arol_file_info (SID, ENG_SID, ARCH_SID,
+      FILE_ID, OLD_FILE_ID, FILE_NO,
+      ARCH_FILE_NO, REG_NO, MICRO_NO,
+      FILE_TITLE, RESPONSIBILITY, FILE_IMAGE_NO,
+      MANUSCRIPT_CODE, STORAGE_TYPE_CODE, SECURITY_LEVEL_CODE,
+      CREATED_START, CREATED_END, MEDIA_TYPE_CODE,
+      PAGE_NO, SPEC_CODE, TEXT_NUMS,
+      DRAWING_NUMS, PHONE_NUMS, BASE_MAP_NUMS,
+      NEGATIVE_NUMS, CONS_CODE, SEGMENT_CODE,
+      FILE_SOURCE_CODE, SCAN_FLAG, LOCK_STATUS,
+      UNITS_CODE, PDF_CREATE_FLAG, PDF_PATH,
+      PDF_FILENAME, PDF_CREATE_DT, CREATED_BY,
+      CREATED_DT, VERSION, UPDATED_BY,
+      UPDATED_DT,CATALOGID,REAL_PAGE_NUMS,
+       UPLOAD_PAGE_NUMS,CHECK_OPINION,INSTRUCTOR_REMARK,
+       STATUS,FILE_TYPE_CODE,FILE_TYPE,FILE_SIZE,REMARK,CHECK_PERSON,CHECK_DATE)
+    values (#{sid,jdbcType=INTEGER}, #{engSid,jdbcType=INTEGER}, #{archSid,jdbcType=INTEGER},
+      #{fileId,jdbcType=VARCHAR}, #{oldFileId,jdbcType=VARCHAR}, #{fileNo,jdbcType=VARCHAR},
+      #{archFileNo,jdbcType=VARCHAR}, #{regNo,jdbcType=VARCHAR}, #{microNo,jdbcType=VARCHAR},
+      #{fileTitle,jdbcType=VARCHAR}, #{responsibility,jdbcType=VARCHAR}, #{fileImageNo,jdbcType=VARCHAR},
+      #{manuscriptCode,jdbcType=VARCHAR}, #{storageTypeCode,jdbcType=VARCHAR}, #{securityLevelCode,jdbcType=VARCHAR},
+      #{createdStart,jdbcType=TIMESTAMP}, #{createdEnd,jdbcType=TIMESTAMP}, #{mediaTypeCode,jdbcType=VARCHAR},
+      #{pageNo,jdbcType=VARCHAR}, #{specCode,jdbcType=VARCHAR}, #{textNums,jdbcType=INTEGER},
+      #{drawingNums,jdbcType=INTEGER}, #{phoneNums,jdbcType=INTEGER}, #{baseMapNums,jdbcType=INTEGER},
+      #{negativeNums,jdbcType=INTEGER}, #{consCode,jdbcType=VARCHAR}, #{segmentCode,jdbcType=VARCHAR},
+      #{fileSourceCode,jdbcType=VARCHAR}, #{scanFlag,jdbcType=INTEGER}, #{lockStatus,jdbcType=INTEGER},
+      #{unitsCode,jdbcType=VARCHAR}, #{pdfCreateFlag,jdbcType=INTEGER}, #{pdfPath,jdbcType=VARCHAR},
+      #{pdfFilename,jdbcType=VARCHAR}, #{pdfCreateDt,jdbcType=TIMESTAMP}, #{createdBy,jdbcType=VARCHAR},
+      #{createdDt,jdbcType=TIMESTAMP}, #{version,jdbcType=INTEGER}, #{updatedBy,jdbcType=VARCHAR},
+      #{updatedDt,jdbcType=TIMESTAMP},#{catalogid,jdbcType=INTEGER},
+      #{realPageNums,jdbcType=INTEGER},#{uploadPageNums,jdbcType=INTEGER},#{checkOpinion,jdbcType=VARCHAR},
+      #{instructorRemark,jdbcType=VARCHAR},#{status,jdbcType=INTEGER},
+      #{fileTypeCode,jdbcType=VARCHAR},#{fileType,jdbcType=VARCHAR},
+            #{fileSize,jdbcType=INTEGER},#{remark,jdbcType=VARCHAR},
+      #{checkPerson,jdbcType=VARCHAR}, #{checkDate,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.build4d.project.dbaccess.dbentities.ArolFileInfoEntity">
+    insert into iams_arol_file_info
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="sid != null">
+        SID,
+      </if>
+      <if test="engSid != null">
+        ENG_SID,
+      </if>
+      <if test="archSid != null">
+        ARCH_SID,
+      </if>
+      <if test="fileId != null">
+        FILE_ID,
+      </if>
+      <if test="oldFileId != null">
+        OLD_FILE_ID,
+      </if>
+      <if test="fileNo != null">
+        FILE_NO,
+      </if>
+      <if test="archFileNo != null">
+        ARCH_FILE_NO,
+      </if>
+      <if test="regNo != null">
+        REG_NO,
+      </if>
+      <if test="microNo != null">
+        MICRO_NO,
+      </if>
+      <if test="fileTitle != null">
+        FILE_TITLE,
+      </if>
+      <if test="responsibility != null">
+        RESPONSIBILITY,
+      </if>
+      <if test="fileImageNo != null">
+        FILE_IMAGE_NO,
+      </if>
+      <if test="manuscriptCode != null">
+        MANUSCRIPT_CODE,
+      </if>
+      <if test="storageTypeCode != null">
+        STORAGE_TYPE_CODE,
+      </if>
+      <if test="securityLevelCode != null">
+        SECURITY_LEVEL_CODE,
+      </if>
+      <if test="createdStart != null">
+        CREATED_START,
+      </if>
+      <if test="createdEnd != null">
+        CREATED_END,
+      </if>
+      <if test="mediaTypeCode != null">
+        MEDIA_TYPE_CODE,
+      </if>
+      <if test="pageNo != null">
+        PAGE_NO,
+      </if>
+      <if test="specCode != null">
+        SPEC_CODE,
+      </if>
+      <if test="textNums != null">
+        TEXT_NUMS,
+      </if>
+      <if test="drawingNums != null">
+        DRAWING_NUMS,
+      </if>
+      <if test="phoneNums != null">
+        PHONE_NUMS,
+      </if>
+      <if test="baseMapNums != null">
+        BASE_MAP_NUMS,
+      </if>
+      <if test="negativeNums != null">
+        NEGATIVE_NUMS,
+      </if>
+      <if test="consCode != null">
+        CONS_CODE,
+      </if>
+      <if test="segmentCode != null">
+        SEGMENT_CODE,
+      </if>
+      <if test="fileSourceCode != null">
+        FILE_SOURCE_CODE,
+      </if>
+      <if test="scanFlag != null">
+        SCAN_FLAG,
+      </if>
+      <if test="lockStatus != null">
+        LOCK_STATUS,
+      </if>
+      <if test="unitsCode != null">
+        UNITS_CODE,
+      </if>
+      <if test="pdfCreateFlag != null">
+        PDF_CREATE_FLAG,
+      </if>
+      <if test="pdfPath != null">
+        PDF_PATH,
+      </if>
+      <if test="pdfFilename != null">
+        PDF_FILENAME,
+      </if>
+      <if test="pdfCreateDt != null">
+        PDF_CREATE_DT,
+      </if>
+      <if test="createdBy != null">
+        CREATED_BY,
+      </if>
+      <if test="createdDt != null">
+        CREATED_DT,
+      </if>
+      <if test="version != null">
+        VERSION,
+      </if>
+      <if test="updatedBy != null">
+        UPDATED_BY,
+      </if>
+      <if test="updatedDt != null">
+        UPDATED_DT,
+      </if>
+      <if test="catalogid != null">
+        CATALOGID,
+      </if>
+      <if test="realPageNums != null">
+        REAL_PAGE_NUMS,
+      </if>
+      <if test="uploadPageNums != null">
+        UPLOAD_PAGE_NUMS,
+      </if>
+      <if test="checkOpinion != null">
+        CHECK_OPINION,
+      </if>
+      <if test="instructorRemark != null">
+        INSTRUCTOR_REMARK,
+      </if>
+      <if test="status != null">
+        STATUS,
+      </if>
+      <if test="fileTypeCode != null">
+        FILE_TYPE_CODE,
+      </if>
+      <if test="fileType != null">
+        FILE_TYPE,
+      </if>
+      <if test="fileSize != null">
+        FILE_SIZE,
+      </if>
+      <if test="remark != null">
+        REMARK,
+      </if>
+      <if test="checkPerson != null">
+        CHECK_PERSON,
+      </if>
+      <if test="checkDate != null">
+        CHECK_DATE,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="sid != null">
+        #{sid,jdbcType=INTEGER},
+      </if>
+      <if test="engSid != null">
+        #{engSid,jdbcType=INTEGER},
+      </if>
+      <if test="archSid != null">
+        #{archSid,jdbcType=INTEGER},
+      </if>
+      <if test="fileId != null">
+        #{fileId,jdbcType=VARCHAR},
+      </if>
+      <if test="oldFileId != null">
+        #{oldFileId,jdbcType=VARCHAR},
+      </if>
+      <if test="fileNo != null">
+        #{fileNo,jdbcType=VARCHAR},
+      </if>
+      <if test="archFileNo != null">
+        #{archFileNo,jdbcType=VARCHAR},
+      </if>
+      <if test="regNo != null">
+        #{regNo,jdbcType=VARCHAR},
+      </if>
+      <if test="microNo != null">
+        #{microNo,jdbcType=VARCHAR},
+      </if>
+      <if test="fileTitle != null">
+        #{fileTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="responsibility != null">
+        #{responsibility,jdbcType=VARCHAR},
+      </if>
+      <if test="fileImageNo != null">
+        #{fileImageNo,jdbcType=VARCHAR},
+      </if>
+      <if test="manuscriptCode != null">
+        #{manuscriptCode,jdbcType=VARCHAR},
+      </if>
+      <if test="storageTypeCode != null">
+        #{storageTypeCode,jdbcType=VARCHAR},
+      </if>
+      <if test="securityLevelCode != null">
+        #{securityLevelCode,jdbcType=VARCHAR},
+      </if>
+      <if test="createdStart != null">
+        #{createdStart,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createdEnd != null">
+        #{createdEnd,jdbcType=TIMESTAMP},
+      </if>
+      <if test="mediaTypeCode != null">
+        #{mediaTypeCode,jdbcType=VARCHAR},
+      </if>
+      <if test="pageNo != null">
+        #{pageNo,jdbcType=VARCHAR},
+      </if>
+      <if test="specCode != null">
+        #{specCode,jdbcType=VARCHAR},
+      </if>
+      <if test="textNums != null">
+        #{textNums,jdbcType=INTEGER},
+      </if>
+      <if test="drawingNums != null">
+        #{drawingNums,jdbcType=INTEGER},
+      </if>
+      <if test="phoneNums != null">
+        #{phoneNums,jdbcType=INTEGER},
+      </if>
+      <if test="baseMapNums != null">
+        #{baseMapNums,jdbcType=INTEGER},
+      </if>
+      <if test="negativeNums != null">
+        #{negativeNums,jdbcType=INTEGER},
+      </if>
+      <if test="consCode != null">
+        #{consCode,jdbcType=VARCHAR},
+      </if>
+      <if test="segmentCode != null">
+        #{segmentCode,jdbcType=VARCHAR},
+      </if>
+      <if test="fileSourceCode != null">
+        #{fileSourceCode,jdbcType=VARCHAR},
+      </if>
+      <if test="scanFlag != null">
+        #{scanFlag,jdbcType=INTEGER},
+      </if>
+      <if test="lockStatus != null">
+        #{lockStatus,jdbcType=INTEGER},
+      </if>
+      <if test="unitsCode != null">
+        #{unitsCode,jdbcType=VARCHAR},
+      </if>
+      <if test="pdfCreateFlag != null">
+        #{pdfCreateFlag,jdbcType=INTEGER},
+      </if>
+      <if test="pdfPath != null">
+        #{pdfPath,jdbcType=VARCHAR},
+      </if>
+      <if test="pdfFilename != null">
+        #{pdfFilename,jdbcType=VARCHAR},
+      </if>
+      <if test="pdfCreateDt != null">
+        #{pdfCreateDt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createdBy != null">
+        #{createdBy,jdbcType=VARCHAR},
+      </if>
+      <if test="createdDt != null">
+        #{createdDt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="version != null">
+        #{version,jdbcType=INTEGER},
+      </if>
+      <if test="updatedBy != null">
+        #{updatedBy,jdbcType=VARCHAR},
+      </if>
+      <if test="updatedDt != null">
+        #{updatedDt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="catalogid != null">
+      #{catalogid,jdbcType=INTEGER},
+      </if>
+
+      <if test="realPageNums != null">
+        #{realPageNums,jdbcType=INTEGER},
+      </if>
+      <if test="uploadPageNums != null">
+        #{uploadPageNums,jdbcType=INTEGER},
+      </if>
+      <if test="checkOpinion != null">
+        #{checkOpinion,jdbcType=VARCHAR},
+      </if>
+      <if test="instructorRemark != null">
+        #{instructorRemark,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=INTEGER},
+      </if>
+
+      <if test="status != null">
+        #{fileTypeCode,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        #{fileType,jdbcType=VARCHAR},
+      </if>
+      <if test="fileSize != null">
+        #{fileSize,jdbcType=INTEGER},
+      </if>
+      <if test="status != null">
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="checkPerson != null">
+        #{checkPerson,jdbcType=VARCHAR},
+      </if>
+      <if test="checkDate != null">
+        #{checkDate,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.build4d.project.dbaccess.dbentities.ArolFileInfoEntity">
+    update iams_arol_file_info
+    <set>
+      <if test="engSid != null">
+        ENG_SID = #{engSid,jdbcType=INTEGER},
+      </if>
+      <if test="archSid != null">
+        ARCH_SID = #{archSid,jdbcType=INTEGER},
+      </if>
+      <if test="fileId != null">
+        FILE_ID = #{fileId,jdbcType=VARCHAR},
+      </if>
+      <if test="oldFileId != null">
+        OLD_FILE_ID = #{oldFileId,jdbcType=VARCHAR},
+      </if>
+      <if test="fileNo != null">
+        FILE_NO = #{fileNo,jdbcType=VARCHAR},
+      </if>
+      <if test="archFileNo != null">
+        ARCH_FILE_NO = #{archFileNo,jdbcType=VARCHAR},
+      </if>
+      <if test="regNo != null">
+        REG_NO = #{regNo,jdbcType=VARCHAR},
+      </if>
+      <if test="microNo != null">
+        MICRO_NO = #{microNo,jdbcType=VARCHAR},
+      </if>
+      <if test="fileTitle != null">
+        FILE_TITLE = #{fileTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="responsibility != null">
+        RESPONSIBILITY = #{responsibility,jdbcType=VARCHAR},
+      </if>
+      <if test="fileImageNo != null">
+        FILE_IMAGE_NO = #{fileImageNo,jdbcType=VARCHAR},
+      </if>
+      <if test="manuscriptCode != null">
+        MANUSCRIPT_CODE = #{manuscriptCode,jdbcType=VARCHAR},
+      </if>
+      <if test="storageTypeCode != null">
+        STORAGE_TYPE_CODE = #{storageTypeCode,jdbcType=VARCHAR},
+      </if>
+      <if test="securityLevelCode != null">
+        SECURITY_LEVEL_CODE = #{securityLevelCode,jdbcType=VARCHAR},
+      </if>
+      <if test="createdStart != null">
+        CREATED_START = #{createdStart,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createdEnd != null">
+        CREATED_END = #{createdEnd,jdbcType=TIMESTAMP},
+      </if>
+      <if test="mediaTypeCode != null">
+        MEDIA_TYPE_CODE = #{mediaTypeCode,jdbcType=VARCHAR},
+      </if>
+      <if test="pageNo != null">
+        PAGE_NO = #{pageNo,jdbcType=VARCHAR},
+      </if>
+      <if test="specCode != null">
+        SPEC_CODE = #{specCode,jdbcType=VARCHAR},
+      </if>
+      <if test="textNums != null">
+        TEXT_NUMS = #{textNums,jdbcType=INTEGER},
+      </if>
+      <if test="drawingNums != null">
+        DRAWING_NUMS = #{drawingNums,jdbcType=INTEGER},
+      </if>
+      <if test="phoneNums != null">
+        PHONE_NUMS = #{phoneNums,jdbcType=INTEGER},
+      </if>
+      <if test="baseMapNums != null">
+        BASE_MAP_NUMS = #{baseMapNums,jdbcType=INTEGER},
+      </if>
+      <if test="negativeNums != null">
+        NEGATIVE_NUMS = #{negativeNums,jdbcType=INTEGER},
+      </if>
+      <if test="consCode != null">
+        CONS_CODE = #{consCode,jdbcType=VARCHAR},
+      </if>
+      <if test="segmentCode != null">
+        SEGMENT_CODE = #{segmentCode,jdbcType=VARCHAR},
+      </if>
+      <if test="fileSourceCode != null">
+        FILE_SOURCE_CODE = #{fileSourceCode,jdbcType=VARCHAR},
+      </if>
+      <if test="scanFlag != null">
+        SCAN_FLAG = #{scanFlag,jdbcType=INTEGER},
+      </if>
+      <if test="lockStatus != null">
+        LOCK_STATUS = #{lockStatus,jdbcType=INTEGER},
+      </if>
+      <if test="unitsCode != null">
+        UNITS_CODE = #{unitsCode,jdbcType=VARCHAR},
+      </if>
+      <if test="pdfCreateFlag != null">
+        PDF_CREATE_FLAG = #{pdfCreateFlag,jdbcType=INTEGER},
+      </if>
+      <if test="pdfPath != null">
+        PDF_PATH = #{pdfPath,jdbcType=VARCHAR},
+      </if>
+      <if test="pdfFilename != null">
+        PDF_FILENAME = #{pdfFilename,jdbcType=VARCHAR},
+      </if>
+      <if test="pdfCreateDt != null">
+        PDF_CREATE_DT = #{pdfCreateDt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createdBy != null">
+        CREATED_BY = #{createdBy,jdbcType=VARCHAR},
+      </if>
+      <if test="createdDt != null">
+        CREATED_DT = #{createdDt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="version != null">
+        VERSION = #{version,jdbcType=INTEGER},
+      </if>
+      <if test="updatedBy != null">
+        UPDATED_BY = #{updatedBy,jdbcType=VARCHAR},
+      </if>
+      <if test="updatedDt != null">
+        UPDATED_DT = #{updatedDt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="catalogid != null">
+        CATALOGID = #{catalogid,jdbcType=INTEGER},
+      </if>
+
+      <if test="realPageNums != null">
+        REAL_PAGE_NUMS = #{realPageNums,jdbcType=INTEGER} ,
+      </if>
+      <if test="uploadPageNums != null">
+        UPLOAD_PAGE_NUMS = #{uploadPageNums,jdbcType=INTEGER},
+      </if>
+      <if test="checkOpinion != null">
+        CHECK_OPINION = #{checkOpinion,jdbcType=VARCHAR},
+      </if>
+      <if test="instructorRemark != null">
+        INSTRUCTOR_REMARK = #{instructorRemark,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        STATUS = #{status,jdbcType=INTEGER} ,
+      </if>
+
+      <if test="fileTypeCode != null">
+        FILE_TYPE_CODE = #{fileTypeCode,jdbcType=VARCHAR} ,
+      </if>
+      <if test="fileType != null">
+        FILE_TYPE = #{fileType,jdbcType=VARCHAR} ,
+      </if>
+      <if test="fileSize != null">
+        FILE_SIZE = #{fileSize,jdbcType=INTEGER} ,
+      </if>
+      <if test="remark != null">
+        REMARK = #{remark,jdbcType=VARCHAR} ,
+      </if>
+      <if test="checkPerson != null">
+        CHECK_PERSON=#{checkPerson,jdbcType=VARCHAR},
+      </if>
+      <if test="checkDate != null">
+        CHECK_DATE=#{checkDate,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where SID = #{sid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.build4d.project.dbaccess.dbentities.ArolFileInfoEntity">
+    update iams_arol_file_info
+    set ENG_SID = #{engSid,jdbcType=INTEGER},
+      ARCH_SID = #{archSid,jdbcType=INTEGER},
+      FILE_ID = #{fileId,jdbcType=VARCHAR},
+      OLD_FILE_ID = #{oldFileId,jdbcType=VARCHAR},
+      FILE_NO = #{fileNo,jdbcType=VARCHAR},
+      ARCH_FILE_NO = #{archFileNo,jdbcType=VARCHAR},
+      REG_NO = #{regNo,jdbcType=VARCHAR},
+      MICRO_NO = #{microNo,jdbcType=VARCHAR},
+      FILE_TITLE = #{fileTitle,jdbcType=VARCHAR},
+      RESPONSIBILITY = #{responsibility,jdbcType=VARCHAR},
+      FILE_IMAGE_NO = #{fileImageNo,jdbcType=VARCHAR},
+      MANUSCRIPT_CODE = #{manuscriptCode,jdbcType=VARCHAR},
+      STORAGE_TYPE_CODE = #{storageTypeCode,jdbcType=VARCHAR},
+      SECURITY_LEVEL_CODE = #{securityLevelCode,jdbcType=VARCHAR},
+      CREATED_START = #{createdStart,jdbcType=TIMESTAMP},
+      CREATED_END = #{createdEnd,jdbcType=TIMESTAMP},
+      MEDIA_TYPE_CODE = #{mediaTypeCode,jdbcType=VARCHAR},
+      PAGE_NO = #{pageNo,jdbcType=VARCHAR},
+      SPEC_CODE = #{specCode,jdbcType=VARCHAR},
+      TEXT_NUMS = #{textNums,jdbcType=INTEGER},
+      DRAWING_NUMS = #{drawingNums,jdbcType=INTEGER},
+      PHONE_NUMS = #{phoneNums,jdbcType=INTEGER},
+      BASE_MAP_NUMS = #{baseMapNums,jdbcType=INTEGER},
+      NEGATIVE_NUMS = #{negativeNums,jdbcType=INTEGER},
+      CONS_CODE = #{consCode,jdbcType=VARCHAR},
+      SEGMENT_CODE = #{segmentCode,jdbcType=VARCHAR},
+      FILE_SOURCE_CODE = #{fileSourceCode,jdbcType=VARCHAR},
+      SCAN_FLAG = #{scanFlag,jdbcType=INTEGER},
+      LOCK_STATUS = #{lockStatus,jdbcType=INTEGER},
+      UNITS_CODE = #{unitsCode,jdbcType=VARCHAR},
+      PDF_CREATE_FLAG = #{pdfCreateFlag,jdbcType=INTEGER},
+      PDF_PATH = #{pdfPath,jdbcType=VARCHAR},
+      PDF_FILENAME = #{pdfFilename,jdbcType=VARCHAR},
+      PDF_CREATE_DT = #{pdfCreateDt,jdbcType=TIMESTAMP},
+      CREATED_BY = #{createdBy,jdbcType=VARCHAR},
+      CREATED_DT = #{createdDt,jdbcType=TIMESTAMP},
+      VERSION = #{version,jdbcType=INTEGER},
+      UPDATED_BY = #{updatedBy,jdbcType=VARCHAR},
+      UPDATED_DT = #{updatedDt,jdbcType=TIMESTAMP},
+      CATALOGID = #{catalogid,jdbcType=INTEGER},
+      REAL_PAGE_NUMS = #{realPageNums,jdbcType=INTEGER} ,
+      UPLOAD_PAGE_NUMS = #{uploadPageNums,jdbcType=INTEGER},
+      CHECK_OPINION = #{checkOpinion,jdbcType=VARCHAR},
+      INSTRUCTOR_REMARK = #{instructorRemark,jdbcType=VARCHAR},
+      STATUS = #{status,jdbcType=INTEGER},
+      FILE_TYPE_CODE = #{fileTypeCode,jdbcType=VARCHAR},
+      FILE_TYPE = #{fileType,jdbcType=VARCHAR},
+      FILE_SIZE = #{fileSize,jdbcType=INTEGER},
+      REMARK = #{remark,jdbcType=VARCHAR},
+      CHECK_PERSON=#{checkPerson,jdbcType=VARCHAR},
+      CHECK_DATE=#{checkDate,jdbcType=TIMESTAMP}
+    where SID = #{sid,jdbcType=INTEGER}
+  </update>
+  <select id="searchByMap"  resultMap="BaseResultMapJoinEngConfMate" parameterType="java.util.Map" >
+    select
+    <include refid="Base_Column_List"/>,<include refid="Base_Column_List_EngConfMate"/>
+    from iams_arol_file_info left join
+    iams_pro_eng_conf_mate on MATE_SID=CATALOGID
+    <where>
+      <if test="unitType != null and unitType != ''">
+        and UNIT_TYPE like "%"#{unitType}"%"
+      </if>
+      <if test="isdirectory != null and isdirectory != ''">
+        and ISDIRECTORY =#{isdirectory}
+      </if>
+      <if test="engSid != null and engSid != ''">
+       and IAMS_AROL_FILE_INFO.ENG_SID=#{engSid}
+      </if>
+      <if test="isSelect != null and isSelect != ''">
+            <choose>
+                <when test="isSelect==1 and  archSid!= null and archSid != ''">
+                   and ARCH_SID= #{archSid,jdbcType=INTEGER}
+                </when>
+                <otherwise>
+                    and (ARCH_SID is null or ARCH_SID='')
+                </otherwise>
+            </choose>
+      </if>
+      <if test="matePSid != null and matePSid != ''">
+            and MATE_P_SID = #{matePSid}
+      </if>
+      <if test="fileNo != null and fileNo != ''">
+      and FILE_NO like #{fileNo}"%"
+      </if>
+      <if test="fileTitle != null and fileTitle != ''">
+      and FILE_TITLE like "%"#{fileTitle}"%"
+    </if>
+    <if test="status != null and status != ''">
+      and STATUS =#{status}
+    </if>
+    <if test="matePSidList != null and matePSidList != ''">
+        and  (MATE_P_SID in (${matePSidList}) or MATE_SID in (${matePSidList}))
+    </if>
+    </where>
+    ORDER by  FILE_NO ASC
+  </select>
+  <select id="countByEng"  resultType="integer" parameterType="java.util.Map" >
+    select
+    count(*)
+    from iams_arol_file_info
+    <where>
+      <if test="engType != null and engType != ''">
+        and exists(select 1 from iams_pro_eng_conf_mate where MATE_SID=CATALOGID
+        and ENG_SID = #{engType})
+      </if>
+      <if test="engSid != null and engSid != ''">
+        and ENG_SID=#{engSid}
+      </if>
+      <if test="fileNo != null and fileNo != ''">
+        and FILE_NO like #{fileNo}"%"
+      </if>
+      <if test="fileTitle != null and fileTitle != ''">
+        and FILE_TITLE like "%"#{fileTitle}"%"
+      </if>
+      <if test="status != null and status != ''">
+        and STATUS =#{status}
+      </if>
+    </where>
+  </select>
+  <select id="countUploadByMap" resultType="java.util.Map" parameterType="java.util.Map">
+    select IFNULL(sum(case when iams_arol_file_info.STATUS=0 then 0 else 1 end),0) upload,count(1) total
+    from iams_arol_file_info inner join iams_pro_eng_conf_mate on CATALOGID=MATE_SID
+    <where>
+      ISDIRECTORY=0
+      <if test="engSid != null and engSid != ''">
+        and iams_arol_file_info.ENG_SID=#{engSid}
+      </if>
+      <if test="fileNo != null and fileNo != ''">
+        and FILE_NO like #{fileNo}"%"
+      </if>
+    </where>
+  </select>
+  <select id="nextId" resultType="integer">
+    SELECT CASE WHEN max(SID) IS NULL
+    THEN 1
+    ELSE max(SID) + 1 END NEXTID
+    FROM iams_arol_file_info
+  </select>
+  <select id="cloneNextId" resultType="java.lang.String">
+    select case when
+      max(FILE_NO) is null then concat(#{fileNo},'-1')
+           else
+      concat(#{fileNo},'-',cast(replace(max(FILE_NO),concat(#{fileNo},'-'),'') as  SIGNED INTEGER)+1) end
+    from iams_arol_file_info where FILE_NO like concat(#{fileNo},'-%')  and ENG_SID=#{engSid}
+  </select>
+  <insert id="buildCatalogByEng" >
+    insert into iams_arol_file_info (
+      ENG_SID,FILE_NO,FILE_TITLE,STATUS,CATALOGID)
+      select #{engSid,jdbcType=INTEGER},MATE_VALUE,MATE_NAME,0,MATE_SID from iams_pro_eng_conf_mate
+      where ENG_SID=#{engType,jdbcType=INTEGER}
+  </insert>
+</mapper>

@@ -1,0 +1,366 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.build4d.project.dbaccess.dao.ProOuterOrganMapper">
+  <resultMap id="BaseResultMap" type="com.build4d.project.dbaccess.dbentities.ProOuterOrganEntity">
+    <constructor>
+      <idArg column="OORG_SID" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="OORG_NAME_CN" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="OORG_NAME_EN" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="OORG_TYPE" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="OORG_CODE" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="OORG_AREA" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="OORG_POSTAL_CODE" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="OORG_ADDR" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="OORG_LEGAL_NAME" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="OORG_LEGAL_IDCARD" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="OORG_CONTACTS" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="OORG_CONT_MOBILE" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="OORG_PHONE" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="OORG_EMAIL" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="OORG_FAX" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="OORG_INTRODUCTION" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="OORG_DESC" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="OORG_CREATE_TIME" javaType="java.util.Date" jdbcType="TIMESTAMP" />
+      <arg column="OORG_ACCOUNT" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="OORG_PSW" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="OORG_ORDER" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="OORG_STATUS" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="OORG_ORGNA_ID" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="OORG_ORGNA_TYPE" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="OORG_CREATERID" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="OORG_CREATER" javaType="java.lang.String" jdbcType="VARCHAR" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List">
+    OORG_SID, OORG_NAME_CN, OORG_NAME_EN, OORG_TYPE, OORG_CODE, OORG_AREA, OORG_POSTAL_CODE, 
+    OORG_ADDR, OORG_LEGAL_NAME, OORG_LEGAL_IDCARD, OORG_CONTACTS, OORG_CONT_MOBILE, OORG_PHONE, 
+    OORG_EMAIL, OORG_FAX, OORG_INTRODUCTION, OORG_DESC, OORG_CREATE_TIME, OORG_ACCOUNT, 
+    OORG_PSW, OORG_ORDER, OORG_STATUS, OORG_ORGNA_ID, OORG_ORGNA_TYPE, OORG_CREATERID, 
+    OORG_CREATER
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from iams_pro_outer_organ
+    where OORG_SID = #{oorgSid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from iams_pro_outer_organ
+    where OORG_SID = #{oorgSid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.build4d.project.dbaccess.dbentities.ProOuterOrganEntity">
+    insert into iams_pro_outer_organ (OORG_SID, OORG_NAME_CN, OORG_NAME_EN, 
+      OORG_TYPE, OORG_CODE, OORG_AREA, 
+      OORG_POSTAL_CODE, OORG_ADDR, OORG_LEGAL_NAME, 
+      OORG_LEGAL_IDCARD, OORG_CONTACTS, OORG_CONT_MOBILE, 
+      OORG_PHONE, OORG_EMAIL, OORG_FAX, 
+      OORG_INTRODUCTION, OORG_DESC, OORG_CREATE_TIME, 
+      OORG_ACCOUNT, OORG_PSW, OORG_ORDER, 
+      OORG_STATUS, OORG_ORGNA_ID, OORG_ORGNA_TYPE, 
+      OORG_CREATERID, OORG_CREATER)
+    values (#{oorgSid,jdbcType=INTEGER}, #{oorgNameCn,jdbcType=VARCHAR}, #{oorgNameEn,jdbcType=VARCHAR}, 
+      #{oorgType,jdbcType=VARCHAR}, #{oorgCode,jdbcType=VARCHAR}, #{oorgArea,jdbcType=VARCHAR}, 
+      #{oorgPostalCode,jdbcType=VARCHAR}, #{oorgAddr,jdbcType=VARCHAR}, #{oorgLegalName,jdbcType=VARCHAR}, 
+      #{oorgLegalIdcard,jdbcType=VARCHAR}, #{oorgContacts,jdbcType=VARCHAR}, #{oorgContMobile,jdbcType=VARCHAR}, 
+      #{oorgPhone,jdbcType=VARCHAR}, #{oorgEmail,jdbcType=VARCHAR}, #{oorgFax,jdbcType=VARCHAR}, 
+      #{oorgIntroduction,jdbcType=VARCHAR}, #{oorgDesc,jdbcType=VARCHAR}, #{oorgCreateTime,jdbcType=TIMESTAMP}, 
+      #{oorgAccount,jdbcType=VARCHAR}, #{oorgPsw,jdbcType=VARCHAR}, #{oorgOrder,jdbcType=INTEGER}, 
+      #{oorgStatus,jdbcType=INTEGER}, #{oorgOrgnaId,jdbcType=VARCHAR}, #{oorgOrgnaType,jdbcType=VARCHAR}, 
+      #{oorgCreaterid,jdbcType=VARCHAR}, #{oorgCreater,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.build4d.project.dbaccess.dbentities.ProOuterOrganEntity">
+    insert into iams_pro_outer_organ
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="oorgSid != null">
+        OORG_SID,
+      </if>
+      <if test="oorgNameCn != null">
+        OORG_NAME_CN,
+      </if>
+      <if test="oorgNameEn != null">
+        OORG_NAME_EN,
+      </if>
+      <if test="oorgType != null">
+        OORG_TYPE,
+      </if>
+      <if test="oorgCode != null">
+        OORG_CODE,
+      </if>
+      <if test="oorgArea != null">
+        OORG_AREA,
+      </if>
+      <if test="oorgPostalCode != null">
+        OORG_POSTAL_CODE,
+      </if>
+      <if test="oorgAddr != null">
+        OORG_ADDR,
+      </if>
+      <if test="oorgLegalName != null">
+        OORG_LEGAL_NAME,
+      </if>
+      <if test="oorgLegalIdcard != null">
+        OORG_LEGAL_IDCARD,
+      </if>
+      <if test="oorgContacts != null">
+        OORG_CONTACTS,
+      </if>
+      <if test="oorgContMobile != null">
+        OORG_CONT_MOBILE,
+      </if>
+      <if test="oorgPhone != null">
+        OORG_PHONE,
+      </if>
+      <if test="oorgEmail != null">
+        OORG_EMAIL,
+      </if>
+      <if test="oorgFax != null">
+        OORG_FAX,
+      </if>
+      <if test="oorgIntroduction != null">
+        OORG_INTRODUCTION,
+      </if>
+      <if test="oorgDesc != null">
+        OORG_DESC,
+      </if>
+      <if test="oorgCreateTime != null">
+        OORG_CREATE_TIME,
+      </if>
+      <if test="oorgAccount != null">
+        OORG_ACCOUNT,
+      </if>
+      <if test="oorgPsw != null">
+        OORG_PSW,
+      </if>
+      <if test="oorgOrder != null">
+        OORG_ORDER,
+      </if>
+      <if test="oorgStatus != null">
+        OORG_STATUS,
+      </if>
+      <if test="oorgOrgnaId != null">
+        OORG_ORGNA_ID,
+      </if>
+      <if test="oorgOrgnaType != null">
+        OORG_ORGNA_TYPE,
+      </if>
+      <if test="oorgCreaterid != null">
+        OORG_CREATERID,
+      </if>
+      <if test="oorgCreater != null">
+        OORG_CREATER,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="oorgSid != null">
+        #{oorgSid,jdbcType=INTEGER},
+      </if>
+      <if test="oorgNameCn != null">
+        #{oorgNameCn,jdbcType=VARCHAR},
+      </if>
+      <if test="oorgNameEn != null">
+        #{oorgNameEn,jdbcType=VARCHAR},
+      </if>
+      <if test="oorgType != null">
+        #{oorgType,jdbcType=VARCHAR},
+      </if>
+      <if test="oorgCode != null">
+        #{oorgCode,jdbcType=VARCHAR},
+      </if>
+      <if test="oorgArea != null">
+        #{oorgArea,jdbcType=VARCHAR},
+      </if>
+      <if test="oorgPostalCode != null">
+        #{oorgPostalCode,jdbcType=VARCHAR},
+      </if>
+      <if test="oorgAddr != null">
+        #{oorgAddr,jdbcType=VARCHAR},
+      </if>
+      <if test="oorgLegalName != null">
+        #{oorgLegalName,jdbcType=VARCHAR},
+      </if>
+      <if test="oorgLegalIdcard != null">
+        #{oorgLegalIdcard,jdbcType=VARCHAR},
+      </if>
+      <if test="oorgContacts != null">
+        #{oorgContacts,jdbcType=VARCHAR},
+      </if>
+      <if test="oorgContMobile != null">
+        #{oorgContMobile,jdbcType=VARCHAR},
+      </if>
+      <if test="oorgPhone != null">
+        #{oorgPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="oorgEmail != null">
+        #{oorgEmail,jdbcType=VARCHAR},
+      </if>
+      <if test="oorgFax != null">
+        #{oorgFax,jdbcType=VARCHAR},
+      </if>
+      <if test="oorgIntroduction != null">
+        #{oorgIntroduction,jdbcType=VARCHAR},
+      </if>
+      <if test="oorgDesc != null">
+        #{oorgDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="oorgCreateTime != null">
+        #{oorgCreateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="oorgAccount != null">
+        #{oorgAccount,jdbcType=VARCHAR},
+      </if>
+      <if test="oorgPsw != null">
+        #{oorgPsw,jdbcType=VARCHAR},
+      </if>
+      <if test="oorgOrder != null">
+        #{oorgOrder,jdbcType=INTEGER},
+      </if>
+      <if test="oorgStatus != null">
+        #{oorgStatus,jdbcType=INTEGER},
+      </if>
+      <if test="oorgOrgnaId != null">
+        #{oorgOrgnaId,jdbcType=VARCHAR},
+      </if>
+      <if test="oorgOrgnaType != null">
+        #{oorgOrgnaType,jdbcType=VARCHAR},
+      </if>
+      <if test="oorgCreaterid != null">
+        #{oorgCreaterid,jdbcType=VARCHAR},
+      </if>
+      <if test="oorgCreater != null">
+        #{oorgCreater,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.build4d.project.dbaccess.dbentities.ProOuterOrganEntity">
+    update iams_pro_outer_organ
+    <set>
+      <if test="oorgNameCn != null">
+        OORG_NAME_CN = #{oorgNameCn,jdbcType=VARCHAR},
+      </if>
+      <if test="oorgNameEn != null">
+        OORG_NAME_EN = #{oorgNameEn,jdbcType=VARCHAR},
+      </if>
+      <if test="oorgType != null">
+        OORG_TYPE = #{oorgType,jdbcType=VARCHAR},
+      </if>
+      <if test="oorgCode != null">
+        OORG_CODE = #{oorgCode,jdbcType=VARCHAR},
+      </if>
+      <if test="oorgArea != null">
+        OORG_AREA = #{oorgArea,jdbcType=VARCHAR},
+      </if>
+      <if test="oorgPostalCode != null">
+        OORG_POSTAL_CODE = #{oorgPostalCode,jdbcType=VARCHAR},
+      </if>
+      <if test="oorgAddr != null">
+        OORG_ADDR = #{oorgAddr,jdbcType=VARCHAR},
+      </if>
+      <if test="oorgLegalName != null">
+        OORG_LEGAL_NAME = #{oorgLegalName,jdbcType=VARCHAR},
+      </if>
+      <if test="oorgLegalIdcard != null">
+        OORG_LEGAL_IDCARD = #{oorgLegalIdcard,jdbcType=VARCHAR},
+      </if>
+      <if test="oorgContacts != null">
+        OORG_CONTACTS = #{oorgContacts,jdbcType=VARCHAR},
+      </if>
+      <if test="oorgContMobile != null">
+        OORG_CONT_MOBILE = #{oorgContMobile,jdbcType=VARCHAR},
+      </if>
+      <if test="oorgPhone != null">
+        OORG_PHONE = #{oorgPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="oorgEmail != null">
+        OORG_EMAIL = #{oorgEmail,jdbcType=VARCHAR},
+      </if>
+      <if test="oorgFax != null">
+        OORG_FAX = #{oorgFax,jdbcType=VARCHAR},
+      </if>
+      <if test="oorgIntroduction != null">
+        OORG_INTRODUCTION = #{oorgIntroduction,jdbcType=VARCHAR},
+      </if>
+      <if test="oorgDesc != null">
+        OORG_DESC = #{oorgDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="oorgCreateTime != null">
+        OORG_CREATE_TIME = #{oorgCreateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="oorgAccount != null">
+        OORG_ACCOUNT = #{oorgAccount,jdbcType=VARCHAR},
+      </if>
+      <if test="oorgPsw != null">
+        OORG_PSW = #{oorgPsw,jdbcType=VARCHAR},
+      </if>
+      <if test="oorgOrder != null">
+        OORG_ORDER = #{oorgOrder,jdbcType=INTEGER},
+      </if>
+      <if test="oorgStatus != null">
+        OORG_STATUS = #{oorgStatus,jdbcType=INTEGER},
+      </if>
+      <if test="oorgOrgnaId != null">
+        OORG_ORGNA_ID = #{oorgOrgnaId,jdbcType=VARCHAR},
+      </if>
+      <if test="oorgOrgnaType != null">
+        OORG_ORGNA_TYPE = #{oorgOrgnaType,jdbcType=VARCHAR},
+      </if>
+      <if test="oorgCreaterid != null">
+        OORG_CREATERID = #{oorgCreaterid,jdbcType=VARCHAR},
+      </if>
+      <if test="oorgCreater != null">
+        OORG_CREATER = #{oorgCreater,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where OORG_SID = #{oorgSid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.build4d.project.dbaccess.dbentities.ProOuterOrganEntity">
+    update iams_pro_outer_organ
+    set OORG_NAME_CN = #{oorgNameCn,jdbcType=VARCHAR},
+      OORG_NAME_EN = #{oorgNameEn,jdbcType=VARCHAR},
+      OORG_TYPE = #{oorgType,jdbcType=VARCHAR},
+      OORG_CODE = #{oorgCode,jdbcType=VARCHAR},
+      OORG_AREA = #{oorgArea,jdbcType=VARCHAR},
+      OORG_POSTAL_CODE = #{oorgPostalCode,jdbcType=VARCHAR},
+      OORG_ADDR = #{oorgAddr,jdbcType=VARCHAR},
+      OORG_LEGAL_NAME = #{oorgLegalName,jdbcType=VARCHAR},
+      OORG_LEGAL_IDCARD = #{oorgLegalIdcard,jdbcType=VARCHAR},
+      OORG_CONTACTS = #{oorgContacts,jdbcType=VARCHAR},
+      OORG_CONT_MOBILE = #{oorgContMobile,jdbcType=VARCHAR},
+      OORG_PHONE = #{oorgPhone,jdbcType=VARCHAR},
+      OORG_EMAIL = #{oorgEmail,jdbcType=VARCHAR},
+      OORG_FAX = #{oorgFax,jdbcType=VARCHAR},
+      OORG_INTRODUCTION = #{oorgIntroduction,jdbcType=VARCHAR},
+      OORG_DESC = #{oorgDesc,jdbcType=VARCHAR},
+      OORG_CREATE_TIME = #{oorgCreateTime,jdbcType=TIMESTAMP},
+      OORG_ACCOUNT = #{oorgAccount,jdbcType=VARCHAR},
+      OORG_PSW = #{oorgPsw,jdbcType=VARCHAR},
+      OORG_ORDER = #{oorgOrder,jdbcType=INTEGER},
+      OORG_STATUS = #{oorgStatus,jdbcType=INTEGER},
+      OORG_ORGNA_ID = #{oorgOrgnaId,jdbcType=VARCHAR},
+      OORG_ORGNA_TYPE = #{oorgOrgnaType,jdbcType=VARCHAR},
+      OORG_CREATERID = #{oorgCreaterid,jdbcType=VARCHAR},
+      OORG_CREATER = #{oorgCreater,jdbcType=VARCHAR}
+    where OORG_SID = #{oorgSid,jdbcType=INTEGER}
+  </update>
+
+  <delete id="deleteAll">
+    delete from iams_pro_outer_organ
+  </delete>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from iams_pro_outer_organ ORDER by OORG_ORDER ASC
+  </select>
+  <select id="nextId" resultType="integer">
+    select case when max(OORG_SID) is null then 1 else max(OORG_SID)+1 end NEXTID from iams_pro_outer_organ
+  </select>
+  <select id="nextOrderNum" resultType="integer">
+    select case when max(OORG_ORDER) is null then 1 else max(OORG_ORDER)+1 end ORDERNUM from iams_pro_outer_organ
+  </select>
+
+  <select id="searchByOrganType" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from iams_pro_outer_organ
+    where OORG_TYPE = #{oorg_type}
+  </select>
+</mapper>

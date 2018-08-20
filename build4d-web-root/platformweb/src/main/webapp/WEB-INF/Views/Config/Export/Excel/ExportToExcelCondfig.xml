@@ -1,0 +1,348 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Config xmlns="http://www.sevenstar.com/ExportToExcel/ExportToExcelCondfigSchema.xsd">
+    <Export Id="" Name="" ExportFileName="">
+        <MainDataSource>
+            <SQLDataSource Enable="True" Key="">
+                <SQL/>
+            </SQLDataSource>
+            <APIDataSource>
+                <FullClassName></FullClassName>
+            </APIDataSource>
+        </MainDataSource>
+        <Template>
+            <ExportCaption>
+                <Style/>
+                <Caption></Caption>
+            </ExportCaption>
+            <UserCustomizeGroupOrder>
+                <Group/>
+            </UserCustomizeGroupOrder>
+            <Row>
+                <Cell>
+                </Cell>
+            </Row>
+        </Template>
+    </Export>
+    <Export Id="demo2" Name="测试样例" ExportFileName="测试样例demo2" UserCustomize="True" Run="OnlyTitle">
+        <MainDataSource>
+            <SQLDataSource Enable="True" Key="ID">
+                <SQL From="CategoryView">
+                    <![CDATA[]]>
+                </SQL>
+            </SQLDataSource>
+            <APIDataSource Enable="False"  Key="ID">
+                <FullClassName><![CDATA[]]></FullClassName>
+            </APIDataSource>
+        </MainDataSource>
+        <SubDataSource>
+            <SQLDataSource Enable="True" Name="Sub1" FKKey="FKID" Key="ID">
+                <SQL>
+                    <![CDATA[
+                       Select * from tapp_organ
+                    ]]>
+                </SQL>
+            </SQLDataSource>
+            <APIDataSource Enable="False" Name="Sub2" FKKey="FKID" Key="ID">
+                <FullClassName><![CDATA[]]></FullClassName>
+            </APIDataSource>
+        </SubDataSource>
+        <VTConvertDataSource>
+            <SQLDataSource Key="VTSQLSex">
+                <![CDATA[
+                    select '1' as Value,'数据库-男' as Text
+                        union
+                    select '2' as Value,'数据库-女' as Text
+                ]]>
+            </SQLDataSource>
+            <DictionaryDataSource Key="VTDictSex">
+                <Item>
+                    <Value>
+                        <![CDATA[1]]>
+                    </Value>
+                    <Text>
+                        <![CDATA[男]]>
+                    </Text>
+                </Item>
+                <Item>
+                    <Value>
+                        <![CDATA[2]]>
+                    </Value>
+                    <Text>
+                        <![CDATA[女]]>
+                    </Text>
+                </Item>
+            </DictionaryDataSource>
+            <ApiDataSource Key="VTAPI"><FullClassName><![CDATA[]]></FullClassName></ApiDataSource>
+        </VTConvertDataSource>
+        <Formaters>
+            <Formater Name="ConsolidationDateDemo" Desc="合并本人身份证开始时间和结束时间">
+                <FullClassName>com.sevenstar.platform.categoryschema.export.excel.formater.ConsolidationDateDemo</FullClassName>
+            </Formater>
+        </Formaters>
+        <Template autoSizeColumn="False">
+            <ExportCaption>
+                <Style Border="Thin" Width="" Height="50" ForegroundColor="蓝灰色" FontSize="15" FontColor="深红" HorizontalAlignment="Center" VerticalAlignment=""></Style>
+                <Caption>
+                    <![CDATA[
+                        demo2导出文件标题2222221111。。。
+                    ]]>
+                </Caption>
+            </ExportCaption>
+            <UserCustomizeGroupOrder>
+                <Group Name="基础信息"></Group>
+                <Group Name="本人信息"></Group>
+                <Group Name="配偶信息"></Group>
+            </UserCustomizeGroupOrder>
+            <Row RowHeigth="40">
+                <Cell MergerCell="1" MergerRow="3">
+                    <UserCustomize Enable="True" Name="序号" IncludeName="" Group="基础信息"></UserCustomize>
+                    <Bind DataSource="" Field="ID" VTConverterRef="" FormaterRef="" DefaultValue=""></Bind>
+                    <TitleStyle Border="" Width="" Height="30" ForegroundColor="天蓝色" FontSize="" FontColor="深绿色" HorizontalAlignment="Left" VerticalAlignment=""></TitleStyle>
+                    <DataStyle Border="" Width="" Height="30" ForegroundColor="深黄色" FontSize="" FontColor="深绿色" HorizontalAlignment="Left" VerticalAlignment=""></DataStyle>
+                    <Caption><![CDATA[序号]]></Caption>
+                </Cell>
+                <Cell MergerCell="6">
+                    <UserCustomize IncludeName="本人姓名;本人性别;本人身份证号;本人身份证有效期;本人-最高学历-学校;本人-最高学历-时间"></UserCustomize>
+                    <TitleStyle ForegroundColor="红色"></TitleStyle>
+                    <Caption><![CDATA[本人信息]]></Caption>
+                </Cell>
+                <Cell MergerRow="3" BindField="">
+                    <UserCustomize Enable="True" Name="结婚证号" Group="婚姻信息"></UserCustomize>
+                    <Bind Field="F_MARRY_CODE"></Bind>
+                    <Caption><![CDATA[结婚证号]]></Caption>
+                </Cell>
+                <Cell MergerRow="3" FormaterRef="" DefaultConverter="ToShortDateTime">
+                    <UserCustomize Enable="True" Name="结婚时间" Group="婚姻信息"></UserCustomize>
+                    <Bind Field="F_MARRY_DATE" FormaterRef="" DefaultConverter="ToShortDateTime"></Bind>
+                    <Caption><![CDATA[结婚时间]]></Caption>
+                </Cell>
+                <Cell MergerCell="6">
+                    <UserCustomize IncludeName="配偶姓名;配偶性别;配偶身份证;配偶身份证有效期;配偶-最高学历-学校;配偶-最高学历-时间"></UserCustomize>
+                    <Caption><![CDATA[配偶信息]]></Caption>
+                </Cell>
+                <Cell MergerCell="3">
+                    <UserCustomize IncludeName="子女姓名;子女年龄;子女性别"></UserCustomize>
+                    <Caption><![CDATA[子女信息]]></Caption>
+                </Cell>
+                <Cell MergerCell="2" Caption="房产信息" UserCustomizeIncludeName="产权证号;房屋地址"></Cell>
+            </Row>
+            <Row>
+                <Cell MergerRow="2">
+                    <Bind Field="F_SELF_NAME"></Bind>
+                    <UserCustomize Enable="True" Name="本人姓名" Group="本人信息" Caption="姓名"></UserCustomize>
+                    <TitleStyle Width="20"></TitleStyle>
+                    <Caption><![CDATA[姓名]]></Caption>
+                </Cell>
+                <Cell MergerRow="2" BindField="SELF_SEX">
+                    <Bind Field="F_SELF_SEX" VTConverterRef="VTDictSex"></Bind>
+                    <UserCustomize Enable="True" Name="本人性别" Group="本人信息"></UserCustomize>
+                    <Caption><![CDATA[性别]]></Caption>
+                </Cell>
+                <Cell MergerCell="2">
+                    <UserCustomize IncludeName="本人身份证号;本人身份证有效期"></UserCustomize>
+                    <Caption><![CDATA[身份证信息]]></Caption>
+                </Cell>
+                <Cell MergerCell="2">
+                    <UserCustomize IncludeName="本人-最高学历-学校;本人-最高学历-时间"></UserCustomize>
+                    <Caption><![CDATA[最高学历信息]]></Caption>
+                </Cell>
+                <Cell MergerRow="2" BindField="F_SPOUSE_NAME" UserCustomizeEnable="True" UserCustomizeName="配偶姓名" Caption="姓名" UserCustomizeGroup="配偶信息">
+                    <TitleStyle ForegroundColor="天蓝色"></TitleStyle>
+                </Cell>
+                <Cell MergerRow="2" BindField="F_SPOUSE_SEX" VTConverterRef="VTSQLSex" FormaterRef="" DefaultValue="" UserCustomizeEnable="True" UserCustomizeName="配偶性别" UserCustomizeCaption="性别" Caption="性别" UserCustomizeGroup="配偶信息"></Cell>
+                <Cell MergerCell="2" UserCustomizeIncludeName="配偶身份证;配偶身份证有效期" Caption="身份证信息" UserCustomizeGroup="配偶信息"></Cell>
+                <Cell MergerCell="2" UserCustomizeIncludeName="配偶-最高学历-学校;配偶-最高学历-时间" Caption="最高学历信息"></Cell>
+                <Cell MergerRow="2" BindField="CHILD_NAME" DefaultValue="我哪里知道哦！" UserCustomizeEnable="True" UserCustomizeName="子女姓名" Caption="姓名"  UserCustomizeGroup="子女信息">
+                    <TitleStyle ForegroundColor="天蓝色"></TitleStyle>
+                </Cell>
+                <Cell MergerRow="2" BindField="CHILD_AGE" UserCustomizeEnable="True" UserCustomizeName="子女年龄" Caption="年龄" UserCustomizeGroup="子女信息"></Cell>
+                <Cell MergerRow="2" BindField="CHILD_SEX" VTConverterRef="VTSQLSex" UserCustomizeEnable="True" UserCustomizeName="子女性别" Caption="性别" UserCustomizeGroup="子女信息"></Cell>
+                <Cell MergerRow="2" BindDataSource="" BindField="HOUSE_CODE" UserCustomizeEnable="True" UserCustomizeName="产权证号" Caption="产权证号" UserCustomizeGroup="房产信息"></Cell>
+                <Cell MergerRow="2" BindField="HOUSE_ADDRESS" UserCustomizeEnable="True" UserCustomizeName="房屋地址" Caption="房屋地址" UserCustomizeGroup="房产信息"></Cell>
+            </Row>
+            <Row>
+                <Cell  BindField="F_SELF_IDCARD" UserCustomizeEnable="True" UserCustomizeName="本人身份证号" Caption="身份证号" UserCustomizeGroup="本人信息"></Cell>
+                <Cell BindField="F_SELF_IDCARD_SD" FormaterRef="ConsolidationDateDemo" UserCustomizeEnable="True" UserCustomizeName="本人身份证有效期" Caption="有效期" UserCustomizeGroup="本人信息"></Cell>
+                <Cell BindField="F_SELF_SCHOOL" UserCustomizeEnable="True" UserCustomizeName="本人-最高学历-学校" Caption="学校" UserCustomizeGroup="本人信息"></Cell>
+                <Cell BindField="F_SELF_SCHOOL_DATE" UserCustomizeEnable="True" UserCustomizeName="本人-最高学历-时间" Caption="期限" UserCustomizeGroup="本人信息"></Cell>
+                <Cell BindField="F_SPOUSE_IDCARD" UserCustomizeEnable="True" UserCustomizeName="配偶身份证" Caption="身份证号"  UserCustomizeGroup="配偶信息"></Cell>
+                <Cell BindField="F_SPOUSE_IDCARD_SD" UserCustomizeEnable="True" UserCustomizeName="配偶身份证有效期" Caption="有效期" UserCustomizeGroup="配偶信息"></Cell>
+                <Cell BindField="F_SPOUSE_SCHOOL" UserCustomizeEnable="True" UserCustomizeName="配偶-最高学历-学校" Caption="学校" UserCustomizeGroup="配偶信息"></Cell>
+                <Cell BindField="F_SPOUSE_SCHOOL_DATE" UserCustomizeEnable="True" UserCustomizeName="配偶-最高学历-时间" Caption="期限" UserCustomizeGroup="配偶信息"></Cell>
+            </Row>
+        </Template>
+    </Export>
+    <Export Id="demo3" Name="测试样例" ExportFileName="测试样例demo3合并数据" UserCustomize="True">
+        <MainDataSource>
+            <SQLDataSource Enable="True" Key="ID">
+                <SQL From="CategoryView">
+                    <![CDATA[
+                        select
+                            ID,'假的成龙' as F_SELF_NAME,F_SELF_SEX,F_SELF_IDCARD,F_SELF_IDCARD_SD,F_SELF_IDCARD_ED,F_SELF_SCHOOL,F_SELF_SCHOOL_DATE,
+                            F_MARRY_CODE,F_MARRY_DATE,
+                            F_SPOUSE_NAME,F_SPOUSE_IDCARD,F_SPOUSE_SEX,F_SPOUSE_IDCARD_SD,F_SPOUSE_IDCARD_ED ,F_SPOUSE_SCHOOL,F_SPOUSE_SCHOOL_DATE
+                            from TC_EXTO_EXCEL_MAIN
+                    ]]>
+                </SQL>
+            </SQLDataSource>
+            <APIDataSource Enable="False"  Key="ID">
+                <FullClassName><![CDATA[]]></FullClassName>
+            </APIDataSource>
+        </MainDataSource>
+        <SubDataSource>
+            <SQLDataSource Enable="True" Name="Child" FKKey="F_MAIN_ID" Key="ID">
+                <SQL>
+                    <![CDATA[
+                        select * from TC_EXTO_EXCEL_CHILD where F_MAIN_ID IN ({Main.ID.ToInList})
+                    ]]>
+                </SQL>
+            </SQLDataSource>
+            <SQLDataSource Enable="True" Name="House" FKKey="F_MAIN_ID" Key="ID">
+                <SQL>
+                    <![CDATA[
+                        select F_MAIN_ID,F_HOUSE_CODE,F_FULLADDRESS from TC_EXTO_EXCEL_HOUSE where F_MAIN_ID IN ({Main.ID.ToInList}) order by F_HOUSE_CODE
+                    ]]>
+                </SQL>
+            </SQLDataSource>
+            <SQLDataSource Enable="False" Name="House-back" FKKey="F_MAIN_ID" Key="ID">
+                <SQL>
+                    <![CDATA[
+                        select F_MAIN_ID,F_HOUSE_CODE,F_FULLADDRESS from TC_EXTO_EXCEL_HOUSE where F_MAIN_ID IN ({Main.ID.ToInList}) order by F_HOUSE_CODE
+                    ]]>
+                </SQL>
+            </SQLDataSource>
+            <APIDataSource Enable="True" Name="Sub2" FKKey="FKID" Key="ID">
+                <FullClassName><![CDATA[com.sevenstar.platform.categoryschema.export.excel.formater.GetHouseDataDemo]]></FullClassName>
+            </APIDataSource>
+        </SubDataSource>
+        <VTConvertDataSource>
+            <SQLDataSource Key="VTSQLSex">
+                <![CDATA[
+                    select '1' as Value,'数据库-男' as Text
+                        union
+                    select '2' as Value,'数据库-女' as Text
+                ]]>
+            </SQLDataSource>
+            <DictionaryDataSource Key="VTDictSex">
+                <Item>
+                    <Value>
+                        <![CDATA[1]]>
+                    </Value>
+                    <Text>
+                        <![CDATA[男]]>
+                    </Text>
+                </Item>
+                <Item>
+                    <Value>
+                        <![CDATA[2]]>
+                    </Value>
+                    <Text>
+                        <![CDATA[女]]>
+                    </Text>
+                </Item>
+            </DictionaryDataSource>
+            <ApiDataSource Key="VTAPI"><FullClassName><![CDATA[]]></FullClassName></ApiDataSource>
+        </VTConvertDataSource>
+        <Formaters>
+            <Formater Name="ConsolidationDateDemo" Desc="合并本人身份证开始时间和结束时间">
+                <FullClassName>com.sevenstar.platform.categoryschema.export.excel.formater.ConsolidationDateDemo</FullClassName>
+            </Formater>
+        </Formaters>
+        <Template autoSizeColumn="False">
+            <ExportCaption>
+                <Style Border="Thin" Width="" Height="50" ForegroundColor="蓝灰色" FontSize="15" FontColor="深红" HorizontalAlignment="Center" VerticalAlignment=""></Style>
+                <Caption>
+                    <![CDATA[
+                        demo2导出文件标题2222221111。。。
+                    ]]>
+                </Caption>
+            </ExportCaption>
+            <UserCustomizeGroupOrder>
+                <Group Name="基础信息"></Group>
+                <Group Name="本人信息"></Group>
+                <Group Name="配偶信息"></Group>
+            </UserCustomizeGroupOrder>
+            <Row RowHeigth="40">
+                <Cell MergerCell="1" MergerRow="3">
+                    <UserCustomize Enable="True" Name="序号" IncludeName="" Group="基础信息"></UserCustomize>
+                    <Bind DataSource="" Field="ID" DefaultConverter="ToRowNumber" VTConverterRef="" FormaterRef="" DefaultValue=""></Bind>
+                    <TitleStyle Border="" Width="" Height="30" ForegroundColor="天蓝色" FontSize="" FontColor="深绿色" HorizontalAlignment="Left" VerticalAlignment=""></TitleStyle>
+                    <DataStyle Border="" Width="" Height="30" ForegroundColor="深黄色" FontSize="" FontColor="深绿色" HorizontalAlignment="Left" VerticalAlignment=""></DataStyle>
+                    <Caption><![CDATA[序号]]></Caption>
+                </Cell>
+                <Cell MergerCell="6">
+                    <UserCustomize IncludeName="本人姓名;本人性别;本人身份证号;本人身份证有效期;本人-最高学历-学校;本人-最高学历-时间"></UserCustomize>
+                    <TitleStyle ForegroundColor="红色"></TitleStyle>
+                    <Caption><![CDATA[本人信息]]></Caption>
+                </Cell>
+                <Cell MergerRow="3" BindField="">
+                    <UserCustomize Enable="True" Name="结婚证号" Group="婚姻信息"></UserCustomize>
+                    <Bind Field="F_MARRY_CODE"></Bind>
+                    <Caption><![CDATA[结婚证号]]></Caption>
+                </Cell>
+                <Cell MergerRow="3" FormaterRef="" DefaultConverter="ToShortDateTime">
+                    <UserCustomize Enable="True" Name="结婚时间" Group="婚姻信息"></UserCustomize>
+                    <Bind Field="F_MARRY_DATE" FormaterRef="" DefaultConverter="ToShortDateTime"></Bind>
+                    <Caption><![CDATA[结婚时间]]></Caption>
+                </Cell>
+                <Cell MergerCell="6">
+                    <UserCustomize IncludeName="配偶姓名;配偶性别;配偶身份证;配偶身份证有效期;配偶-最高学历-学校;配偶-最高学历-时间"></UserCustomize>
+                    <Caption><![CDATA[配偶信息]]></Caption>
+                </Cell>
+                <Cell MergerCell="3">
+                    <UserCustomize IncludeName="子女姓名;子女年龄;子女性别"></UserCustomize>
+                    <Caption><![CDATA[子女信息]]></Caption>
+                </Cell>
+                <Cell MergerCell="2" Caption="房产信息" UserCustomizeIncludeName="产权证号;房屋地址"></Cell>
+            </Row>
+            <Row>
+                <Cell MergerRow="2">
+                    <Bind Field="F_SELF_NAME"></Bind>
+                    <UserCustomize Enable="True" Name="本人姓名" Group="本人信息" Caption="姓名"></UserCustomize>
+                    <TitleStyle Width="20"></TitleStyle>
+                    <Caption><![CDATA[姓名]]></Caption>
+                </Cell>
+                <Cell MergerRow="2" BindField="SELF_SEX">
+                    <Bind Field="F_SELF_SEX" VTConverterRef="VTDictSex"></Bind>
+                    <UserCustomize Enable="True" Name="本人性别" Group="本人信息"></UserCustomize>
+                    <Caption><![CDATA[性别]]></Caption>
+                </Cell>
+                <Cell MergerCell="2">
+                    <UserCustomize IncludeName="本人身份证号;本人身份证有效期"></UserCustomize>
+                    <Caption><![CDATA[身份证信息]]></Caption>
+                </Cell>
+                <Cell MergerCell="2">
+                    <UserCustomize IncludeName="本人-最高学历-学校;本人-最高学历-时间"></UserCustomize>
+                    <Caption><![CDATA[最高学历信息]]></Caption>
+                </Cell>
+                <Cell MergerRow="2" BindField="F_SPOUSE_NAME" UserCustomizeEnable="True" UserCustomizeName="配偶姓名" Caption="姓名" UserCustomizeGroup="配偶信息">
+                    <TitleStyle ForegroundColor="天蓝色"></TitleStyle>
+                </Cell>
+                <Cell MergerRow="2" BindField="F_SPOUSE_SEX" VTConverterRef="VTSQLSex" FormaterRef="" DefaultValue="" UserCustomizeEnable="True" UserCustomizeName="配偶性别" UserCustomizeCaption="性别" Caption="性别" UserCustomizeGroup="配偶信息"></Cell>
+                <Cell MergerCell="2" UserCustomizeIncludeName="配偶身份证;配偶身份证有效期" Caption="身份证信息" UserCustomizeGroup="配偶信息"></Cell>
+                <Cell MergerCell="2" UserCustomizeIncludeName="配偶-最高学历-学校;配偶-最高学历-时间" Caption="最高学历信息"></Cell>
+                <Cell MergerRow="2" BindDataSource="Child" BindField="F_CHILD_NAME" DefaultValue="" UserCustomizeEnable="True" UserCustomizeName="子女姓名" Caption="姓名"  UserCustomizeGroup="子女信息">
+                    <TitleStyle ForegroundColor="天蓝色"></TitleStyle>
+                </Cell>
+                <Cell MergerRow="2" BindDataSource="Child" BindField="F_CHILD_AGE" DefaultValue="" UserCustomizeEnable="True" UserCustomizeName="子女年龄" Caption="年龄" UserCustomizeGroup="子女信息"></Cell>
+                <Cell MergerRow="2" BindDataSource="Child" BindField="F_CHILD_SEX" VTConverterRef="VTDictSex" UserCustomizeEnable="True" UserCustomizeName="子女性别" Caption="性别" UserCustomizeGroup="子女信息"></Cell>
+                <Cell MergerRow="2" BindDataSource="House" BindField="F_HOUSE_CODE" UserCustomizeEnable="True" UserCustomizeName="产权证号" Caption="产权证号" UserCustomizeGroup="房产信息">
+                    <TitleStyle Width="22"></TitleStyle>
+                </Cell>
+                <Cell MergerRow="2" BindDataSource="House" BindField="F_FULLADDRESS" UserCustomizeEnable="True" UserCustomizeName="房屋地址" Caption="房屋地址" UserCustomizeGroup="房产信息">
+                    <TitleStyle Width="42"></TitleStyle>
+                </Cell>
+            </Row>
+            <Row>
+                <Cell BindField="F_SELF_IDCARD" UserCustomizeEnable="True" UserCustomizeName="本人身份证号" Caption="身份证号" UserCustomizeGroup="本人信息"></Cell>
+                <Cell BindField="F_SELF_IDCARD_SD" FormaterRef="ConsolidationDateDemo" UserCustomizeEnable="True" UserCustomizeName="本人身份证有效期" Caption="有效期" UserCustomizeGroup="本人信息"></Cell>
+                <Cell BindField="F_SELF_SCHOOL" UserCustomizeEnable="True" UserCustomizeName="本人-最高学历-学校" Caption="学校" UserCustomizeGroup="本人信息"></Cell>
+                <Cell BindField="F_SELF_SCHOOL_DATE" UserCustomizeEnable="True" UserCustomizeName="本人-最高学历-时间" Caption="期限" UserCustomizeGroup="本人信息"></Cell>
+                <Cell BindField="F_SPOUSE_IDCARD" UserCustomizeEnable="True" UserCustomizeName="配偶身份证" Caption="身份证号"  UserCustomizeGroup="配偶信息"></Cell>
+                <Cell BindField="F_SPOUSE_IDCARD_SD" UserCustomizeEnable="True" UserCustomizeName="配偶身份证有效期" Caption="有效期" UserCustomizeGroup="配偶信息"></Cell>
+                <Cell BindField="F_SPOUSE_SCHOOL" UserCustomizeEnable="True" UserCustomizeName="配偶-最高学历-学校" Caption="学校" UserCustomizeGroup="配偶信息"></Cell>
+                <Cell BindField="F_SPOUSE_SCHOOL_DATE" UserCustomizeEnable="True" UserCustomizeName="配偶-最高学历-时间" Caption="期限" UserCustomizeGroup="配偶信息"></Cell>
+            </Row>
+        </Template>
+    </Export>
+</Config>

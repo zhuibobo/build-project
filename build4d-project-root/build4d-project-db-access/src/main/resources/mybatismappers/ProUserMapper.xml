@@ -1,0 +1,297 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.build4d.project.dbaccess.dao.ProUserMapper">
+    <resultMap id="BaseResultMap" type="com.build4d.project.dbaccess.dbentities.ProUserEntity">
+        <constructor>
+            <idArg column="USER_SID" javaType="java.lang.Integer" jdbcType="INTEGER"/>
+            <arg column="USER_ORG_ID" javaType="java.lang.String" jdbcType="VARCHAR"/>
+            <arg column="USER_TYPE" javaType="java.lang.String" jdbcType="VARCHAR"/>
+            <arg column="USER_ACCOUNT" javaType="java.lang.String" jdbcType="VARCHAR"/>
+            <arg column="USER_PSW" javaType="java.lang.String" jdbcType="VARCHAR"/>
+            <arg column="USER_USERNAME" javaType="java.lang.String" jdbcType="VARCHAR"/>
+            <arg column="USER_PHONE" javaType="java.lang.String" jdbcType="VARCHAR"/>
+            <arg column="USER_MOBILE" javaType="java.lang.String" jdbcType="VARCHAR"/>
+            <arg column="USER_FAX" javaType="java.lang.String" jdbcType="VARCHAR"/>
+            <arg column="USER_WXNO" javaType="java.lang.String" jdbcType="VARCHAR"/>
+            <arg column="USER_WXBINDING" javaType="java.lang.String" jdbcType="VARCHAR"/>
+            <arg column="USER_ORDER" javaType="java.lang.Integer" jdbcType="INTEGER"/>
+            <arg column="USER_STATUS" javaType="java.lang.Integer" jdbcType="INTEGER"/>
+            <arg column="USER_DESC" javaType="java.lang.String" jdbcType="VARCHAR"/>
+            <arg column="CREATRE_ORG_ID" javaType="java.lang.String" jdbcType="VARCHAR" />
+        </constructor>
+    </resultMap>
+    <resultMap id="BaseResultMapJoin" type="com.build4d.project.dbaccess.dbentities.ProUserEntity"
+               extends="BaseResultMap">
+        <association property="proOrgan" javaType="com.build4d.project.dbaccess.dbentities.ProOrganEntity">
+            <constructor>
+                <idArg column="ORG_SID" javaType="java.lang.Integer" jdbcType="INTEGER"/>
+                <arg column="ORG_CODE" javaType="java.lang.String" jdbcType="VARCHAR"/>
+                <arg column="ORG_NAME" javaType="java.lang.String" jdbcType="VARCHAR"/>
+                <arg column="ORG_TYPE" javaType="java.lang.String" jdbcType="VARCHAR"/>
+            </constructor>
+        </association>
+    </resultMap>
+    <sql id="Base_Column_List">
+        USER_SID, USER_ORG_ID, USER_TYPE, USER_ACCOUNT, USER_PSW, USER_USERNAME, USER_PHONE,
+        USER_MOBILE, USER_FAX, USER_WXNO, USER_WXBINDING, USER_ORDER, USER_STATUS, USER_DESC,iams_pro_user.CREATRE_ORG_ID
+    </sql>
+    <sql id="Base_Column_List_new">
+        USER_SID, USER_ORG_ID, USER_TYPE, USER_ACCOUNT, USER_PSW, USER_USERNAME, USER_PHONE,
+        USER_MOBILE, USER_FAX, USER_WXNO, USER_WXBINDING, USER_ORDER, USER_STATUS, USER_DESC,proUser.CREATRE_ORG_ID
+    </sql>
+    <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from iams_pro_user
+        where USER_SID = #{userSid,jdbcType=INTEGER}
+    </select>
+    <select id="searchByMap" resultMap="BaseResultMapJoin" parameterType="java.util.Map">
+        select
+        <include refid="Base_Column_List_new"/>, ORG_SID, ORG_CODE,ORG_NAME,ORG_TYPE
+        from iams_pro_user proUser INNER JOIN iams_pro_organ proOrgan on USER_ORG_ID=ORG_SID
+        <where>
+            <if test="userType != null and userType != ''">
+                USER_TYPE=#{userType}
+            </if>
+            <if test="userOrgId != null and userOrgId != ''">
+                USER_ORG_ID=#{userOrgId}
+            </if>
+            <if test="orgName != null and orgName != ''">
+                and ORG_NAME like "%"#{orgName}"%"
+            </if>
+            <if test="userUsername != null and userUsername != ''">
+                and USER_USERNAME like "%"#{userUsername}"%"
+            </if>
+            <if test="userAccount != null and userAccount != ''">
+                and USER_ACCOUNT like "%"#{userAccount}"%"
+            </if>
+            <if test="creatreOrgId != null and creatreOrgId != ''">
+                and proUser.CREATRE_ORG_ID like "%"#{creatreOrgId}"%"
+            </if>
+        </where>
+        ORDER by USER_ORDER ASC
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+        DELETE FROM iams_pro_user
+        WHERE USER_SID = #{userSid,jdbcType=INTEGER}
+    </delete>
+    <insert id="insert" parameterType="com.build4d.project.dbaccess.dbentities.ProUserEntity">
+        INSERT INTO iams_pro_user (USER_SID, USER_ORG_ID, USER_TYPE,
+                                   USER_ACCOUNT, USER_PSW, USER_USERNAME,
+                                   USER_PHONE, USER_MOBILE, USER_FAX,
+                                   USER_WXNO, USER_WXBINDING, USER_ORDER,
+                                   USER_STATUS, USER_DESC,CREATRE_ORG_ID)
+        VALUES (#{userSid,jdbcType=INTEGER}, #{userOrgId,jdbcType=VARCHAR}, #{userType,jdbcType=VARCHAR},
+                                             #{userAccount,jdbcType=VARCHAR}, #{userPsw,jdbcType=VARCHAR},
+                                             #{userUsername,jdbcType=VARCHAR},
+                                             #{userPhone,jdbcType=VARCHAR}, #{userMobile,jdbcType=VARCHAR},
+                                             #{userFax,jdbcType=VARCHAR},
+                                             #{userWxno,jdbcType=VARCHAR}, #{userWxbinding,jdbcType=VARCHAR},
+                #{userOrder,jdbcType=INTEGER},
+                #{userStatus,jdbcType=INTEGER}, #{userDesc,jdbcType=VARCHAR}, #{creatreOrgId,jdbcType=VARCHAR})
+    </insert>
+    <insert id="insertSelective" parameterType="com.build4d.project.dbaccess.dbentities.ProUserEntity">
+        insert into iams_pro_user
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="userSid != null">
+                USER_SID,
+            </if>
+            <if test="userOrgId != null">
+                USER_ORG_ID,
+            </if>
+            <if test="userType != null">
+                USER_TYPE,
+            </if>
+            <if test="userAccount != null">
+                USER_ACCOUNT,
+            </if>
+            <if test="userPsw != null">
+                USER_PSW,
+            </if>
+            <if test="userUsername != null">
+                USER_USERNAME,
+            </if>
+            <if test="userPhone != null">
+                USER_PHONE,
+            </if>
+            <if test="userMobile != null">
+                USER_MOBILE,
+            </if>
+            <if test="userFax != null">
+                USER_FAX,
+            </if>
+            <if test="userWxno != null">
+                USER_WXNO,
+            </if>
+            <if test="userWxbinding != null">
+                USER_WXBINDING,
+            </if>
+            <if test="userOrder != null">
+                USER_ORDER,
+            </if>
+            <if test="userStatus != null">
+                USER_STATUS,
+            </if>
+            <if test="userDesc != null">
+                USER_DESC,
+            </if>
+            <if test="creatreOrgId != null">
+                CREATRE_ORG_ID,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="userSid != null">
+                #{userSid,jdbcType=INTEGER},
+            </if>
+            <if test="userOrgId != null">
+                #{userOrgId,jdbcType=VARCHAR},
+            </if>
+            <if test="userType != null">
+                #{userType,jdbcType=VARCHAR},
+            </if>
+            <if test="userAccount != null">
+                #{userAccount,jdbcType=VARCHAR},
+            </if>
+            <if test="userPsw != null">
+                #{userPsw,jdbcType=VARCHAR},
+            </if>
+            <if test="userUsername != null">
+                #{userUsername,jdbcType=VARCHAR},
+            </if>
+            <if test="userPhone != null">
+                #{userPhone,jdbcType=VARCHAR},
+            </if>
+            <if test="userMobile != null">
+                #{userMobile,jdbcType=VARCHAR},
+            </if>
+            <if test="userFax != null">
+                #{userFax,jdbcType=VARCHAR},
+            </if>
+            <if test="userWxno != null">
+                #{userWxno,jdbcType=VARCHAR},
+            </if>
+            <if test="userWxbinding != null">
+                #{userWxbinding,jdbcType=VARCHAR},
+            </if>
+            <if test="userOrder != null">
+                #{userOrder,jdbcType=INTEGER},
+            </if>
+            <if test="userStatus != null">
+                #{userStatus,jdbcType=INTEGER},
+            </if>
+            <if test="userDesc != null">
+                #{userDesc,jdbcType=VARCHAR},
+            </if>
+            <if test="creatreOrgId != null">
+                #{creatreOrgId,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.build4d.project.dbaccess.dbentities.ProUserEntity">
+        update iams_pro_user
+        <set>
+            <if test="userOrgId != null">
+                USER_ORG_ID = #{userOrgId,jdbcType=VARCHAR},
+            </if>
+            <if test="userType != null">
+                USER_TYPE = #{userType,jdbcType=VARCHAR},
+            </if>
+            <if test="userAccount != null">
+                USER_ACCOUNT = #{userAccount,jdbcType=VARCHAR},
+            </if>
+            <if test="userPsw != null">
+                USER_PSW = #{userPsw,jdbcType=VARCHAR},
+            </if>
+            <if test="userUsername != null">
+                USER_USERNAME = #{userUsername,jdbcType=VARCHAR},
+            </if>
+            <if test="userPhone != null">
+                USER_PHONE = #{userPhone,jdbcType=VARCHAR},
+            </if>
+            <if test="userMobile != null">
+                USER_MOBILE = #{userMobile,jdbcType=VARCHAR},
+            </if>
+            <if test="userFax != null">
+                USER_FAX = #{userFax,jdbcType=VARCHAR},
+            </if>
+            <if test="userWxno != null">
+                USER_WXNO = #{userWxno,jdbcType=VARCHAR},
+            </if>
+            <if test="userWxbinding != null">
+                USER_WXBINDING = #{userWxbinding,jdbcType=VARCHAR},
+            </if>
+            <if test="userOrder != null">
+                USER_ORDER = #{userOrder,jdbcType=INTEGER},
+            </if>
+            <if test="userStatus != null">
+                USER_STATUS = #{userStatus,jdbcType=INTEGER},
+            </if>
+            <if test="userDesc != null">
+                USER_DESC = #{userDesc,jdbcType=VARCHAR},
+            </if>
+            <if test="creatreOrgId != null">
+                CREATRE_ORG_ID = #{creatreOrgId,jdbcType=VARCHAR},
+            </if>
+        </set>
+        where USER_SID = #{userSid,jdbcType=INTEGER}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.build4d.project.dbaccess.dbentities.ProUserEntity">
+        UPDATE iams_pro_user
+        SET USER_ORG_ID    = #{userOrgId,jdbcType=VARCHAR},
+            USER_TYPE      = #{userType,jdbcType=VARCHAR},
+            USER_ACCOUNT   = #{userAccount,jdbcType=VARCHAR},
+            USER_PSW       = #{userPsw,jdbcType=VARCHAR},
+            USER_USERNAME  = #{userUsername,jdbcType=VARCHAR},
+            USER_PHONE     = #{userPhone,jdbcType=VARCHAR},
+            USER_MOBILE    = #{userMobile,jdbcType=VARCHAR},
+            USER_FAX       = #{userFax,jdbcType=VARCHAR},
+            USER_WXNO      = #{userWxno,jdbcType=VARCHAR},
+            USER_WXBINDING = #{userWxbinding,jdbcType=VARCHAR},
+            USER_ORDER     = #{userOrder,jdbcType=INTEGER},
+            USER_STATUS    = #{userStatus,jdbcType=INTEGER},
+            USER_DESC      = #{userDesc,jdbcType=VARCHAR},
+            CREATRE_ORG_ID = #{creatreOrgId,jdbcType=VARCHAR}
+        WHERE USER_SID = #{userSid,jdbcType=INTEGER}
+    </update>
+    <update id="updatePwd" parameterType="com.build4d.project.dbaccess.dbentities.ProUserEntity">
+        UPDATE iams_pro_user
+        SET
+            USER_PSW = #{userPsw,jdbcType=VARCHAR}
+        WHERE USER_SID = #{userSid,jdbcType=INTEGER}
+    </update>
+
+    <select id="selectAll" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from iams_pro_user ORDER by USER_ORDER ASC
+    </select>
+    <select id="nextId" resultType="integer">
+        SELECT CASE WHEN max(USER_SID) IS NULL
+            THEN 1
+               ELSE max(USER_SID) + 1 END NEXTID
+        FROM iams_pro_user
+    </select>
+    <select id="nextOrderNum" resultType="integer">
+        SELECT CASE WHEN max(USER_ORDER) IS NULL
+            THEN 1
+               ELSE max(USER_ORDER) + 1 END ORDERNUM
+        FROM iams_pro_user
+    </select>
+    <select id="existAccount" resultType="boolean">
+        select count(*) c from iams_pro_user
+        <where>
+            <if test="userAccount != null and userAccount != ''">
+                USER_ACCOUNT=#{userAccount,jdbcType=VARCHAR}
+            </if>
+            <if test="userSid != null">
+                and USER_SID!=#{userSid,jdbcType=INTEGER}
+            </if>
+        </where>
+    </select>
+    <select id="selectUserByAccountAndPwd" resultMap="BaseResultMap">
+        select * from iams_pro_user where USER_ACCOUNT=#{userAccount} and USER_PSW=#{userPsw}
+    </select>
+    <select id="selectUserByWxNo"  resultMap="BaseResultMap">
+        select * from iams_pro_user where USER_WXNO=#{openid}
+    </select>
+</mapper>

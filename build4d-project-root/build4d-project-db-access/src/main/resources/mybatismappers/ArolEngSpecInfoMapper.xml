@@ -1,0 +1,343 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.build4d.project.dbaccess.dao.ArolEngSpecInfoMapper">
+  <resultMap id="BaseResultMap" type="com.build4d.project.dbaccess.dbentities.ArolEngSpecInfoEntity">
+    <constructor>
+      <idArg column="ENG_SID" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="LAND_USE_AREA" javaType="java.math.BigDecimal" jdbcType="DECIMAL" />
+      <arg column="CONSTRUCTION_AREA" javaType="java.math.BigDecimal" jdbcType="DECIMAL" />
+      <arg column="ENG_BUDGET" javaType="java.math.BigDecimal" jdbcType="DECIMAL" />
+      <arg column="ENG_COST" javaType="java.math.BigDecimal" jdbcType="DECIMAL" />
+      <arg column="START_DATE" javaType="java.util.Date" jdbcType="TIMESTAMP" />
+      <arg column="END_DATE" javaType="java.util.Date" jdbcType="TIMESTAMP" />
+      <arg column="REQUEST_DATE" javaType="java.util.Date" jdbcType="TIMESTAMP" />
+      <arg column="APPROVAL_DATE" javaType="java.util.Date" jdbcType="TIMESTAMP" />
+      <arg column="LAND_USE_TYPE_CODE" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="LAND_SUPPLY_TYPE_CODE" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="LAND_PLANNING_TYPE_CODE" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="BUILDING_NUMS" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="TOTAL_LENGTH" javaType="java.math.BigDecimal" jdbcType="DECIMAL" />
+      <arg column="TERRAIN_NO" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="CREATED_BY" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="CREATED_DT" javaType="java.util.Date" jdbcType="TIMESTAMP" />
+      <arg column="VERSION" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="UPDATED_BY" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="UPDATED_DT" javaType="java.util.Date" jdbcType="TIMESTAMP" />
+      <arg column="SEISMIC_GRADE" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="DEFENSE_AREA" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="FIRE_GRADE" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="ENG_QUALITY" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="AWARDS_INFO" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="PARKING_NUM" javaType="java.lang.Integer" jdbcType="INTEGER" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List">
+    ENG_SID, LAND_USE_AREA, CONSTRUCTION_AREA, ENG_BUDGET, ENG_COST, START_DATE, END_DATE, 
+    REQUEST_DATE, APPROVAL_DATE, LAND_USE_TYPE_CODE, LAND_SUPPLY_TYPE_CODE, LAND_PLANNING_TYPE_CODE, 
+    BUILDING_NUMS, TOTAL_LENGTH, TERRAIN_NO, CREATED_BY, CREATED_DT, VERSION, UPDATED_BY, 
+    UPDATED_DT, SEISMIC_GRADE, DEFENSE_AREA, FIRE_GRADE, ENG_QUALITY, AWARDS_INFO, PARKING_NUM
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from iams_arol_eng_spec_info
+    where ENG_SID = #{engSid,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from iams_arol_eng_spec_info
+    where ENG_SID = #{engSid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.build4d.project.dbaccess.dbentities.ArolEngSpecInfoEntity">
+    insert into iams_arol_eng_spec_info (ENG_SID, LAND_USE_AREA, CONSTRUCTION_AREA, 
+      ENG_BUDGET, ENG_COST, START_DATE, 
+      END_DATE, REQUEST_DATE, APPROVAL_DATE, 
+      LAND_USE_TYPE_CODE, LAND_SUPPLY_TYPE_CODE, LAND_PLANNING_TYPE_CODE, 
+      BUILDING_NUMS, TOTAL_LENGTH, TERRAIN_NO, 
+      CREATED_BY, CREATED_DT, VERSION, 
+      UPDATED_BY, UPDATED_DT, SEISMIC_GRADE, 
+      DEFENSE_AREA, FIRE_GRADE, ENG_QUALITY, 
+      AWARDS_INFO, PARKING_NUM)
+    values (#{engSid,jdbcType=VARCHAR}, #{landUseArea,jdbcType=DECIMAL}, #{constructionArea,jdbcType=DECIMAL}, 
+      #{engBudget,jdbcType=DECIMAL}, #{engCost,jdbcType=DECIMAL}, #{startDate,jdbcType=TIMESTAMP}, 
+      #{endDate,jdbcType=TIMESTAMP}, #{requestDate,jdbcType=TIMESTAMP}, #{approvalDate,jdbcType=TIMESTAMP}, 
+      #{landUseTypeCode,jdbcType=VARCHAR}, #{landSupplyTypeCode,jdbcType=VARCHAR}, #{landPlanningTypeCode,jdbcType=VARCHAR}, 
+      #{buildingNums,jdbcType=INTEGER}, #{totalLength,jdbcType=DECIMAL}, #{terrainNo,jdbcType=VARCHAR}, 
+      #{createdBy,jdbcType=VARCHAR}, #{createdDt,jdbcType=TIMESTAMP}, #{version,jdbcType=INTEGER}, 
+      #{updatedBy,jdbcType=VARCHAR}, #{updatedDt,jdbcType=TIMESTAMP}, #{seismicGrade,jdbcType=VARCHAR}, 
+      #{defenseArea,jdbcType=VARCHAR}, #{fireGrade,jdbcType=VARCHAR}, #{engQuality,jdbcType=VARCHAR}, 
+      #{awardsInfo,jdbcType=VARCHAR}, #{parkingNum,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.build4d.project.dbaccess.dbentities.ArolEngSpecInfoEntity">
+    insert into iams_arol_eng_spec_info
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="engSid != null">
+        ENG_SID,
+      </if>
+      <if test="landUseArea != null">
+        LAND_USE_AREA,
+      </if>
+      <if test="constructionArea != null">
+        CONSTRUCTION_AREA,
+      </if>
+      <if test="engBudget != null">
+        ENG_BUDGET,
+      </if>
+      <if test="engCost != null">
+        ENG_COST,
+      </if>
+      <if test="startDate != null">
+        START_DATE,
+      </if>
+      <if test="endDate != null">
+        END_DATE,
+      </if>
+      <if test="requestDate != null">
+        REQUEST_DATE,
+      </if>
+      <if test="approvalDate != null">
+        APPROVAL_DATE,
+      </if>
+      <if test="landUseTypeCode != null">
+        LAND_USE_TYPE_CODE,
+      </if>
+      <if test="landSupplyTypeCode != null">
+        LAND_SUPPLY_TYPE_CODE,
+      </if>
+      <if test="landPlanningTypeCode != null">
+        LAND_PLANNING_TYPE_CODE,
+      </if>
+      <if test="buildingNums != null">
+        BUILDING_NUMS,
+      </if>
+      <if test="totalLength != null">
+        TOTAL_LENGTH,
+      </if>
+      <if test="terrainNo != null">
+        TERRAIN_NO,
+      </if>
+      <if test="createdBy != null">
+        CREATED_BY,
+      </if>
+      <if test="createdDt != null">
+        CREATED_DT,
+      </if>
+      <if test="version != null">
+        VERSION,
+      </if>
+      <if test="updatedBy != null">
+        UPDATED_BY,
+      </if>
+      <if test="updatedDt != null">
+        UPDATED_DT,
+      </if>
+      <if test="seismicGrade != null">
+        SEISMIC_GRADE,
+      </if>
+      <if test="defenseArea != null">
+        DEFENSE_AREA,
+      </if>
+      <if test="fireGrade != null">
+        FIRE_GRADE,
+      </if>
+      <if test="engQuality != null">
+        ENG_QUALITY,
+      </if>
+      <if test="awardsInfo != null">
+        AWARDS_INFO,
+      </if>
+      <if test="parkingNum != null">
+        PARKING_NUM,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="engSid != null">
+        #{engSid,jdbcType=VARCHAR},
+      </if>
+      <if test="landUseArea != null">
+        #{landUseArea,jdbcType=DECIMAL},
+      </if>
+      <if test="constructionArea != null">
+        #{constructionArea,jdbcType=DECIMAL},
+      </if>
+      <if test="engBudget != null">
+        #{engBudget,jdbcType=DECIMAL},
+      </if>
+      <if test="engCost != null">
+        #{engCost,jdbcType=DECIMAL},
+      </if>
+      <if test="startDate != null">
+        #{startDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="endDate != null">
+        #{endDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="requestDate != null">
+        #{requestDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="approvalDate != null">
+        #{approvalDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="landUseTypeCode != null">
+        #{landUseTypeCode,jdbcType=VARCHAR},
+      </if>
+      <if test="landSupplyTypeCode != null">
+        #{landSupplyTypeCode,jdbcType=VARCHAR},
+      </if>
+      <if test="landPlanningTypeCode != null">
+        #{landPlanningTypeCode,jdbcType=VARCHAR},
+      </if>
+      <if test="buildingNums != null">
+        #{buildingNums,jdbcType=INTEGER},
+      </if>
+      <if test="totalLength != null">
+        #{totalLength,jdbcType=DECIMAL},
+      </if>
+      <if test="terrainNo != null">
+        #{terrainNo,jdbcType=VARCHAR},
+      </if>
+      <if test="createdBy != null">
+        #{createdBy,jdbcType=VARCHAR},
+      </if>
+      <if test="createdDt != null">
+        #{createdDt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="version != null">
+        #{version,jdbcType=INTEGER},
+      </if>
+      <if test="updatedBy != null">
+        #{updatedBy,jdbcType=VARCHAR},
+      </if>
+      <if test="updatedDt != null">
+        #{updatedDt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="seismicGrade != null">
+        #{seismicGrade,jdbcType=VARCHAR},
+      </if>
+      <if test="defenseArea != null">
+        #{defenseArea,jdbcType=VARCHAR},
+      </if>
+      <if test="fireGrade != null">
+        #{fireGrade,jdbcType=VARCHAR},
+      </if>
+      <if test="engQuality != null">
+        #{engQuality,jdbcType=VARCHAR},
+      </if>
+      <if test="awardsInfo != null">
+        #{awardsInfo,jdbcType=VARCHAR},
+      </if>
+      <if test="parkingNum != null">
+        #{parkingNum,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.build4d.project.dbaccess.dbentities.ArolEngSpecInfoEntity">
+    update iams_arol_eng_spec_info
+    <set>
+      <if test="landUseArea != null">
+        LAND_USE_AREA = #{landUseArea,jdbcType=DECIMAL},
+      </if>
+      <if test="constructionArea != null">
+        CONSTRUCTION_AREA = #{constructionArea,jdbcType=DECIMAL},
+      </if>
+      <if test="engBudget != null">
+        ENG_BUDGET = #{engBudget,jdbcType=DECIMAL},
+      </if>
+      <if test="engCost != null">
+        ENG_COST = #{engCost,jdbcType=DECIMAL},
+      </if>
+      <if test="startDate != null">
+        START_DATE = #{startDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="endDate != null">
+        END_DATE = #{endDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="requestDate != null">
+        REQUEST_DATE = #{requestDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="approvalDate != null">
+        APPROVAL_DATE = #{approvalDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="landUseTypeCode != null">
+        LAND_USE_TYPE_CODE = #{landUseTypeCode,jdbcType=VARCHAR},
+      </if>
+      <if test="landSupplyTypeCode != null">
+        LAND_SUPPLY_TYPE_CODE = #{landSupplyTypeCode,jdbcType=VARCHAR},
+      </if>
+      <if test="landPlanningTypeCode != null">
+        LAND_PLANNING_TYPE_CODE = #{landPlanningTypeCode,jdbcType=VARCHAR},
+      </if>
+      <if test="buildingNums != null">
+        BUILDING_NUMS = #{buildingNums,jdbcType=INTEGER},
+      </if>
+      <if test="totalLength != null">
+        TOTAL_LENGTH = #{totalLength,jdbcType=DECIMAL},
+      </if>
+      <if test="terrainNo != null">
+        TERRAIN_NO = #{terrainNo,jdbcType=VARCHAR},
+      </if>
+      <if test="createdBy != null">
+        CREATED_BY = #{createdBy,jdbcType=VARCHAR},
+      </if>
+      <if test="createdDt != null">
+        CREATED_DT = #{createdDt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="version != null">
+        VERSION = #{version,jdbcType=INTEGER},
+      </if>
+      <if test="updatedBy != null">
+        UPDATED_BY = #{updatedBy,jdbcType=VARCHAR},
+      </if>
+      <if test="updatedDt != null">
+        UPDATED_DT = #{updatedDt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="seismicGrade != null">
+        SEISMIC_GRADE = #{seismicGrade,jdbcType=VARCHAR},
+      </if>
+      <if test="defenseArea != null">
+        DEFENSE_AREA = #{defenseArea,jdbcType=VARCHAR},
+      </if>
+      <if test="fireGrade != null">
+        FIRE_GRADE = #{fireGrade,jdbcType=VARCHAR},
+      </if>
+      <if test="engQuality != null">
+        ENG_QUALITY = #{engQuality,jdbcType=VARCHAR},
+      </if>
+      <if test="awardsInfo != null">
+        AWARDS_INFO = #{awardsInfo,jdbcType=VARCHAR},
+      </if>
+      <if test="parkingNum != null">
+        PARKING_NUM = #{parkingNum,jdbcType=INTEGER},
+      </if>
+    </set>
+    where ENG_SID = #{engSid,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.build4d.project.dbaccess.dbentities.ArolEngSpecInfoEntity">
+    update iams_arol_eng_spec_info
+    set LAND_USE_AREA = #{landUseArea,jdbcType=DECIMAL},
+      CONSTRUCTION_AREA = #{constructionArea,jdbcType=DECIMAL},
+      ENG_BUDGET = #{engBudget,jdbcType=DECIMAL},
+      ENG_COST = #{engCost,jdbcType=DECIMAL},
+      START_DATE = #{startDate,jdbcType=TIMESTAMP},
+      END_DATE = #{endDate,jdbcType=TIMESTAMP},
+      REQUEST_DATE = #{requestDate,jdbcType=TIMESTAMP},
+      APPROVAL_DATE = #{approvalDate,jdbcType=TIMESTAMP},
+      LAND_USE_TYPE_CODE = #{landUseTypeCode,jdbcType=VARCHAR},
+      LAND_SUPPLY_TYPE_CODE = #{landSupplyTypeCode,jdbcType=VARCHAR},
+      LAND_PLANNING_TYPE_CODE = #{landPlanningTypeCode,jdbcType=VARCHAR},
+      BUILDING_NUMS = #{buildingNums,jdbcType=INTEGER},
+      TOTAL_LENGTH = #{totalLength,jdbcType=DECIMAL},
+      TERRAIN_NO = #{terrainNo,jdbcType=VARCHAR},
+      CREATED_BY = #{createdBy,jdbcType=VARCHAR},
+      CREATED_DT = #{createdDt,jdbcType=TIMESTAMP},
+      VERSION = #{version,jdbcType=INTEGER},
+      UPDATED_BY = #{updatedBy,jdbcType=VARCHAR},
+      UPDATED_DT = #{updatedDt,jdbcType=TIMESTAMP},
+      SEISMIC_GRADE = #{seismicGrade,jdbcType=VARCHAR},
+      DEFENSE_AREA = #{defenseArea,jdbcType=VARCHAR},
+      FIRE_GRADE = #{fireGrade,jdbcType=VARCHAR},
+      ENG_QUALITY = #{engQuality,jdbcType=VARCHAR},
+      AWARDS_INFO = #{awardsInfo,jdbcType=VARCHAR},
+      PARKING_NUM = #{parkingNum,jdbcType=INTEGER}
+    where ENG_SID = #{engSid,jdbcType=VARCHAR}
+  </update>
+</mapper>

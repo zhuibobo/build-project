@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="build4d-base-log:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/build4d_base_log_jar</output-path>
+    <root id="archive" name="build4d-base-log.jar">
+      <element id="module-output" name="build4d-base-log" />
+    </root>
+  </artifact>
+</component>

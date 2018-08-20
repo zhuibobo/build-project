@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.build4d.project.dbaccess.dao.ProEngConfTypeMapper">
+  <resultMap id="BaseResultMap" type="com.build4d.project.dbaccess.dbentities.ProEngConfTypeEntity">
+    <constructor>
+      <idArg column="ENG_SID" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="ENG_VALUE" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="ENG_NAME" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="ENG_DESC" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="ENG_CREATE_TIME" javaType="java.util.Date" jdbcType="TIMESTAMP" />
+      <arg column="ENG_ORDER" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="ENG_STATUS" javaType="java.lang.Integer" jdbcType="INTEGER" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List">
+    ENG_SID, ENG_VALUE, ENG_NAME, ENG_DESC, ENG_CREATE_TIME, ENG_ORDER, ENG_STATUS
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from iams_pro_eng_conf_type
+    where ENG_SID = #{engSid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from iams_pro_eng_conf_type
+    where ENG_SID = #{engSid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.build4d.project.dbaccess.dbentities.ProEngConfTypeEntity">
+    insert into iams_pro_eng_conf_type (ENG_SID, ENG_VALUE, ENG_NAME, 
+      ENG_DESC, ENG_CREATE_TIME, ENG_ORDER, 
+      ENG_STATUS)
+    values (#{engSid,jdbcType=INTEGER}, #{engValue,jdbcType=VARCHAR}, #{engName,jdbcType=VARCHAR}, 
+      #{engDesc,jdbcType=VARCHAR}, #{engCreateTime,jdbcType=TIMESTAMP}, #{engOrder,jdbcType=INTEGER}, 
+      #{engStatus,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.build4d.project.dbaccess.dbentities.ProEngConfTypeEntity">
+    insert into iams_pro_eng_conf_type
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="engSid != null">
+        ENG_SID,
+      </if>
+      <if test="engValue != null">
+        ENG_VALUE,
+      </if>
+      <if test="engName != null">
+        ENG_NAME,
+      </if>
+      <if test="engDesc != null">
+        ENG_DESC,
+      </if>
+      <if test="engCreateTime != null">
+        ENG_CREATE_TIME,
+      </if>
+      <if test="engOrder != null">
+        ENG_ORDER,
+      </if>
+      <if test="engStatus != null">
+        ENG_STATUS,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="engSid != null">
+        #{engSid,jdbcType=INTEGER},
+      </if>
+      <if test="engValue != null">
+        #{engValue,jdbcType=VARCHAR},
+      </if>
+      <if test="engName != null">
+        #{engName,jdbcType=VARCHAR},
+      </if>
+      <if test="engDesc != null">
+        #{engDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="engCreateTime != null">
+        #{engCreateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="engOrder != null">
+        #{engOrder,jdbcType=INTEGER},
+      </if>
+      <if test="engStatus != null">
+        #{engStatus,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.build4d.project.dbaccess.dbentities.ProEngConfTypeEntity">
+    update iams_pro_eng_conf_type
+    <set>
+      <if test="engValue != null">
+        ENG_VALUE = #{engValue,jdbcType=VARCHAR},
+      </if>
+      <if test="engName != null">
+        ENG_NAME = #{engName,jdbcType=VARCHAR},
+      </if>
+      <if test="engDesc != null">
+        ENG_DESC = #{engDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="engCreateTime != null">
+        ENG_CREATE_TIME = #{engCreateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="engOrder != null">
+        ENG_ORDER = #{engOrder,jdbcType=INTEGER},
+      </if>
+      <if test="engStatus != null">
+        ENG_STATUS = #{engStatus,jdbcType=INTEGER},
+      </if>
+    </set>
+    where ENG_SID = #{engSid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.build4d.project.dbaccess.dbentities.ProEngConfTypeEntity">
+    update iams_pro_eng_conf_type
+    set ENG_VALUE = #{engValue,jdbcType=VARCHAR},
+      ENG_NAME = #{engName,jdbcType=VARCHAR},
+      ENG_DESC = #{engDesc,jdbcType=VARCHAR},
+      ENG_CREATE_TIME = #{engCreateTime,jdbcType=TIMESTAMP},
+      ENG_ORDER = #{engOrder,jdbcType=INTEGER},
+      ENG_STATUS = #{engStatus,jdbcType=INTEGER}
+    where ENG_SID = #{engSid,jdbcType=INTEGER}
+  </update>
+
+  <delete id="deleteAll">
+    delete from iams_pro_eng_conf_type
+  </delete>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from iams_pro_eng_conf_type ORDER by ENG_ORDER ASC
+  </select>
+  <select id="nextId" resultType="integer">
+    select case when max(ENG_SID) is null then 1 else max(ENG_SID)+1 end NEXTID from iams_pro_eng_conf_type
+  </select>
+  <select id="nextOrderNum" resultType="integer">
+    select case when max(ENG_ORDER) is null then 1 else max(ENG_ORDER)+1 end ORDERNUM from iams_pro_eng_conf_type
+  </select>
+</mapper>

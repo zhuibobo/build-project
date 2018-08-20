@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.build4d.project.dbaccess.dao.ArolEngHouseSpecMapper">
+  <resultMap id="BaseResultMap" type="com.build4d.project.dbaccess.dbentities.ArolEngHouseSpecEntity">
+    <constructor>
+      <idArg column="ENG_SID" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="HEIGHT" javaType="java.math.BigDecimal" jdbcType="DECIMAL" />
+      <arg column="UNDER_NUMS" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="OVER_NUMS" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="FLOOR_AREA" javaType="java.math.BigDecimal" jdbcType="DECIMAL" />
+      <arg column="UNDER_AREA" javaType="java.math.BigDecimal" jdbcType="DECIMAL" />
+      <arg column="FINISH_AREA" javaType="java.math.BigDecimal" jdbcType="DECIMAL" />
+      <arg column="CONS_TYPE_CODE" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="BUIDLING_NUMS" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="BASIS_TYPE_CODE" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="CREATED_BY" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="CREATED_DT" javaType="java.util.Date" jdbcType="TIMESTAMP" />
+      <arg column="VERSION" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="UPDATED_BY" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="UPDATED_DT" javaType="java.util.Date" jdbcType="TIMESTAMP" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List">
+    ENG_SID, HEIGHT, UNDER_NUMS, OVER_NUMS, FLOOR_AREA, UNDER_AREA, FINISH_AREA, CONS_TYPE_CODE, 
+    BUIDLING_NUMS, BASIS_TYPE_CODE, CREATED_BY, CREATED_DT, VERSION, UPDATED_BY, UPDATED_DT
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from iams_arol_eng_house_spec
+    where ENG_SID = #{engSid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from iams_arol_eng_house_spec
+    where ENG_SID = #{engSid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.build4d.project.dbaccess.dbentities.ArolEngHouseSpecEntity">
+    insert into iams_arol_eng_house_spec (ENG_SID, HEIGHT, UNDER_NUMS, 
+      OVER_NUMS, FLOOR_AREA, UNDER_AREA, 
+      FINISH_AREA, CONS_TYPE_CODE, BUIDLING_NUMS, 
+      BASIS_TYPE_CODE, CREATED_BY, CREATED_DT, 
+      VERSION, UPDATED_BY, UPDATED_DT
+      )
+    values (#{engSid,jdbcType=INTEGER}, #{height,jdbcType=DECIMAL}, #{underNums,jdbcType=INTEGER}, 
+      #{overNums,jdbcType=INTEGER}, #{floorArea,jdbcType=DECIMAL}, #{underArea,jdbcType=DECIMAL}, 
+      #{finishArea,jdbcType=DECIMAL}, #{consTypeCode,jdbcType=VARCHAR}, #{buidlingNums,jdbcType=INTEGER}, 
+      #{basisTypeCode,jdbcType=VARCHAR}, #{createdBy,jdbcType=VARCHAR}, #{createdDt,jdbcType=TIMESTAMP}, 
+      #{version,jdbcType=INTEGER}, #{updatedBy,jdbcType=VARCHAR}, #{updatedDt,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.build4d.project.dbaccess.dbentities.ArolEngHouseSpecEntity">
+    insert into iams_arol_eng_house_spec
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="engSid != null">
+        ENG_SID,
+      </if>
+      <if test="height != null">
+        HEIGHT,
+      </if>
+      <if test="underNums != null">
+        UNDER_NUMS,
+      </if>
+      <if test="overNums != null">
+        OVER_NUMS,
+      </if>
+      <if test="floorArea != null">
+        FLOOR_AREA,
+      </if>
+      <if test="underArea != null">
+        UNDER_AREA,
+      </if>
+      <if test="finishArea != null">
+        FINISH_AREA,
+      </if>
+      <if test="consTypeCode != null">
+        CONS_TYPE_CODE,
+      </if>
+      <if test="buidlingNums != null">
+        BUIDLING_NUMS,
+      </if>
+      <if test="basisTypeCode != null">
+        BASIS_TYPE_CODE,
+      </if>
+      <if test="createdBy != null">
+        CREATED_BY,
+      </if>
+      <if test="createdDt != null">
+        CREATED_DT,
+      </if>
+      <if test="version != null">
+        VERSION,
+      </if>
+      <if test="updatedBy != null">
+        UPDATED_BY,
+      </if>
+      <if test="updatedDt != null">
+        UPDATED_DT,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="engSid != null">
+        #{engSid,jdbcType=INTEGER},
+      </if>
+      <if test="height != null">
+        #{height,jdbcType=DECIMAL},
+      </if>
+      <if test="underNums != null">
+        #{underNums,jdbcType=INTEGER},
+      </if>
+      <if test="overNums != null">
+        #{overNums,jdbcType=INTEGER},
+      </if>
+      <if test="floorArea != null">
+        #{floorArea,jdbcType=DECIMAL},
+      </if>
+      <if test="underArea != null">
+        #{underArea,jdbcType=DECIMAL},
+      </if>
+      <if test="finishArea != null">
+        #{finishArea,jdbcType=DECIMAL},
+      </if>
+      <if test="consTypeCode != null">
+        #{consTypeCode,jdbcType=VARCHAR},
+      </if>
+      <if test="buidlingNums != null">
+        #{buidlingNums,jdbcType=INTEGER},
+      </if>
+      <if test="basisTypeCode != null">
+        #{basisTypeCode,jdbcType=VARCHAR},
+      </if>
+      <if test="createdBy != null">
+        #{createdBy,jdbcType=VARCHAR},
+      </if>
+      <if test="createdDt != null">
+        #{createdDt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="version != null">
+        #{version,jdbcType=INTEGER},
+      </if>
+      <if test="updatedBy != null">
+        #{updatedBy,jdbcType=VARCHAR},
+      </if>
+      <if test="updatedDt != null">
+        #{updatedDt,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.build4d.project.dbaccess.dbentities.ArolEngHouseSpecEntity">
+    update iams_arol_eng_house_spec
+    <set>
+      <if test="height != null">
+        HEIGHT = #{height,jdbcType=DECIMAL},
+      </if>
+      <if test="underNums != null">
+        UNDER_NUMS = #{underNums,jdbcType=INTEGER},
+      </if>
+      <if test="overNums != null">
+        OVER_NUMS = #{overNums,jdbcType=INTEGER},
+      </if>
+      <if test="floorArea != null">
+        FLOOR_AREA = #{floorArea,jdbcType=DECIMAL},
+      </if>
+      <if test="underArea != null">
+        UNDER_AREA = #{underArea,jdbcType=DECIMAL},
+      </if>
+      <if test="finishArea != null">
+        FINISH_AREA = #{finishArea,jdbcType=DECIMAL},
+      </if>
+      <if test="consTypeCode != null">
+        CONS_TYPE_CODE = #{consTypeCode,jdbcType=VARCHAR},
+      </if>
+      <if test="buidlingNums != null">
+        BUIDLING_NUMS = #{buidlingNums,jdbcType=INTEGER},
+      </if>
+      <if test="basisTypeCode != null">
+        BASIS_TYPE_CODE = #{basisTypeCode,jdbcType=VARCHAR},
+      </if>
+      <if test="createdBy != null">
+        CREATED_BY = #{createdBy,jdbcType=VARCHAR},
+      </if>
+      <if test="createdDt != null">
+        CREATED_DT = #{createdDt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="version != null">
+        VERSION = #{version,jdbcType=INTEGER},
+      </if>
+      <if test="updatedBy != null">
+        UPDATED_BY = #{updatedBy,jdbcType=VARCHAR},
+      </if>
+      <if test="updatedDt != null">
+        UPDATED_DT = #{updatedDt,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where ENG_SID = #{engSid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.build4d.project.dbaccess.dbentities.ArolEngHouseSpecEntity">
+    update iams_arol_eng_house_spec
+    set HEIGHT = #{height,jdbcType=DECIMAL},
+      UNDER_NUMS = #{underNums,jdbcType=INTEGER},
+      OVER_NUMS = #{overNums,jdbcType=INTEGER},
+      FLOOR_AREA = #{floorArea,jdbcType=DECIMAL},
+      UNDER_AREA = #{underArea,jdbcType=DECIMAL},
+      FINISH_AREA = #{finishArea,jdbcType=DECIMAL},
+      CONS_TYPE_CODE = #{consTypeCode,jdbcType=VARCHAR},
+      BUIDLING_NUMS = #{buidlingNums,jdbcType=INTEGER},
+      BASIS_TYPE_CODE = #{basisTypeCode,jdbcType=VARCHAR},
+      CREATED_BY = #{createdBy,jdbcType=VARCHAR},
+      CREATED_DT = #{createdDt,jdbcType=TIMESTAMP},
+      VERSION = #{version,jdbcType=INTEGER},
+      UPDATED_BY = #{updatedBy,jdbcType=VARCHAR},
+      UPDATED_DT = #{updatedDt,jdbcType=TIMESTAMP}
+    where ENG_SID = #{engSid,jdbcType=INTEGER}
+  </update>
+</mapper>

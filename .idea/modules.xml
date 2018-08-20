@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/build4d-base-root/build4d-base-config/build4d-base-config.iml" filepath="$PROJECT_DIR$/build4d-base-root/build4d-base-config/build4d-base-config.iml" />
+      <module fileurl="file://$PROJECT_DIR$/build4d-base-root/build4d-base-db-access/build4d-base-db-access.iml" filepath="$PROJECT_DIR$/build4d-base-root/build4d-base-db-access/build4d-base-db-access.iml" />
+      <module fileurl="file://$PROJECT_DIR$/build4d-base-root/build4d-base-license/build4d-base-license.iml" filepath="$PROJECT_DIR$/build4d-base-root/build4d-base-license/build4d-base-license.iml" />
+      <module fileurl="file://$PROJECT_DIR$/build4d-base-root/build4d-base-log/build4d-base-log.iml" filepath="$PROJECT_DIR$/build4d-base-root/build4d-base-log/build4d-base-log.iml" />
+      <module fileurl="file://$PROJECT_DIR$/build4d-base-root/build4d-base-root.iml" filepath="$PROJECT_DIR$/build4d-base-root/build4d-base-root.iml" />
+      <module fileurl="file://$PROJECT_DIR$/build4d-base-root/build4d-base-service/build4d-base-service.iml" filepath="$PROJECT_DIR$/build4d-base-root/build4d-base-service/build4d-base-service.iml" />
+      <module fileurl="file://$PROJECT_DIR$/build4d-base-root/build4d-base-tools/build4d-base-tools.iml" filepath="$PROJECT_DIR$/build4d-base-root/build4d-base-tools/build4d-base-tools.iml" />
+      <module fileurl="file://$PROJECT_DIR$/build4d-platform-root/build4d-platform-auth/build4d-platform-auth.iml" filepath="$PROJECT_DIR$/build4d-platform-root/build4d-platform-auth/build4d-platform-auth.iml" />
+      <module fileurl="file://$PROJECT_DIR$/build4d-platform-root/build4d-platform-builder/build4d-platform-builder.iml" filepath="$PROJECT_DIR$/build4d-platform-root/build4d-platform-builder/build4d-platform-builder.iml" />
+      <module fileurl="file://$PROJECT_DIR$/build4d-platform-root/build4d-platform-calendar/build4d-platform-calendar.iml" filepath="$PROJECT_DIR$/build4d-platform-root/build4d-platform-calendar/build4d-platform-calendar.iml" />
+      <module fileurl="file://$PROJECT_DIR$/build4d-platform-root/build4d-platform-datadict/build4d-platform-datadict.iml" filepath="$PROJECT_DIR$/build4d-platform-root/build4d-platform-datadict/build4d-platform-datadict.iml" />
+      <module fileurl="file://$PROJECT_DIR$/build4d-platform-root/build4d-platform-export/build4d-platform-export.iml" filepath="$PROJECT_DIR$/build4d-platform-root/build4d-platform-export/build4d-platform-export.iml" />
+      <module fileurl="file://$PROJECT_DIR$/build4d-platform-root/build4d-platform-file/build4d-platform-file.iml" filepath="$PROJECT_DIR$/build4d-platform-root/build4d-platform-file/build4d-platform-file.iml" />
+      <module fileurl="file://$PROJECT_DIR$/build4d-platform-root/build4d-platform-import/build4d-platform-import.iml" filepath="$PROJECT_DIR$/build4d-platform-root/build4d-platform-import/build4d-platform-import.iml" />
+      <module fileurl="file://$PROJECT_DIR$/build4d-platform-root/build4d-platform-numbercoder/build4d-platform-numbercoder.iml" filepath="$PROJECT_DIR$/build4d-platform-root/build4d-platform-numbercoder/build4d-platform-numbercoder.iml" />
+      <module fileurl="file://$PROJECT_DIR$/build4d-platform-root/build4d-platform-organ/build4d-platform-organ.iml" filepath="$PROJECT_DIR$/build4d-platform-root/build4d-platform-organ/build4d-platform-organ.iml" />
+      <module fileurl="file://$PROJECT_DIR$/build4d-platform-root/build4d-platform-root.iml" filepath="$PROJECT_DIR$/build4d-platform-root/build4d-platform-root.iml" />
+      <module fileurl="file://$PROJECT_DIR$/build4d-project-root/build4d-project-constructionproject/build4d-project-constructionproject.iml" filepath="$PROJECT_DIR$/build4d-project-root/build4d-project-constructionproject/build4d-project-constructionproject.iml" />
+      <module fileurl="file://$PROJECT_DIR$/build4d-project-root/build4d-project-db-access/build4d-project-db-access.iml" filepath="$PROJECT_DIR$/build4d-project-root/build4d-project-db-access/build4d-project-db-access.iml" />
+      <module fileurl="file://$PROJECT_DIR$/build4d-project-root/build4d-project-root.iml" filepath="$PROJECT_DIR$/build4d-project-root/build4d-project-root.iml" />
+      <module fileurl="file://$PROJECT_DIR$/build4d-root.iml" filepath="$PROJECT_DIR$/build4d-root.iml" />
+      <module fileurl="file://$PROJECT_DIR$/build4d-web-root/build4d-web-root.iml" filepath="$PROJECT_DIR$/build4d-web-root/build4d-web-root.iml" />
+      <module fileurl="file://$PROJECT_DIR$/build4d-web-root/platformweb/platformweb.iml" filepath="$PROJECT_DIR$/build4d-web-root/platformweb/platformweb.iml" />
+    </modules>
+  </component>
+</project>

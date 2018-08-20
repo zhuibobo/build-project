@@ -1,0 +1,27 @@
+*{
+	padding: 0;
+	/* [disabled]margin:0; */
+	font-family: '微软雅黑';
+	margin:0;
+}
+
+.dengluye{ background:url(../img/dengluyebeijin.jpg); }
+
+.dengluyehei{ width:100%; height:1080px; background: #000; opacity:0.5; position:fixed;}
+.biaodan{ background:#FFF; width:45%; height:880px; position: relative; top:100px; left:29%;}
+.dingbu{ background:url(../img/baojianding.png);  height:40px; width:100%; color:#FFF; font-size:16px;}
+.guanbi{ background: url(../img/baojianguanbi.png); width:22px; height:22px; float:right; margin-right:1%; margin-top:10px;}
+.dingbubiaoti{ float:left; line-height:40px; margin-left:1%;}
+.biaoti{ margin-left:3%; margin-top:20px; font-size:14px; float:left; }
+.tianxiang{ width:100%; float:left; margin-top:10px; }
+.xiangming{ display:inline-block; float:left; margin-left:15%; }
+input{ margin-right:1%;}
+.mianzhe{ float:left; margin-left:35%; margin-top:10px;}
+.xuanzhe{ float:left; display:inline-block;} 
+.mianzhezi{ float:left; display:inline-block; font-size:12px;}
+.mianzhezi a{ color:#004eff;}
+.baochun{ width:28%; height:40px; background:#009cdd; color:#FFF; float:left; border-radius:5px; text-align:center; line-height:40px; font-size:18px; margin-left:35%; margin-top:30px;}
+.fanhui{ width:11%; height:40px; background:#009cdd; color:#FFF; float:left; border-radius:5px; text-align:center; line-height:40px; font-size:18px; margin-left:4%; margin-top:30px;}
+.anniu{ float:left; width:100%;}
+.hongxing{ float:right; color:#F00; margin-right:13%; line-height:22px;}
+.zhongxian{ width:3%; height:1px; background:#999; float:right; margin-right:1%; margin-top:9px;}

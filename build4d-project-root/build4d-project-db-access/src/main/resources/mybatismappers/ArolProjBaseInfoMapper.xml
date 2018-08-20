@@ -1,0 +1,288 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.build4d.project.dbaccess.dao.ArolProjBaseInfoMapper">
+  <resultMap id="BaseResultMap" type="com.build4d.project.dbaccess.dbentities.ArolProjBaseInfoEntity">
+    <constructor>
+      <idArg column="SID" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="PROJ_ID" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="ORG_NO_CODE" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="CON_ORG_SID" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="PROJ_NAME" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="PROJ_LOCATION" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="TOTAL_LAND_AREA" javaType="java.math.BigDecimal" jdbcType="DECIMAL" />
+      <arg column="TOTAL_BUILDING_AREA" javaType="java.math.BigDecimal" jdbcType="DECIMAL" />
+      <arg column="BUILDING_NUMS" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="PLOT_RATIO" javaType="java.math.BigDecimal" jdbcType="DECIMAL" />
+      <arg column="GREEN_COVERAGE" javaType="java.math.BigDecimal" jdbcType="DECIMAL" />
+      <arg column="BUILDING_DENSITY" javaType="java.math.BigDecimal" jdbcType="DECIMAL" />
+      <arg column="UP_PARKING_NUMS" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="DOWN_PARKING_NUMS" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="TOTAL_CONS_BUDGET" javaType="java.math.BigDecimal" jdbcType="DECIMAL" />
+      <arg column="TOTAL_CONS_SETTLEMENT" javaType="java.math.BigDecimal" jdbcType="DECIMAL" />
+      <arg column="TOTAL_LAND_PRICE" javaType="java.math.BigDecimal" jdbcType="DECIMAL" />
+      <arg column="VERSION" javaType="java.lang.Integer" jdbcType="INTEGER" />
+    </constructor>
+  </resultMap>
+  <resultMap id="BaseResultMapJoin" type="com.build4d.project.dbaccess.dbentities.ArolProjBaseInfoEntity" extends="BaseResultMap">
+    <association property="proOrgan" javaType="com.build4d.project.dbaccess.dbentities.ProOrganEntity">
+      <constructor>
+        <idArg column="ORG_SID" javaType="java.lang.Integer" jdbcType="INTEGER" />
+        <arg column="ORG_CODE" javaType="java.lang.String" jdbcType="VARCHAR" />
+        <arg column="ORG_NAME" javaType="java.lang.String" jdbcType="VARCHAR" />
+        <arg column="ORG_TYPE" javaType="java.lang.String" jdbcType="VARCHAR" />
+      </constructor>
+    </association>
+  </resultMap>
+  <sql id="Base_Column_List">
+    SID, PROJ_ID, ORG_NO_CODE,CON_ORG_SID, PROJ_NAME, PROJ_LOCATION, TOTAL_LAND_AREA, TOTAL_BUILDING_AREA,
+    BUILDING_NUMS, PLOT_RATIO, GREEN_COVERAGE, BUILDING_DENSITY, UP_PARKING_NUMS, DOWN_PARKING_NUMS, 
+    TOTAL_CONS_BUDGET, TOTAL_CONS_SETTLEMENT, TOTAL_LAND_PRICE, VERSION
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from iams_arol_proj_base_info
+    where SID = #{sid,jdbcType=INTEGER}
+  </select>
+  <select id="searchByMap"  resultMap="BaseResultMapJoin" parameterType="java.util.Map" >
+    select
+    <include refid="Base_Column_List" />, ORG_SID, ORG_CODE,ORG_NAME,ORG_TYPE
+    from iams_arol_proj_base_info  INNER JOIN  iams_pro_organ  on ORG_NO_CODE=ORG_CODE
+    <where>
+      <if test="conOrgSid != null and conOrgSid != ''">
+        CON_ORG_SID=#{conOrgSid}
+      </if>
+      <if test="currOrgCode != null and currOrgCode != ''">
+        ORG_CODE=#{currOrgCode}
+      </if>
+      <if test="projName != null and projName != ''">
+        PROJ_NAME like "%"#{projName}"%"
+      </if>
+      <if test="projLocation != null and projLocation != ''">
+        and PROJ_LOCATION like "%"#{projLocation}"%"
+      </if>
+    </where>
+    ORDER by SID ASC
+  </select>
+  <select id="selectAll"  resultMap="BaseResultMap" >
+    select
+    <include refid="Base_Column_List" />
+    from iams_arol_proj_base_info
+    ORDER by SID ASC
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from iams_arol_proj_base_info
+    where SID = #{sid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.build4d.project.dbaccess.dbentities.ArolProjBaseInfoEntity">
+    insert into iams_arol_proj_base_info (SID, PROJ_ID, ORG_NO_CODE,CON_ORG_SID,
+      PROJ_NAME, PROJ_LOCATION, TOTAL_LAND_AREA, 
+      TOTAL_BUILDING_AREA, BUILDING_NUMS, PLOT_RATIO, 
+      GREEN_COVERAGE, BUILDING_DENSITY, UP_PARKING_NUMS, 
+      DOWN_PARKING_NUMS, TOTAL_CONS_BUDGET, TOTAL_CONS_SETTLEMENT, 
+      TOTAL_LAND_PRICE, VERSION)
+    values (#{sid,jdbcType=INTEGER}, #{projId,jdbcType=VARCHAR}, #{orgNoCode,jdbcType=VARCHAR},
+       #{conOrgSid,jdbcType=INTEGER},#{projName,jdbcType=VARCHAR}, #{projLocation,jdbcType=VARCHAR},
+       #{totalLandArea,jdbcType=DECIMAL},
+      #{totalBuildingArea,jdbcType=DECIMAL}, #{buildingNums,jdbcType=INTEGER}, #{plotRatio,jdbcType=DECIMAL}, 
+      #{greenCoverage,jdbcType=DECIMAL}, #{buildingDensity,jdbcType=DECIMAL}, #{upParkingNums,jdbcType=INTEGER}, 
+      #{downParkingNums,jdbcType=INTEGER}, #{totalConsBudget,jdbcType=DECIMAL}, #{totalConsSettlement,jdbcType=DECIMAL}, 
+      #{totalLandPrice,jdbcType=DECIMAL}, #{version,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.build4d.project.dbaccess.dbentities.ArolProjBaseInfoEntity">
+    insert into iams_arol_proj_base_info
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="sid != null">
+        SID,
+      </if>
+      <if test="projId != null">
+        PROJ_ID,
+      </if>
+      <if test="orgNoCode != null">
+        ORG_NO_CODE,
+      </if>
+      <if test="conOrgSid != null">
+        CON_ORG_SID,
+      </if>
+      <if test="projName != null">
+        PROJ_NAME,
+      </if>
+      <if test="projLocation != null">
+        PROJ_LOCATION,
+      </if>
+      <if test="totalLandArea != null">
+        TOTAL_LAND_AREA,
+      </if>
+      <if test="totalBuildingArea != null">
+        TOTAL_BUILDING_AREA,
+      </if>
+      <if test="buildingNums != null">
+        BUILDING_NUMS,
+      </if>
+      <if test="plotRatio != null">
+        PLOT_RATIO,
+      </if>
+      <if test="greenCoverage != null">
+        GREEN_COVERAGE,
+      </if>
+      <if test="buildingDensity != null">
+        BUILDING_DENSITY,
+      </if>
+      <if test="upParkingNums != null">
+        UP_PARKING_NUMS,
+      </if>
+      <if test="downParkingNums != null">
+        DOWN_PARKING_NUMS,
+      </if>
+      <if test="totalConsBudget != null">
+        TOTAL_CONS_BUDGET,
+      </if>
+      <if test="totalConsSettlement != null">
+        TOTAL_CONS_SETTLEMENT,
+      </if>
+      <if test="totalLandPrice != null">
+        TOTAL_LAND_PRICE,
+      </if>
+      <if test="version != null">
+        VERSION,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="sid != null">
+        #{sid,jdbcType=INTEGER},
+      </if>
+      <if test="projId != null">
+        #{projId,jdbcType=VARCHAR},
+      </if>
+      <if test="orgNoCode != null">
+        #{orgNoCode,jdbcType=VARCHAR},
+      </if>
+      <if test="conOrgSid != null">
+        #{conOrgSid,jdbcType=VARCHAR},
+      </if>
+      <if test="projName != null">
+        #{projName,jdbcType=VARCHAR},
+      </if>
+      <if test="projLocation != null">
+        #{projLocation,jdbcType=VARCHAR},
+      </if>
+      <if test="totalLandArea != null">
+        #{totalLandArea,jdbcType=DECIMAL},
+      </if>
+      <if test="totalBuildingArea != null">
+        #{totalBuildingArea,jdbcType=DECIMAL},
+      </if>
+      <if test="buildingNums != null">
+        #{buildingNums,jdbcType=INTEGER},
+      </if>
+      <if test="plotRatio != null">
+        #{plotRatio,jdbcType=DECIMAL},
+      </if>
+      <if test="greenCoverage != null">
+        #{greenCoverage,jdbcType=DECIMAL},
+      </if>
+      <if test="buildingDensity != null">
+        #{buildingDensity,jdbcType=DECIMAL},
+      </if>
+      <if test="upParkingNums != null">
+        #{upParkingNums,jdbcType=INTEGER},
+      </if>
+      <if test="downParkingNums != null">
+        #{downParkingNums,jdbcType=INTEGER},
+      </if>
+      <if test="totalConsBudget != null">
+        #{totalConsBudget,jdbcType=DECIMAL},
+      </if>
+      <if test="totalConsSettlement != null">
+        #{totalConsSettlement,jdbcType=DECIMAL},
+      </if>
+      <if test="totalLandPrice != null">
+        #{totalLandPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="version != null">
+        #{version,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.build4d.project.dbaccess.dbentities.ArolProjBaseInfoEntity">
+    update iams_arol_proj_base_info
+    <set>
+      <if test="projId != null">
+        PROJ_ID = #{projId,jdbcType=VARCHAR},
+      </if>
+      <if test="orgNoCode != null">
+        ORG_NO_CODE = #{orgNoCode,jdbcType=VARCHAR},
+      </if>
+      <if test="conOrgSid != null">
+        CON_ORG_SID = #{conOrgSid,jdbcType=INTEGER},
+      </if>
+      <if test="projName != null">
+        PROJ_NAME = #{projName,jdbcType=VARCHAR},
+      </if>
+      <if test="projLocation != null">
+        PROJ_LOCATION = #{projLocation,jdbcType=VARCHAR},
+      </if>
+      <if test="totalLandArea != null">
+        TOTAL_LAND_AREA = #{totalLandArea,jdbcType=DECIMAL},
+      </if>
+      <if test="totalBuildingArea != null">
+        TOTAL_BUILDING_AREA = #{totalBuildingArea,jdbcType=DECIMAL},
+      </if>
+      <if test="buildingNums != null">
+        BUILDING_NUMS = #{buildingNums,jdbcType=INTEGER},
+      </if>
+      <if test="plotRatio != null">
+        PLOT_RATIO = #{plotRatio,jdbcType=DECIMAL},
+      </if>
+      <if test="greenCoverage != null">
+        GREEN_COVERAGE = #{greenCoverage,jdbcType=DECIMAL},
+      </if>
+      <if test="buildingDensity != null">
+        BUILDING_DENSITY = #{buildingDensity,jdbcType=DECIMAL},
+      </if>
+      <if test="upParkingNums != null">
+        UP_PARKING_NUMS = #{upParkingNums,jdbcType=INTEGER},
+      </if>
+      <if test="downParkingNums != null">
+        DOWN_PARKING_NUMS = #{downParkingNums,jdbcType=INTEGER},
+      </if>
+      <if test="totalConsBudget != null">
+        TOTAL_CONS_BUDGET = #{totalConsBudget,jdbcType=DECIMAL},
+      </if>
+      <if test="totalConsSettlement != null">
+        TOTAL_CONS_SETTLEMENT = #{totalConsSettlement,jdbcType=DECIMAL},
+      </if>
+      <if test="totalLandPrice != null">
+        TOTAL_LAND_PRICE = #{totalLandPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="version != null">
+        VERSION = #{version,jdbcType=INTEGER},
+      </if>
+    </set>
+    where SID = #{sid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.build4d.project.dbaccess.dbentities.ArolProjBaseInfoEntity">
+    update iams_arol_proj_base_info
+    set PROJ_ID = #{projId,jdbcType=VARCHAR},
+      ORG_NO_CODE = #{orgNoCode,jdbcType=VARCHAR},
+      CON_ORG_SID = #{conOrgSid,jdbcType=INTEGER},
+      PROJ_NAME = #{projName,jdbcType=VARCHAR},
+      PROJ_LOCATION = #{projLocation,jdbcType=VARCHAR},
+      TOTAL_LAND_AREA = #{totalLandArea,jdbcType=DECIMAL},
+      TOTAL_BUILDING_AREA = #{totalBuildingArea,jdbcType=DECIMAL},
+      BUILDING_NUMS = #{buildingNums,jdbcType=INTEGER},
+      PLOT_RATIO = #{plotRatio,jdbcType=DECIMAL},
+      GREEN_COVERAGE = #{greenCoverage,jdbcType=DECIMAL},
+      BUILDING_DENSITY = #{buildingDensity,jdbcType=DECIMAL},
+      UP_PARKING_NUMS = #{upParkingNums,jdbcType=INTEGER},
+      DOWN_PARKING_NUMS = #{downParkingNums,jdbcType=INTEGER},
+      TOTAL_CONS_BUDGET = #{totalConsBudget,jdbcType=DECIMAL},
+      TOTAL_CONS_SETTLEMENT = #{totalConsSettlement,jdbcType=DECIMAL},
+      TOTAL_LAND_PRICE = #{totalLandPrice,jdbcType=DECIMAL},
+      VERSION = #{version,jdbcType=INTEGER}
+    where SID = #{sid,jdbcType=INTEGER}
+  </update>
+  <select id="nextId" resultType="integer">
+    select case when max(SID) is null then 1 else max(SID)+1 end NEXTID from iams_arol_proj_base_info
+  </select>
+</mapper>

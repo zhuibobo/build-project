@@ -1,0 +1,106 @@
+*{
+	padding: 0;
+	/* [disabled]margin:0; */
+	font-family: "等线", "方正兰亭超细黑简体", "微软雅黑"; margin:0;
+	}
+body{ background:#FFF;}
+
+.dingbu{ background:url(../img/dingbu.png); width:1920px; height:80px; float:left;}
+.mingcheng{  background:url(../img/mingcheng.png); width:424px; height:35px;  margin-left:25px; margin-top:23px; float:left; display:inline-block; }
+
+.daohang{ display:inline-block; line-height:80px; margin-left:175px;}
+.tubiao1{ background:url(../img/shangtubiao1.png); display:inline-block; width:27px; height:29px; margin-top:25px; margin-right:4px; float:left;}
+.tubiao2{ background:url(../img/shangtubiao2.png); display:inline-block; width:27px; height:29px; margin-top:25px; margin-right:4px; float:left;}
+.tubiao3{ background:url(../img/shangtubiao3.png); display:inline-block; width:27px; height:29px; margin-top:25px; margin-right:4px; float:left;}
+.tubiao4{ background:url(../img/shangtubiao4.png); display:inline-block; width:27px; height:29px; margin-top:25px; margin-right:4px; float:left;}
+.tubiao5{ background:url(../img/shangtubiao5.png); display:inline-block; width:27px; height:29px; margin-top:25px; margin-right:4px; float:left;}
+.tubiao6{ background:url(../img/shangtubiao6.png); display:inline-block; width:27px; height:29px; margin-top:25px; margin-right:4px; float:left;}
+.zi{ color:#FFF; font-size:16px; display:inline-block; float:left;}
+
+.daohang1{ display:inline-block; float:left;}
+.daohang2{ display:inline-block; margin-left:38px; float:left;}
+
+.yonghu{ display:inline-block; float:left; margin-left:103px; }
+.touxiang{ background:url(../img/touxiang.png) center no-repeat; width:52px; height:54px; margin-top:13px; display:inline-block; float:left;}
+.lanxian{  border-right: 2px solid #509bf3; width:11px; height:46px; display:inline-block; float:left; margin-top:17px; }
+.yonghuxingxi{ float:left; display:inline-block; margin-left:10px; height:80px; width:162px;}
+.yonghuming{ color:#FFF; font-size:18px; float:left; height:20px; line-height:20px; width:162px; margin-top:17px;  }
+.yonghuming p{ display:inline-block;}
+.bumen{ color:#FFF; font-size:18px; float:left; height:20px; float: right; line-height:20px; margin-top:7px; }
+.bumen p{ display:inline-block;}
+
+.tuichu{ background:url(../img/tuichu.png); width:80px; height:40px; float:right; display:inline-block; margin-right:13px; margin-top:20px;}
+
+.lanmu{ height:47px; width:100%; border-bottom:1px solid #cccccc;}
+.neiyongzuo{ width:16%; display:inline-block; float:left;}
+.zuotubiao{ display:inline-block; float:left; margin-left:75px; margin-top:10px; }
+.lanmuzi{ line-height:47px; float:left; color:#666666;}
+
+.neirongyou{ background:#ffffff;  float:left; height:100%; width:84%;}
+.youdingbu{ background:#ebf4ff; height:50px; width:100%; margin-bottom:10px;}
+.youbiaoti{ font-size:16px; color:#333333; line-height:50px; margin-left:33px; display:inline-block;}
+.sousuo{ width:260px; height:30px; background:#FFF; border:1px solid #999999; border-radius:5px; float:right; display:inline-block; margin-top:10px; margin-right:25px;}
+.sousuotubiao{ width:22px; height:21px; background:url(../img/sousuotubiao.png); float:right; margin-right:10px; margin-top:3px; }
+.gongneng{ width:1569px; float:left;    margin-left:45px; margin-bottom:10px;}
+.gongnengtubiao{  background:url(../img/baojianquerentubiao.png); width:113px; height:112px; float:left; }
+.gongnengtubiao2{  background:url(../img/shendingfazheng.png); width:113px; height:112px; float:left; margin-left:20px; }
+.gongnengzi{ color:#333333; font-size:18px; float:left; display:inline-block;  margin-left:15px;position:absolute; margin-top:90px; }
+.gongnengshuju{ display:inline-block; float:left; position:absolute; left:430px;}
+.gongnengshuju a{ color:#F00;}
+.shuju1{ width:124px; height:30px; border:1px solid #ffa65b; border-radius:5px; margin-left:30px; margin-top:23px; text-align:center; line-height:30px; }
+.shuju2{ width:124px; height:30px; border:1px solid #ffa65b; border-radius:5px; margin-left:30px; margin-top:9px; text-align:center; line-height:30px; }
+.daiban{ background:#FFF; width:460px; height:320px; margin-left:25px; margin-top:22px; font-size:18px; text-align:center; line-height:320px; display:inline-block; float:left;}
+.dengji{ background:#FFF; width:1090px; height:320px; margin-left:20px; margin-top:22px; font-size:18px; text-align:center; line-height:320px; display:inline-block; float:left;}
+.bujuan{ background:#FFF; width:910px; height:437px; margin-left:25px; margin-top:20px; font-size:18px; text-align:center; line-height:437px; display:inline-block; float:left;}
+.biaoying{ background:#FFF; width:640px; height:437px; margin-left:20px; margin-top:20px; font-size:18px; text-align:center; line-height:437px; display:inline-block; float:left; margin-bottom:20px;}
+
+.jiantou{ width:23px; height:25px; background:url(../img/jiantou.png); float:left; margin-left:25px; margin-top:47px; }
+.liucheng{ width:230px; height:120px; background:#FFF; border-radius:5px; float:left; margin-left:25px;}
+.yvyanshou{ width:94px; height:120px; background:url(../img/yanyanshou.png); float:left; display:inline-block; }
+.zhenglizujuan{ width:94px; height:120px; background:url(../img/zhenglizhujuan.png); float:left; display:inline-block; }
+.danganjieshou{ width:94px; height:120px; background:url(../img/danganjieshou.png); float:left; display:inline-block; }
+.danganguidang{ width:94px; height:120px; background:url(../img/danganguidang.png); float:left; display:inline-block; }
+.yvshenzi{ font-size:20px; color:#333333;  margin-left:28px; margin-top:41px;}
+.yvshenxian{ background:url(../img/kongzhitaixian.png); width:128px; height:6px; margin-left:5px; }
+.yvshenxiaozi{ font-size:14px; color:#868585; margin-left:39px;}
+
+.biaoti{ font-size:24px; color:#333333; float:left; margin-left:13px;}
+.lanshuxian{ width:2px; height:27px; background:#22ade7; display:inline-block; float:left;}
+.biaotida{ line-height:27px; float:left; height:27px; width:1569px; margin-bottom:23px; }
+.renwu{ width:1569px;    margin-left:25px; margin-bottom:30px;}
+.biaotixia{ line-height:27px; float:left; height:27px; width:1569px; margin-bottom:13px; margin-top:20px; margin-left:20px; }
+
+.daibanrenwu{ width:364px; height:326px; background:#FFF; border-radius:5px; float:left; box-shadow:0px 0px 5px  #999999; margin-left:20px;}
+.dairenwu{ background:#FFF; float:left; margin-left:23px; }
+.baojianbiaoti{ font-size:28px; color:#5ab5db; margin-top:27px; margin-left:23px;}
+.daibanshuju{ font-size:120px; color:#5ab5db; font-family: Arial, Helvetica, sans-serif; margin-left:17px; display:inline-block;}
+.ge { font-size:30px; color:#5ab5db; display:inline-block;}
+.daibantubiao{ background:url(../img/baojianqueren2.png); width:149px; height:169px; margin-left:200px;
+	position: absolute;
+	top: 300px;
+}
+.jindu{ width:364px; height:5px; background:#d2d7d9; margin-top:20px;}
+.wanchengjindu{ width:200px; height:5px; background:#2ca0d0;}
+.yiwancheng{ font-size:20px; text-align:center; color:#6b7a81; line-height:40px;}
+.daibananniu{ width:361px; height:54px; background:#5ab5db; border-radius:5px; float:left; margin-left:20px; margin-top:17px; font-size:24px; color: #FFF; text-align:center; line-height:54px; }
+.baojian{ width:367px;  display:inline-block; float:left; margin-left:20px; margin-bottom:0px;}
+.yvyanshoutubiao{ background:url(../img/yvyanshou2.png); width:149px; height:169px; margin-left:200px;
+	position: absolute;
+	top: 300px;
+}
+.zhenglitubiao{ background:url(../img/zhenglizujuan2.png); width:149px; height:169px; margin-left:200px;
+	position: absolute;
+	top: 300px;
+}
+.jieshoutubiao{ background:url(../img/danganjieshou2.png); width:160px; height:169px; margin-left:200px;
+	position: absolute;
+	top: 300px;
+}
+.guidangtubiao{ background:url(../img/danganguidang2.png); width:160px; height:169px; margin-left:200px;
+	position: absolute;
+	top: 300px;
+}
+.fazhengtubiao{ background:url(../img/shendingfafang2.png); width:160px; height:169px; margin-left:200px;
+	position: absolute;
+	top: 300px;
+}

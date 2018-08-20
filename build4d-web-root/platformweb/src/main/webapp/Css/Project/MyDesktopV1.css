@@ -1,0 +1,120 @@
+* {
+    font-family: 等线, 方正兰亭超细黑简体, 微软雅黑;
+}
+
+.business-flow-process-wrap{
+    height: 20%;
+    position: relative;
+}
+
+.business-flow-process-wrap .title{
+    font-size: 18px;
+    border-left: #22ade7 solid 2px;
+    padding-left: 10px;
+}
+
+.business-flow-process-wrap .flow-process-wrap
+{
+    position: absolute;
+    top: 30px;
+    bottom: 0px;
+    display: table-cell;
+    vertical-align:middle;
+}
+
+.flow-process-wrap .line-msg-wrap{
+    position: absolute;width: 100px
+}
+
+.flow-process-wrap .line-msg-wrap .topMsg{
+    position: absolute;top: -20px;left: 20px;
+    font-size: 18px;
+}
+
+.flow-process-wrap .line-msg-wrap .bottomMsg{
+    position: absolute;top: 20px;left: 30px
+}
+
+.business-flow-list-entrance-wrap{
+    position: relative;
+}
+
+.business-flow-list-entrance-wrap .title{
+    font-size: 18px;
+    border-left: #22ade7 solid 2px;
+    padding-left: 10px;
+}
+
+.flow-entrance-wrap{
+    position: absolute;
+    top: 40px;
+    bottom: 0px;
+    display: table-cell;
+    vertical-align:middle;
+    right: 0px;
+    left: 0px;
+    /*overflow: hidden;*/
+}
+
+.flow-entrance-wrap .entrance-wrap
+{
+    width:25%;
+   /* height:100%;*/
+    /*background-color: #22ade7;*/
+    float: left;
+    padding: 10px;
+}
+
+.entrance-wrap .entrance{
+    background:#FFF;
+    border-radius:5px;
+    box-shadow:0px 0px 5px  #999999;
+    /*margin-left:10px;*/
+    /*margin-top: 10px;*/
+    height: 315px;
+    position: relative;
+}
+
+.entrance .entrance-process-line-bg{
+    height: 8px;
+    background: #dedede;
+}
+
+.entrance .entrance-process-line-bg div{
+    height: 8px;
+    width: 50%;
+}
+
+.entrance .entrance-title{
+    color: #737373;
+    font-size: 22px;
+    padding-top: 9px;
+    padding-left: 15%;
+}
+
+.entrance .entrance-num{
+    color: #5ab5db;
+    font-size: 20px;
+    padding-left: 15%;
+}
+
+.entrance-wrap .button
+{
+    border-radius:5px;
+    margin-top: 10px;
+    padding-left: 10px;
+    height: 54px;
+    font-size: 24px;
+    text-align: center;
+    color: #ffffff;
+    cursor: pointer;
+    line-height: 54px;
+}
+
+.entrance .entrance-completed{
+    font-size: 18px;
+    margin-top: 10px;
+    text-align: center;
+    color:#a9a9a9;
+}
+

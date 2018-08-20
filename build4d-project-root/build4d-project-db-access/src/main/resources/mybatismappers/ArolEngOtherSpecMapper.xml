@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.build4d.project.dbaccess.dao.ArolEngOtherSpecMapper">
+  <resultMap id="BaseResultMap" type="com.build4d.project.dbaccess.dbentities.ArolEngOtherSpecEntity">
+    <constructor>
+      <idArg column="ENG_SID" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="USE_TYPE_CODE" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="REQUISITION_TYPE_CODE" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="OLD_USE_TYPE" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="APPROVAL_DATE" javaType="java.util.Date" jdbcType="TIMESTAMP" />
+      <arg column="USE_AREA" javaType="java.math.BigDecimal" jdbcType="DECIMAL" />
+      <arg column="SCALE" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="LOAD_LEVEL" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="CREATED_BY" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="CREATED_DT" javaType="java.util.Date" jdbcType="TIMESTAMP" />
+      <arg column="VERSION" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="UPDATED_BY" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="UPDATED_DT" javaType="java.util.Date" jdbcType="TIMESTAMP" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List">
+    ENG_SID, USE_TYPE_CODE, REQUISITION_TYPE_CODE, OLD_USE_TYPE, APPROVAL_DATE, USE_AREA, 
+    SCALE, LOAD_LEVEL, CREATED_BY, CREATED_DT, VERSION, UPDATED_BY, UPDATED_DT
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from iams_arol_eng_other_spec
+    where ENG_SID = #{engSid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from iams_arol_eng_other_spec
+    where ENG_SID = #{engSid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.build4d.project.dbaccess.dbentities.ArolEngOtherSpecEntity">
+    insert into iams_arol_eng_other_spec (ENG_SID, USE_TYPE_CODE, REQUISITION_TYPE_CODE, 
+      OLD_USE_TYPE, APPROVAL_DATE, USE_AREA, 
+      SCALE, LOAD_LEVEL, CREATED_BY, 
+      CREATED_DT, VERSION, UPDATED_BY, 
+      UPDATED_DT)
+    values (#{engSid,jdbcType=INTEGER}, #{useTypeCode,jdbcType=VARCHAR}, #{requisitionTypeCode,jdbcType=VARCHAR}, 
+      #{oldUseType,jdbcType=VARCHAR}, #{approvalDate,jdbcType=TIMESTAMP}, #{useArea,jdbcType=DECIMAL}, 
+      #{scale,jdbcType=VARCHAR}, #{loadLevel,jdbcType=VARCHAR}, #{createdBy,jdbcType=VARCHAR}, 
+      #{createdDt,jdbcType=TIMESTAMP}, #{version,jdbcType=INTEGER}, #{updatedBy,jdbcType=VARCHAR}, 
+      #{updatedDt,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.build4d.project.dbaccess.dbentities.ArolEngOtherSpecEntity">
+    insert into iams_arol_eng_other_spec
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="engSid != null">
+        ENG_SID,
+      </if>
+      <if test="useTypeCode != null">
+        USE_TYPE_CODE,
+      </if>
+      <if test="requisitionTypeCode != null">
+        REQUISITION_TYPE_CODE,
+      </if>
+      <if test="oldUseType != null">
+        OLD_USE_TYPE,
+      </if>
+      <if test="approvalDate != null">
+        APPROVAL_DATE,
+      </if>
+      <if test="useArea != null">
+        USE_AREA,
+      </if>
+      <if test="scale != null">
+        SCALE,
+      </if>
+      <if test="loadLevel != null">
+        LOAD_LEVEL,
+      </if>
+      <if test="createdBy != null">
+        CREATED_BY,
+      </if>
+      <if test="createdDt != null">
+        CREATED_DT,
+      </if>
+      <if test="version != null">
+        VERSION,
+      </if>
+      <if test="updatedBy != null">
+        UPDATED_BY,
+      </if>
+      <if test="updatedDt != null">
+        UPDATED_DT,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="engSid != null">
+        #{engSid,jdbcType=INTEGER},
+      </if>
+      <if test="useTypeCode != null">
+        #{useTypeCode,jdbcType=VARCHAR},
+      </if>
+      <if test="requisitionTypeCode != null">
+        #{requisitionTypeCode,jdbcType=VARCHAR},
+      </if>
+      <if test="oldUseType != null">
+        #{oldUseType,jdbcType=VARCHAR},
+      </if>
+      <if test="approvalDate != null">
+        #{approvalDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="useArea != null">
+        #{useArea,jdbcType=DECIMAL},
+      </if>
+      <if test="scale != null">
+        #{scale,jdbcType=VARCHAR},
+      </if>
+      <if test="loadLevel != null">
+        #{loadLevel,jdbcType=VARCHAR},
+      </if>
+      <if test="createdBy != null">
+        #{createdBy,jdbcType=VARCHAR},
+      </if>
+      <if test="createdDt != null">
+        #{createdDt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="version != null">
+        #{version,jdbcType=INTEGER},
+      </if>
+      <if test="updatedBy != null">
+        #{updatedBy,jdbcType=VARCHAR},
+      </if>
+      <if test="updatedDt != null">
+        #{updatedDt,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.build4d.project.dbaccess.dbentities.ArolEngOtherSpecEntity">
+    update iams_arol_eng_other_spec
+    <set>
+      <if test="useTypeCode != null">
+        USE_TYPE_CODE = #{useTypeCode,jdbcType=VARCHAR},
+      </if>
+      <if test="requisitionTypeCode != null">
+        REQUISITION_TYPE_CODE = #{requisitionTypeCode,jdbcType=VARCHAR},
+      </if>
+      <if test="oldUseType != null">
+        OLD_USE_TYPE = #{oldUseType,jdbcType=VARCHAR},
+      </if>
+      <if test="approvalDate != null">
+        APPROVAL_DATE = #{approvalDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="useArea != null">
+        USE_AREA = #{useArea,jdbcType=DECIMAL},
+      </if>
+      <if test="scale != null">
+        SCALE = #{scale,jdbcType=VARCHAR},
+      </if>
+      <if test="loadLevel != null">
+        LOAD_LEVEL = #{loadLevel,jdbcType=VARCHAR},
+      </if>
+      <if test="createdBy != null">
+        CREATED_BY = #{createdBy,jdbcType=VARCHAR},
+      </if>
+      <if test="createdDt != null">
+        CREATED_DT = #{createdDt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="version != null">
+        VERSION = #{version,jdbcType=INTEGER},
+      </if>
+      <if test="updatedBy != null">
+        UPDATED_BY = #{updatedBy,jdbcType=VARCHAR},
+      </if>
+      <if test="updatedDt != null">
+        UPDATED_DT = #{updatedDt,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where ENG_SID = #{engSid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.build4d.project.dbaccess.dbentities.ArolEngOtherSpecEntity">
+    update iams_arol_eng_other_spec
+    set USE_TYPE_CODE = #{useTypeCode,jdbcType=VARCHAR},
+      REQUISITION_TYPE_CODE = #{requisitionTypeCode,jdbcType=VARCHAR},
+      OLD_USE_TYPE = #{oldUseType,jdbcType=VARCHAR},
+      APPROVAL_DATE = #{approvalDate,jdbcType=TIMESTAMP},
+      USE_AREA = #{useArea,jdbcType=DECIMAL},
+      SCALE = #{scale,jdbcType=VARCHAR},
+      LOAD_LEVEL = #{loadLevel,jdbcType=VARCHAR},
+      CREATED_BY = #{createdBy,jdbcType=VARCHAR},
+      CREATED_DT = #{createdDt,jdbcType=TIMESTAMP},
+      VERSION = #{version,jdbcType=INTEGER},
+      UPDATED_BY = #{updatedBy,jdbcType=VARCHAR},
+      UPDATED_DT = #{updatedDt,jdbcType=TIMESTAMP}
+    where ENG_SID = #{engSid,jdbcType=INTEGER}
+  </update>
+</mapper>

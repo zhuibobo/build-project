@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="build4d-base-config" />
+        <module name="build4d-base-db-access" />
+        <module name="build4d-base-license" />
+        <module name="build4d-base-log" />
+        <module name="build4d-base-service" />
+        <module name="build4d-base-tools" />
+        <module name="build4d-platform-auth" />
+        <module name="build4d-platform-builder" />
+        <module name="build4d-platform-calendar" />
+        <module name="build4d-platform-datadict" />
+        <module name="build4d-platform-export" />
+        <module name="build4d-platform-file" />
+        <module name="build4d-platform-import" />
+        <module name="build4d-platform-numbercoder" />
+        <module name="build4d-platform-organ" />
+        <module name="build4d-project-constructionproject" />
+        <module name="build4d-project-db-access" />
+        <module name="platformweb" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="build4d-base-config" target="1.7" />
+      <module name="build4d-base-db-access" target="1.7" />
+      <module name="build4d-base-db-entities" target="1.8" />
+      <module name="build4d-base-license" target="1.7" />
+      <module name="build4d-base-log" target="1.7" />
+      <module name="build4d-base-root" target="1.7" />
+      <module name="build4d-base-service" target="1.7" />
+      <module name="build4d-base-tools" target="1.7" />
+      <module name="build4d-platform-auth" target="1.7" />
+      <module name="build4d-platform-builder" target="1.7" />
+      <module name="build4d-platform-calendar" target="1.7" />
+      <module name="build4d-platform-datadict" target="1.7" />
+      <module name="build4d-platform-export" target="1.7" />
+      <module name="build4d-platform-file" target="1.7" />
+      <module name="build4d-platform-import" target="1.7" />
+      <module name="build4d-platform-numbercoder" target="1.7" />
+      <module name="build4d-platform-organ" target="1.7" />
+      <module name="build4d-platform-root" target="1.7" />
+      <module name="build4d-project-constructionproject" target="1.7" />
+      <module name="build4d-project-db-access" target="1.7" />
+      <module name="build4d-project-root" target="1.7" />
+      <module name="build4d-root" target="1.7" />
+      <module name="build4d-web-root" target="1.7" />
+      <module name="build4d-workflow-root" target="1.8" />
+      <module name="platformweb" target="1.7" />
+    </bytecodeTargetLevel>
+  </component>
+</project>

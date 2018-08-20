@@ -1,0 +1,285 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.build4d.project.dbaccess.dao.ProOrganMapper">
+  <resultMap id="BaseResultMap" type="com.build4d.project.dbaccess.dbentities.ProOrganEntity">
+    <constructor>
+      <idArg column="ORG_SID" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="ORG_NO" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="ORG_CODE" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="ORG_NAME" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="ORG_DESC" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="ORG_CREATE_TIME" javaType="java.util.Date" jdbcType="TIMESTAMP" />
+      <arg column="ORG_PHONE" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="ORG_CONTACTS" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="ORG_CONT_MOBILE" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="ORG_ORDER" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="ORG_STATUS" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="ORG_TYPE" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="ORG_EMAIL" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="ORG_ADDR" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="CREATRE_ORG_ID" javaType="java.lang.String" jdbcType="VARCHAR" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List">
+    ORG_SID, ORG_NO, ORG_CODE, ORG_NAME, ORG_DESC, ORG_CREATE_TIME, ORG_PHONE, ORG_CONTACTS, 
+    ORG_CONT_MOBILE, ORG_ORDER, ORG_STATUS, ORG_TYPE,ORG_EMAIL,ORG_ADDR,CREATRE_ORG_ID
+  </sql>
+  <select id="selectByOrgCode" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from iams_pro_organ
+    where ORG_CODE = #{orgCode,jdbcType=VARCHAR}
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from iams_pro_organ
+    where ORG_SID = #{orgSid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from iams_pro_organ
+    where ORG_SID = #{orgSid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.build4d.project.dbaccess.dbentities.ProOrganEntity">
+    insert into iams_pro_organ (ORG_SID, ORG_NO, ORG_CODE, 
+      ORG_NAME, ORG_DESC, ORG_CREATE_TIME, 
+      ORG_PHONE, ORG_CONTACTS, ORG_CONT_MOBILE, 
+      ORG_ORDER, ORG_STATUS, ORG_TYPE,ORG_EMAIL,ORG_ADDR,CREATRE_ORG_ID
+      )
+    values (#{orgSid,jdbcType=INTEGER}, #{orgNo,jdbcType=VARCHAR}, #{orgCode,jdbcType=VARCHAR}, 
+      #{orgName,jdbcType=VARCHAR}, #{orgDesc,jdbcType=VARCHAR}, #{orgCreateTime,jdbcType=TIMESTAMP}, 
+      #{orgPhone,jdbcType=VARCHAR}, #{orgContacts,jdbcType=VARCHAR}, #{orgContMobile,jdbcType=VARCHAR}, 
+      #{orgOrder,jdbcType=INTEGER}, #{orgStatus,jdbcType=INTEGER}, #{orgType,jdbcType=VARCHAR}
+      , #{orgEmail,jdbcType=VARCHAR}, #{orgAddr,jdbcType=VARCHAR}, #{creatreOrgId,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.build4d.project.dbaccess.dbentities.ProOrganEntity">
+    insert into iams_pro_organ
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="orgSid != null">
+        ORG_SID,
+      </if>
+      <if test="orgNo != null">
+        ORG_NO,
+      </if>
+      <if test="orgCode != null">
+        ORG_CODE,
+      </if>
+      <if test="orgName != null">
+        ORG_NAME,
+      </if>
+      <if test="orgDesc != null">
+        ORG_DESC,
+      </if>
+      <if test="orgCreateTime != null">
+        ORG_CREATE_TIME,
+      </if>
+      <if test="orgPhone != null">
+        ORG_PHONE,
+      </if>
+      <if test="orgContacts != null">
+        ORG_CONTACTS,
+      </if>
+      <if test="orgContMobile != null">
+        ORG_CONT_MOBILE,
+      </if>
+      <if test="orgOrder != null">
+        ORG_ORDER,
+      </if>
+      <if test="orgStatus != null">
+        ORG_STATUS,
+      </if>
+      <if test="orgType != null">
+        ORG_TYPE,
+      </if>
+      <if test="orgEmail != null">
+        ORG_EMAIL,
+      </if>
+      <if test="orgAddr != null">
+        ORG_ADDR,
+      </if>
+      <if test="creatreOrgId != null">
+        CREATRE_ORG_ID,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="orgSid != null">
+        #{orgSid,jdbcType=INTEGER},
+      </if>
+      <if test="orgNo != null">
+        #{orgNo,jdbcType=VARCHAR},
+      </if>
+      <if test="orgCode != null">
+        #{orgCode,jdbcType=VARCHAR},
+      </if>
+      <if test="orgName != null">
+        #{orgName,jdbcType=VARCHAR},
+      </if>
+      <if test="orgDesc != null">
+        #{orgDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="orgCreateTime != null">
+        #{orgCreateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="orgPhone != null">
+        #{orgPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="orgContacts != null">
+        #{orgContacts,jdbcType=VARCHAR},
+      </if>
+      <if test="orgContMobile != null">
+        #{orgContMobile,jdbcType=VARCHAR},
+      </if>
+      <if test="orgOrder != null">
+        #{orgOrder,jdbcType=INTEGER},
+      </if>
+      <if test="orgStatus != null">
+        #{orgStatus,jdbcType=INTEGER},
+      </if>
+      <if test="orgType != null">
+        #{orgType,jdbcType=VARCHAR},
+      </if>
+      <if test="orgEmail != null">
+        #{orgEmail,jdbcType=VARCHAR},
+      </if>
+      <if test="orgAddr != null">
+        #{orgAddr,jdbcType=VARCHAR},
+      </if>
+      <if test="creatreOrgId != null">
+        #{creatreOrgId,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.build4d.project.dbaccess.dbentities.ProOrganEntity">
+    update iams_pro_organ
+    <set>
+      <if test="orgNo != null">
+        ORG_NO = #{orgNo,jdbcType=VARCHAR},
+      </if>
+      <if test="orgCode != null">
+        ORG_CODE = #{orgCode,jdbcType=VARCHAR},
+      </if>
+      <if test="orgName != null">
+        ORG_NAME = #{orgName,jdbcType=VARCHAR},
+      </if>
+      <if test="orgDesc != null">
+        ORG_DESC = #{orgDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="orgCreateTime != null">
+        ORG_CREATE_TIME = #{orgCreateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="orgPhone != null">
+        ORG_PHONE = #{orgPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="orgContacts != null">
+        ORG_CONTACTS = #{orgContacts,jdbcType=VARCHAR},
+      </if>
+      <if test="orgContMobile != null">
+        ORG_CONT_MOBILE = #{orgContMobile,jdbcType=VARCHAR},
+      </if>
+      <if test="orgOrder != null">
+        ORG_ORDER = #{orgOrder,jdbcType=INTEGER},
+      </if>
+      <if test="orgStatus != null">
+        ORG_STATUS = #{orgStatus,jdbcType=INTEGER},
+      </if>
+      <if test="orgType != null">
+        ORG_TYPE = #{orgType,jdbcType=VARCHAR},
+      </if>
+      <if test="orgEmail != null">
+        ORG_EMAIL= #{orgEmail,jdbcType=VARCHAR},
+      </if>
+      <if test="orgAddr != null">
+        ORG_ADDR= #{orgAddr,jdbcType=VARCHAR},
+      </if>
+      <if test="creatreOrgId != null">
+        CREATRE_ORG_ID = #{creatreOrgId,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where ORG_SID = #{orgSid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.build4d.project.dbaccess.dbentities.ProOrganEntity">
+    update iams_pro_organ
+    set ORG_NO = #{orgNo,jdbcType=VARCHAR},
+      ORG_CODE = #{orgCode,jdbcType=VARCHAR},
+      ORG_NAME = #{orgName,jdbcType=VARCHAR},
+      ORG_DESC = #{orgDesc,jdbcType=VARCHAR},
+      ORG_CREATE_TIME = #{orgCreateTime,jdbcType=TIMESTAMP},
+      ORG_PHONE = #{orgPhone,jdbcType=VARCHAR},
+      ORG_CONTACTS = #{orgContacts,jdbcType=VARCHAR},
+      ORG_CONT_MOBILE = #{orgContMobile,jdbcType=VARCHAR},
+      ORG_ORDER = #{orgOrder,jdbcType=INTEGER},
+      ORG_STATUS = #{orgStatus,jdbcType=INTEGER},
+      ORG_TYPE = #{orgType,jdbcType=VARCHAR},
+      ORG_EMAIL= #{orgEmail,jdbcType=VARCHAR},
+      ORG_ADDR= #{orgAddr,jdbcType=VARCHAR},
+      CREATRE_ORG_ID = #{creatreOrgId,jdbcType=VARCHAR}
+    where ORG_SID = #{orgSid,jdbcType=INTEGER}
+  </update>
+
+  <delete id="deleteAll">
+    delete from IAMS_PRO_ORGAN
+  </delete>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from IAMS_PRO_ORGAN ORDER by ORG_ORDER ASC
+  </select>
+  <select id="nextId" resultType="integer">
+    select case when max(ORG_SID) is null then 1 else max(ORG_SID)+1 end NEXTID from iams_pro_organ
+  </select>
+  <select id="nextOrderNum" resultType="integer">
+    select case when max(ORG_ORDER) is null then 1 else max(ORG_ORDER)+1 end ORDERNUM from iams_pro_organ
+  </select>
+  <select id="selectEnabledOrgs" parameterType="java.lang.String"  resultMap="BaseResultMap">
+  select
+  <include refid="Base_Column_List" />
+  from IAMS_PRO_ORGAN where ORG_STATUS=1
+    <if test="orgType != null and orgType != ''">
+     and ORG_TYPE=#{orgType,jdbcType=VARCHAR}
+    </if>
+    ORDER by ORG_ORDER ASC
+</select>
+  <select id="existOrgan" resultType="boolean">
+    select count(*) c from IAMS_PRO_ORGAN
+    <where>
+      <if test="orgSid != null">
+        ORG_SID!=#{orgSid,jdbcType=INTEGER}
+      </if>
+      <if test="orgName != null and orgName != ''">
+       and ORG_NAME=#{orgName,jdbcType=VARCHAR}
+      </if>
+      <if test="orgCode != null and orgCode != ''">
+        and ORG_CODE=#{orgCode,jdbcType=VARCHAR}
+      </if>
+    </where>
+  </select>
+  <select id="selectOrganManage" parameterType="java.util.Map" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from IAMS_PRO_ORGAN
+    <where>
+      <if test="orgName != null and orgName != ''">
+        ORG_NAME like "%"#{orgName}"%"
+      </if>
+      <if test="orgCode != null and orgCode != ''">
+        and ORG_CODE like "%"#{orgCode}"%"
+      </if>
+      <if test="orgCreateTime_s != null and orgCreateTime_s != ''">
+        and ORG_CREATE_TIME >= #{orgCreateTime_s}
+      </if>
+      <if test="orgCreateTime_e != null and orgCreateTime_e != ''">
+        and ORG_CREATE_TIME &lt;= #{orgCreateTime_e}
+      </if>
+      <if test="creatreOrgId != null and creatreOrgId != ''">
+        and CREATRE_ORG_ID like "%"#{creatreOrgId}"%"
+      </if>
+    </where>
+    ORDER by ORG_ORDER ASC
+  </select>
+  <select id="selectEnabledOrgsWithCreateByBuildOrgan"  resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from IAMS_PRO_ORGAN where CREATRE_ORG_ID = #{organId,jdbcType=INTEGER}
+  </select>
+</mapper>

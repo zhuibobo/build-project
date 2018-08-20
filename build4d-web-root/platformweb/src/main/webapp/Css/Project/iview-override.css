@@ -1,0 +1,17 @@
+/**
+ * Created with IntelliJ IDEA.
+ * Description: 
+ * User: liwl
+ * Date: 2018-06-15
+ * To change this template use File | Settings | File Templates.
+ */
+
+.button-search{
+    margin-left: 5px; font-size: 24px; color:  rgba(0, 0, 255,0.5);cursor: pointer;
+}
+.button-off{
+    margin-left: 5px; font-size: 25px; color:  rgba(237, 63, 20,0.5);cursor: pointer;
+}
+.button-on{
+    margin-left: 5px; font-size: 25px; color: rgba(12, 140, 0,0.5); cursor: pointer;
+}

@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="build4d-base-service:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/build4d_base_service_jar</output-path>
+    <root id="archive" name="build4d-base-service.jar">
+      <element id="module-output" name="build4d-base-service" />
+    </root>
+  </artifact>
+</component>

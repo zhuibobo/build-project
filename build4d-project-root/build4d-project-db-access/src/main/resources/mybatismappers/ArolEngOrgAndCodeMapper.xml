@@ -1,0 +1,500 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.build4d.project.dbaccess.dao.ArolEngOrgAndCodeMapper">
+  <resultMap id="BaseResultMap" type="com.build4d.project.dbaccess.dbentities.ArolEngOrgAndCodeEntity">
+    <constructor>
+      <idArg column="ENG_SID" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="LAND_USE_ORG_SID" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="LAND_USE_ORG_NAME" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="INITIATION_APPROVAL_ORG_SID" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="INITIATION_APPROVAL_ORG_NAME" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="DESIGN_ORG_SID" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="DESIGN_ORG_NAME" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="RECONNAISSANCE_ORG_SID" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="RECONNAISSANCE_ORG_NAME" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="SUPERVISION_ORG_SID" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="SUPERVISION_ORG_NAME" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="CONSTRUCT_ORG_SID" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="CONSTRUCT_ORG_NAME" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="PLANNING_APPROVAL_ORG_SID" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="PLANNING_APPROVAL_ORG_NAME" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="SECURITY_ORG_SID" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="SECURITY_ORG_NAME" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="INITIATION_APPROVAL_NO" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="LAND_USE_PLANNING_NO" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="LAND_USE_NO" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="CONSTRUCT_NO" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="DESIGN_NO" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="LAND_NO" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="TERRAIN_NO" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="CREATED_BY" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="CREATED_DT" javaType="java.util.Date" jdbcType="TIMESTAMP" />
+      <arg column="VERSION" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="UPDATED_BY" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="UPDATED_DT" javaType="java.util.Date" jdbcType="TIMESTAMP" />
+      <arg column="INSTRUCTOR" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="PM_DIRECTOR" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="FIELD_MANAGER" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="SUB_UNIT" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="PROJECT_MANAGER" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="SUPERVION_CHECKER" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="CONS_UNIT_CHECKER" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="FINISH_BAH" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="OTHER_CERT" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="INSTRUCTOR_SID" javaType="java.lang.Integer" jdbcType="INTEGER" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List">
+    ENG_SID, LAND_USE_ORG_SID, LAND_USE_ORG_NAME, INITIATION_APPROVAL_ORG_SID, INITIATION_APPROVAL_ORG_NAME, 
+    DESIGN_ORG_SID, DESIGN_ORG_NAME, RECONNAISSANCE_ORG_SID, RECONNAISSANCE_ORG_NAME, 
+    SUPERVISION_ORG_SID, SUPERVISION_ORG_NAME, CONSTRUCT_ORG_SID, CONSTRUCT_ORG_NAME, 
+    PLANNING_APPROVAL_ORG_SID, PLANNING_APPROVAL_ORG_NAME, SECURITY_ORG_SID, SECURITY_ORG_NAME, 
+    INITIATION_APPROVAL_NO, LAND_USE_PLANNING_NO, LAND_USE_NO, CONSTRUCT_NO, DESIGN_NO, 
+    LAND_NO, TERRAIN_NO, CREATED_BY, CREATED_DT, VERSION, UPDATED_BY, UPDATED_DT, INSTRUCTOR, 
+    PM_DIRECTOR, FIELD_MANAGER, SUB_UNIT, PROJECT_MANAGER, SUPERVION_CHECKER, CONS_UNIT_CHECKER, 
+    FINISH_BAH, OTHER_CERT,INSTRUCTOR_SID
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from iams_arol_eng_org_and_code
+    where ENG_SID = #{engSid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from iams_arol_eng_org_and_code
+    where ENG_SID = #{engSid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.build4d.project.dbaccess.dbentities.ArolEngOrgAndCodeEntity">
+    insert into iams_arol_eng_org_and_code (ENG_SID, LAND_USE_ORG_SID, LAND_USE_ORG_NAME, 
+      INITIATION_APPROVAL_ORG_SID, INITIATION_APPROVAL_ORG_NAME, 
+      DESIGN_ORG_SID, DESIGN_ORG_NAME, RECONNAISSANCE_ORG_SID, 
+      RECONNAISSANCE_ORG_NAME, SUPERVISION_ORG_SID, 
+      SUPERVISION_ORG_NAME, CONSTRUCT_ORG_SID, CONSTRUCT_ORG_NAME, 
+      PLANNING_APPROVAL_ORG_SID, PLANNING_APPROVAL_ORG_NAME, 
+      SECURITY_ORG_SID, SECURITY_ORG_NAME, INITIATION_APPROVAL_NO, 
+      LAND_USE_PLANNING_NO, LAND_USE_NO, CONSTRUCT_NO, 
+      DESIGN_NO, LAND_NO, TERRAIN_NO, 
+      CREATED_BY, CREATED_DT, VERSION, 
+      UPDATED_BY, UPDATED_DT, INSTRUCTOR, 
+      PM_DIRECTOR, FIELD_MANAGER, SUB_UNIT, 
+      PROJECT_MANAGER, SUPERVION_CHECKER, CONS_UNIT_CHECKER, 
+      FINISH_BAH, OTHER_CERT,INSTRUCTOR_SID)
+    values (#{engSid,jdbcType=INTEGER}, #{landUseOrgSid,jdbcType=INTEGER}, #{landUseOrgName,jdbcType=VARCHAR}, 
+      #{initiationApprovalOrgSid,jdbcType=INTEGER}, #{initiationApprovalOrgName,jdbcType=VARCHAR}, 
+      #{designOrgSid,jdbcType=INTEGER}, #{designOrgName,jdbcType=VARCHAR}, #{reconnaissanceOrgSid,jdbcType=INTEGER}, 
+      #{reconnaissanceOrgName,jdbcType=VARCHAR}, #{supervisionOrgSid,jdbcType=INTEGER}, 
+      #{supervisionOrgName,jdbcType=VARCHAR}, #{constructOrgSid,jdbcType=INTEGER}, #{constructOrgName,jdbcType=VARCHAR}, 
+      #{planningApprovalOrgSid,jdbcType=INTEGER}, #{planningApprovalOrgName,jdbcType=VARCHAR}, 
+      #{securityOrgSid,jdbcType=INTEGER}, #{securityOrgName,jdbcType=VARCHAR}, #{initiationApprovalNo,jdbcType=INTEGER}, 
+      #{landUsePlanningNo,jdbcType=VARCHAR}, #{landUseNo,jdbcType=VARCHAR}, #{constructNo,jdbcType=VARCHAR}, 
+      #{designNo,jdbcType=VARCHAR}, #{landNo,jdbcType=VARCHAR}, #{terrainNo,jdbcType=VARCHAR}, 
+      #{createdBy,jdbcType=VARCHAR}, #{createdDt,jdbcType=TIMESTAMP}, #{version,jdbcType=INTEGER}, 
+      #{updatedBy,jdbcType=VARCHAR}, #{updatedDt,jdbcType=TIMESTAMP}, #{instructor,jdbcType=VARCHAR}, 
+      #{pmDirector,jdbcType=VARCHAR}, #{fieldManager,jdbcType=VARCHAR}, #{subUnit,jdbcType=VARCHAR}, 
+      #{projectManager,jdbcType=VARCHAR}, #{supervionChecker,jdbcType=VARCHAR}, #{consUnitChecker,jdbcType=VARCHAR}, 
+      #{finishBah,jdbcType=VARCHAR}, #{otherCert,jdbcType=VARCHAR},#{instructorSid,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.build4d.project.dbaccess.dbentities.ArolEngOrgAndCodeEntity">
+    insert into iams_arol_eng_org_and_code
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="engSid != null">
+        ENG_SID,
+      </if>
+      <if test="landUseOrgSid != null">
+        LAND_USE_ORG_SID,
+      </if>
+      <if test="landUseOrgName != null">
+        LAND_USE_ORG_NAME,
+      </if>
+      <if test="initiationApprovalOrgSid != null">
+        INITIATION_APPROVAL_ORG_SID,
+      </if>
+      <if test="initiationApprovalOrgName != null">
+        INITIATION_APPROVAL_ORG_NAME,
+      </if>
+      <if test="designOrgSid != null">
+        DESIGN_ORG_SID,
+      </if>
+      <if test="designOrgName != null">
+        DESIGN_ORG_NAME,
+      </if>
+      <if test="reconnaissanceOrgSid != null">
+        RECONNAISSANCE_ORG_SID,
+      </if>
+      <if test="reconnaissanceOrgName != null">
+        RECONNAISSANCE_ORG_NAME,
+      </if>
+      <if test="supervisionOrgSid != null">
+        SUPERVISION_ORG_SID,
+      </if>
+      <if test="supervisionOrgName != null">
+        SUPERVISION_ORG_NAME,
+      </if>
+      <if test="constructOrgSid != null">
+        CONSTRUCT_ORG_SID,
+      </if>
+      <if test="constructOrgName != null">
+        CONSTRUCT_ORG_NAME,
+      </if>
+      <if test="planningApprovalOrgSid != null">
+        PLANNING_APPROVAL_ORG_SID,
+      </if>
+      <if test="planningApprovalOrgName != null">
+        PLANNING_APPROVAL_ORG_NAME,
+      </if>
+      <if test="securityOrgSid != null">
+        SECURITY_ORG_SID,
+      </if>
+      <if test="securityOrgName != null">
+        SECURITY_ORG_NAME,
+      </if>
+      <if test="initiationApprovalNo != null">
+        INITIATION_APPROVAL_NO,
+      </if>
+      <if test="landUsePlanningNo != null">
+        LAND_USE_PLANNING_NO,
+      </if>
+      <if test="landUseNo != null">
+        LAND_USE_NO,
+      </if>
+      <if test="constructNo != null">
+        CONSTRUCT_NO,
+      </if>
+      <if test="designNo != null">
+        DESIGN_NO,
+      </if>
+      <if test="landNo != null">
+        LAND_NO,
+      </if>
+      <if test="terrainNo != null">
+        TERRAIN_NO,
+      </if>
+      <if test="createdBy != null">
+        CREATED_BY,
+      </if>
+      <if test="createdDt != null">
+        CREATED_DT,
+      </if>
+      <if test="version != null">
+        VERSION,
+      </if>
+      <if test="updatedBy != null">
+        UPDATED_BY,
+      </if>
+      <if test="updatedDt != null">
+        UPDATED_DT,
+      </if>
+      <if test="instructor != null">
+        INSTRUCTOR,
+      </if>
+      <if test="pmDirector != null">
+        PM_DIRECTOR,
+      </if>
+      <if test="fieldManager != null">
+        FIELD_MANAGER,
+      </if>
+      <if test="subUnit != null">
+        SUB_UNIT,
+      </if>
+      <if test="projectManager != null">
+        PROJECT_MANAGER,
+      </if>
+      <if test="supervionChecker != null">
+        SUPERVION_CHECKER,
+      </if>
+      <if test="consUnitChecker != null">
+        CONS_UNIT_CHECKER,
+      </if>
+      <if test="finishBah != null">
+        FINISH_BAH,
+      </if>
+      <if test="otherCert != null">
+        OTHER_CERT,
+      </if>
+      <if test="instructorSid != null">
+        INSTRUCTOR_SID,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="engSid != null">
+        #{engSid,jdbcType=INTEGER},
+      </if>
+      <if test="landUseOrgSid != null">
+        #{landUseOrgSid,jdbcType=INTEGER},
+      </if>
+      <if test="landUseOrgName != null">
+        #{landUseOrgName,jdbcType=VARCHAR},
+      </if>
+      <if test="initiationApprovalOrgSid != null">
+        #{initiationApprovalOrgSid,jdbcType=INTEGER},
+      </if>
+      <if test="initiationApprovalOrgName != null">
+        #{initiationApprovalOrgName,jdbcType=VARCHAR},
+      </if>
+      <if test="designOrgSid != null">
+        #{designOrgSid,jdbcType=INTEGER},
+      </if>
+      <if test="designOrgName != null">
+        #{designOrgName,jdbcType=VARCHAR},
+      </if>
+      <if test="reconnaissanceOrgSid != null">
+        #{reconnaissanceOrgSid,jdbcType=INTEGER},
+      </if>
+      <if test="reconnaissanceOrgName != null">
+        #{reconnaissanceOrgName,jdbcType=VARCHAR},
+      </if>
+      <if test="supervisionOrgSid != null">
+        #{supervisionOrgSid,jdbcType=INTEGER},
+      </if>
+      <if test="supervisionOrgName != null">
+        #{supervisionOrgName,jdbcType=VARCHAR},
+      </if>
+      <if test="constructOrgSid != null">
+        #{constructOrgSid,jdbcType=INTEGER},
+      </if>
+      <if test="constructOrgName != null">
+        #{constructOrgName,jdbcType=VARCHAR},
+      </if>
+      <if test="planningApprovalOrgSid != null">
+        #{planningApprovalOrgSid,jdbcType=INTEGER},
+      </if>
+      <if test="planningApprovalOrgName != null">
+        #{planningApprovalOrgName,jdbcType=VARCHAR},
+      </if>
+      <if test="securityOrgSid != null">
+        #{securityOrgSid,jdbcType=INTEGER},
+      </if>
+      <if test="securityOrgName != null">
+        #{securityOrgName,jdbcType=VARCHAR},
+      </if>
+      <if test="initiationApprovalNo != null">
+        #{initiationApprovalNo,jdbcType=INTEGER},
+      </if>
+      <if test="landUsePlanningNo != null">
+        #{landUsePlanningNo,jdbcType=VARCHAR},
+      </if>
+      <if test="landUseNo != null">
+        #{landUseNo,jdbcType=VARCHAR},
+      </if>
+      <if test="constructNo != null">
+        #{constructNo,jdbcType=VARCHAR},
+      </if>
+      <if test="designNo != null">
+        #{designNo,jdbcType=VARCHAR},
+      </if>
+      <if test="landNo != null">
+        #{landNo,jdbcType=VARCHAR},
+      </if>
+      <if test="terrainNo != null">
+        #{terrainNo,jdbcType=VARCHAR},
+      </if>
+      <if test="createdBy != null">
+        #{createdBy,jdbcType=VARCHAR},
+      </if>
+      <if test="createdDt != null">
+        #{createdDt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="version != null">
+        #{version,jdbcType=INTEGER},
+      </if>
+      <if test="updatedBy != null">
+        #{updatedBy,jdbcType=VARCHAR},
+      </if>
+      <if test="updatedDt != null">
+        #{updatedDt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="instructor != null">
+        #{instructor,jdbcType=VARCHAR},
+      </if>
+      <if test="pmDirector != null">
+        #{pmDirector,jdbcType=VARCHAR},
+      </if>
+      <if test="fieldManager != null">
+        #{fieldManager,jdbcType=VARCHAR},
+      </if>
+      <if test="subUnit != null">
+        #{subUnit,jdbcType=VARCHAR},
+      </if>
+      <if test="projectManager != null">
+        #{projectManager,jdbcType=VARCHAR},
+      </if>
+      <if test="supervionChecker != null">
+        #{supervionChecker,jdbcType=VARCHAR},
+      </if>
+      <if test="consUnitChecker != null">
+        #{consUnitChecker,jdbcType=VARCHAR},
+      </if>
+      <if test="finishBah != null">
+        #{finishBah,jdbcType=VARCHAR},
+      </if>
+      <if test="otherCert != null">
+        #{otherCert,jdbcType=VARCHAR},
+      </if>
+      <if test="instructorSid != null">
+        #{instructorSid,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.build4d.project.dbaccess.dbentities.ArolEngOrgAndCodeEntity">
+    update iams_arol_eng_org_and_code
+    <set>
+      <if test="landUseOrgSid != null">
+        LAND_USE_ORG_SID = #{landUseOrgSid,jdbcType=INTEGER},
+      </if>
+      <if test="landUseOrgName != null">
+        LAND_USE_ORG_NAME = #{landUseOrgName,jdbcType=VARCHAR},
+      </if>
+      <if test="initiationApprovalOrgSid != null">
+        INITIATION_APPROVAL_ORG_SID = #{initiationApprovalOrgSid,jdbcType=INTEGER},
+      </if>
+      <if test="initiationApprovalOrgName != null">
+        INITIATION_APPROVAL_ORG_NAME = #{initiationApprovalOrgName,jdbcType=VARCHAR},
+      </if>
+      <if test="designOrgSid != null">
+        DESIGN_ORG_SID = #{designOrgSid,jdbcType=INTEGER},
+      </if>
+      <if test="designOrgName != null">
+        DESIGN_ORG_NAME = #{designOrgName,jdbcType=VARCHAR},
+      </if>
+      <if test="reconnaissanceOrgSid != null">
+        RECONNAISSANCE_ORG_SID = #{reconnaissanceOrgSid,jdbcType=INTEGER},
+      </if>
+      <if test="reconnaissanceOrgName != null">
+        RECONNAISSANCE_ORG_NAME = #{reconnaissanceOrgName,jdbcType=VARCHAR},
+      </if>
+      <if test="supervisionOrgSid != null">
+        SUPERVISION_ORG_SID = #{supervisionOrgSid,jdbcType=INTEGER},
+      </if>
+      <if test="supervisionOrgName != null">
+        SUPERVISION_ORG_NAME = #{supervisionOrgName,jdbcType=VARCHAR},
+      </if>
+      <if test="constructOrgSid != null">
+        CONSTRUCT_ORG_SID = #{constructOrgSid,jdbcType=INTEGER},
+      </if>
+      <if test="constructOrgName != null">
+        CONSTRUCT_ORG_NAME = #{constructOrgName,jdbcType=VARCHAR},
+      </if>
+      <if test="planningApprovalOrgSid != null">
+        PLANNING_APPROVAL_ORG_SID = #{planningApprovalOrgSid,jdbcType=INTEGER},
+      </if>
+      <if test="planningApprovalOrgName != null">
+        PLANNING_APPROVAL_ORG_NAME = #{planningApprovalOrgName,jdbcType=VARCHAR},
+      </if>
+      <if test="securityOrgSid != null">
+        SECURITY_ORG_SID = #{securityOrgSid,jdbcType=INTEGER},
+      </if>
+      <if test="securityOrgName != null">
+        SECURITY_ORG_NAME = #{securityOrgName,jdbcType=VARCHAR},
+      </if>
+      <if test="initiationApprovalNo != null">
+        INITIATION_APPROVAL_NO = #{initiationApprovalNo,jdbcType=INTEGER},
+      </if>
+      <if test="landUsePlanningNo != null">
+        LAND_USE_PLANNING_NO = #{landUsePlanningNo,jdbcType=VARCHAR},
+      </if>
+      <if test="landUseNo != null">
+        LAND_USE_NO = #{landUseNo,jdbcType=VARCHAR},
+      </if>
+      <if test="constructNo != null">
+        CONSTRUCT_NO = #{constructNo,jdbcType=VARCHAR},
+      </if>
+      <if test="designNo != null">
+        DESIGN_NO = #{designNo,jdbcType=VARCHAR},
+      </if>
+      <if test="landNo != null">
+        LAND_NO = #{landNo,jdbcType=VARCHAR},
+      </if>
+      <if test="terrainNo != null">
+        TERRAIN_NO = #{terrainNo,jdbcType=VARCHAR},
+      </if>
+      <if test="createdBy != null">
+        CREATED_BY = #{createdBy,jdbcType=VARCHAR},
+      </if>
+      <if test="createdDt != null">
+        CREATED_DT = #{createdDt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="version != null">
+        VERSION = #{version,jdbcType=INTEGER},
+      </if>
+      <if test="updatedBy != null">
+        UPDATED_BY = #{updatedBy,jdbcType=VARCHAR},
+      </if>
+      <if test="updatedDt != null">
+        UPDATED_DT = #{updatedDt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="instructor != null">
+        INSTRUCTOR = #{instructor,jdbcType=VARCHAR},
+      </if>
+      <if test="pmDirector != null">
+        PM_DIRECTOR = #{pmDirector,jdbcType=VARCHAR},
+      </if>
+      <if test="fieldManager != null">
+        FIELD_MANAGER = #{fieldManager,jdbcType=VARCHAR},
+      </if>
+      <if test="subUnit != null">
+        SUB_UNIT = #{subUnit,jdbcType=VARCHAR},
+      </if>
+      <if test="projectManager != null">
+        PROJECT_MANAGER = #{projectManager,jdbcType=VARCHAR},
+      </if>
+      <if test="supervionChecker != null">
+        SUPERVION_CHECKER = #{supervionChecker,jdbcType=VARCHAR},
+      </if>
+      <if test="consUnitChecker != null">
+        CONS_UNIT_CHECKER = #{consUnitChecker,jdbcType=VARCHAR},
+      </if>
+      <if test="finishBah != null">
+        FINISH_BAH = #{finishBah,jdbcType=VARCHAR},
+      </if>
+      <if test="otherCert != null">
+        OTHER_CERT = #{otherCert,jdbcType=VARCHAR},
+      </if>
+      <if test="instructorSid != null">
+        INSTRUCTOR_SID=#{instructorSid,jdbcType=INTEGER},
+      </if>
+    </set>
+    where ENG_SID = #{engSid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.build4d.project.dbaccess.dbentities.ArolEngOrgAndCodeEntity">
+    update iams_arol_eng_org_and_code
+    set LAND_USE_ORG_SID = #{landUseOrgSid,jdbcType=INTEGER},
+      LAND_USE_ORG_NAME = #{landUseOrgName,jdbcType=VARCHAR},
+      INITIATION_APPROVAL_ORG_SID = #{initiationApprovalOrgSid,jdbcType=INTEGER},
+      INITIATION_APPROVAL_ORG_NAME = #{initiationApprovalOrgName,jdbcType=VARCHAR},
+      DESIGN_ORG_SID = #{designOrgSid,jdbcType=INTEGER},
+      DESIGN_ORG_NAME = #{designOrgName,jdbcType=VARCHAR},
+      RECONNAISSANCE_ORG_SID = #{reconnaissanceOrgSid,jdbcType=INTEGER},
+      RECONNAISSANCE_ORG_NAME = #{reconnaissanceOrgName,jdbcType=VARCHAR},
+      SUPERVISION_ORG_SID = #{supervisionOrgSid,jdbcType=INTEGER},
+      SUPERVISION_ORG_NAME = #{supervisionOrgName,jdbcType=VARCHAR},
+      CONSTRUCT_ORG_SID = #{constructOrgSid,jdbcType=INTEGER},
+      CONSTRUCT_ORG_NAME = #{constructOrgName,jdbcType=VARCHAR},
+      PLANNING_APPROVAL_ORG_SID = #{planningApprovalOrgSid,jdbcType=INTEGER},
+      PLANNING_APPROVAL_ORG_NAME = #{planningApprovalOrgName,jdbcType=VARCHAR},
+      SECURITY_ORG_SID = #{securityOrgSid,jdbcType=INTEGER},
+      SECURITY_ORG_NAME = #{securityOrgName,jdbcType=VARCHAR},
+      INITIATION_APPROVAL_NO = #{initiationApprovalNo,jdbcType=INTEGER},
+      LAND_USE_PLANNING_NO = #{landUsePlanningNo,jdbcType=VARCHAR},
+      LAND_USE_NO = #{landUseNo,jdbcType=VARCHAR},
+      CONSTRUCT_NO = #{constructNo,jdbcType=VARCHAR},
+      DESIGN_NO = #{designNo,jdbcType=VARCHAR},
+      LAND_NO = #{landNo,jdbcType=VARCHAR},
+      TERRAIN_NO = #{terrainNo,jdbcType=VARCHAR},
+      CREATED_BY = #{createdBy,jdbcType=VARCHAR},
+      CREATED_DT = #{createdDt,jdbcType=TIMESTAMP},
+      VERSION = #{version,jdbcType=INTEGER},
+      UPDATED_BY = #{updatedBy,jdbcType=VARCHAR},
+      UPDATED_DT = #{updatedDt,jdbcType=TIMESTAMP},
+      INSTRUCTOR = #{instructor,jdbcType=VARCHAR},
+      PM_DIRECTOR = #{pmDirector,jdbcType=VARCHAR},
+      FIELD_MANAGER = #{fieldManager,jdbcType=VARCHAR},
+      SUB_UNIT = #{subUnit,jdbcType=VARCHAR},
+      PROJECT_MANAGER = #{projectManager,jdbcType=VARCHAR},
+      SUPERVION_CHECKER = #{supervionChecker,jdbcType=VARCHAR},
+      CONS_UNIT_CHECKER = #{consUnitChecker,jdbcType=VARCHAR},
+      FINISH_BAH = #{finishBah,jdbcType=VARCHAR},
+      OTHER_CERT = #{otherCert,jdbcType=VARCHAR},
+      INSTRUCTOR_SID=#{instructorSid,jdbcType=INTEGER}
+    where ENG_SID = #{engSid,jdbcType=INTEGER}
+  </update>
+</mapper>

@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<BuilderManageMenuRoot>
+    <Menu Name="StorageManagement" Text="存储管理" IconType="soup-can-outline">
+        <Items>
+            <Menu Name="StorageManagement-Table" Text="表设计" IconType="soup-can-outline">
+            </Menu>
+            <Menu Name="StorageManagement-Relation" Text="关系图[todo]" IconType="shuffle">
+            </Menu>
+            <Menu Name="StorageManagement-Modules" Text="模块设计[todo]" IconType="social-buffer-outline">
+            </Menu>
+            <Menu Name="StorageManagement-Backup" Text="备份设置[todo]" IconType="arrow-return-left">
+            </Menu>
+            <Menu Name="StorageManagement-Trigger" Text="触发器[todo]" IconType="log-in">
+            </Menu>
+            <Menu Name="StorageManagement-Reverse" Text="反向向导[todo]" IconType="loop">
+            </Menu>
+            <Menu Name="StorageManagement-ConnPool" Text="链接池[todo]" IconType="ios-barcode-outline">
+            </Menu>
+        </Items>
+    </Menu>
+    <Menu Name="DataSetManagement" Text="数据集管理" IconType="ionic">
+        <Items>
+            <Menu Name="StorageManagement-2-1" Text="数据集管理左侧菜单" IconType="">
+            </Menu>
+        </Items>
+    </Menu>
+    <Menu Name="ModulesManagement" Text="模块管理" IconType="social-buffer-outline">
+        <Items>
+            <Menu Name="StorageManagement-3-1" Text="模块管理左侧菜单" IconType="">
+            </Menu>
+        </Items>
+    </Menu>
+    <Menu Name="DataDictionaryManagement" Text="数据字典" IconType="ios-keypad-outline">
+        <Items>
+            <Menu Name="StorageManagement-4-1" Text="数据字典左侧菜单" IconType="">
+            </Menu>
+        </Items>
+    </Menu>
+    <Menu Name="SerialNumberManagement" Text="序号管理" IconType="ios-list-outline">
+        <Items>
+            <Menu Name="StorageManagement-5-1" Text="序号管理左侧菜单" IconType="">
+            </Menu>
+        </Items>
+    </Menu>
+    <Menu Name="DesktopManagement" Text="桌面管理" IconType="android-laptop">
+        <Items>
+            <Menu Name="StorageManagement-6-1" Text="桌面管理左侧菜单" IconType="">
+            </Menu>
+        </Items>
+    </Menu>
+    <Menu Name="VariableManagement" Text="变量管理" IconType="ios-shuffle-strong">
+        <Items>
+            <Menu Name="StorageManagement-7-1" Text="变量管理左侧菜单" IconType="">
+            </Menu>
+        </Items>
+    </Menu>
+    <Menu Name="OtherManagement" Text="其他管理" IconType="ios-cog">
+        <Items>
+            <Menu Name="StorageManagement-8-1" Text="其他管理左侧菜单" IconType="">
+            </Menu>
+        </Items>
+    </Menu>
+</BuilderManageMenuRoot>

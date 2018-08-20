@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.build4d.project.dbaccess.dao.ProRoleMapper">
+  <resultMap id="BaseResultMap" type="com.build4d.project.dbaccess.dbentities.ProRoleEntity">
+    <constructor>
+      <idArg column="ROLE_SID" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="ROLE_NAME" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="ROLE_USE_ORG_ID" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="ROLE_CREATE_TIME" javaType="java.util.Date" jdbcType="TIMESTAMP" />
+      <arg column="ROLE_ORDER" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="ROLE_STATUS" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="ROLE_TYPE" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="ROLE_DESC" javaType="java.lang.String" jdbcType="VARCHAR" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List">
+    ROLE_SID, ROLE_NAME, ROLE_USE_ORG_ID, ROLE_CREATE_TIME, ROLE_ORDER, ROLE_STATUS, 
+    ROLE_TYPE, ROLE_DESC
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from iams_pro_role
+    where ROLE_SID = #{roleSid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from iams_pro_role
+    where ROLE_SID = #{roleSid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.build4d.project.dbaccess.dbentities.ProRoleEntity">
+    insert into iams_pro_role (ROLE_SID, ROLE_NAME, ROLE_USE_ORG_ID, 
+      ROLE_CREATE_TIME, ROLE_ORDER, ROLE_STATUS, 
+      ROLE_TYPE, ROLE_DESC)
+    values (#{roleSid,jdbcType=INTEGER}, #{roleName,jdbcType=VARCHAR}, #{roleUseOrgId,jdbcType=VARCHAR}, 
+      #{roleCreateTime,jdbcType=TIMESTAMP}, #{roleOrder,jdbcType=INTEGER}, #{roleStatus,jdbcType=INTEGER}, 
+      #{roleType,jdbcType=VARCHAR}, #{roleDesc,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.build4d.project.dbaccess.dbentities.ProRoleEntity">
+    insert into iams_pro_role
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="roleSid != null">
+        ROLE_SID,
+      </if>
+      <if test="roleName != null">
+        ROLE_NAME,
+      </if>
+      <if test="roleUseOrgId != null">
+        ROLE_USE_ORG_ID,
+      </if>
+      <if test="roleCreateTime != null">
+        ROLE_CREATE_TIME,
+      </if>
+      <if test="roleOrder != null">
+        ROLE_ORDER,
+      </if>
+      <if test="roleStatus != null">
+        ROLE_STATUS,
+      </if>
+      <if test="roleType != null">
+        ROLE_TYPE,
+      </if>
+      <if test="roleDesc != null">
+        ROLE_DESC,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="roleSid != null">
+        #{roleSid,jdbcType=INTEGER},
+      </if>
+      <if test="roleName != null">
+        #{roleName,jdbcType=VARCHAR},
+      </if>
+      <if test="roleUseOrgId != null">
+        #{roleUseOrgId,jdbcType=VARCHAR},
+      </if>
+      <if test="roleCreateTime != null">
+        #{roleCreateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="roleOrder != null">
+        #{roleOrder,jdbcType=INTEGER},
+      </if>
+      <if test="roleStatus != null">
+        #{roleStatus,jdbcType=INTEGER},
+      </if>
+      <if test="roleType != null">
+        #{roleType,jdbcType=VARCHAR},
+      </if>
+      <if test="roleDesc != null">
+        #{roleDesc,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.build4d.project.dbaccess.dbentities.ProRoleEntity">
+    update iams_pro_role
+    <set>
+      <if test="roleName != null">
+        ROLE_NAME = #{roleName,jdbcType=VARCHAR},
+      </if>
+      <if test="roleUseOrgId != null">
+        ROLE_USE_ORG_ID = #{roleUseOrgId,jdbcType=VARCHAR},
+      </if>
+      <if test="roleCreateTime != null">
+        ROLE_CREATE_TIME = #{roleCreateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="roleOrder != null">
+        ROLE_ORDER = #{roleOrder,jdbcType=INTEGER},
+      </if>
+      <if test="roleStatus != null">
+        ROLE_STATUS = #{roleStatus,jdbcType=INTEGER},
+      </if>
+      <if test="roleType != null">
+        ROLE_TYPE = #{roleType,jdbcType=VARCHAR},
+      </if>
+      <if test="roleDesc != null">
+        ROLE_DESC = #{roleDesc,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where ROLE_SID = #{roleSid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.build4d.project.dbaccess.dbentities.ProRoleEntity">
+    update iams_pro_role
+    set ROLE_NAME = #{roleName,jdbcType=VARCHAR},
+      ROLE_USE_ORG_ID = #{roleUseOrgId,jdbcType=VARCHAR},
+      ROLE_CREATE_TIME = #{roleCreateTime,jdbcType=TIMESTAMP},
+      ROLE_ORDER = #{roleOrder,jdbcType=INTEGER},
+      ROLE_STATUS = #{roleStatus,jdbcType=INTEGER},
+      ROLE_TYPE = #{roleType,jdbcType=VARCHAR},
+      ROLE_DESC = #{roleDesc,jdbcType=VARCHAR}
+    where ROLE_SID = #{roleSid,jdbcType=INTEGER}
+  </update>
+
+  <delete id="deleteAll">
+    delete from iams_pro_role
+  </delete>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from iams_pro_role ORDER by ROLE_ORDER ASC
+  </select>
+  <select id="nextId" resultType="integer">
+    select case when max(ROLE_SID) is null then 1 else max(ROLE_SID)+1 end NEXTID from iams_pro_role
+  </select>
+  <select id="nextOrderNum" resultType="integer">
+    select case when max(ROLE_ORDER) is null then 1 else max(ROLE_ORDER)+1 end ORDERNUM from iams_pro_role
+  </select>
+
+  <select id="selectRolesByUserId" resultMap="BaseResultMap" parameterType="java.lang.Integer">
+    select
+    <include refid="Base_Column_List" />
+    from iams_pro_role where ROLE_SID in (SELECT ROLE_SID from iams_pro_user_role where user_sid=#{userSid})
+  </select>
+</mapper>

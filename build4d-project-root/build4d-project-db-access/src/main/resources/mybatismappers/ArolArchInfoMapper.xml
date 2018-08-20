@@ -1,0 +1,555 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.build4d.project.dbaccess.dao.ArolArchInfoMapper">
+    <resultMap id="BaseResultMap" type="com.build4d.project.dbaccess.dbentities.ArolArchInfoEntity">
+        <constructor>
+            <idArg column="SID" javaType="java.lang.Integer" jdbcType="INTEGER"/>
+            <arg column="ENG_SID" javaType="java.lang.Integer" jdbcType="INTEGER"/>
+            <arg column="ARCH_NO" javaType="java.lang.String" jdbcType="VARCHAR"/>
+            <arg column="ARCH_ID" javaType="java.lang.String" jdbcType="VARCHAR"/>
+            <arg column="BOX_SID" javaType="java.lang.Integer" jdbcType="INTEGER"/>
+            <arg column="ENG_ARCH_NO" javaType="java.lang.String" jdbcType="VARCHAR"/>
+            <arg column="REG_NO" javaType="java.lang.String" jdbcType="VARCHAR"/>
+            <arg column="ARCH_TITLE" javaType="java.lang.String" jdbcType="VARCHAR"/>
+            <arg column="MAKE_ORG_NAME" javaType="java.lang.String" jdbcType="VARCHAR"/>
+            <arg column="STORAGE_TYPE_CODE" javaType="java.lang.String" jdbcType="VARCHAR"/>
+            <arg column="SECURITY_LEVEL_CODE" javaType="java.lang.String" jdbcType="VARCHAR"/>
+            <arg column="MEDIA_TYPE_CODE" javaType="java.lang.String" jdbcType="VARCHAR"/>
+            <arg column="ARCH_TYPE_CODE" javaType="java.lang.String" jdbcType="VARCHAR"/>
+            <arg column="UNITS_CODE" javaType="java.lang.String" jdbcType="VARCHAR"/>
+            <arg column="SPEC_CODE" javaType="java.lang.String" jdbcType="VARCHAR"/>
+            <arg column="START_DATE" javaType="java.util.Date" jdbcType="TIMESTAMP"/>
+            <arg column="END_DATE" javaType="java.util.Date" jdbcType="TIMESTAMP"/>
+            <arg column="CHECK_TYPE_CODE" javaType="java.lang.String" jdbcType="VARCHAR"/>
+            <arg column="OLD_ARCH_ID" javaType="java.lang.String" jdbcType="VARCHAR"/>
+            <arg column="ARCH_WIDTH" javaType="java.lang.String" jdbcType="VARCHAR"/>
+            <arg column="SHELVING_TYPE_CODE" javaType="java.lang.String" jdbcType="VARCHAR"/>
+            <arg column="COMPACT_DISK_NUMS" javaType="java.lang.String" jdbcType="VARCHAR"/>
+            <arg column="LOCK_STATUS" javaType="java.lang.String" jdbcType="VARCHAR"/>
+            <arg column="MICRO_NO" javaType="java.lang.String" jdbcType="VARCHAR"/>
+            <arg column="CREATED_BY" javaType="java.lang.String" jdbcType="VARCHAR"/>
+            <arg column="CREATED_DT" javaType="java.util.Date" jdbcType="TIMESTAMP"/>
+            <arg column="VERSION" javaType="java.lang.Integer" jdbcType="INTEGER"/>
+            <arg column="UPDATED_BY" javaType="java.lang.String" jdbcType="VARCHAR"/>
+            <arg column="UPDATED_DT" javaType="java.util.Date" jdbcType="TIMESTAMP"/>
+            <arg column="REMARK" javaType="java.lang.String" jdbcType="VARCHAR"/>
+            <arg column="ORGAN_SID" javaType="java.lang.Integer" jdbcType="INTEGER"/>
+
+            <arg column="STATUS" javaType="java.lang.Integer" jdbcType="INTEGER"/>
+            <arg column="CHECK_OPINION" javaType="java.lang.String" jdbcType="VARCHAR"/>
+            <arg column="CHECK_PERSON" javaType="java.lang.String" jdbcType="VARCHAR"/>
+            <arg column="CHECK_DATE" javaType="java.util.Date" jdbcType="TIMESTAMP"/>
+        </constructor>
+    </resultMap>
+    <sql id="Base_Column_List">
+        IAMS_AROL_ARCH_INFO.SID, ENG_SID, ARCH_NO, ARCH_ID, BOX_SID, ENG_ARCH_NO, REG_NO, ARCH_TITLE, MAKE_ORG_NAME,
+        IAMS_AROL_ARCH_INFO.STORAGE_TYPE_CODE, IAMS_AROL_ARCH_INFO.SECURITY_LEVEL_CODE, MEDIA_TYPE_CODE, ARCH_TYPE_CODE, UNITS_CODE,
+        SPEC_CODE, START_DATE, END_DATE, CHECK_TYPE_CODE, OLD_ARCH_ID, ARCH_WIDTH, SHELVING_TYPE_CODE,
+        COMPACT_DISK_NUMS, LOCK_STATUS, IAMS_AROL_ARCH_INFO.MICRO_NO, IAMS_AROL_ARCH_INFO.CREATED_BY,
+        IAMS_AROL_ARCH_INFO.CREATED_DT, IAMS_AROL_ARCH_INFO.VERSION, IAMS_AROL_ARCH_INFO.UPDATED_BY,
+        IAMS_AROL_ARCH_INFO.UPDATED_DT, REMARK, IAMS_AROL_ARCH_INFO.ORGAN_SID, IAMS_AROL_ARCH_INFO.STATUS,
+        IAMS_AROL_ARCH_INFO.CHECK_OPINION, IAMS_AROL_ARCH_INFO.CHECK_PERSON, IAMS_AROL_ARCH_INFO.CHECK_DATE
+    </sql>
+    <resultMap id="BaseResultMapJoinEng" type="com.build4d.project.dbaccess.dbentities.ArolArchInfoEntity"
+               extends="BaseResultMap">
+        <association property="engBaseInfoEntity"
+                     javaType="com.build4d.project.dbaccess.dbentities.ArolEngBaseInfoEntity">
+            <constructor>
+                <arg column="ENG_NO" javaType="java.lang.String" jdbcType="VARCHAR"/>
+                <arg column="ENG_NAME" javaType="java.lang.String" jdbcType="VARCHAR"/>
+                <arg column="ENG_TYPE" javaType="java.lang.Integer" jdbcType="INTEGER"/>
+            </constructor>
+        </association>
+    </resultMap>
+    <sql id="Base_Column_List_JoinEng">
+        ENG_NO, ENG_NAME, ENG_TYPE
+    </sql>
+    <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from iams_arol_arch_info
+        where SID = #{sid,jdbcType=INTEGER}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+        DELETE FROM iams_arol_arch_info
+        WHERE SID = #{sid,jdbcType=INTEGER}
+    </delete>
+    <delete id="deleteByEngSid" parameterType="java.lang.Integer">
+        delete from iams_arol_arch_info
+        where ENG_SID = #{engSid,jdbcType=INTEGER}
+    </delete>
+    <insert id="insert" parameterType="com.build4d.project.dbaccess.dbentities.ArolArchInfoEntity">
+        INSERT INTO iams_arol_arch_info (SID, ENG_SID, ARCH_NO,
+                                         ARCH_ID, BOX_SID, ENG_ARCH_NO,
+                                         REG_NO, ARCH_TITLE, MAKE_ORG_NAME,
+                                         STORAGE_TYPE_CODE, SECURITY_LEVEL_CODE, MEDIA_TYPE_CODE,
+                                         ARCH_TYPE_CODE, UNITS_CODE, SPEC_CODE,
+                                         START_DATE, END_DATE, CHECK_TYPE_CODE,
+                                         OLD_ARCH_ID, ARCH_WIDTH, SHELVING_TYPE_CODE,
+                                         COMPACT_DISK_NUMS, LOCK_STATUS, MICRO_NO,
+                                         CREATED_BY, CREATED_DT, VERSION,
+                                         UPDATED_BY, UPDATED_DT, REMARK, ORGAN_SID, STATUS, CHECK_OPINION, CHECK_PERSON, CHECK_DATE)
+        VALUES (#{sid,jdbcType=INTEGER}, #{engSid,jdbcType=INTEGER}, #{archNo,jdbcType=VARCHAR},
+                                         #{archId,jdbcType=VARCHAR}, #{boxSid,jdbcType=INTEGER},
+                                         #{engArchNo,jdbcType=VARCHAR},
+                                         #{regNo,jdbcType=VARCHAR}, #{archTitle,jdbcType=VARCHAR},
+                                         #{makeOrgName,jdbcType=VARCHAR},
+                                         #{storageTypeCode,jdbcType=VARCHAR}, #{securityLevelCode,jdbcType=VARCHAR},
+            #{mediaTypeCode,jdbcType=VARCHAR},
+            #{archTypeCode,jdbcType=VARCHAR}, #{unitsCode,jdbcType=VARCHAR}, #{specCode,jdbcType=VARCHAR},
+            #{startDate,jdbcType=TIMESTAMP}, #{endDate,jdbcType=TIMESTAMP}, #{checkTypeCode,jdbcType=VARCHAR},
+            #{oldArchId,jdbcType=VARCHAR}, #{archWidth,jdbcType=VARCHAR}, #{shelvingTypeCode,jdbcType=VARCHAR},
+            #{compactDiskNums,jdbcType=VARCHAR}, #{lockStatus,jdbcType=VARCHAR}, #{microNo,jdbcType=VARCHAR},
+            #{createdBy,jdbcType=VARCHAR}, #{createdDt,jdbcType=TIMESTAMP}, #{version,jdbcType=INTEGER},
+            #{updatedBy,jdbcType=VARCHAR}, #{updatedDt,jdbcType=TIMESTAMP}, #{remark,jdbcType=VARCHAR},
+            #{organSid,jdbcType=INTEGER},
+                #{status,jdbcType=INTEGER}, #{checkOpinion,jdbcType=VARCHAR}, #{checkPerson,jdbcType=VARCHAR},
+                #{checkDate,jdbcType=TIMESTAMP})
+    </insert>
+    <insert id="insertSelective" parameterType="com.build4d.project.dbaccess.dbentities.ArolArchInfoEntity">
+        insert into iams_arol_arch_info
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="sid != null">
+                SID,
+            </if>
+            <if test="engSid != null">
+                ENG_SID,
+            </if>
+            <if test="archNo != null">
+                ARCH_NO,
+            </if>
+            <if test="archId != null">
+                ARCH_ID,
+            </if>
+            <if test="boxSid != null">
+                BOX_SID,
+            </if>
+            <if test="engArchNo != null">
+                ENG_ARCH_NO,
+            </if>
+            <if test="regNo != null">
+                REG_NO,
+            </if>
+            <if test="archTitle != null">
+                ARCH_TITLE,
+            </if>
+            <if test="makeOrgName != null">
+                MAKE_ORG_NAME,
+            </if>
+            <if test="storageTypeCode != null">
+                STORAGE_TYPE_CODE,
+            </if>
+            <if test="securityLevelCode != null">
+                SECURITY_LEVEL_CODE,
+            </if>
+            <if test="mediaTypeCode != null">
+                MEDIA_TYPE_CODE,
+            </if>
+            <if test="archTypeCode != null">
+                ARCH_TYPE_CODE,
+            </if>
+            <if test="unitsCode != null">
+                UNITS_CODE,
+            </if>
+            <if test="specCode != null">
+                SPEC_CODE,
+            </if>
+            <if test="startDate != null">
+                START_DATE,
+            </if>
+            <if test="endDate != null">
+                END_DATE,
+            </if>
+            <if test="checkTypeCode != null">
+                CHECK_TYPE_CODE,
+            </if>
+            <if test="oldArchId != null">
+                OLD_ARCH_ID,
+            </if>
+            <if test="archWidth != null">
+                ARCH_WIDTH,
+            </if>
+            <if test="shelvingTypeCode != null">
+                SHELVING_TYPE_CODE,
+            </if>
+            <if test="compactDiskNums != null">
+                COMPACT_DISK_NUMS,
+            </if>
+            <if test="lockStatus != null">
+                LOCK_STATUS,
+            </if>
+            <if test="microNo != null">
+                MICRO_NO,
+            </if>
+            <if test="createdBy != null">
+                CREATED_BY,
+            </if>
+            <if test="createdDt != null">
+                CREATED_DT,
+            </if>
+            <if test="version != null">
+                VERSION,
+            </if>
+            <if test="updatedBy != null">
+                UPDATED_BY,
+            </if>
+            <if test="updatedDt != null">
+                UPDATED_DT,
+            </if>
+            <if test="remark != null">
+                REMARK,
+            </if>
+            <if test="organSid != null">
+                ORGAN_SID,
+            </if>
+
+            <if test="status != null">
+                STATUS,
+            </if>
+            <if test="checkOpinion != null">
+                CHECK_OPINION,
+            </if>
+            <if test="checkPerson != null">
+                CHECK_PERSON,
+            </if>
+            <if test="checkDate != null">
+                CHECK_DATE,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="sid != null">
+                #{sid,jdbcType=INTEGER},
+            </if>
+            <if test="engSid != null">
+                #{engSid,jdbcType=INTEGER},
+            </if>
+            <if test="archNo != null">
+                #{archNo,jdbcType=VARCHAR},
+            </if>
+            <if test="archId != null">
+                #{archId,jdbcType=VARCHAR},
+            </if>
+            <if test="boxSid != null">
+                #{boxSid,jdbcType=INTEGER},
+            </if>
+            <if test="engArchNo != null">
+                #{engArchNo,jdbcType=VARCHAR},
+            </if>
+            <if test="regNo != null">
+                #{regNo,jdbcType=VARCHAR},
+            </if>
+            <if test="archTitle != null">
+                #{archTitle,jdbcType=VARCHAR},
+            </if>
+            <if test="makeOrgName != null">
+                #{makeOrgName,jdbcType=VARCHAR},
+            </if>
+            <if test="storageTypeCode != null">
+                #{storageTypeCode,jdbcType=VARCHAR},
+            </if>
+            <if test="securityLevelCode != null">
+                #{securityLevelCode,jdbcType=VARCHAR},
+            </if>
+            <if test="mediaTypeCode != null">
+                #{mediaTypeCode,jdbcType=VARCHAR},
+            </if>
+            <if test="archTypeCode != null">
+                #{archTypeCode,jdbcType=VARCHAR},
+            </if>
+            <if test="unitsCode != null">
+                #{unitsCode,jdbcType=VARCHAR},
+            </if>
+            <if test="specCode != null">
+                #{specCode,jdbcType=VARCHAR},
+            </if>
+            <if test="startDate != null">
+                #{startDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="endDate != null">
+                #{endDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="checkTypeCode != null">
+                #{checkTypeCode,jdbcType=VARCHAR},
+            </if>
+            <if test="oldArchId != null">
+                #{oldArchId,jdbcType=VARCHAR},
+            </if>
+            <if test="archWidth != null">
+                #{archWidth,jdbcType=VARCHAR},
+            </if>
+            <if test="shelvingTypeCode != null">
+                #{shelvingTypeCode,jdbcType=VARCHAR},
+            </if>
+            <if test="compactDiskNums != null">
+                #{compactDiskNums,jdbcType=VARCHAR},
+            </if>
+            <if test="lockStatus != null">
+                #{lockStatus,jdbcType=VARCHAR},
+            </if>
+            <if test="microNo != null">
+                #{microNo,jdbcType=VARCHAR},
+            </if>
+            <if test="createdBy != null">
+                #{createdBy,jdbcType=VARCHAR},
+            </if>
+            <if test="createdDt != null">
+                #{createdDt,jdbcType=TIMESTAMP},
+            </if>
+            <if test="version != null">
+                #{version,jdbcType=INTEGER},
+            </if>
+            <if test="updatedBy != null">
+                #{updatedBy,jdbcType=VARCHAR},
+            </if>
+            <if test="updatedDt != null">
+                #{updatedDt,jdbcType=TIMESTAMP},
+            </if>
+            <if test="remark != null">
+                #{remark,jdbcType=VARCHAR},
+            </if>
+            <if test="organSid != null">
+                #{organSid,jdbcType=INTEGER},
+            </if>
+
+            <if test="status != null">
+                #{status,jdbcType=INTEGER},
+            </if>
+            <if test="checkOpinion != null">
+                #{checkOpinion,jdbcType=VARCHAR},
+            </if>
+            <if test="checkPerson != null">
+                #{checkPerson,jdbcType=VARCHAR},
+            </if>
+            <if test="checkDate != null">
+                #{checkDate,jdbcType=TIMESTAMP},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.build4d.project.dbaccess.dbentities.ArolArchInfoEntity">
+        update iams_arol_arch_info
+        <set>
+            <if test="engSid != null">
+                ENG_SID = #{engSid,jdbcType=INTEGER},
+            </if>
+            <if test="archNo != null">
+                ARCH_NO = #{archNo,jdbcType=VARCHAR},
+            </if>
+            <if test="archId != null">
+                ARCH_ID = #{archId,jdbcType=VARCHAR},
+            </if>
+            <if test="boxSid != null">
+                BOX_SID = #{boxSid,jdbcType=INTEGER},
+            </if>
+            <if test="engArchNo != null">
+                ENG_ARCH_NO = #{engArchNo,jdbcType=VARCHAR},
+            </if>
+            <if test="regNo != null">
+                REG_NO = #{regNo,jdbcType=VARCHAR},
+            </if>
+            <if test="archTitle != null">
+                ARCH_TITLE = #{archTitle,jdbcType=VARCHAR},
+            </if>
+            <if test="makeOrgName != null">
+                MAKE_ORG_NAME = #{makeOrgName,jdbcType=VARCHAR},
+            </if>
+            <if test="storageTypeCode != null">
+                STORAGE_TYPE_CODE = #{storageTypeCode,jdbcType=VARCHAR},
+            </if>
+            <if test="securityLevelCode != null">
+                SECURITY_LEVEL_CODE = #{securityLevelCode,jdbcType=VARCHAR},
+            </if>
+            <if test="mediaTypeCode != null">
+                MEDIA_TYPE_CODE = #{mediaTypeCode,jdbcType=VARCHAR},
+            </if>
+            <if test="archTypeCode != null">
+                ARCH_TYPE_CODE = #{archTypeCode,jdbcType=VARCHAR},
+            </if>
+            <if test="unitsCode != null">
+                UNITS_CODE = #{unitsCode,jdbcType=VARCHAR},
+            </if>
+            <if test="specCode != null">
+                SPEC_CODE = #{specCode,jdbcType=VARCHAR},
+            </if>
+            <if test="startDate != null">
+                START_DATE = #{startDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="endDate != null">
+                END_DATE = #{endDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="checkTypeCode != null">
+                CHECK_TYPE_CODE = #{checkTypeCode,jdbcType=VARCHAR},
+            </if>
+            <if test="oldArchId != null">
+                OLD_ARCH_ID = #{oldArchId,jdbcType=VARCHAR},
+            </if>
+            <if test="archWidth != null">
+                ARCH_WIDTH = #{archWidth,jdbcType=VARCHAR},
+            </if>
+            <if test="shelvingTypeCode != null">
+                SHELVING_TYPE_CODE = #{shelvingTypeCode,jdbcType=VARCHAR},
+            </if>
+            <if test="compactDiskNums != null">
+                COMPACT_DISK_NUMS = #{compactDiskNums,jdbcType=VARCHAR},
+            </if>
+            <if test="lockStatus != null">
+                LOCK_STATUS = #{lockStatus,jdbcType=VARCHAR},
+            </if>
+            <if test="microNo != null">
+                MICRO_NO = #{microNo,jdbcType=VARCHAR},
+            </if>
+            <if test="createdBy != null">
+                CREATED_BY = #{createdBy,jdbcType=VARCHAR},
+            </if>
+            <if test="createdDt != null">
+                CREATED_DT = #{createdDt,jdbcType=TIMESTAMP},
+            </if>
+            <if test="version != null">
+                VERSION = #{version,jdbcType=INTEGER},
+            </if>
+            <if test="updatedBy != null">
+                UPDATED_BY = #{updatedBy,jdbcType=VARCHAR},
+            </if>
+            <if test="updatedDt != null">
+                UPDATED_DT = #{updatedDt,jdbcType=TIMESTAMP},
+            </if>
+            <if test="remark != null">
+                REMARK=#{remark,jdbcType=VARCHAR},
+            </if>
+            <if test="organSid != null">
+                ORGAN_SID=#{organSid,jdbcType=INTEGER},
+            </if>
+            <if test="status != null">
+                STATUS=#{status,jdbcType=INTEGER},
+            </if>
+            <if test="checkOpinion != null">
+                CHECK_OPINION=#{checkOpinion,jdbcType=VARCHAR},
+            </if>
+            <if test="checkPerson != null">
+                CHECK_PERSON=#{checkPerson,jdbcType=VARCHAR},
+            </if>
+            <if test="checkDate != null">
+                CHECK_DATE=#{checkDate,jdbcType=TIMESTAMP},
+            </if>
+        </set>
+        where SID = #{sid,jdbcType=INTEGER}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.build4d.project.dbaccess.dbentities.ArolArchInfoEntity">
+        UPDATE iams_arol_arch_info
+        SET ENG_SID             = #{engSid,jdbcType=INTEGER},
+            ARCH_NO             = #{archNo,jdbcType=VARCHAR},
+            ARCH_ID             = #{archId,jdbcType=VARCHAR},
+            BOX_SID             = #{boxSid,jdbcType=INTEGER},
+            ENG_ARCH_NO         = #{engArchNo,jdbcType=VARCHAR},
+            REG_NO              = #{regNo,jdbcType=VARCHAR},
+            ARCH_TITLE          = #{archTitle,jdbcType=VARCHAR},
+            MAKE_ORG_NAME       = #{makeOrgName,jdbcType=VARCHAR},
+            STORAGE_TYPE_CODE   = #{storageTypeCode,jdbcType=VARCHAR},
+            SECURITY_LEVEL_CODE = #{securityLevelCode,jdbcType=VARCHAR},
+            MEDIA_TYPE_CODE     = #{mediaTypeCode,jdbcType=VARCHAR},
+            ARCH_TYPE_CODE      = #{archTypeCode,jdbcType=VARCHAR},
+            UNITS_CODE          = #{unitsCode,jdbcType=VARCHAR},
+            SPEC_CODE           = #{specCode,jdbcType=VARCHAR},
+            START_DATE          = #{startDate,jdbcType=TIMESTAMP},
+            END_DATE            = #{endDate,jdbcType=TIMESTAMP},
+            CHECK_TYPE_CODE     = #{checkTypeCode,jdbcType=VARCHAR},
+            OLD_ARCH_ID         = #{oldArchId,jdbcType=VARCHAR},
+            ARCH_WIDTH          = #{archWidth,jdbcType=VARCHAR},
+            SHELVING_TYPE_CODE  = #{shelvingTypeCode,jdbcType=VARCHAR},
+            COMPACT_DISK_NUMS   = #{compactDiskNums,jdbcType=VARCHAR},
+            LOCK_STATUS         = #{lockStatus,jdbcType=VARCHAR},
+            MICRO_NO            = #{microNo,jdbcType=VARCHAR},
+            CREATED_BY          = #{createdBy,jdbcType=VARCHAR},
+            CREATED_DT          = #{createdDt,jdbcType=TIMESTAMP},
+            VERSION             = #{version,jdbcType=INTEGER},
+            UPDATED_BY          = #{updatedBy,jdbcType=VARCHAR},
+            UPDATED_DT          = #{updatedDt,jdbcType=TIMESTAMP},
+            REMARK              = #{remark,jdbcType=VARCHAR},
+            ORGAN_SID           = #{organSid,jdbcType=INTEGER},
+
+            STATUS              = #{status,jdbcType=INTEGER},
+            CHECK_OPINION       = #{checkOpinion,jdbcType=VARCHAR},
+            CHECK_PERSON        = #{checkPerson,jdbcType=VARCHAR},
+            CHECK_DATE          = #{checkDate,jdbcType=TIMESTAMP}
+        WHERE SID = #{sid,jdbcType=INTEGER}
+    </update>
+    <select id="searchByMap" resultMap="BaseResultMap" parameterType="java.util.Map">
+        select
+        <include refid="Base_Column_List"/>
+        from iams_arol_arch_info
+        <where>
+            <if test="orgCode != null and orgCode != ''">
+                and UNITS_CODE=#{orgCode}
+            </if>
+            <if test="organSid != null and organSid != ''">
+                and ORGAN_SID=#{organSid}
+            </if>
+            <if test="engSid != null and engSid != ''">
+                and ENG_SID=#{engSid}
+            </if>
+            <if test="archTitle != null and archTitle != ''">
+                and ARCH_TITLE like "%"#{archTitle}"%"
+            </if>
+            <if test="status != null and status != ''">
+                and STATUS =#{status}
+            </if>
+        </where>
+        ORDER by cast(ENG_ARCH_NO as SIGNED INTEGER) ASC,CREATED_BY ASC
+    </select>
+    <select id="countArchByMap" resultType="java.util.Map" parameterType="java.util.Map">
+        select
+        `STATUS`,count(1) TOTAL
+        from iams_arol_arch_info
+        <where>
+            <if test="orgCode != null and orgCode != ''">
+                and UNITS_CODE=#{orgCode}
+            </if>
+            <if test="organSid != null and organSid != ''">
+                and ORGAN_SID=#{organSid}
+            </if>
+            <if test="engSid != null and engSid != ''">
+                and ENG_SID=#{engSid}
+            </if>
+            <if test="archTitle != null and archTitle != ''">
+                and ARCH_TITLE like "%"#{archTitle}"%"
+            </if>
+            <if test="status != null and status != ''">
+                and STATUS =#{status}
+            </if>
+        </where>
+        group by STATUS,ORGAN_SID
+    </select>
+    <select id="searchArchJoinEngByMap" resultMap="BaseResultMapJoinEng" parameterType="java.util.Map">
+        select
+        <include refid="Base_Column_List"/>,
+        <include refid="Base_Column_List_JoinEng"/>
+        from iams_arol_arch_info left join iams_arol_eng_base_info
+        on ENG_SID=iams_arol_eng_base_info.sid
+        <where>
+            <if test="orgCode != null and orgCode != ''">
+                and UNITS_CODE=#{orgCode}
+            </if>
+            <if test="organSid != null and organSid != ''">
+                and IAMS_AROL_ARCH_INFO.ORGAN_SID=#{organSid}
+            </if>
+            <if test="engNo != null and engNo != ''">
+                and ENG_NO=#{engNo}
+            </if>
+            <if test="engName != null and engName != ''">
+                and ENG_NAME=#{engName}
+            </if>
+            <if test="archTitle != null and archTitle != ''">
+                and ARCH_TITLE like "%"#{archTitle}"%"
+            </if>
+            <if test="status != null and status != ''">
+                and IAMS_AROL_ARCH_INFO.STATUS in(#{status})
+            </if>
+        </where>
+        ORDER by cast(ENG_ARCH_NO as SIGNED INTEGER) ASC,CREATED_BY ASC
+    </select>
+    <select id="nextId" resultType="integer">
+        SELECT CASE WHEN max(SID) IS NULL
+            THEN 1
+               ELSE max(SID) + 1 END NEXTID
+        FROM iams_arol_arch_info
+    </select>
+</mapper>

@@ -1,0 +1,460 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="ImportConfigSchema"
+           targetNamespace="http://www.sevenstar.com/Form/ExportToPDF/ExportToPDFConfigSchema.xsd"
+           elementFormDefault="qualified"
+           xmlns="http://www.sevenstar.com/Form/ExportToPDF/ExportToPDFConfigSchema.xsd"
+           xmlns:xs="http://www.w3.org/2001/XMLSchema"
+>
+    <xs:element name="Config">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="Export" maxOccurs="unbounded">
+                    <xs:complexType>
+                        <xs:attribute name="Id" use="required"></xs:attribute>
+                        <xs:attribute name="Name" use="required"></xs:attribute>
+                        <xs:attribute name="ExportFileName" use="required"></xs:attribute>
+                        <xs:attribute name="UserCustomize">
+                            <xs:simpleType>
+                                <xs:restriction>
+                                    <xs:enumeration value="Flase"></xs:enumeration>
+                                    <xs:enumeration value="True"></xs:enumeration>
+                                </xs:restriction>
+                                <xs:annotation>
+                                    <xs:documentation>
+                                        <![CDATA[是否支持用户选中需要导出哪些列，请慎用该功能！如果不是客户有强烈的需求，请不要启用该功能]]>
+                                    </xs:documentation>
+                                </xs:annotation>
+                            </xs:simpleType>
+                        </xs:attribute>
+                        <xs:attribute name="PageSize">
+                            <xs:simpleType>
+                                <xs:restriction>
+                                    <xs:enumeration value="A0"></xs:enumeration>
+                                    <xs:enumeration value="A1"></xs:enumeration>
+                                    <xs:enumeration value="A2"></xs:enumeration>
+                                    <xs:enumeration value="A3"></xs:enumeration>
+                                    <xs:enumeration value="A4"></xs:enumeration>
+                                    <xs:enumeration value="A5"></xs:enumeration>
+                                </xs:restriction>
+                            </xs:simpleType>
+                        </xs:attribute>
+                        <xs:sequence>
+                            <xs:element name="MainDataSource" maxOccurs="1">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element name="SQLDataSource">
+                                            <xs:complexType>
+                                                <xs:attribute name="Enable" use="required">
+                                                    <xs:simpleType>
+                                                        <xs:restriction>
+                                                            <xs:enumeration value="True"></xs:enumeration>
+                                                            <xs:enumeration value="False"></xs:enumeration>
+                                                        </xs:restriction>
+                                                    </xs:simpleType>
+                                                </xs:attribute>
+                                                <xs:attribute name="Key" use="required"></xs:attribute>
+                                                <xs:sequence>
+                                                    <xs:element name="SQL">
+                                                        <xs:complexType>
+                                                            <xs:attribute name="From">
+                                                                <xs:simpleType>
+                                                                    <xs:restriction>
+                                                                        <xs:enumeration value="CategoryTable"></xs:enumeration>
+                                                                        <xs:enumeration value="Text"></xs:enumeration>
+                                                                    </xs:restriction>
+                                                                </xs:simpleType>
+                                                            </xs:attribute>
+                                                            <xs:attribute name="OrderBy">
+                                                            </xs:attribute>
+                                                        </xs:complexType>
+                                                    </xs:element>
+                                                </xs:sequence>
+                                            </xs:complexType>
+                                        </xs:element>
+                                        <xs:element name="APIDataSource">
+                                            <xs:complexType>
+                                                <xs:attribute name="Enable">
+                                                    <xs:simpleType>
+                                                        <xs:restriction>
+                                                            <xs:enumeration value="True"></xs:enumeration>
+                                                            <xs:enumeration value="False"></xs:enumeration>
+                                                        </xs:restriction>
+                                                    </xs:simpleType>
+                                                </xs:attribute>
+                                                <xs:attribute name="Key"></xs:attribute>
+                                                <xs:sequence>
+                                                    <xs:element name="FullClassName"></xs:element>
+                                                </xs:sequence>
+                                            </xs:complexType>
+                                        </xs:element>
+                                    </xs:sequence>
+                                </xs:complexType>
+                            </xs:element>
+                        </xs:sequence>
+                        <xs:choice>
+                            <xs:element name="SubDataSource">
+                                <xs:complexType>
+                                    <xs:choice>
+                                        <xs:element name="SQLDataSource">
+                                            <xs:complexType>
+                                                <xs:attribute name="Enable" use="required">
+                                                    <xs:simpleType>
+                                                        <xs:restriction>
+                                                            <xs:enumeration value="True"></xs:enumeration>
+                                                            <xs:enumeration value="False"></xs:enumeration>
+                                                        </xs:restriction>
+                                                    </xs:simpleType>
+                                                </xs:attribute>
+                                                <xs:attribute name="Name" use="required"></xs:attribute>
+                                                <xs:attribute name="FKKey" use="required"></xs:attribute>
+                                                <xs:attribute name="Key" use="required"></xs:attribute>
+                                                <xs:sequence>
+                                                    <xs:element name="SQL"></xs:element>
+                                                </xs:sequence>
+                                            </xs:complexType>
+                                        </xs:element>
+                                        <xs:element name="APIDataSource">
+                                            <xs:complexType>
+                                                <xs:attribute name="Enable" use="required">
+                                                    <xs:simpleType>
+                                                        <xs:restriction>
+                                                            <xs:enumeration value="True"></xs:enumeration>
+                                                            <xs:enumeration value="False"></xs:enumeration>
+                                                        </xs:restriction>
+                                                    </xs:simpleType>
+                                                </xs:attribute>
+                                                <xs:attribute name="Name" use="required"></xs:attribute>
+                                                <xs:attribute name="FKKey" use="required"></xs:attribute>
+                                                <xs:attribute name="Key" use="required"></xs:attribute>
+                                                <xs:sequence>
+                                                    <xs:element name="FullClassName"></xs:element>
+                                                </xs:sequence>
+                                            </xs:complexType>
+                                        </xs:element>
+                                    </xs:choice>
+                                </xs:complexType>
+                            </xs:element>
+                            <xs:element name="VTConvertDataSource">
+                                <xs:complexType>
+                                    <xs:choice>
+                                        <xs:element name="SQLDataSource">
+                                            <xs:complexType>
+                                                <xs:attribute name="Key" use="required">
+                                                </xs:attribute>
+                                            </xs:complexType>
+                                        </xs:element>
+                                        <xs:element name="DictionaryDataSource">
+                                            <xs:complexType>
+                                                <xs:attribute name="Key" use="required">
+                                                </xs:attribute>
+                                                <xs:sequence>
+                                                    <xs:element name="Item">
+                                                        <xs:complexType>
+                                                            <xs:sequence>
+                                                                <xs:element name="Value"></xs:element>
+                                                                <xs:element name="Text"></xs:element>
+                                                            </xs:sequence>
+                                                        </xs:complexType>
+                                                    </xs:element>
+                                                </xs:sequence>
+                                            </xs:complexType>
+                                        </xs:element>
+                                        <xs:element name="ApiDataSource">
+                                            <xs:complexType>
+                                                <xs:attribute name="Key"></xs:attribute>
+                                                <xs:sequence>
+                                                    <xs:element name="FullClassName"></xs:element>
+                                                </xs:sequence>
+                                            </xs:complexType>
+                                        </xs:element>
+                                    </xs:choice>
+                                </xs:complexType>
+                            </xs:element>
+                            <xs:element name="Formaters">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element name="Formater">
+                                            <xs:complexType>
+                                                <xs:attribute name="Name" use="required"></xs:attribute>
+                                                <xs:attribute name="Desc" use="required"></xs:attribute>
+                                                <xs:sequence>
+                                                    <xs:element name="FullClassName"></xs:element>
+                                                </xs:sequence>
+                                            </xs:complexType>
+                                        </xs:element>
+                                    </xs:sequence>
+                                </xs:complexType>
+                            </xs:element>
+                        </xs:choice>
+                        <xs:choice>
+                            <xs:element name="Styles">
+                                <xs:complexType>
+                                    <xs:choice>
+                                        <xs:element name="Style">
+                                            <xs:complexType>
+                                                <xs:attribute name="Id"></xs:attribute>
+                                                <xs:choice>
+                                                    <xs:element name="Prop">
+                                                        <xs:complexType>
+                                                            <xs:attribute name="Name">
+                                                                <xs:simpleType>
+                                                                    <xs:restriction>
+                                                                        <xs:enumeration value="FontSize"></xs:enumeration>
+                                                                        <xs:enumeration value="MarginTop"></xs:enumeration>
+                                                                        <xs:enumeration value="MarginBottom"></xs:enumeration>
+                                                                        <xs:enumeration value="MarginLeft"></xs:enumeration>
+                                                                        <xs:enumeration value="MarginRight"></xs:enumeration>
+                                                                        <xs:enumeration value="HorizontalAlignment"></xs:enumeration>
+                                                                        <xs:enumeration value="TextAlignment"></xs:enumeration>
+                                                                        <xs:enumeration value="FontColor"></xs:enumeration>
+                                                                        <xs:enumeration value="WidthPercent"></xs:enumeration>
+                                                                        <xs:enumeration value="BackgroundColor"></xs:enumeration>
+                                                                        <xs:enumeration value="Height"></xs:enumeration>
+                                                                        <xs:enumeration value="VerticalAlignment"></xs:enumeration>
+                                                                    </xs:restriction>
+                                                                </xs:simpleType>
+                                                            </xs:attribute>
+                                                            <xs:attribute name="Value">
+                                                                <xs:simpleType>
+                                                                    <xs:restriction>
+                                                                        <xs:enumeration value="LEFT"></xs:enumeration>
+                                                                        <xs:enumeration value="CENTER"></xs:enumeration>
+                                                                        <xs:enumeration value="RIGHT"></xs:enumeration>
+                                                                        <xs:enumeration value="JUSTIFIED"></xs:enumeration>
+                                                                        <xs:enumeration value="JUSTIFIED_ALL"></xs:enumeration>
+                                                                        <xs:enumeration value="BOTTOM"></xs:enumeration>
+                                                                        <xs:enumeration value="MIDDLE"></xs:enumeration>
+                                                                        <xs:enumeration value="TOP"></xs:enumeration>
+                                                                        <xs:enumeration value="BLACK"></xs:enumeration>
+                                                                        <xs:enumeration value="BLUE"></xs:enumeration>
+                                                                        <xs:enumeration value="CYAN"></xs:enumeration>
+                                                                        <xs:enumeration value="DARK_GRAY"></xs:enumeration>
+                                                                        <xs:enumeration value="GRAY"></xs:enumeration>
+                                                                        <xs:enumeration value="GREEN"></xs:enumeration>
+                                                                        <xs:enumeration value="LIGHT_GRAY"></xs:enumeration>
+                                                                        <xs:enumeration value="MAGENTA"></xs:enumeration>
+                                                                        <xs:enumeration value="ORANGE"></xs:enumeration>
+                                                                        <xs:enumeration value="PINK"></xs:enumeration>
+                                                                        <xs:enumeration value="RED"></xs:enumeration>
+                                                                        <xs:enumeration value="WHITE"></xs:enumeration>
+                                                                        <xs:enumeration value="YELLOW"></xs:enumeration>
+                                                                        <xs:enumeration value="100"></xs:enumeration>
+                                                                    </xs:restriction>
+                                                                </xs:simpleType>
+                                                            </xs:attribute>
+                                                        </xs:complexType>
+                                                    </xs:element>
+                                                </xs:choice>
+                                            </xs:complexType>
+                                        </xs:element>
+                                    </xs:choice>
+                                </xs:complexType>
+                            </xs:element>
+                        </xs:choice>
+                        <xs:sequence>
+                            <xs:element name="Template">
+                                <xs:complexType>
+                                    <xs:choice>
+                                        <xs:element name="Paragraph">
+                                            <xs:complexType>
+                                                <xs:attribute name="StyleRef"></xs:attribute>
+                                                <xs:attribute name="BindField"></xs:attribute>
+                                                <xs:attribute name="FormaterRef"></xs:attribute>
+                                                <xs:attribute name="VTConverterRef"></xs:attribute>
+                                                <xs:attribute name="DefaultConverter"></xs:attribute>
+                                                <xs:choice>
+                                                    <xs:element name="Text">
+                                                        <xs:complexType>
+                                                            <xs:attribute name="StyleRef"></xs:attribute>
+                                                            <xs:attribute name="BindField"></xs:attribute>
+                                                            <xs:attribute name="FormaterRef"></xs:attribute>
+                                                            <xs:attribute name="DefaultConverter"></xs:attribute>
+                                                        </xs:complexType>
+                                                    </xs:element>
+                                                </xs:choice>
+                                            </xs:complexType>
+                                        </xs:element>
+                                        <xs:element name="Table">
+                                            <xs:complexType>
+                                                <xs:attribute name="ColumnWidths"></xs:attribute>
+                                                <xs:attribute name="StyleRef"></xs:attribute>
+                                                <xs:attribute name="EachForDataSource"></xs:attribute>
+                                                <xs:choice>
+                                                    <xs:element name="HeaderCell">
+                                                        <xs:complexType>
+                                                            <xs:attribute name="StyleRef"></xs:attribute>
+                                                            <xs:attribute name="BindField"></xs:attribute>
+                                                            <xs:attribute name="FormaterRef"></xs:attribute>
+                                                            <xs:attribute name="DefaultConverter"></xs:attribute>
+                                                            <xs:attribute name="ColSpan"></xs:attribute>
+                                                            <xs:attribute name="RowSpan"></xs:attribute>
+                                                        </xs:complexType>
+                                                    </xs:element>
+                                                    <xs:element name="Cell">
+                                                        <xs:complexType>
+                                                            <xs:attribute name="StyleRef"></xs:attribute>
+                                                            <xs:attribute name="BindField"></xs:attribute>
+                                                            <xs:attribute name="FormaterRef"></xs:attribute>
+                                                            <xs:attribute name="DefaultConverter"></xs:attribute>
+                                                            <xs:attribute name="ColSpan"></xs:attribute>
+                                                            <xs:attribute name="RowSpan"></xs:attribute>
+                                                        </xs:complexType>
+                                                    </xs:element>
+                                                </xs:choice>
+                                            </xs:complexType>
+                                        </xs:element>
+                                        <xs:element name="NextPage"></xs:element>
+                                    </xs:choice>
+                                </xs:complexType>
+                            </xs:element>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:attribute name="DefaultConverter">
+        <xs:simpleType>
+            <xs:restriction>
+                <xs:enumeration value=""></xs:enumeration>
+                <xs:enumeration value="ToShortDateTime"></xs:enumeration>
+                <xs:enumeration value="ToRowNumber"></xs:enumeration>
+            </xs:restriction>
+        </xs:simpleType>
+    </xs:attribute>
+    <xs:attribute name="Enable">
+        <xs:simpleType>
+            <xs:restriction>
+                <xs:enumeration value="True"></xs:enumeration>
+                <xs:enumeration value="False"></xs:enumeration>
+            </xs:restriction>
+        </xs:simpleType>
+    </xs:attribute>
+    <xs:attribute name="Border">
+        <xs:simpleType>
+            <xs:restriction>
+                <xs:enumeration value=""></xs:enumeration>
+                <xs:enumeration value="None"></xs:enumeration>
+                <xs:enumeration value="Thin"></xs:enumeration>
+                <xs:enumeration value="Medium"></xs:enumeration>
+                <xs:enumeration value="Dashed"></xs:enumeration>
+                <xs:enumeration value="Dotted"></xs:enumeration>
+                <xs:enumeration value="Thick"></xs:enumeration>
+            </xs:restriction>
+        </xs:simpleType>
+    </xs:attribute>
+    <xs:attribute name="HorizontalAlignment">
+        <xs:simpleType>
+            <xs:restriction>
+                <xs:enumeration value=""></xs:enumeration>
+                <xs:enumeration value="Center"></xs:enumeration>
+                <xs:enumeration value="Left"></xs:enumeration>
+                <xs:enumeration value="Right"></xs:enumeration>
+            </xs:restriction>
+        </xs:simpleType>
+    </xs:attribute>
+    <xs:attribute name="VerticalAlignment">
+        <xs:simpleType>
+            <xs:restriction>
+                <xs:enumeration value=""></xs:enumeration>
+                <xs:enumeration value="Center"></xs:enumeration>
+                <xs:enumeration value="Top"></xs:enumeration>
+                <xs:enumeration value="Bottom"></xs:enumeration>
+            </xs:restriction>
+        </xs:simpleType>
+    </xs:attribute>
+    <xs:attribute name="ForegroundColor">
+        <xs:simpleType>
+            <xs:restriction>
+                <xs:enumeration value=""></xs:enumeration>
+                <xs:enumeration value="黑色"></xs:enumeration>
+                <xs:enumeration value="白色"></xs:enumeration>
+                <xs:enumeration value="红色"></xs:enumeration>
+                <xs:enumeration value="亮绿色"></xs:enumeration>
+                <xs:enumeration value="粉色"></xs:enumeration>
+                <xs:enumeration value="绿松石"></xs:enumeration>
+                <xs:enumeration value="深红"></xs:enumeration>
+                <xs:enumeration value="深蓝"></xs:enumeration>
+                <xs:enumeration value="深黄色"></xs:enumeration>
+                <xs:enumeration value="紫色"></xs:enumeration>
+                <xs:enumeration value="水鸭蓝"></xs:enumeration>
+                <xs:enumeration value="灰色20P"></xs:enumeration>
+                <xs:enumeration value="灰色50P"></xs:enumeration>
+                <xs:enumeration value="羽毛蓝色"></xs:enumeration>
+                <xs:enumeration value="柠檬色"></xs:enumeration>
+                <xs:enumeration value="兰花色"></xs:enumeration>
+                <xs:enumeration value="珊瑚色"></xs:enumeration>
+                <xs:enumeration value="宝蓝色"></xs:enumeration>
+                <xs:enumeration value="灯管蓝色"></xs:enumeration>
+                <xs:enumeration value="天蓝色"></xs:enumeration>
+                <xs:enumeration value="绿松石"></xs:enumeration>
+                <xs:enumeration value="品绿色"></xs:enumeration>
+                <xs:enumeration value="葱黄色"></xs:enumeration>
+                <xs:enumeration value="淡蓝色"></xs:enumeration>
+                <xs:enumeration value="玫瑰色"></xs:enumeration>
+                <xs:enumeration value="薰衣草色"></xs:enumeration>
+                <xs:enumeration value="黄褐色"></xs:enumeration>
+                <xs:enumeration value="浅蓝色"></xs:enumeration>
+                <xs:enumeration value="水绿色"></xs:enumeration>
+                <xs:enumeration value="青柠色"></xs:enumeration>
+                <xs:enumeration value="金色"></xs:enumeration>
+                <xs:enumeration value="浅橙色"></xs:enumeration>
+                <xs:enumeration value="橙色"></xs:enumeration>
+                <xs:enumeration value="蓝灰色"></xs:enumeration>
+                <xs:enumeration value="灰色40P"></xs:enumeration>
+                <xs:enumeration value="橄榄绿色"></xs:enumeration>
+                <xs:enumeration value="深绿色"></xs:enumeration>
+                <xs:enumeration value="棕色"></xs:enumeration>
+                <xs:enumeration value="靛色"></xs:enumeration>
+                <xs:enumeration value="灰色80P"></xs:enumeration>
+            </xs:restriction>
+        </xs:simpleType>
+    </xs:attribute>
+    <xs:attribute name="FontColor">
+        <xs:simpleType>
+            <xs:restriction>
+                <xs:enumeration value=""></xs:enumeration>
+                <xs:enumeration value="黑色"></xs:enumeration>
+                <xs:enumeration value="白色"></xs:enumeration>
+                <xs:enumeration value="红色"></xs:enumeration>
+                <xs:enumeration value="亮绿色"></xs:enumeration>
+                <xs:enumeration value="粉色"></xs:enumeration>
+                <xs:enumeration value="绿松石"></xs:enumeration>
+                <xs:enumeration value="深红"></xs:enumeration>
+                <xs:enumeration value="深蓝"></xs:enumeration>
+                <xs:enumeration value="深黄色"></xs:enumeration>
+                <xs:enumeration value="紫色"></xs:enumeration>
+                <xs:enumeration value="水鸭蓝"></xs:enumeration>
+                <xs:enumeration value="灰色20P"></xs:enumeration>
+                <xs:enumeration value="灰色50P"></xs:enumeration>
+                <xs:enumeration value="羽毛蓝色"></xs:enumeration>
+                <xs:enumeration value="柠檬色"></xs:enumeration>
+                <xs:enumeration value="兰花色"></xs:enumeration>
+                <xs:enumeration value="珊瑚色"></xs:enumeration>
+                <xs:enumeration value="宝蓝色"></xs:enumeration>
+                <xs:enumeration value="灯管蓝色"></xs:enumeration>
+                <xs:enumeration value="天蓝色"></xs:enumeration>
+                <xs:enumeration value="绿松石"></xs:enumeration>
+                <xs:enumeration value="品绿色"></xs:enumeration>
+                <xs:enumeration value="葱黄色"></xs:enumeration>
+                <xs:enumeration value="淡蓝色"></xs:enumeration>
+                <xs:enumeration value="玫瑰色"></xs:enumeration>
+                <xs:enumeration value="薰衣草色"></xs:enumeration>
+                <xs:enumeration value="黄褐色"></xs:enumeration>
+                <xs:enumeration value="浅蓝色"></xs:enumeration>
+                <xs:enumeration value="水绿色"></xs:enumeration>
+                <xs:enumeration value="青柠色"></xs:enumeration>
+                <xs:enumeration value="金色"></xs:enumeration>
+                <xs:enumeration value="浅橙色"></xs:enumeration>
+                <xs:enumeration value="橙色"></xs:enumeration>
+                <xs:enumeration value="蓝灰色"></xs:enumeration>
+                <xs:enumeration value="灰色40P"></xs:enumeration>
+                <xs:enumeration value="橄榄绿色"></xs:enumeration>
+                <xs:enumeration value="深绿色"></xs:enumeration>
+                <xs:enumeration value="棕色"></xs:enumeration>
+                <xs:enumeration value="靛色"></xs:enumeration>
+                <xs:enumeration value="灰色80P"></xs:enumeration>
+            </xs:restriction>
+        </xs:simpleType>
+    </xs:attribute>
+</xs:schema>

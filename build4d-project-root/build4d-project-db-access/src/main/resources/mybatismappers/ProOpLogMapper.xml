@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.build4d.project.dbaccess.dao.ProOpLogMapper">
+  <resultMap id="BaseResultMap" type="com.build4d.project.dbaccess.dbentities.ProOpLogEntity">
+    <constructor>
+      <idArg column="LOG_SID" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="LOG_TYPE" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="LOG_NAME" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="USER_SID" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="LOG_CREATE_TIME" javaType="java.util.Date" jdbcType="TIMESTAMP" />
+      <arg column="LOG_DESC" javaType="java.lang.String" jdbcType="VARCHAR" />
+    </constructor>
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.build4d.project.dbaccess.dbentities.ProOpLogEntity">
+    <constructor>
+      <idArg column="LOG_SID" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="LOG_TYPE" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="LOG_NAME" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="USER_SID" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="LOG_CREATE_TIME" javaType="java.util.Date" jdbcType="TIMESTAMP" />
+      <arg column="LOG_DESC" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="LOG_TEXT" javaType="java.lang.String" jdbcType="LONGVARCHAR" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List">
+    LOG_SID, LOG_TYPE, LOG_NAME, USER_SID, LOG_CREATE_TIME, LOG_DESC
+  </sql>
+  <sql id="Blob_Column_List">
+    LOG_TEXT
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="ResultMapWithBLOBs">
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from iams_pro_op_log
+    where LOG_SID = #{logSid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from iams_pro_op_log
+    where LOG_SID = #{logSid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.build4d.project.dbaccess.dbentities.ProOpLogEntity">
+    insert into iams_pro_op_log (LOG_SID, LOG_TYPE, LOG_NAME, 
+      USER_SID, LOG_CREATE_TIME, LOG_DESC, 
+      LOG_TEXT)
+    values (#{logSid,jdbcType=INTEGER}, #{logType,jdbcType=VARCHAR}, #{logName,jdbcType=VARCHAR}, 
+      #{userSid,jdbcType=INTEGER}, #{logCreateTime,jdbcType=TIMESTAMP}, #{logDesc,jdbcType=VARCHAR}, 
+      #{logText,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.build4d.project.dbaccess.dbentities.ProOpLogEntity">
+    insert into iams_pro_op_log
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="logSid != null">
+        LOG_SID,
+      </if>
+      <if test="logType != null">
+        LOG_TYPE,
+      </if>
+      <if test="logName != null">
+        LOG_NAME,
+      </if>
+      <if test="userSid != null">
+        USER_SID,
+      </if>
+      <if test="logCreateTime != null">
+        LOG_CREATE_TIME,
+      </if>
+      <if test="logDesc != null">
+        LOG_DESC,
+      </if>
+      <if test="logText != null">
+        LOG_TEXT,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="logSid != null">
+        #{logSid,jdbcType=INTEGER},
+      </if>
+      <if test="logType != null">
+        #{logType,jdbcType=VARCHAR},
+      </if>
+      <if test="logName != null">
+        #{logName,jdbcType=VARCHAR},
+      </if>
+      <if test="userSid != null">
+        #{userSid,jdbcType=INTEGER},
+      </if>
+      <if test="logCreateTime != null">
+        #{logCreateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="logDesc != null">
+        #{logDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="logText != null">
+        #{logText,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.build4d.project.dbaccess.dbentities.ProOpLogEntity">
+    update iams_pro_op_log
+    <set>
+      <if test="logType != null">
+        LOG_TYPE = #{logType,jdbcType=VARCHAR},
+      </if>
+      <if test="logName != null">
+        LOG_NAME = #{logName,jdbcType=VARCHAR},
+      </if>
+      <if test="userSid != null">
+        USER_SID = #{userSid,jdbcType=INTEGER},
+      </if>
+      <if test="logCreateTime != null">
+        LOG_CREATE_TIME = #{logCreateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="logDesc != null">
+        LOG_DESC = #{logDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="logText != null">
+        LOG_TEXT = #{logText,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where LOG_SID = #{logSid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.build4d.project.dbaccess.dbentities.ProOpLogEntity">
+    update iams_pro_op_log
+    set LOG_TYPE = #{logType,jdbcType=VARCHAR},
+      LOG_NAME = #{logName,jdbcType=VARCHAR},
+      USER_SID = #{userSid,jdbcType=INTEGER},
+      LOG_CREATE_TIME = #{logCreateTime,jdbcType=TIMESTAMP},
+      LOG_DESC = #{logDesc,jdbcType=VARCHAR},
+      LOG_TEXT = #{logText,jdbcType=LONGVARCHAR}
+    where LOG_SID = #{logSid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.build4d.project.dbaccess.dbentities.ProOpLogEntity">
+    update iams_pro_op_log
+    set LOG_TYPE = #{logType,jdbcType=VARCHAR},
+      LOG_NAME = #{logName,jdbcType=VARCHAR},
+      USER_SID = #{userSid,jdbcType=INTEGER},
+      LOG_CREATE_TIME = #{logCreateTime,jdbcType=TIMESTAMP},
+      LOG_DESC = #{logDesc,jdbcType=VARCHAR}
+    where LOG_SID = #{logSid,jdbcType=INTEGER}
+  </update>
+</mapper>

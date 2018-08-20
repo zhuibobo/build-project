@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.build4d.base.dbaccess.dao.DemoMapper">
+  <resultMap id="BaseResultMap" type="com.build4d.base.dbaccess.dbentities.DemoEntity">
+    <constructor>
+      <idArg column="DEMO_ID" javaType="java.lang.String" jdbcType="NVARCHAR" />
+      <arg column="IS_VIRTUAL" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="ORDER_NUM" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="STATUS" javaType="com.build4d.base.dbaccess.exenum.EnableTypeEnum" typeHandler="com.build4d.base.dbaccess.exenum.UniversalIntEnumHandler" jdbcType="INTEGER" />
+      <arg column="NAME_TEXT" javaType="java.lang.String" jdbcType="NVARCHAR" />
+      <arg column="F_DATE" javaType="java.util.Date" jdbcType="TIMESTAMP" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List">
+    DEMO_ID, IS_VIRTUAL, ORDER_NUM, STATUS, NAME_TEXT, F_DATE
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from TB4D_DEMO
+    where DEMO_ID = #{demoId,jdbcType=NVARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from TB4D_DEMO
+    where DEMO_ID = #{demoId,jdbcType=NVARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.build4d.base.dbaccess.dbentities.DemoEntity">
+    insert into TB4D_DEMO (DEMO_ID, IS_VIRTUAL, ORDER_NUM, 
+      STATUS, NAME_TEXT, F_DATE
+      )
+    values (#{demoId,jdbcType=NVARCHAR}, #{isVirtual,jdbcType=INTEGER}, #{orderNum,jdbcType=INTEGER}, 
+      #{status,jdbcType=INTEGER,javaType=com.build4d.base.dbaccess.exenum.EnableTypeEnum,typeHandler=com.build4d.base.dbaccess.exenum.UniversalIntEnumHandler}, #{nameText,jdbcType=NVARCHAR}, #{fDate,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.build4d.base.dbaccess.dbentities.DemoEntity">
+    insert into TB4D_DEMO
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="demoId != null">
+        DEMO_ID,
+      </if>
+      <if test="isVirtual != null">
+        IS_VIRTUAL,
+      </if>
+      <if test="orderNum != null">
+        ORDER_NUM,
+      </if>
+      <if test="status != null">
+        STATUS,
+      </if>
+      <if test="nameText != null">
+        NAME_TEXT,
+      </if>
+      <if test="fDate != null">
+        F_DATE,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="demoId != null">
+        #{demoId,jdbcType=NVARCHAR},
+      </if>
+      <if test="isVirtual != null">
+        #{isVirtual,jdbcType=INTEGER},
+      </if>
+      <if test="orderNum != null">
+        #{orderNum,jdbcType=INTEGER},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=INTEGER,javaType=com.build4d.base.dbaccess.exenum.EnableTypeEnum},
+      </if>
+      <if test="nameText != null">
+        #{nameText,jdbcType=NVARCHAR},
+      </if>
+      <if test="fDate != null">
+        #{fDate,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.build4d.base.dbaccess.dbentities.DemoEntity">
+    update TB4D_DEMO
+    <set>
+      <if test="isVirtual != null">
+        IS_VIRTUAL = #{isVirtual,jdbcType=INTEGER},
+      </if>
+      <if test="orderNum != null">
+        ORDER_NUM = #{orderNum,jdbcType=INTEGER},
+      </if>
+      <if test="status != null">
+        STATUS = #{status,jdbcType=INTEGER,typeHandler=com.build4d.base.dbaccess.exenum.UniversalIntEnumHandler},
+      </if>
+      <if test="nameText != null">
+        NAME_TEXT = #{nameText,jdbcType=NVARCHAR},
+      </if>
+      <if test="fDate != null">
+        F_DATE = #{fDate,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where DEMO_ID = #{demoId,jdbcType=NVARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.build4d.base.dbaccess.dbentities.DemoEntity">
+    update TB4D_DEMO
+    set IS_VIRTUAL = #{isVirtual,jdbcType=INTEGER},
+      ORDER_NUM = #{orderNum,jdbcType=INTEGER},
+      STATUS = #{status,jdbcType=INTEGER,typeHandler=com.build4d.base.dbaccess.exenum.UniversalIntEnumHandler},
+      NAME_TEXT = #{nameText,jdbcType=NVARCHAR},
+      F_DATE = #{fDate,jdbcType=TIMESTAMP}
+    where DEMO_ID = #{demoId,jdbcType=NVARCHAR}
+  </update>
+
+  <delete id="deleteAll">
+    delete from TB4D_DEMO
+  </delete>
+
+  <!-- 批量插入,存在类型转换的问题,枚举,时间 -->
+  <insert id ="insertBatch" parameterType="java.util.List" >
+    insert into TB4D_DEMO (DEMO_ID, IS_VIRTUAL, ORDER_NUM,STATUS)
+    values
+    <foreach collection ="list" item="demobatch" index= "index" separator =",">
+      (
+      ${demobatch.demoId},
+      ${demobatch.isVirtual},
+      ${demobatch.orderNum},
+      '0'
+      )
+    </foreach >
+  </insert >
+  <select id="selectAll" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from TB4D_DEMO ORDER by ORDER_NUM ASC
+  </select>
+</mapper>

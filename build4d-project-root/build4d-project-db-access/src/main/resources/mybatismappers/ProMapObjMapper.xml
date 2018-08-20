@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.build4d.project.dbaccess.dao.ProMapObjMapper">
+  <resultMap id="BaseResultMap" type="com.build4d.project.dbaccess.dbentities.ProMapObjEntity">
+    <constructor>
+      <idArg column="ID" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="LAT" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="LNG" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="BINDTO" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="BINDTOID" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="TYPE" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="PATH" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="DISTEXT" javaType="java.lang.String" jdbcType="VARCHAR" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List">
+    ID, LAT, LNG, BINDTO, BINDTOID, TYPE, PATH, DISTEXT
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from iams_pro_map_obj
+    where ID = #{id,jdbcType=VARCHAR}
+  </select>
+  <select id="selectByBindToMark" resultType="com.build4d.project.dbaccess.dbentities.ProMapObjEntity">
+    select
+    <include refid="Base_Column_List" />
+    from iams_pro_map_obj
+    where BINDTO = #{bindto,jdbcType=VARCHAR} and  BINDTOID = #{bindtoid,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from iams_pro_map_obj
+    where ID = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.build4d.project.dbaccess.dbentities.ProMapObjEntity">
+    insert into iams_pro_map_obj (ID, LAT, LNG, 
+      BINDTO, BINDTOID, TYPE, 
+      PATH, DISTEXT)
+    values (#{id,jdbcType=VARCHAR}, #{lat,jdbcType=VARCHAR}, #{lng,jdbcType=VARCHAR}, 
+      #{bindto,jdbcType=VARCHAR}, #{bindtoid,jdbcType=VARCHAR}, #{type,jdbcType=VARCHAR}, 
+      #{path,jdbcType=VARCHAR}, #{distext,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.build4d.project.dbaccess.dbentities.ProMapObjEntity">
+    insert into iams_pro_map_obj
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        ID,
+      </if>
+      <if test="lat != null">
+        LAT,
+      </if>
+      <if test="lng != null">
+        LNG,
+      </if>
+      <if test="bindto != null">
+        BINDTO,
+      </if>
+      <if test="bindtoid != null">
+        BINDTOID,
+      </if>
+      <if test="type != null">
+        TYPE,
+      </if>
+      <if test="path != null">
+        PATH,
+      </if>
+      <if test="distext != null">
+        DISTEXT,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="lat != null">
+        #{lat,jdbcType=VARCHAR},
+      </if>
+      <if test="lng != null">
+        #{lng,jdbcType=VARCHAR},
+      </if>
+      <if test="bindto != null">
+        #{bindto,jdbcType=VARCHAR},
+      </if>
+      <if test="bindtoid != null">
+        #{bindtoid,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null">
+        #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="path != null">
+        #{path,jdbcType=VARCHAR},
+      </if>
+      <if test="distext != null">
+        #{distext,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.build4d.project.dbaccess.dbentities.ProMapObjEntity">
+    update iams_pro_map_obj
+    <set>
+      <if test="lat != null">
+        LAT = #{lat,jdbcType=VARCHAR},
+      </if>
+      <if test="lng != null">
+        LNG = #{lng,jdbcType=VARCHAR},
+      </if>
+      <if test="bindto != null">
+        BINDTO = #{bindto,jdbcType=VARCHAR},
+      </if>
+      <if test="bindtoid != null">
+        BINDTOID = #{bindtoid,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null">
+        TYPE = #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="path != null">
+        PATH = #{path,jdbcType=VARCHAR},
+      </if>
+      <if test="distext != null">
+        DISTEXT = #{distext,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.build4d.project.dbaccess.dbentities.ProMapObjEntity">
+    update iams_pro_map_obj
+    set LAT = #{lat,jdbcType=VARCHAR},
+      LNG = #{lng,jdbcType=VARCHAR},
+      BINDTO = #{bindto,jdbcType=VARCHAR},
+      BINDTOID = #{bindtoid,jdbcType=VARCHAR},
+      TYPE = #{type,jdbcType=VARCHAR},
+      PATH = #{path,jdbcType=VARCHAR},
+      DISTEXT = #{distext,jdbcType=VARCHAR}
+    where ID = #{id,jdbcType=VARCHAR}
+  </update>
+</mapper>

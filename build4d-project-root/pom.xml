@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>build4d-root</artifactId>
+        <groupId>com.build4d</groupId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>com.build4d.project</groupId>
+    <artifactId>build4d-project-root</artifactId>
+    <packaging>pom</packaging>
+    <modules>
+        <module>build4d-project-db-access</module>
+        <module>build4d-project-constructionproject</module>
+    </modules>
+    <dependencies>
+        <dependency>
+            <groupId>com.build4d.base</groupId>
+            <artifactId>build4d-base-config</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.build4d.base</groupId>
+            <artifactId>build4d-base-db-access</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.build4d.base</groupId>
+            <artifactId>build4d-base-license</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.build4d.base</groupId>
+            <artifactId>build4d-base-log</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.build4d.base</groupId>
+            <artifactId>build4d-base-service</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.build4d.base</groupId>
+            <artifactId>build4d-base-tools</artifactId>
+        </dependency>
+    </dependencies>
+</project>

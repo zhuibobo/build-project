@@ -1,0 +1,343 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.build4d.project.dbaccess.dao.ArolEngFacilitySpecMapper">
+  <resultMap id="BaseResultMap" type="com.build4d.project.dbaccess.dbentities.ArolEngFacilitySpecEntity">
+    <constructor>
+      <idArg column="ENG_SID" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="WIDTH" javaType="java.math.BigDecimal" jdbcType="DECIMAL" />
+      <arg column="LENGTH" javaType="java.math.BigDecimal" jdbcType="DECIMAL" />
+      <arg column="HEIGHT" javaType="java.lang.Double" jdbcType="DOUBLE" />
+      <arg column="SPAN" javaType="java.math.BigDecimal" jdbcType="DECIMAL" />
+      <arg column="HOLENUMS" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="LEVEL_CODE" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="LOAD_CODE" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="HEADROOM" javaType="java.math.BigDecimal" jdbcType="DECIMAL" />
+      <arg column="START_X" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="END_X" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="PIPE_DIAMETER" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="PIPE_MATERIAL" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="APERTURE" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="FINISH_AREA" javaType="java.math.BigDecimal" jdbcType="DECIMAL" />
+      <arg column="CONS_TYPE_CODE" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="BASIS_TYPE_CODE" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="CREATED_BY" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="CREATED_DT" javaType="java.util.Date" jdbcType="TIMESTAMP" />
+      <arg column="VERSION" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="UPDATED_BY" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="UPDATED_DT" javaType="java.util.Date" jdbcType="TIMESTAMP" />
+      <arg column="LOAD_STANDARD" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="BRIDGE_LOAD" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="CATEGORY" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="OTHER" javaType="java.lang.String" jdbcType="VARCHAR" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List">
+    ENG_SID, WIDTH, LENGTH, HEIGHT, SPAN, HOLENUMS, LEVEL_CODE, LOAD_CODE, HEADROOM, 
+    START_X, END_X, PIPE_DIAMETER, PIPE_MATERIAL, APERTURE, FINISH_AREA, CONS_TYPE_CODE, 
+    BASIS_TYPE_CODE, CREATED_BY, CREATED_DT, VERSION, UPDATED_BY, UPDATED_DT, LOAD_STANDARD, 
+    BRIDGE_LOAD, CATEGORY, OTHER
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from iams_arol_eng_facility_spec
+    where ENG_SID = #{engSid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from iams_arol_eng_facility_spec
+    where ENG_SID = #{engSid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.build4d.project.dbaccess.dbentities.ArolEngFacilitySpecEntity">
+    insert into iams_arol_eng_facility_spec (ENG_SID, WIDTH, LENGTH, 
+      HEIGHT, SPAN, HOLENUMS, 
+      LEVEL_CODE, LOAD_CODE, HEADROOM, 
+      START_X, END_X, PIPE_DIAMETER, 
+      PIPE_MATERIAL, APERTURE, FINISH_AREA, 
+      CONS_TYPE_CODE, BASIS_TYPE_CODE, CREATED_BY, 
+      CREATED_DT, VERSION, UPDATED_BY, 
+      UPDATED_DT, LOAD_STANDARD, BRIDGE_LOAD, 
+      CATEGORY, OTHER)
+    values (#{engSid,jdbcType=INTEGER}, #{width,jdbcType=DECIMAL}, #{length,jdbcType=DECIMAL}, 
+      #{height,jdbcType=DOUBLE}, #{span,jdbcType=DECIMAL}, #{holenums,jdbcType=INTEGER}, 
+      #{levelCode,jdbcType=VARCHAR}, #{loadCode,jdbcType=VARCHAR}, #{headroom,jdbcType=DECIMAL}, 
+      #{startX,jdbcType=VARCHAR}, #{endX,jdbcType=VARCHAR}, #{pipeDiameter,jdbcType=VARCHAR}, 
+      #{pipeMaterial,jdbcType=VARCHAR}, #{aperture,jdbcType=VARCHAR}, #{finishArea,jdbcType=DECIMAL}, 
+      #{consTypeCode,jdbcType=VARCHAR}, #{basisTypeCode,jdbcType=VARCHAR}, #{createdBy,jdbcType=VARCHAR}, 
+      #{createdDt,jdbcType=TIMESTAMP}, #{version,jdbcType=INTEGER}, #{updatedBy,jdbcType=VARCHAR}, 
+      #{updatedDt,jdbcType=TIMESTAMP}, #{loadStandard,jdbcType=VARCHAR}, #{bridgeLoad,jdbcType=VARCHAR}, 
+      #{category,jdbcType=VARCHAR}, #{other,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.build4d.project.dbaccess.dbentities.ArolEngFacilitySpecEntity">
+    insert into iams_arol_eng_facility_spec
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="engSid != null">
+        ENG_SID,
+      </if>
+      <if test="width != null">
+        WIDTH,
+      </if>
+      <if test="length != null">
+        LENGTH,
+      </if>
+      <if test="height != null">
+        HEIGHT,
+      </if>
+      <if test="span != null">
+        SPAN,
+      </if>
+      <if test="holenums != null">
+        HOLENUMS,
+      </if>
+      <if test="levelCode != null">
+        LEVEL_CODE,
+      </if>
+      <if test="loadCode != null">
+        LOAD_CODE,
+      </if>
+      <if test="headroom != null">
+        HEADROOM,
+      </if>
+      <if test="startX != null">
+        START_X,
+      </if>
+      <if test="endX != null">
+        END_X,
+      </if>
+      <if test="pipeDiameter != null">
+        PIPE_DIAMETER,
+      </if>
+      <if test="pipeMaterial != null">
+        PIPE_MATERIAL,
+      </if>
+      <if test="aperture != null">
+        APERTURE,
+      </if>
+      <if test="finishArea != null">
+        FINISH_AREA,
+      </if>
+      <if test="consTypeCode != null">
+        CONS_TYPE_CODE,
+      </if>
+      <if test="basisTypeCode != null">
+        BASIS_TYPE_CODE,
+      </if>
+      <if test="createdBy != null">
+        CREATED_BY,
+      </if>
+      <if test="createdDt != null">
+        CREATED_DT,
+      </if>
+      <if test="version != null">
+        VERSION,
+      </if>
+      <if test="updatedBy != null">
+        UPDATED_BY,
+      </if>
+      <if test="updatedDt != null">
+        UPDATED_DT,
+      </if>
+      <if test="loadStandard != null">
+        LOAD_STANDARD,
+      </if>
+      <if test="bridgeLoad != null">
+        BRIDGE_LOAD,
+      </if>
+      <if test="category != null">
+        CATEGORY,
+      </if>
+      <if test="other != null">
+        OTHER,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="engSid != null">
+        #{engSid,jdbcType=INTEGER},
+      </if>
+      <if test="width != null">
+        #{width,jdbcType=DECIMAL},
+      </if>
+      <if test="length != null">
+        #{length,jdbcType=DECIMAL},
+      </if>
+      <if test="height != null">
+        #{height,jdbcType=DOUBLE},
+      </if>
+      <if test="span != null">
+        #{span,jdbcType=DECIMAL},
+      </if>
+      <if test="holenums != null">
+        #{holenums,jdbcType=INTEGER},
+      </if>
+      <if test="levelCode != null">
+        #{levelCode,jdbcType=VARCHAR},
+      </if>
+      <if test="loadCode != null">
+        #{loadCode,jdbcType=VARCHAR},
+      </if>
+      <if test="headroom != null">
+        #{headroom,jdbcType=DECIMAL},
+      </if>
+      <if test="startX != null">
+        #{startX,jdbcType=VARCHAR},
+      </if>
+      <if test="endX != null">
+        #{endX,jdbcType=VARCHAR},
+      </if>
+      <if test="pipeDiameter != null">
+        #{pipeDiameter,jdbcType=VARCHAR},
+      </if>
+      <if test="pipeMaterial != null">
+        #{pipeMaterial,jdbcType=VARCHAR},
+      </if>
+      <if test="aperture != null">
+        #{aperture,jdbcType=VARCHAR},
+      </if>
+      <if test="finishArea != null">
+        #{finishArea,jdbcType=DECIMAL},
+      </if>
+      <if test="consTypeCode != null">
+        #{consTypeCode,jdbcType=VARCHAR},
+      </if>
+      <if test="basisTypeCode != null">
+        #{basisTypeCode,jdbcType=VARCHAR},
+      </if>
+      <if test="createdBy != null">
+        #{createdBy,jdbcType=VARCHAR},
+      </if>
+      <if test="createdDt != null">
+        #{createdDt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="version != null">
+        #{version,jdbcType=INTEGER},
+      </if>
+      <if test="updatedBy != null">
+        #{updatedBy,jdbcType=VARCHAR},
+      </if>
+      <if test="updatedDt != null">
+        #{updatedDt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="loadStandard != null">
+        #{loadStandard,jdbcType=VARCHAR},
+      </if>
+      <if test="bridgeLoad != null">
+        #{bridgeLoad,jdbcType=VARCHAR},
+      </if>
+      <if test="category != null">
+        #{category,jdbcType=VARCHAR},
+      </if>
+      <if test="other != null">
+        #{other,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.build4d.project.dbaccess.dbentities.ArolEngFacilitySpecEntity">
+    update iams_arol_eng_facility_spec
+    <set>
+      <if test="width != null">
+        WIDTH = #{width,jdbcType=DECIMAL},
+      </if>
+      <if test="length != null">
+        LENGTH = #{length,jdbcType=DECIMAL},
+      </if>
+      <if test="height != null">
+        HEIGHT = #{height,jdbcType=DOUBLE},
+      </if>
+      <if test="span != null">
+        SPAN = #{span,jdbcType=DECIMAL},
+      </if>
+      <if test="holenums != null">
+        HOLENUMS = #{holenums,jdbcType=INTEGER},
+      </if>
+      <if test="levelCode != null">
+        LEVEL_CODE = #{levelCode,jdbcType=VARCHAR},
+      </if>
+      <if test="loadCode != null">
+        LOAD_CODE = #{loadCode,jdbcType=VARCHAR},
+      </if>
+      <if test="headroom != null">
+        HEADROOM = #{headroom,jdbcType=DECIMAL},
+      </if>
+      <if test="startX != null">
+        START_X = #{startX,jdbcType=VARCHAR},
+      </if>
+      <if test="endX != null">
+        END_X = #{endX,jdbcType=VARCHAR},
+      </if>
+      <if test="pipeDiameter != null">
+        PIPE_DIAMETER = #{pipeDiameter,jdbcType=VARCHAR},
+      </if>
+      <if test="pipeMaterial != null">
+        PIPE_MATERIAL = #{pipeMaterial,jdbcType=VARCHAR},
+      </if>
+      <if test="aperture != null">
+        APERTURE = #{aperture,jdbcType=VARCHAR},
+      </if>
+      <if test="finishArea != null">
+        FINISH_AREA = #{finishArea,jdbcType=DECIMAL},
+      </if>
+      <if test="consTypeCode != null">
+        CONS_TYPE_CODE = #{consTypeCode,jdbcType=VARCHAR},
+      </if>
+      <if test="basisTypeCode != null">
+        BASIS_TYPE_CODE = #{basisTypeCode,jdbcType=VARCHAR},
+      </if>
+      <if test="createdBy != null">
+        CREATED_BY = #{createdBy,jdbcType=VARCHAR},
+      </if>
+      <if test="createdDt != null">
+        CREATED_DT = #{createdDt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="version != null">
+        VERSION = #{version,jdbcType=INTEGER},
+      </if>
+      <if test="updatedBy != null">
+        UPDATED_BY = #{updatedBy,jdbcType=VARCHAR},
+      </if>
+      <if test="updatedDt != null">
+        UPDATED_DT = #{updatedDt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="loadStandard != null">
+        LOAD_STANDARD = #{loadStandard,jdbcType=VARCHAR},
+      </if>
+      <if test="bridgeLoad != null">
+        BRIDGE_LOAD = #{bridgeLoad,jdbcType=VARCHAR},
+      </if>
+      <if test="category != null">
+        CATEGORY = #{category,jdbcType=VARCHAR},
+      </if>
+      <if test="other != null">
+        OTHER = #{other,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where ENG_SID = #{engSid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.build4d.project.dbaccess.dbentities.ArolEngFacilitySpecEntity">
+    update iams_arol_eng_facility_spec
+    set WIDTH = #{width,jdbcType=DECIMAL},
+      LENGTH = #{length,jdbcType=DECIMAL},
+      HEIGHT = #{height,jdbcType=DOUBLE},
+      SPAN = #{span,jdbcType=DECIMAL},
+      HOLENUMS = #{holenums,jdbcType=INTEGER},
+      LEVEL_CODE = #{levelCode,jdbcType=VARCHAR},
+      LOAD_CODE = #{loadCode,jdbcType=VARCHAR},
+      HEADROOM = #{headroom,jdbcType=DECIMAL},
+      START_X = #{startX,jdbcType=VARCHAR},
+      END_X = #{endX,jdbcType=VARCHAR},
+      PIPE_DIAMETER = #{pipeDiameter,jdbcType=VARCHAR},
+      PIPE_MATERIAL = #{pipeMaterial,jdbcType=VARCHAR},
+      APERTURE = #{aperture,jdbcType=VARCHAR},
+      FINISH_AREA = #{finishArea,jdbcType=DECIMAL},
+      CONS_TYPE_CODE = #{consTypeCode,jdbcType=VARCHAR},
+      BASIS_TYPE_CODE = #{basisTypeCode,jdbcType=VARCHAR},
+      CREATED_BY = #{createdBy,jdbcType=VARCHAR},
+      CREATED_DT = #{createdDt,jdbcType=TIMESTAMP},
+      VERSION = #{version,jdbcType=INTEGER},
+      UPDATED_BY = #{updatedBy,jdbcType=VARCHAR},
+      UPDATED_DT = #{updatedDt,jdbcType=TIMESTAMP},
+      LOAD_STANDARD = #{loadStandard,jdbcType=VARCHAR},
+      BRIDGE_LOAD = #{bridgeLoad,jdbcType=VARCHAR},
+      CATEGORY = #{category,jdbcType=VARCHAR},
+      OTHER = #{other,jdbcType=VARCHAR}
+    where ENG_SID = #{engSid,jdbcType=INTEGER}
+  </update>
+</mapper>

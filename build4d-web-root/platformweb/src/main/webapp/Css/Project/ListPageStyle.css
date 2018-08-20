@@ -1,0 +1,83 @@
+.list-simple-search-wrap {
+    margin-bottom: 8px;
+    border: #d7d7d8 solid 1px;
+    border-radius: 4px;
+    min-height: 42px;
+}
+
+.list-simple-search-wrap .ls-table {
+    width: 100%;
+}
+
+.list-simple-search-wrap .ls-table .ls-table-row {
+    height: 40px;
+}
+
+.list-simple-search-wrap .ls-table td{
+    text-align: center;
+}
+
+.list-simple-search-wrap .ls-table td{
+    text-align: center;
+}
+
+
+
+.list-row-button{
+    width: 21px;
+    height: 22px;
+    display: inline-block;
+    margin-left: 8px;
+    cursor: pointer;
+}
+
+.list-row-button:hover{
+    background-color: #c8dcfe;
+    border-radius: 4px;
+}
+
+.list-row-button-wrap div:first-child{
+    margin-left: 0px;
+}
+
+.list-row-button-view{
+    background: url("../../Images/Project/view1.png");
+}
+.list-row-button-edit{
+    background: url("../../Images/Project/edit1.png");
+}
+.list-row-button-del{
+    background: url("../../Images/Project/del1.png");
+}
+.list-row-button-print{
+    background: url("../../Images/Project/print.png");
+}
+.list-row-button-upload{
+    background: url("../../Images/Project/upload.png");
+}
+.list-row-button-check-pass{
+    background: url("../../Images/Project/check-pass.gif") no-repeat;
+    background-position: 0px 5px;
+}
+.list-row-button-check-nopass{
+    background: url("../../Images/Project/check-nopass.gif") no-repeat;
+    background-position: 0px 5px;
+}
+.list-row-button-check-next{
+    background: url("../../Images/Project/check-next.gif") no-repeat;
+    background-position: 0px 5px;
+}
+.list-row-button-check-do{
+     background: url("../../Images/Project/check-do.gif") no-repeat;
+     background-position: 0px 5px;
+ }
+
+.list-row-button-pdf0{
+    background: url("../../Images/Project/pdf0.png") no-repeat;
+    background-position: 0px 5px;
+}
+
+.list-row-button-pdf1{
+    background: url("../../Images/Project/pdf1.png") no-repeat;
+    background-position: 0px 5px;
+}

@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.build4d.project.dbaccess.dao.ProAdvisoryMapper">
+  <resultMap id="BaseResultMap" type="com.build4d.project.dbaccess.dbentities.ProAdvisoryEntity">
+    <constructor>
+      <idArg column="ADV_SID" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="ADV_CONTENT" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="USER_ID" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="USER_NAME" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="ORGAN_ID" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="ORGAN_NAME" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="CREATETIME" javaType="java.util.Date" jdbcType="TIMESTAMP" />
+      <arg column="STATUS" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="OUTER_ID" javaType="java.lang.String" jdbcType="VARCHAR" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List">
+    ADV_SID, ADV_CONTENT, USER_ID, USER_NAME, ORGAN_ID, ORGAN_NAME, CREATETIME, STATUS, 
+    OUTER_ID
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from iams_pro_advisory
+    where ADV_SID = #{advSid,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from iams_pro_advisory
+    where ADV_SID = #{advSid,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.build4d.project.dbaccess.dbentities.ProAdvisoryEntity">
+    insert into iams_pro_advisory (ADV_SID, ADV_CONTENT, USER_ID, 
+      USER_NAME, ORGAN_ID, ORGAN_NAME, 
+      CREATETIME, STATUS, OUTER_ID
+      )
+    values (#{advSid,jdbcType=VARCHAR}, #{advContent,jdbcType=VARCHAR}, #{userId,jdbcType=VARCHAR}, 
+      #{userName,jdbcType=VARCHAR}, #{organId,jdbcType=VARCHAR}, #{organName,jdbcType=VARCHAR}, 
+      #{createtime,jdbcType=TIMESTAMP}, #{status,jdbcType=VARCHAR}, #{outerId,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.build4d.project.dbaccess.dbentities.ProAdvisoryEntity">
+    insert into iams_pro_advisory
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="advSid != null">
+        ADV_SID,
+      </if>
+      <if test="advContent != null">
+        ADV_CONTENT,
+      </if>
+      <if test="userId != null">
+        USER_ID,
+      </if>
+      <if test="userName != null">
+        USER_NAME,
+      </if>
+      <if test="organId != null">
+        ORGAN_ID,
+      </if>
+      <if test="organName != null">
+        ORGAN_NAME,
+      </if>
+      <if test="createtime != null">
+        CREATETIME,
+      </if>
+      <if test="status != null">
+        STATUS,
+      </if>
+      <if test="outerId != null">
+        OUTER_ID,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="advSid != null">
+        #{advSid,jdbcType=VARCHAR},
+      </if>
+      <if test="advContent != null">
+        #{advContent,jdbcType=VARCHAR},
+      </if>
+      <if test="userId != null">
+        #{userId,jdbcType=VARCHAR},
+      </if>
+      <if test="userName != null">
+        #{userName,jdbcType=VARCHAR},
+      </if>
+      <if test="organId != null">
+        #{organId,jdbcType=VARCHAR},
+      </if>
+      <if test="organName != null">
+        #{organName,jdbcType=VARCHAR},
+      </if>
+      <if test="createtime != null">
+        #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="outerId != null">
+        #{outerId,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.build4d.project.dbaccess.dbentities.ProAdvisoryEntity">
+    update iams_pro_advisory
+    <set>
+      <if test="advContent != null">
+        ADV_CONTENT = #{advContent,jdbcType=VARCHAR},
+      </if>
+      <if test="userId != null">
+        USER_ID = #{userId,jdbcType=VARCHAR},
+      </if>
+      <if test="userName != null">
+        USER_NAME = #{userName,jdbcType=VARCHAR},
+      </if>
+      <if test="organId != null">
+        ORGAN_ID = #{organId,jdbcType=VARCHAR},
+      </if>
+      <if test="organName != null">
+        ORGAN_NAME = #{organName,jdbcType=VARCHAR},
+      </if>
+      <if test="createtime != null">
+        CREATETIME = #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="status != null">
+        STATUS = #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="outerId != null">
+        OUTER_ID = #{outerId,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where ADV_SID = #{advSid,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.build4d.project.dbaccess.dbentities.ProAdvisoryEntity">
+    update iams_pro_advisory
+    set ADV_CONTENT = #{advContent,jdbcType=VARCHAR},
+      USER_ID = #{userId,jdbcType=VARCHAR},
+      USER_NAME = #{userName,jdbcType=VARCHAR},
+      ORGAN_ID = #{organId,jdbcType=VARCHAR},
+      ORGAN_NAME = #{organName,jdbcType=VARCHAR},
+      CREATETIME = #{createtime,jdbcType=TIMESTAMP},
+      STATUS = #{status,jdbcType=VARCHAR},
+      OUTER_ID = #{outerId,jdbcType=VARCHAR}
+    where ADV_SID = #{advSid,jdbcType=VARCHAR}
+  </update>
+
+  <select id="selectAll" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from iams_pro_advisory ORDER by CREATETIME ASC
+  </select>
+</mapper>

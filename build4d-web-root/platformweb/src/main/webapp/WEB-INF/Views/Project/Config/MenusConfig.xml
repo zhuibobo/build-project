@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<BuilderManageMenuRoot>
+    <Menu Name="Project-MyDesktop" Text="我的工作台" IconType="tubiao1">
+        <Items>
+           <!-- <Menu Name="Project-MyDesktop-Index-ConstructionUnit" Text="我的任务原始" Desc="建设单位" Url="${ctxpath}/project/mydesktop/gotomydesktopconstructionunit.do" IconType="ios-monitor">
+            </Menu>-->
+            <Menu Name="Project-MyDesktop-Index-ConstructionUnit2" Text="我的任务" Desc="建设单位" Url="${ctxpath}/project/mydesktop/gotomydesktopconstructionunitv2.do" IconType="ios-monitor">
+            </Menu>
+           <!-- <Menu Name="Project-MyDesktop-Index-Archives" Text="我的任务原始" Desc="档案管" Url="${ctxpath}/project/mydesktop/gotomydesktoparchives.do" IconType="ios-monitor">
+            </Menu>-->
+            <Menu Name="Project-MyDesktop-Index-Archives2" Text="我的任务" Desc="档案管" Url="${ctxpath}/project/mydesktop/gotomydesktoparchivesv2.do" IconType="ios-monitor">
+            </Menu>
+            <Menu Name="Project-Management-Edit" Text="项目管理" Url="${ctxpath}/project/project/projectlist.do"  IconType="android-list">
+            </Menu>
+            <Menu Name="Engineering-Management-Edit" Text="工程管理" IconType="ios-folder">
+                <Items>
+                    <Menu Name="Housing-Project-Management-Edit" Text="房建工程管理" Url="${ctxpath}/project/engineering/engineeringlist.do?engType=1"  IconType="">
+                    </Menu>
+                    <Menu Name="Road-Project-Management-Edit" Text="道路工程管理" Url="${ctxpath}/project/engineering/engineeringlist.do?engType=2"  IconType="">
+                    </Menu>
+                    <Menu Name="Bridge-Project-Management-Edit" Text="桥梁工程管理" Url="${ctxpath}/project/engineering/engineeringlist.do?engType=3"  IconType="">
+                    </Menu>
+                    <Menu Name="Line-Project-Management-Edit" Text="管网工程管理" Url="${ctxpath}/project/engineering/engineeringlist.do?engType=4"  IconType="">
+                    </Menu>
+                </Items>
+            </Menu>
+            <Menu Name="Engineering-comfirm" Text="报建确认" IconType="ios-photos" Url="${ctxpath}/project/engineering/listfordesktop.do?status=100">
+            </Menu>
+            <Menu Name="File-Registration" Text="文件登记" IconType="chatbubble-working" Url="${ctxpath}/project/engineering/listfordesktop.do?status=200,600">
+            </Menu>
+            <Menu Name="Engineering-Advisory-Group" Text="问题咨询" IconType="chatbubble-working">
+                <Items>
+                    <Menu Name="Engineering-AdvisoryList" Text="提交问题" IconType="chatbubble-working" Url="${ctxpath}/project/advisory/list.do">
+                    </Menu>
+                    <Menu Name="Engineering-AdvisoryReplyList" Text="问题答复" IconType="chatbubble-working" Url="${ctxpath}/project/advisory/replylist.do">
+                    </Menu>
+                </Items>
+            </Menu>
+            <Menu Name="Engineering-pre-assessment" Text="预验收检查" IconType="ios-photos" Url="${ctxpath}/project/engineering/listfordesktop.do?status=400,900">
+            </Menu>
+            <Menu Name="Engineering-pre-assessment-check" Text="预验收审核" IconType="ios-photos" Url="${ctxpath}/project/engineering/listfordesktop.do?status=500">
+            </Menu>
+            <Menu Name="Engineering-build-arch" Text="工程组卷" IconType="ios-photos"  Url="${ctxpath}/project/engineering/listfordesktop.do?status=800,1200">
+            </Menu>
+            <Menu Name="Engineering-arch-check" Text="案卷审核" IconType="ios-photos" Url="${ctxpath}/project/engineering/listfordesktop.do?status=1000">
+            </Menu>
+            <Menu Name="Engineering-send-arch" Text="档案报送" IconType="ios-photos" Url="${ctxpath}/project/engineering/listfordesktop.do?status=1100,1500">
+            </Menu>
+            <Menu Name="Engineering-receive-arch" Text="档案接收" IconType="ios-photos" Url="${ctxpath}/project/engineering/listfordesktop.do?status=1300">
+            </Menu>
+            <Menu Name="Engineering-transfer-arch" Text="档案移交" IconType="ios-photos" Url="${ctxpath}/project/engineering/listfordesktop.do?status=1400">
+            </Menu>
+            <Menu Name="Engineering-been-arch" Text="档案归档" IconType="ios-photos" Url="${ctxpath}/project/engineering/listfordesktop.do?status=1700">
+            </Menu>
+            <Menu Name="Engineering-send-cert" Text="审定发证" IconType="ios-photos" Url="${ctxpath}/project/engineering/listfordesktop.do?status=2000">
+            </Menu>
+            <Menu Name="Engineering-FileStorage-Management" Text="案卷查询" IconType="ios-photos" Url="${ctxpath}/project/engineering/archive/archlist.do">
+            </Menu>
+            <Menu Name="BindWX" Text="微信绑定" Url="${ctxpath}/project/weixinbindaccount/beginbindaccounttowx.do" IconType="ios-photos">
+            </Menu>
+        </Items>
+    </Menu>
+    <Menu Name="Work-Tracking-Management" Text="工作跟踪管理" IconType="tubiao2">
+        <Items>
+            <Menu Name="Work-Tracking-File" Text="文件收集进度" IconType="" Url="${ctxpath}/project/engineering/engineeringlistfortrace.do?progress=ifFileProgress">
+            </Menu>
+            <Menu Name="Work-Tracking-Engineering" Text="工程状态动态跟踪" IconType="" Url="${ctxpath}/project/engineering/engineeringlistfortrace.do?progress=ifEngProgress">
+            </Menu>
+        </Items>
+    </Menu>
+    <Menu Name="Information-Management" Text="信息管理" IconType="tubiao3">
+        <Items>
+            <Menu Name="Build-Unit-Management" Text="单位管理" Url="${ctxpath}/project/system/organ/organlist4build.do" IconType="person-stalker">
+            </Menu>
+            <Menu Name="Build-Unit-User-Management" Text="用户管理" Url="${ctxpath}/project/system/user/userlist4build.do?userType=业务用户" IconType="person-stalker">
+            </Menu>
+            <!--<Menu Name="Build-Unit-Management" Text="建设单位管理" Url="${ctxpath}/project/system/outerorgan/list.do?oorg_type=BuildUnit" IconType="person-stalker">
+            </Menu>
+            <Menu Name="Construction-Unit-Management" Text="施工单位管理" Url="${ctxpath}/project/system/outerorgan/list.do?oorg_type=ConstructionUnit" IconType="person-stalker">
+            </Menu>
+            <Menu Name="Supervision-Unit-Management" Text="监理单位管理" Url="${ctxpath}/project/system/outerorgan/list.do?oorg_type=SupervisionUnit" IconType="person-stalker">
+            </Menu>
+            <Menu Name="Signing-Unit-Management" Text="签章单位管理" Url="${ctxpath}/project/system/outerorgan/list.do?oorg_type=SigningUnit" IconType="person-stalker">
+            </Menu>
+            <Menu Name="Outsourcing-Unit-Management" Text="外协单位管理" Url="" IconType="arrow-swap">
+            </Menu>
+            <Menu Name="Business-Unit-Association" Text="业务单位关联" Url="" IconType="arrow-swap">
+            </Menu>
+            <Menu Name="Signature-Unit-Association" Text="签章单位关联" Url="" IconType="arrow-swap">
+            </Menu>
+            <Menu Name="Outsourcing-Unit-Association" Text="外协单位关联" Url="" IconType="arrow-swap">
+            </Menu>-->
+        </Items>
+    </Menu>
+    <Menu Name="Online-Search-Root" Text="在线档案查询" IconType="tubiao4">
+        <Items>
+            <Menu Name="Online-Search-Housing" Text="动态统计" IconType="">
+            </Menu>
+            <Menu Name="Online-Search-Road" Text="市政设施工程类" IconType="">
+            </Menu>
+            <Menu Name="Online-Search-Bridge" Text="管网工程管理" IconType="">
+            </Menu>
+        </Items>
+    </Menu>
+    <!--<Menu Name="Statistical-Report" Text="工程跟踪动态统计" IconType="tubiao5">
+        <Items>
+            <Menu Name="Statistical-Report-1" Text="动态统计" IconType="">
+            </Menu>
+            <Menu Name="Statistical-Report-2" Text="统计报表" IconType="">
+            </Menu>
+        </Items>
+    </Menu>-->
+    <Menu Name="Project-SystemManagement" Text="系统管理" IconType="tubiao6">
+        <Items>
+            <Menu Name="Organ-Management" Text="机构管理" IconType="network" Url="${ctxpath}/project/system/organ/organlist.do">
+            </Menu>
+            <Menu Name="Role-Management" Text="角色管理" IconType="ios-people" Url="${ctxpath}/project/system/role/list.do">
+            </Menu>
+            <Menu Name="Data-Dictionary-Management" Text="数据字典" IconType="android-menu" Url="${ctxpath}/project/system/dictionary/list.do">
+            </Menu>
+
+            <Menu Name="BusinessUsers-Management" Text="业务用户管理" IconType="person-stalker" Url="${ctxpath}/project/system/user/userlist.do?userType=业务用户">
+            </Menu>
+            <Menu Name="SignatureUsers-Management" Text="签章用户管理" IconType="person-stalker" Url="${ctxpath}/project/system/user/userlist.do?userType=签章用户">
+            </Menu>
+            <Menu Name="OutsourcingUsers-Management" Text="外协用户管理" IconType="person-stalker" Url="${ctxpath}/project/system/user/userlist.do?userType=外协用户">
+            </Menu>
+            <Menu Name="PersonEdit-Management" Text="个人资料修改" IconType="ios-person" Url="${ctxpath}/project/system/user/myuserinfo.do">
+            </Menu>
+          <!--  <Menu Name="Module-Management" Text="模块管理" IconType="ios-basketball-outline" Url="${ctxpath}/project/system/person/personedit.do">
+            </Menu>-->
+            <Menu Name="Engineering-Type-Management" Text="工程类别管理" IconType="ios-basketball-outline" Url="${ctxpath}/project/system/engconf/list.do">
+            </Menu>
+            <Menu Name="System-Operation-Log-Management" Text="系统操作日志" IconType="ios-paper" Url="${ctxpath}/project/log/englog.do">
+            </Menu>
+        </Items>
+    </Menu>
+    <!--<Menu Name="Project-PageDesign-Folder" Text="页面设计" Url="" IconType="tubiao1">
+        <Items>
+            <Menu Name="Project-PageDesign-Folder-P1" Text="报建页面" Url="${ctxpath}/project/pagedesign/p1.do"  IconType="">
+            </Menu>
+            <Menu Name="Project-PageDesign-Folder-P2" Text="档案馆角色控制台" Url="${ctxpath}/project/pagedesign/p2.do"  IconType="">
+            </Menu>
+            <Menu Name="Project-PageDesign-Folder-P3" Text="建设单位控制台" Url="${ctxpath}/project/pagedesign/p3.do"  IconType="">
+            </Menu>
+            <Menu Name="Project-PageDesign-Folder-P4" Text="项目进度样式" Url="${ctxpath}/project/pagedesign/p4.do"  IconType="">
+            </Menu>
+            <Menu Name="Project-PageDesign-Folder-P5" Text="纵向时间轴" Url="${ctxpath}/project/pagedesign/p5.do"  IconType="">
+            </Menu>
+            <Menu Name="Project-PageDesign-Folder-P6" Text="验收申请书" Url="${ctxpath}/project/pagedesign/p6.do"  IconType="">
+            </Menu>
+            <Menu Name="Project-PageDesign-Folder-P7" Text="预验收意见书" Url="${ctxpath}/project/pagedesign/p7.do"  IconType="">
+            </Menu>
+        </Items>
+    </Menu>-->
+</BuilderManageMenuRoot>

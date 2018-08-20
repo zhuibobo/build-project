@@ -1,0 +1,43 @@
+*{
+	padding: 0;
+	/* [disabled]margin:0; */
+	font-family: '微软雅黑';
+}
+
+.dengluye{ background:url(../img/dengluyebeijin.jpg); }
+
+.mingcheng{ margin-top:75px; text-align:center; margin-bottom: 20px;}
+.mingchengxian{ margin-top:6px; text-align:center;}
+
+.dengluyeneirong{ margin-top:70px;  text-align: center; display:inline-block;}
+
+
+
+.dengluyeyouce{ background:url(../img/dengluyun.png); display:inline-block; width:759px; margin-bottom: 10px; height:430px; float:left; margin-left:119px; opacity:0;}
+
+.dengluyelogo{ background:url(../img/logo.png); width:112px; height:96px; margin-top:60px; margin-left:315px;}
+
+.zhanghaokuang{ width:370px; height:50px; border:#cccccc 1px solid; border-radius:5px; margin-top:24px; margin-left:187px;}
+.zhanghaotubiao{ background:url(../img/zhanghaotubiao.png); width:38px; height:41px; display:inline-block; margin:7px; float:left; }
+.zhanghaoxian{ width:3px; height:29px; border-right:1px #cccccc solid; display:inline-block; float:left; margin-top:11px;}
+.shuruzhanghao{ color:#cccccc; font-size:16px; float:left; line-height:50px; margin-left:14px;}
+
+.mimakuang{ width:370px; height:50px; border:#cccccc 1px solid; border-radius:5px; margin-top:20px; margin-left:187px;}
+.mimatubiao{ background:url(../img/mimatubiao.png); width:38px; height:41px; display:inline-block; margin:7px; float:left; }
+.mimaxian{ width:3px; height:29px; border-right:1px #cccccc solid; display:inline-block; float:left; margin-top:11px;}
+.shurumima{ color:#cccccc; font-size:16px; float:left; line-height:50px; margin-left:14px;}
+
+.jizhumima{ margin:6px auto;}
+.jizhumimakuang{ width:12px; height:12px; border:1px solid #cccccc; display:inline-block; margin-left:189px; margin-top: 5px;  float:left;}
+.jizhumimazi{ font-size:14px; color:#cccccc; float:left; margin-left:3px;}
+
+.wangjimima{ font-size:14px; color:#01bdff; float:right; border-bottom:1px solid #01bdff; margin-right:199px;}
+
+.hongzi{ font-size:16px; color:#f3333c; text-align:center; margin-top:26px;}
+
+.dengluanniu{ background:url(../img/dengluanniu.png); width:150px; height:50px; margin:8px auto; display:inline-block; float:left; margin-left:200px;}
+.zhuceanniu{ background:url(../img/zhuceanniu.png); width:150px; height:50px; margin:8px auto; display:inline-block; float:left; margin-left:20px;}
+
+.hei{ width:999px; height:600px; background:url(../img/heibeijin.png)}
+.disanfang{ background:url(../img/disanfang.png); width:999px; height:26px; float:left; margin-top: 10px;}
+.weixin{ background:url(../img/weixin.png); width:76px; height:65px; float:left; margin-left:463px; margin-top:20px;cursor: pointer}

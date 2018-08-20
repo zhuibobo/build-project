@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.build4d.project.dbaccess.dao.ProRolePrivMapper">
+  <resultMap id="BaseResultMap" type="com.build4d.project.dbaccess.dbentities.ProRolePrivEntity">
+    <constructor>
+      <idArg column="ROPR_SID" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="ROLE_SID" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="ROPR_OBJ_TYPE" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="ROPR_OBJ_ID" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="ROPR_OPERATION_ID" javaType="java.lang.String" jdbcType="VARCHAR" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List">
+    ROPR_SID, ROLE_SID, ROPR_OBJ_TYPE, ROPR_OBJ_ID, ROPR_OPERATION_ID
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from iams_pro_role_priv
+    where ROPR_SID = #{roprSid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from iams_pro_role_priv
+    where ROPR_SID = #{roprSid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.build4d.project.dbaccess.dbentities.ProRolePrivEntity">
+    insert into iams_pro_role_priv (ROPR_SID, ROLE_SID, ROPR_OBJ_TYPE, 
+      ROPR_OBJ_ID, ROPR_OPERATION_ID)
+    values (#{roprSid,jdbcType=INTEGER}, #{roleSid,jdbcType=INTEGER}, #{roprObjType,jdbcType=VARCHAR}, 
+      #{roprObjId,jdbcType=VARCHAR}, #{roprOperationId,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.build4d.project.dbaccess.dbentities.ProRolePrivEntity">
+    insert into iams_pro_role_priv
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="roprSid != null">
+        ROPR_SID,
+      </if>
+      <if test="roleSid != null">
+        ROLE_SID,
+      </if>
+      <if test="roprObjType != null">
+        ROPR_OBJ_TYPE,
+      </if>
+      <if test="roprObjId != null">
+        ROPR_OBJ_ID,
+      </if>
+      <if test="roprOperationId != null">
+        ROPR_OPERATION_ID,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="roprSid != null">
+        #{roprSid,jdbcType=INTEGER},
+      </if>
+      <if test="roleSid != null">
+        #{roleSid,jdbcType=INTEGER},
+      </if>
+      <if test="roprObjType != null">
+        #{roprObjType,jdbcType=VARCHAR},
+      </if>
+      <if test="roprObjId != null">
+        #{roprObjId,jdbcType=VARCHAR},
+      </if>
+      <if test="roprOperationId != null">
+        #{roprOperationId,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.build4d.project.dbaccess.dbentities.ProRolePrivEntity">
+    update iams_pro_role_priv
+    <set>
+      <if test="roleSid != null">
+        ROLE_SID = #{roleSid,jdbcType=INTEGER},
+      </if>
+      <if test="roprObjType != null">
+        ROPR_OBJ_TYPE = #{roprObjType,jdbcType=VARCHAR},
+      </if>
+      <if test="roprObjId != null">
+        ROPR_OBJ_ID = #{roprObjId,jdbcType=VARCHAR},
+      </if>
+      <if test="roprOperationId != null">
+        ROPR_OPERATION_ID = #{roprOperationId,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where ROPR_SID = #{roprSid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.build4d.project.dbaccess.dbentities.ProRolePrivEntity">
+    update iams_pro_role_priv
+    set ROLE_SID = #{roleSid,jdbcType=INTEGER},
+      ROPR_OBJ_TYPE = #{roprObjType,jdbcType=VARCHAR},
+      ROPR_OBJ_ID = #{roprObjId,jdbcType=VARCHAR},
+      ROPR_OPERATION_ID = #{roprOperationId,jdbcType=VARCHAR}
+    where ROPR_SID = #{roprSid,jdbcType=INTEGER}
+  </update>
+
+  <delete id="deleteAll">
+    delete from iams_pro_role_priv
+  </delete>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from iams_pro_role_priv
+  </select>
+  <select id="nextId" resultType="integer">
+    select case when max(ROPR_SID) is null then 1 else max(ROPR_SID)+1 end NEXTID from iams_pro_role_priv
+  </select>
+
+  <delete id="deleteRoleMenuPriv" parameterType="java.lang.Integer">
+    delete from iams_pro_role_priv where ROLE_SID=#{roleSid} and ROPR_OBJ_TYPE='Menu'
+  </delete>
+  <select id="selectRoleMenuPriv" resultMap="BaseResultMap" parameterType="java.lang.Integer">
+    select
+    <include refid="Base_Column_List" />
+    from iams_pro_role_priv where ROLE_SID=#{roleSid} and ROPR_OBJ_TYPE='Menu'
+  </select>
+
+  <select id="selectRoleIdsMenuPrivs" resultMap="BaseResultMap" parameterType="List">
+    select
+    <include refid="Base_Column_List" />
+    from iams_pro_role_priv where Role_SID IN
+    <foreach collection="list" index="index" item="roleSId" open="(" separator="," close=")">
+      #{roleSId}
+    </foreach>
+  </select>
+</mapper>

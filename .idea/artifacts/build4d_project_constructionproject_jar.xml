@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="build4d-project-constructionproject:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/build4d_project_constructionproject_jar</output-path>
+    <root id="archive" name="build4d-project-constructionproject.jar">
+      <element id="module-output" name="build4d-project-constructionproject" />
+    </root>
+  </artifact>
+</component>

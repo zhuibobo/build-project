@@ -1,0 +1,249 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.build4d.project.dbaccess.dao.ProDictionaryMapper">
+  <resultMap id="BaseResultMap" type="com.build4d.project.dbaccess.dbentities.ProDictionaryEntity">
+    <constructor>
+      <idArg column="DICT_SID" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="DICT_VALUE" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="DICT_TEXT" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="DICT_ORDER" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="DICT_CREATE_TIME" javaType="java.util.Date" jdbcType="TIMESTAMP" />
+      <arg column="DICT_PARENT_ID" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="DICT_PARENT_IDLIST" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="DICT_STATUS" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="DICT_IS_SELECTED" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="DICT_DESC" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="DICT_CHILD_COUNT" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="DICT_EX_ATTR1" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="DICT_EX_ATTR2" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="DICT_EX_ATTR3" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="DICT_EX_ATTR4" javaType="java.lang.String" jdbcType="VARCHAR" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List">
+    DICT_SID, DICT_VALUE, DICT_TEXT, DICT_ORDER, DICT_CREATE_TIME, DICT_PARENT_ID, DICT_PARENT_IDLIST, 
+    DICT_STATUS, DICT_IS_SELECTED, DICT_DESC, DICT_CHILD_COUNT, DICT_EX_ATTR1, DICT_EX_ATTR2, 
+    DICT_EX_ATTR3, DICT_EX_ATTR4
+  </sql>
+  <select id="searchByMap"  parameterType="java.util.Map" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from iams_pro_dictionary
+    where 1=1
+    <if test="dictParentId != null and dictParentId != ''">
+      and DICT_PARENT_ID = #{dictParentId}
+    </if>
+    <if test="dictText != null and dictText != ''">
+      and DICT_TEXT like "%"#{dictText}"%"
+    </if>
+    <if test="dictValue != null and dictValue != ''">
+      and DICT_VALUE like "%※"#{dictValue}"※%"
+    </if>
+    <if test="dictParentIdlist != null and dictParentIdlist != ''">
+      and DICT_PARENT_IDLIST like "%"#{dictParentIdlist}"%"
+    </if>
+    ORDER by DICT_ORDER ASC
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from iams_pro_dictionary
+    where DICT_SID = #{dictSid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from iams_pro_dictionary
+    where DICT_SID = #{dictSid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.build4d.project.dbaccess.dbentities.ProDictionaryEntity">
+    insert into iams_pro_dictionary (DICT_SID, DICT_VALUE, DICT_TEXT, 
+      DICT_ORDER, DICT_CREATE_TIME, DICT_PARENT_ID, 
+      DICT_PARENT_IDLIST, DICT_STATUS, DICT_IS_SELECTED, 
+      DICT_DESC, DICT_CHILD_COUNT, DICT_EX_ATTR1, 
+      DICT_EX_ATTR2, DICT_EX_ATTR3, DICT_EX_ATTR4
+      )
+    values (#{dictSid,jdbcType=INTEGER}, #{dictValue,jdbcType=VARCHAR}, #{dictText,jdbcType=VARCHAR}, 
+      #{dictOrder,jdbcType=INTEGER}, #{dictCreateTime,jdbcType=TIMESTAMP}, #{dictParentId,jdbcType=INTEGER}, 
+      #{dictParentIdlist,jdbcType=VARCHAR}, #{dictStatus,jdbcType=INTEGER}, #{dictIsSelected,jdbcType=INTEGER}, 
+      #{dictDesc,jdbcType=VARCHAR}, #{dictChildCount,jdbcType=INTEGER}, #{dictExAttr1,jdbcType=VARCHAR}, 
+      #{dictExAttr2,jdbcType=VARCHAR}, #{dictExAttr3,jdbcType=VARCHAR}, #{dictExAttr4,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.build4d.project.dbaccess.dbentities.ProDictionaryEntity">
+    insert into iams_pro_dictionary
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="dictSid != null">
+        DICT_SID,
+      </if>
+      <if test="dictValue != null">
+        DICT_VALUE,
+      </if>
+      <if test="dictText != null">
+        DICT_TEXT,
+      </if>
+      <if test="dictOrder != null">
+        DICT_ORDER,
+      </if>
+      <if test="dictCreateTime != null">
+        DICT_CREATE_TIME,
+      </if>
+      <if test="dictParentId != null">
+        DICT_PARENT_ID,
+      </if>
+      <if test="dictParentIdlist != null">
+        DICT_PARENT_IDLIST,
+      </if>
+      <if test="dictStatus != null">
+        DICT_STATUS,
+      </if>
+      <if test="dictIsSelected != null">
+        DICT_IS_SELECTED,
+      </if>
+      <if test="dictDesc != null">
+        DICT_DESC,
+      </if>
+      <if test="dictChildCount != null">
+        DICT_CHILD_COUNT,
+      </if>
+      <if test="dictExAttr1 != null">
+        DICT_EX_ATTR1,
+      </if>
+      <if test="dictExAttr2 != null">
+        DICT_EX_ATTR2,
+      </if>
+      <if test="dictExAttr3 != null">
+        DICT_EX_ATTR3,
+      </if>
+      <if test="dictExAttr4 != null">
+        DICT_EX_ATTR4,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="dictSid != null">
+        #{dictSid,jdbcType=INTEGER},
+      </if>
+      <if test="dictValue != null">
+        #{dictValue,jdbcType=VARCHAR},
+      </if>
+      <if test="dictText != null">
+        #{dictText,jdbcType=VARCHAR},
+      </if>
+      <if test="dictOrder != null">
+        #{dictOrder,jdbcType=INTEGER},
+      </if>
+      <if test="dictCreateTime != null">
+        #{dictCreateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="dictParentId != null">
+        #{dictParentId,jdbcType=INTEGER},
+      </if>
+      <if test="dictParentIdlist != null">
+        #{dictParentIdlist,jdbcType=VARCHAR},
+      </if>
+      <if test="dictStatus != null">
+        #{dictStatus,jdbcType=INTEGER},
+      </if>
+      <if test="dictIsSelected != null">
+        #{dictIsSelected,jdbcType=INTEGER},
+      </if>
+      <if test="dictDesc != null">
+        #{dictDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="dictChildCount != null">
+        #{dictChildCount,jdbcType=INTEGER},
+      </if>
+      <if test="dictExAttr1 != null">
+        #{dictExAttr1,jdbcType=VARCHAR},
+      </if>
+      <if test="dictExAttr2 != null">
+        #{dictExAttr2,jdbcType=VARCHAR},
+      </if>
+      <if test="dictExAttr3 != null">
+        #{dictExAttr3,jdbcType=VARCHAR},
+      </if>
+      <if test="dictExAttr4 != null">
+        #{dictExAttr4,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.build4d.project.dbaccess.dbentities.ProDictionaryEntity">
+    update iams_pro_dictionary
+    <set>
+      <if test="dictValue != null">
+        DICT_VALUE = #{dictValue,jdbcType=VARCHAR},
+      </if>
+      <if test="dictText != null">
+        DICT_TEXT = #{dictText,jdbcType=VARCHAR},
+      </if>
+      <if test="dictOrder != null">
+        DICT_ORDER = #{dictOrder,jdbcType=INTEGER},
+      </if>
+      <if test="dictCreateTime != null">
+        DICT_CREATE_TIME = #{dictCreateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="dictParentId != null">
+        DICT_PARENT_ID = #{dictParentId,jdbcType=INTEGER},
+      </if>
+      <if test="dictParentIdlist != null">
+        DICT_PARENT_IDLIST = #{dictParentIdlist,jdbcType=VARCHAR},
+      </if>
+      <if test="dictStatus != null">
+        DICT_STATUS = #{dictStatus,jdbcType=INTEGER},
+      </if>
+      <if test="dictIsSelected != null">
+        DICT_IS_SELECTED = #{dictIsSelected,jdbcType=INTEGER},
+      </if>
+      <if test="dictDesc != null">
+        DICT_DESC = #{dictDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="dictChildCount != null">
+        DICT_CHILD_COUNT = #{dictChildCount,jdbcType=INTEGER},
+      </if>
+      <if test="dictExAttr1 != null">
+        DICT_EX_ATTR1 = #{dictExAttr1,jdbcType=VARCHAR},
+      </if>
+      <if test="dictExAttr2 != null">
+        DICT_EX_ATTR2 = #{dictExAttr2,jdbcType=VARCHAR},
+      </if>
+      <if test="dictExAttr3 != null">
+        DICT_EX_ATTR3 = #{dictExAttr3,jdbcType=VARCHAR},
+      </if>
+      <if test="dictExAttr4 != null">
+        DICT_EX_ATTR4 = #{dictExAttr4,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where DICT_SID = #{dictSid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.build4d.project.dbaccess.dbentities.ProDictionaryEntity">
+    update iams_pro_dictionary
+    set DICT_VALUE = #{dictValue,jdbcType=VARCHAR},
+      DICT_TEXT = #{dictText,jdbcType=VARCHAR},
+      DICT_ORDER = #{dictOrder,jdbcType=INTEGER},
+      DICT_CREATE_TIME = #{dictCreateTime,jdbcType=TIMESTAMP},
+      DICT_PARENT_ID = #{dictParentId,jdbcType=INTEGER},
+      DICT_PARENT_IDLIST = #{dictParentIdlist,jdbcType=VARCHAR},
+      DICT_STATUS = #{dictStatus,jdbcType=INTEGER},
+      DICT_IS_SELECTED = #{dictIsSelected,jdbcType=INTEGER},
+      DICT_DESC = #{dictDesc,jdbcType=VARCHAR},
+      DICT_CHILD_COUNT = #{dictChildCount,jdbcType=INTEGER},
+      DICT_EX_ATTR1 = #{dictExAttr1,jdbcType=VARCHAR},
+      DICT_EX_ATTR2 = #{dictExAttr2,jdbcType=VARCHAR},
+      DICT_EX_ATTR3 = #{dictExAttr3,jdbcType=VARCHAR},
+      DICT_EX_ATTR4 = #{dictExAttr4,jdbcType=VARCHAR}
+    where DICT_SID = #{dictSid,jdbcType=INTEGER}
+  </update>
+
+  <delete id="deleteAll">
+    delete from iams_pro_dictionary
+  </delete>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from iams_pro_dictionary ORDER by DICT_ORDER ASC
+  </select>
+  <select id="nextId" resultType="integer">
+    select case when max(DICT_SID) is null then 1 else max(DICT_SID)+1 end NEXTID from iams_pro_dictionary
+  </select>
+  <select id="nextOrderNum" resultType="integer">
+    select case when max(DICT_ORDER) is null then 1 else max(DICT_ORDER)+1 end ORDERNUM from iams_pro_dictionary
+  </select>
+</mapper>

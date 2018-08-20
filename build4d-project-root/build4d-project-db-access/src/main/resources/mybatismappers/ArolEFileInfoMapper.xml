@@ -1,0 +1,241 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.build4d.project.dbaccess.dao.ArolEFileInfoMapper">
+  <resultMap id="BaseResultMap" type="com.build4d.project.dbaccess.dbentities.ArolEFileInfoEntity">
+    <constructor>
+      <idArg column="SID" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="ENG_SID" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="ARCH_SID" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="FILE_SID" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="filename" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="filepath" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="order_rank" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="filetype" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="filelen" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="filedescription" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="CREATED_BY" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="CREATED_DT" javaType="java.util.Date" jdbcType="TIMESTAMP" />
+      <arg column="VERSION" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="UPDATED_BY" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="UPDATED_DT" javaType="java.util.Date" jdbcType="TIMESTAMP" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List">
+    SID, ENG_SID, ARCH_SID, FILE_SID, filename, filepath, order_rank, filetype, filelen, 
+    filedescription, CREATED_BY, CREATED_DT, VERSION, UPDATED_BY, UPDATED_DT
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from iams_arol_efile_info
+    where SID = #{sid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from iams_arol_efile_info
+    where SID = #{sid,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByEngSid" parameterType="java.lang.Integer">
+    delete from iams_arol_arch_info
+    where ENG_SID = #{engSid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.build4d.project.dbaccess.dbentities.ArolEFileInfoEntity">
+    insert into iams_arol_efile_info (SID, ENG_SID, ARCH_SID, 
+      FILE_SID, filename, filepath, 
+      order_rank, filetype, filelen, 
+      filedescription, CREATED_BY, CREATED_DT, 
+      VERSION, UPDATED_BY, UPDATED_DT
+      )
+    values (#{sid,jdbcType=INTEGER}, #{engSid,jdbcType=INTEGER}, #{archSid,jdbcType=INTEGER}, 
+      #{fileSid,jdbcType=INTEGER}, #{filename,jdbcType=VARCHAR}, #{filepath,jdbcType=VARCHAR}, 
+      #{orderRank,jdbcType=VARCHAR}, #{filetype,jdbcType=VARCHAR}, #{filelen,jdbcType=VARCHAR}, 
+      #{filedescription,jdbcType=VARCHAR}, #{createdBy,jdbcType=VARCHAR}, #{createdDt,jdbcType=TIMESTAMP}, 
+      #{version,jdbcType=INTEGER}, #{updatedBy,jdbcType=VARCHAR}, #{updatedDt,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.build4d.project.dbaccess.dbentities.ArolEFileInfoEntity">
+    insert into iams_arol_efile_info
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="sid != null">
+        SID,
+      </if>
+      <if test="engSid != null">
+        ENG_SID,
+      </if>
+      <if test="archSid != null">
+        ARCH_SID,
+      </if>
+      <if test="fileSid != null">
+        FILE_SID,
+      </if>
+      <if test="filename != null">
+        filename,
+      </if>
+      <if test="filepath != null">
+        filepath,
+      </if>
+      <if test="orderRank != null">
+        order_rank,
+      </if>
+      <if test="filetype != null">
+        filetype,
+      </if>
+      <if test="filelen != null">
+        filelen,
+      </if>
+      <if test="filedescription != null">
+        filedescription,
+      </if>
+      <if test="createdBy != null">
+        CREATED_BY,
+      </if>
+      <if test="createdDt != null">
+        CREATED_DT,
+      </if>
+      <if test="version != null">
+        VERSION,
+      </if>
+      <if test="updatedBy != null">
+        UPDATED_BY,
+      </if>
+      <if test="updatedDt != null">
+        UPDATED_DT,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="sid != null">
+        #{sid,jdbcType=INTEGER},
+      </if>
+      <if test="engSid != null">
+        #{engSid,jdbcType=INTEGER},
+      </if>
+      <if test="archSid != null">
+        #{archSid,jdbcType=INTEGER},
+      </if>
+      <if test="fileSid != null">
+        #{fileSid,jdbcType=INTEGER},
+      </if>
+      <if test="filename != null">
+        #{filename,jdbcType=VARCHAR},
+      </if>
+      <if test="filepath != null">
+        #{filepath,jdbcType=VARCHAR},
+      </if>
+      <if test="orderRank != null">
+        #{orderRank,jdbcType=VARCHAR},
+      </if>
+      <if test="filetype != null">
+        #{filetype,jdbcType=VARCHAR},
+      </if>
+      <if test="filelen != null">
+        #{filelen,jdbcType=VARCHAR},
+      </if>
+      <if test="filedescription != null">
+        #{filedescription,jdbcType=VARCHAR},
+      </if>
+      <if test="createdBy != null">
+        #{createdBy,jdbcType=VARCHAR},
+      </if>
+      <if test="createdDt != null">
+        #{createdDt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="version != null">
+        #{version,jdbcType=INTEGER},
+      </if>
+      <if test="updatedBy != null">
+        #{updatedBy,jdbcType=VARCHAR},
+      </if>
+      <if test="updatedDt != null">
+        #{updatedDt,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.build4d.project.dbaccess.dbentities.ArolEFileInfoEntity">
+    update iams_arol_efile_info
+    <set>
+      <if test="engSid != null">
+        ENG_SID = #{engSid,jdbcType=INTEGER},
+      </if>
+      <if test="archSid != null">
+        ARCH_SID = #{archSid,jdbcType=INTEGER},
+      </if>
+      <if test="fileSid != null">
+        FILE_SID = #{fileSid,jdbcType=INTEGER},
+      </if>
+      <if test="filename != null">
+        filename = #{filename,jdbcType=VARCHAR},
+      </if>
+      <if test="filepath != null">
+        filepath = #{filepath,jdbcType=VARCHAR},
+      </if>
+      <if test="orderRank != null">
+        order_rank = #{orderRank,jdbcType=VARCHAR},
+      </if>
+      <if test="filetype != null">
+        filetype = #{filetype,jdbcType=VARCHAR},
+      </if>
+      <if test="filelen != null">
+        filelen = #{filelen,jdbcType=VARCHAR},
+      </if>
+      <if test="filedescription != null">
+        filedescription = #{filedescription,jdbcType=VARCHAR},
+      </if>
+      <if test="createdBy != null">
+        CREATED_BY = #{createdBy,jdbcType=VARCHAR},
+      </if>
+      <if test="createdDt != null">
+        CREATED_DT = #{createdDt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="version != null">
+        VERSION = #{version,jdbcType=INTEGER},
+      </if>
+      <if test="updatedBy != null">
+        UPDATED_BY = #{updatedBy,jdbcType=VARCHAR},
+      </if>
+      <if test="updatedDt != null">
+        UPDATED_DT = #{updatedDt,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where SID = #{sid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.build4d.project.dbaccess.dbentities.ArolEFileInfoEntity">
+    update iams_arol_efile_info
+    set ENG_SID = #{engSid,jdbcType=INTEGER},
+      ARCH_SID = #{archSid,jdbcType=INTEGER},
+      FILE_SID = #{fileSid,jdbcType=INTEGER},
+      filename = #{filename,jdbcType=VARCHAR},
+      filepath = #{filepath,jdbcType=VARCHAR},
+      order_rank = #{orderRank,jdbcType=VARCHAR},
+      filetype = #{filetype,jdbcType=VARCHAR},
+      filelen = #{filelen,jdbcType=VARCHAR},
+      filedescription = #{filedescription,jdbcType=VARCHAR},
+      CREATED_BY = #{createdBy,jdbcType=VARCHAR},
+      CREATED_DT = #{createdDt,jdbcType=TIMESTAMP},
+      VERSION = #{version,jdbcType=INTEGER},
+      UPDATED_BY = #{updatedBy,jdbcType=VARCHAR},
+      UPDATED_DT = #{updatedDt,jdbcType=TIMESTAMP}
+    where SID = #{sid,jdbcType=INTEGER}
+  </update>
+  <select id="searchByMap"  resultMap="BaseResultMap" parameterType="java.util.Map" >
+    select
+    <include refid="Base_Column_List"/>
+    from iams_arol_efile_info
+    <where>
+      <if test="fileSid != null and fileSid != ''">
+        and FILE_SID=#{fileSid}
+      </if>
+      <if test="archSid != null and archSid != ''">
+        and ARCH_SID=#{archSid}
+      </if>
+      <if test="filename != null and filename != ''">
+        and filename like "%"#{filename}"%"
+      </if>
+    </where>
+    ORDER by  CREATED_BY ASC
+  </select>
+  <select id="nextId" resultType="integer">
+    select case when max(SID) is null then 1 else max(SID)+1 end NEXTID from iams_arol_efile_info
+  </select>
+  <select id="nextOrderNum" resultType="integer">
+    select case when max(order_rank) is null then 1 else max(order_rank)+1 end ORDERNUM from iams_arol_efile_info
+  </select>
+</mapper>

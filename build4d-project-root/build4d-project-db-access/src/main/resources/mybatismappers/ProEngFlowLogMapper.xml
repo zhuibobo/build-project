@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.build4d.project.dbaccess.dao.ProEngFlowLogMapper">
+  <resultMap id="BaseResultMap" type="com.build4d.project.dbaccess.dbentities.ProEngFlowLogEntity">
+    <constructor>
+      <idArg column="SID" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="ENG_SID" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="ORGAN_SID" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="ORGAN_NAME" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="ORGAN_TYPE" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="USER_SID" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="USER_NAME" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="OP_DATE" javaType="java.util.Date" jdbcType="TIMESTAMP" />
+      <arg column="OP_STATUS" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="OP_OPINION" javaType="java.lang.String" jdbcType="VARCHAR" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List">
+    SID, ENG_SID, ORGAN_SID, ORGAN_NAME, ORGAN_TYPE, USER_SID, USER_NAME, OP_DATE, OP_STATUS, 
+    OP_OPINION
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from iams_pro_eng_flow_log
+    where SID = #{sid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from iams_pro_eng_flow_log
+    where SID = #{sid,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByEngSid" parameterType="java.lang.Integer">
+    delete from iams_pro_eng_flow_log
+    where ENG_SID = #{engSid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.build4d.project.dbaccess.dbentities.ProEngFlowLogEntity">
+    insert into iams_pro_eng_flow_log (SID, ENG_SID, ORGAN_SID, 
+      ORGAN_NAME, ORGAN_TYPE, USER_SID, 
+      USER_NAME, OP_DATE, OP_STATUS, 
+      OP_OPINION)
+    values (#{sid,jdbcType=INTEGER}, #{engSid,jdbcType=INTEGER}, #{organSid,jdbcType=INTEGER}, 
+      #{organName,jdbcType=VARCHAR}, #{organType,jdbcType=VARCHAR}, #{userSid,jdbcType=INTEGER}, 
+      #{userName,jdbcType=VARCHAR}, #{opDate,jdbcType=TIMESTAMP}, #{opStatus,jdbcType=INTEGER}, 
+      #{opOpinion,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.build4d.project.dbaccess.dbentities.ProEngFlowLogEntity">
+    insert into iams_pro_eng_flow_log
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="sid != null">
+        SID,
+      </if>
+      <if test="engSid != null">
+        ENG_SID,
+      </if>
+      <if test="organSid != null">
+        ORGAN_SID,
+      </if>
+      <if test="organName != null">
+        ORGAN_NAME,
+      </if>
+      <if test="organType != null">
+        ORGAN_TYPE,
+      </if>
+      <if test="userSid != null">
+        USER_SID,
+      </if>
+      <if test="userName != null">
+        USER_NAME,
+      </if>
+      <if test="opDate != null">
+        OP_DATE,
+      </if>
+      <if test="opStatus != null">
+        OP_STATUS,
+      </if>
+      <if test="opOpinion != null">
+        OP_OPINION,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="sid != null">
+        #{sid,jdbcType=INTEGER},
+      </if>
+      <if test="engSid != null">
+        #{engSid,jdbcType=INTEGER},
+      </if>
+      <if test="organSid != null">
+        #{organSid,jdbcType=INTEGER},
+      </if>
+      <if test="organName != null">
+        #{organName,jdbcType=VARCHAR},
+      </if>
+      <if test="organType != null">
+        #{organType,jdbcType=VARCHAR},
+      </if>
+      <if test="userSid != null">
+        #{userSid,jdbcType=INTEGER},
+      </if>
+      <if test="userName != null">
+        #{userName,jdbcType=VARCHAR},
+      </if>
+      <if test="opDate != null">
+        #{opDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="opStatus != null">
+        #{opStatus,jdbcType=INTEGER},
+      </if>
+      <if test="opOpinion != null">
+        #{opOpinion,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.build4d.project.dbaccess.dbentities.ProEngFlowLogEntity">
+    update iams_pro_eng_flow_log
+    <set>
+      <if test="engSid != null">
+        ENG_SID = #{engSid,jdbcType=INTEGER},
+      </if>
+      <if test="organSid != null">
+        ORGAN_SID = #{organSid,jdbcType=INTEGER},
+      </if>
+      <if test="organName != null">
+        ORGAN_NAME = #{organName,jdbcType=VARCHAR},
+      </if>
+      <if test="organType != null">
+        ORGAN_TYPE = #{organType,jdbcType=VARCHAR},
+      </if>
+      <if test="userSid != null">
+        USER_SID = #{userSid,jdbcType=INTEGER},
+      </if>
+      <if test="userName != null">
+        USER_NAME = #{userName,jdbcType=VARCHAR},
+      </if>
+      <if test="opDate != null">
+        OP_DATE = #{opDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="opStatus != null">
+        OP_STATUS = #{opStatus,jdbcType=INTEGER},
+      </if>
+      <if test="opOpinion != null">
+        OP_OPINION = #{opOpinion,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where SID = #{sid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.build4d.project.dbaccess.dbentities.ProEngFlowLogEntity">
+    update iams_pro_eng_flow_log
+    set ENG_SID = #{engSid,jdbcType=INTEGER},
+      ORGAN_SID = #{organSid,jdbcType=INTEGER},
+      ORGAN_NAME = #{organName,jdbcType=VARCHAR},
+      ORGAN_TYPE = #{organType,jdbcType=VARCHAR},
+      USER_SID = #{userSid,jdbcType=INTEGER},
+      USER_NAME = #{userName,jdbcType=VARCHAR},
+      OP_DATE = #{opDate,jdbcType=TIMESTAMP},
+      OP_STATUS = #{opStatus,jdbcType=INTEGER},
+      OP_OPINION = #{opOpinion,jdbcType=VARCHAR}
+    where SID = #{sid,jdbcType=INTEGER}
+  </update>
+  <select id="searchByMap"  resultMap="BaseResultMap" parameterType="java.util.Map" >
+    select
+    <include refid="Base_Column_List" />
+    from iams_pro_eng_flow_log
+    <where>
+      <if test="engSid != null and engSid != ''">
+        and ENG_SID = #{engSid}
+      </if>
+      <if test="organSid !=null and organSid != ''">
+        and ORGAN_SID=#{organSid}
+      </if>
+      <if test="organType !=null and organType != ''">
+        and ORGAN_TYPE=#{organType}
+      </if>
+    </where>
+    ORDER by OP_DATE ASC
+  </select>
+  <select id="nextId" resultType="integer">
+    select case when max(SID) is null then 1 else max(SID)+1 end NEXTID from iams_pro_eng_flow_log
+  </select>
+  <select id="searchLog" parameterType="java.util.Map" resultType="map">
+    select
+    iams_pro_eng_flow_log.*,iams_arol_eng_base_info.ENG_NAME,
+    case
+    when iams_pro_eng_flow_log.OP_STATUS='0' then '工程登记'
+    when iams_pro_eng_flow_log.OP_STATUS='100' then '报建待审核'
+    when iams_pro_eng_flow_log.OP_STATUS='200' then '报建审核通过'
+    when iams_pro_eng_flow_log.OP_STATUS='300' then '报建审核不通过'
+    when iams_pro_eng_flow_log.OP_STATUS='400' then '待预验收检查'
+    when iams_pro_eng_flow_log.OP_STATUS='500' then '预验收检查通过'
+    when iams_pro_eng_flow_log.OP_STATUS='600' then '预验收检查不通过'
+    when iams_pro_eng_flow_log.OP_STATUS='700' then '待预验收审核'
+    when iams_pro_eng_flow_log.OP_STATUS='800' then '预验收审核通过'
+    when iams_pro_eng_flow_log.OP_STATUS='900' then '预验收审核未通过'
+    when iams_pro_eng_flow_log.OP_STATUS='1000' then '案卷待审核'
+    when iams_pro_eng_flow_log.OP_STATUS='1100' then '案卷审核通过'
+    when iams_pro_eng_flow_log.OP_STATUS='1200' then '案卷审核不通过'
+    when iams_pro_eng_flow_log.OP_STATUS='1300' then '档案接收待审核'
+    when iams_pro_eng_flow_log.OP_STATUS='1400' then '档案接收审核通过'
+    when iams_pro_eng_flow_log.OP_STATUS='1500' then '档案接收审核未通过'
+    when iams_pro_eng_flow_log.OP_STATUS='1600' then '档案待移交'
+    when iams_pro_eng_flow_log.OP_STATUS='1700' then '档案已移交'
+    when iams_pro_eng_flow_log.OP_STATUS='1800' then '拒绝档案移交'
+    when iams_pro_eng_flow_log.OP_STATUS='1900' then '档案待归档'
+    when iams_pro_eng_flow_log.OP_STATUS='2000' then '档案已归档'
+    when iams_pro_eng_flow_log.OP_STATUS='2100' then '拒绝档案归档'
+    when iams_pro_eng_flow_log.OP_STATUS='2200' then '待审定发证'
+    when iams_pro_eng_flow_log.OP_STATUS='2300' then '审定发证'
+    when iams_pro_eng_flow_log.OP_STATUS='240' then '拒绝发证'
+    end STATUS_NAME from iams_pro_eng_flow_log join iams_arol_eng_base_info on iams_pro_eng_flow_log.ENG_SID=iams_arol_eng_base_info.SID
+    <where>
+      <if test="engSid != null and engSid != ''">
+        and ENG_SID = #{engSid}
+      </if>
+      <if test="organSid !=null and organSid != ''">
+        and ORGAN_SID=#{organSid}
+      </if>
+      <if test="organType !=null and organType != ''">
+        and ORGAN_TYPE=#{organType}
+      </if>
+    </where>
+    ORDER by OP_DATE ASC
+  </select>
+</mapper>
