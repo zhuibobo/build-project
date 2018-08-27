@@ -9,7 +9,7 @@
 <%@ include file="/WEB-INF/Views/TagLibs/TagLib.jsp" %>
 <html>
 <head>
-    <title>建设工程资料整理服务云平台</title>
+    <title>建设工程资料整理云服务平台</title>
 </head>
 <body>
 系统入口
