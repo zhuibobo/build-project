@@ -25,7 +25,7 @@
 	<my-component5 v-bind:title="message" :p1="message"></my-component5>
 	<my-component6 v-bind:title="message" :p1="message"></my-component6>
 	<my-component7 ><h1 slot="header">头部内容</h1>fdfdff<h3 slot="footer">底部内容</h3></my-component7>
-	筛选：<input v-model="filterKey">
+	筛选1：<input v-model="filterKey">
 	<ol>
 		<li v-for="todo in todos">
 			{{ todo.text }}
