@@ -130,7 +130,7 @@
                             </form-item>
                         </i-col>
                         <i-col span="9">
-                            <form-item id="fCert" v-show="formValidate.certType!=''" label=" 证件号："  prop="engBaseInfoEntity.engOrgAndCode.landUsePlanningNo">
+                            <form-item ref="fCert" v-show="formValidate.certType!=''" label=" 证件号："  prop="engBaseInfoEntity.engOrgAndCode.landUsePlanningNo">
                                 <i-input v-show="formValidate.certType=='规划许可证'" v-model="formValidate.engBaseInfoEntity.engOrgAndCode.landUsePlanningNo" placeholder=""></i-input>
                                 <i-input v-show="formValidate.certType=='施工许可证'" v-model="formValidate.engBaseInfoEntity.engOrgAndCode.constructNo" placeholder=""></i-input>
                                 <i-input v-show="formValidate.certType=='责任书' || formValidate.certType=='其他'" v-model="formValidate.engBaseInfoEntity.engOrgAndCode.otherCert"></i-input>
@@ -230,11 +230,20 @@
     var Main = {
         mounted:function () {
         },
+        watch:{
+            "file":{
+                handler: function (val, oldVal) {
+                    this.$refs['formValidate'].validateField("engBaseInfoEntity.engOrgAndCode.landUsePlanningNo",function(errMsg){
+                    });
+                }
+            }
+        },
         data:function () {
             var detailData=${dataEnties};
             detailData.confirmPwd="";
             detailData.certType='';
             detailData.protocol=false;
+            detailData.isUpload=false;
             if(!detailData.engBaseInfoEntity.recOrgSid) detailData.engBaseInfoEntity.recOrgSid='';
             detailData.engBaseInfoEntity.status=detailData.engBaseInfoEntity.status?String(detailData.engBaseInfoEntity.status):'100';
             return {
@@ -330,11 +339,15 @@
                 return arr;
             },
             validateCert:function(rule,value,callback){
+                var type=this.formValidate.certType;
                 var c1=this.formValidate.engBaseInfoEntity.engOrgAndCode.landUsePlanningNo;
                 var c2=this.formValidate.engBaseInfoEntity.engOrgAndCode.constructNo;
                 var c3=this.formValidate.engBaseInfoEntity.engOrgAndCode.otherCert;
 
-                if(this.formValidate.certType!='' && (c1==null || c1=="") && (c2==null || c2=="") && (c3==null || c3==""))
+                //this.$refs["fCert"]  施工许可证 责任书 其他
+                if((type=='规划许可证' && (c1==null || c1==""))
+                    || (type=='施工许可证' && (c2==null || c2==""))
+                    || ((type=='责任书' || type=='其他') && (c3==null || c3=="")))
                     callback(new Error('请输入证件的证件号！'));
                 else if(this.formValidate.certType!='' && this.file==null)
                     callback(new Error('请上传证件的电子件！'));
